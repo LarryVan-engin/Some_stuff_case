@@ -1,0 +1,500 @@
+1451:                             </h4>
+1452:                             <button onclick="exportItinerary()" class="bg-white hover:bg-teal-50 text-teal-700 border border-teal-200 text-xs font-bold px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 shadow-xs">
+1453:                                 <i class="fa-solid fa-file-export animate-pulse"></i> Xuất Lịch Trình
+1454:                             </button>
+1455:                         </div>
+1456: 
+1457:                         <!-- Custom Day view tabs -->
+1458:                         <div class="flex justify-center gap-2 bg-gray-100 p-1 rounded-xl max-w-xs mx-auto">
+1459:                             <button onclick="switchCustomTimelineDay(1)" id="timeline-day-btn-1" class="timeline-day-btn flex-1 py-2 font-bold text-xs rounded-lg transition-all text-center bg-white text-teal-800 shadow-sm">Ngày 1</button>
+1460:                             <button onclick="switchCustomTimelineDay(2)" id="timeline-day-btn-2" class="timeline-day-btn flex-1 py-2 font-bold text-xs rounded-lg transition-all text-center text-gray-600 hover:text-teal-700">Ngày 2</button>
+1461:                             <button onclick="switchCustomTimelineDay(3)" id="timeline-day-btn-3" class="timeline-day-btn flex-1 py-2 font-bold text-xs rounded-lg transition-all text-center text-gray-600 hover:text-teal-700">Ngày 3</button>
+1462:                         </div>
+1463: 
+1464:                         <!-- Custom Timeline Area -->
+1465:                         <div class="relative pl-6 border-l-2 border-teal-500/30 space-y-6 py-2 min-h-[150px]" id="custom-timeline-container">
+1466:                             <!-- Rendered dynamically by Javascript -->
+1467:                         </div>
+1468:                     </div>
+1469:                 </div>
+1470: </div>
+1471:         </section>
+1472: 
+1473:         <section id="tab3" class="tab-content hidden animate-fade-in">
+1474:             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+1475:                 
+1476:                 <div class="bg-white rounded-xl shadow-md p-8 border border-gray-100">
+1477:                     <h3 class="text-2xl font-bold text-teal-700 mb-6 border-b pb-2"><i class="fa-solid fa-ship mr-2"></i> Kênh Di Chuyển Ra Đảo</h3>
+1478:                     
+1479:                     <div class="mb-6">
+1480:                         <h4 class="font-bold text-lg text-gray-800 flex items-center mb-2"><i class="fa-solid fa-plane text-teal-600 mr-2"></i> Bằng Máy Bay</h4>
+1481:                         <p class="text-gray-600 text-sm mb-2">Đường bay thẳng được khai thác bởi Vietnam Airlines, Vietjet Airs và Bamboo Airways[cite: 76].</p>
+1482:                         <ul class="list-disc pl-5 text-gray-600 text-sm space-y-1">
+1483:                             <li><strong>Từ TP.HCM & Cần Thơ:</strong> Thời gian bay khoảng 55 phút[cite: 78]. Giá tham khảo dao động từ 1.200.000đ - 1.800.000đ/chiều.</li>
+1484:                             <li><strong>Từ Hà Nội:</strong> Thời gian bay khoảng 3 giờ 30 phút[cite: 79].</li>
+1485:                         </ul>
+1486:                     </div>
+1487: 
+1488:                                         <div>
+1489:                         <h4 class="font-bold text-lg text-gray-800 flex items-center mb-3"><i class="fa-solid fa-ferry text-teal-600 mr-2"></i> Bằng Tàu Cao Tốc</h4>
+1490:                         <p class="text-gray-600 text-sm mb-4">Hiện có 3 hãng tàu cao tốc chất lượng cao phục vụ việc di chuyển ra Côn Đảo từ các tỉnh thành phía Nam:</p>
+1491:                         
+1492:                         <div class="space-y-4">
+1493:                             <!-- 1. Côn Đảo Express -->
+1494:                             <div class="bg-gray-50/50 hover:bg-teal-50/20 border border-gray-100 hover:border-teal-200 p-4 rounded-xl flex flex-col sm:flex-row gap-4 transition-all duration-300 shadow-sm hover:shadow-md group">
+1495:                                 <div class="w-full sm:w-36 h-28 rounded-lg overflow-hidden shrink-0 shadow-sm relative group/img">
+1496:                                     <img src="https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?w=800&q=80" alt="Côn Đảo Express" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+1497:                                     <span class="absolute top-1.5 left-1.5 bg-teal-600 text-white text-[9px] font-extrabold px-2 py-0.5 rounded shadow-sm uppercase">Tiêu chuẩn 5★</span>
+1498:                                 </div>
+1499:                                 <div class="flex-grow flex flex-col justify-between">
+1500:                                     <div>
+1501:                                         <div class="flex flex-wrap justify-between items-start gap-2">
+1502:                                             <h5 class="font-extrabold text-gray-800 group-hover:text-teal-700 transition-colors text-sm sm:text-base">Côn Đảo Express</h5>
+1503:                                             <span class="bg-teal-50 text-teal-700 border border-teal-100 text-[10px] font-bold px-2 py-0.5 rounded-full">Vũng Tàu & Trần Đề</span>
+1504:                                         </div>
+1505:                                         <p class="text-[11px] text-gray-400 mt-1">Thương hiệu thuộc hãng Phú Quốc Express</p>
+1506:                                         <p class="text-xs text-gray-500 mt-2 leading-relaxed">
+1507:                                             Sử dụng dòng tàu cao tốc hai thân hiện đại, chuẩn 5 sao giúp giảm thiểu tối đa say sóng. Boong tàu ngoài trời rộng rãi cho phép tự do ngắm nhìn biển khơi trong suốt hải trình.
+1508:                                         </p>
+1509:                                         <div class="mt-2.5 flex flex-wrap items-center gap-3 text-[11px] text-teal-600 font-semibold">
+1510:                                             <span><i class="fa-solid fa-clock mr-1"></i> Vũng Tàu: ~5 tiếng</span>
+1511:                                             <span><i class="fa-solid fa-clock mr-1"></i> Trần Đề: ~2 tiếng</span>
+1512:                                         </div>
+1513:                                     </div>
+1514:                                 </div>
+1515:                             </div>
+1516: 
+1517:                             <!-- 2. Superdong -->
+1518:                             <div class="bg-gray-50/50 hover:bg-teal-50/20 border border-gray-100 hover:border-teal-200 p-4 rounded-xl flex flex-col sm:flex-row gap-4 transition-all duration-300 shadow-sm hover:shadow-md group">
+1519:                                 <div class="w-full sm:w-36 h-28 rounded-lg overflow-hidden shrink-0 shadow-sm relative group/img">
+1520:                                     <img src="https://images.unsplash.com/photo-1511527844068-006b95d162c2?w=800&q=80" alt="Superdong" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+1521:                                     <span class="absolute top-1.5 left-1.5 bg-teal-600 text-white text-[9px] font-extrabold px-2 py-0.5 rounded shadow-sm uppercase">Lâu đời - Uy tín</span>
+1522:                                 </div>
+1523:                                 <div class="flex-grow flex flex-col justify-between">
+1524:                                     <div>
+1525:                                         <div class="flex flex-wrap justify-between items-start gap-2">
+1526:                                             <h5 class="font-extrabold text-gray-800 group-hover:text-teal-700 transition-colors text-sm sm:text-base">Hãng tàu Superdong</h5>
+1527:                                             <span class="bg-teal-50 text-teal-700 border border-teal-100 text-[10px] font-bold px-2 py-0.5 rounded-full">Tuyến Trần Đề</span>
+1528:                                         </div>
+1529:                                         <p class="text-[11px] text-gray-400 mt-1">Thương hiệu quen thuộc, vận hành bền bỉ</p>
+1530:                                         <p class="text-xs text-gray-500 mt-2 leading-relaxed">
+1531:                                             Hãng tàu lâu đời, uy tín hàng đầu. Tàu thiết kế chắc chắn, tốc độ di chuyển nhanh ổn định. Trang bị đầy đủ máy lạnh, ghế da êm ái, tivi giải trí và hệ thống cứu sinh tuyệt đối an toàn.
+1532:                                         </p>
+1533:                                         <div class="mt-2.5 flex items-center gap-3 text-[11px] text-teal-600 font-semibold">
+1534:                                             <span><i class="fa-solid fa-clock mr-1"></i> Lộ trình Trần Đề: ~2 tiếng</span>
+1535:                                         </div>
+1536:                                     </div>
+1537:                                 </div>
+1538:                             </div>
+1539: 
+1540:                             <!-- 3. Mai Linh Express -->
+1541:                             <div class="bg-gray-50/50 hover:bg-teal-50/20 border border-gray-100 hover:border-teal-200 p-4 rounded-xl flex flex-col sm:flex-row gap-4 transition-all duration-300 shadow-sm hover:shadow-md group">
+1542:                                 <div class="w-full sm:w-36 h-28 rounded-lg overflow-hidden shrink-0 shadow-sm relative group/img">
+1543:                                     <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&q=80" alt="Mai Linh Express" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+1544:                                     <span class="absolute top-1.5 left-1.5 bg-teal-600 text-white text-[9px] font-extrabold px-2 py-0.5 rounded shadow-sm uppercase">Hiện đại - Rung lắc thấp</span>
+1545:                                 </div>
+1546:                                 <div class="flex-grow flex flex-col justify-between">
+1547:                                     <div>
+1548:                                         <div class="flex flex-wrap justify-between items-start gap-2">
+1549:                                             <h5 class="font-extrabold text-gray-800 group-hover:text-teal-700 transition-colors text-sm sm:text-base">Mai Linh Express</h5>
+1550:                                             <span class="bg-teal-50 text-teal-700 border border-teal-100 text-[10px] font-bold px-2 py-0.5 rounded-full">Tuyến Cần Thơ</span>
+1551:                                         </div>
+1552:                                         <p class="text-[11px] text-gray-400 mt-1">Cực kỳ thuận tiện cho du khách Miền Tây</p>
+1553:                                         <p class="text-xs text-gray-500 mt-2 leading-relaxed">
+1554:                                             Tàu cao tốc hai thân thế hệ mới với công nghệ chống rung lắc tiên tiến nhất. Thiết kế sang trọng với các hạng ghế Thường, VIP, dịch vụ khách hàng chuyên nghiệp, chu đáo.
+1555:                                         </p>
+1556:                                         <div class="mt-2.5 flex items-center gap-3 text-[11px] text-teal-600 font-semibold">
+1557:                                             <span><i class="fa-solid fa-clock mr-1"></i> Lộ trình Cần Thơ: Tuỳ theo thời tiết và tuyến</span>
+1558:                                         </div>
+1559:                                     </div>
+1560:                                 </div>
+1561:                             </div>
+1562:                         </div>
+1563: 
+1564:                         <!-- 💡 Lời khuyên nhỏ thời điểm đi tàu lý tưởng -->
+1565:                         <div class="mt-6 bg-amber-50/80 border border-amber-100 p-4 rounded-xl flex gap-3 shadow-xs">
+1566:                             <div class="text-amber-500 text-lg shrink-0 mt-0.5">
+1567:                                 <i class="fa-solid fa-lightbulb"></i>
+1568:                             </div>
+1569:                             <div>
+1570:                                 <h6 class="font-bold text-amber-800 text-sm">Mẹo nhỏ từ người đi trước</h6>
+1571:                                 <p class="text-amber-900/80 text-xs mt-1 leading-relaxed">
+1572:                                     Thời điểm lý tưởng nhất để trải nghiệm đi tàu ra đảo là từ <strong>tháng 4 đến tháng 6</strong> hằng năm. Lúc này biển vô cùng êm dịu, ít sóng gió dữ dội, thời tiết trong xanh, mát mẻ giúp bạn có hải trình cực kỳ dễ chịu và ngắm nhìn đại dương tuyệt đẹp!
+1573:                                 </p>
+1574:                             </div>
+1575:                         </div>
+1576:                     </div>
+1577:                 </div>
+1578: 
+1579:                 <div class="bg-white rounded-xl shadow-md p-8 border border-gray-100 flex flex-col h-[750px]">
+1580:                     <h3 class="text-2xl font-bold text-teal-700 mb-4 border-b pb-2 flex justify-between items-center">
+1581:                         <span><i class="fa-solid fa-hotel mr-2"></i> Gợi Ý Lưu Trú</span>
+1582:                         <span class="text-xs bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full font-semibold">9 Lựa chọn</span>
+1583:                     </h3>
+1584:                     
+1585:                     <!-- Scrollable list of hotels -->
+1586:                     <div class="flex-grow overflow-y-auto space-y-4 pr-2 custom-scrollbar">
+1587:                         
+1588:                         <!-- 1. Six Senses Côn Đảo -->
+1589:                         <div class="bg-gray-50/50 hover:bg-teal-50/20 border border-gray-100 hover:border-teal-200 p-4 rounded-xl flex flex-col sm:flex-row gap-4 transition-all duration-300 shadow-sm hover:shadow-md group">
+1590:                             <div class="w-full sm:w-32 h-24 rounded-lg overflow-hidden shrink-0 shadow-sm relative">
+1591:                                 <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80" alt="Six Senses Côn Đảo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+1592:                                 <span class="absolute top-1 left-1 bg-amber-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded shadow-sm">5 ★</span>
+1593:                             </div>
+1594:                             <div class="flex-grow flex flex-col justify-between">
+1595:                                 <div>
+1596:                                     <div class="flex justify-between items-start gap-2">
+1597:                                         <h4 class="font-bold text-gray-800 group-hover:text-teal-700 transition-colors text-sm sm:text-base">Six Senses Côn Đảo</h4>
+1598:                                         <span class="bg-teal-50 text-teal-700 border border-teal-100 text-[10px] font-bold px-2 py-0.5 rounded-full shrink-0 whitespace-nowrap">~ 15M - 20M+</span>
+1599:                                     </div>
+1600:                                     <p class="text-[11px] text-gray-400 mt-0.5 flex items-center gap-1">
+1601:                                         <i class="fa-solid fa-location-dot"></i> Bải Đất Dốc, huyện Côn Đảo
+1602:                                     </p>
+1603:                                     <p class="text-xs text-gray-500 mt-2 leading-relaxed">
+1604:                                         Được thiết kế tinh tế hài hòa giữa phong cảnh thơ mộng và vẻ đẹp thiên nhiên hoang sơ, mang lại một không gian riêng tư vô cùng thư thái và đẳng cấp.
+1605:                                     </p>
+1606:                                 </div>
+1607:                             </div>
+1608:                         </div>
+1609: 
+1610:                         <!-- 2. Poulo Condor Boutique Resort & Spa -->
+1611:                         <div class="bg-gray-50/50 hover:bg-teal-50/20 border border-gray-100 hover:border-teal-200 p-4 rounded-xl flex flex-col sm:flex-row gap-4 transition-all duration-300 shadow-sm hover:shadow-md group">
+1612:                             <div class="w-full sm:w-32 h-24 rounded-lg overflow-hidden shrink-0 shadow-sm relative">
+1613:                                 <img src="https://images.unsplash.com/photo-1564507592333-c60657eea523?w=800&q=80" alt="Poulo Condor Boutique" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+1614:                                 <span class="absolute top-1 left-1 bg-amber-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded shadow-sm">4 ★</span>
+1615:                             </div>
+1616:                             <div class="flex-grow flex flex-col justify-between">
+1617:                                 <div>
+1618:                                     <div class="flex justify-between items-start gap-2">
+1619:                                         <h4 class="font-bold text-gray-800 group-hover:text-teal-700 transition-colors text-sm sm:text-base">Poulo Condor Boutique Resort</h4>
+1620:                                         <span class="bg-teal-50 text-teal-700 border border-teal-100 text-[10px] font-bold px-2 py-0.5 rounded-full shrink-0 whitespace-nowrap">~ 2.5M - 4.0M</span>
+1621:                                     </div>
+1622:                                     <p class="text-[11px] text-gray-400 mt-0.5 flex items-center gap-1">
+1623:                                         <i class="fa-solid fa-location-dot"></i> Bãi Vông - Cỏ Ống
+1624:                                     </p>
+1625:                                     <p class="text-xs text-gray-500 mt-2 leading-relaxed">
+1626:                                         Khu nghỉ dưỡng sở hữu lối kiến trúc mang vẻ đẹp hòa quyện đặc sắc giữa nét cổ kính truyền thống Việt Nam và di sản Đông Dương thời Pháp thuộc.
+1627:                                     </p>
+1628:                                 </div>
+1629:                             </div>
+1630:                         </div>
+1631: 
+1632:                         <!-- 3. Marina Bay Côn Đảo Hotel -->
+1633:                         <div class="bg-gray-50/50 hover:bg-teal-50/20 border border-gray-100 hover:border-teal-200 p-4 rounded-xl flex flex-col sm:flex-row gap-4 transition-all duration-300 shadow-sm hover:shadow-md group">
+1634:                             <div class="w-full sm:w-32 h-24 rounded-lg overflow-hidden shrink-0 shadow-sm relative">
+1635:                                 <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80" alt="Marina Bay Côn Đảo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+1636:                                 <span class="absolute top-1 left-1 bg-amber-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded shadow-sm">4 ★</span>
+1637:                             </div>
+1638:                             <div class="flex-grow flex flex-col justify-between">
+1639:                                 <div>
+1640:                                     <div class="flex justify-between items-start gap-2">
+1641:                                         <h4 class="font-bold text-gray-800 group-hover:text-teal-700 transition-colors text-sm sm:text-base">Marina Bay Côn Đảo Hotel</h4>
+1642:                                         <span class="bg-teal-50 text-teal-700 border border-teal-100 text-[10px] font-bold px-2 py-0.5 rounded-full shrink-0 whitespace-nowrap">~ 1.5M - 2.5M</span>
+1643:                                     </div>
+1644:                                     <p class="text-[11px] text-gray-400 mt-0.5 flex items-center gap-1">
+1645:                                         <i class="fa-solid fa-location-dot"></i> Khu 5, đường Nguyễn Huệ
+1646:                                     </p>
+1647:                                     <p class="text-xs text-gray-500 mt-2 leading-relaxed">
+1648:                                         Tọa lạc ngay mặt biển trung tâm, khách sạn sở hữu phong cách thiết kế châu Âu hiện đại với spa cao cấp, hồ bơi lớn ngoài trời và phòng gym.
+1649:                                     </p>
+1650:                                 </div>
+1651:                             </div>
+1652:                         </div>
+1653: 
+1654:                         <!-- 4. Khu nghỉ dưỡng Sài Gòn – Côn Đảo -->
+1655:                         <div class="bg-gray-50/50 hover:bg-teal-50/20 border border-gray-100 hover:border-teal-200 p-4 rounded-xl flex flex-col sm:flex-row gap-4 transition-all duration-300 shadow-sm hover:shadow-md group">
+1656:                             <div class="w-full sm:w-32 h-24 rounded-lg overflow-hidden shrink-0 shadow-sm relative">
+1657:                                 <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80" alt="Sài Gòn Côn Đảo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+1658:                                 <span class="absolute top-1 left-1 bg-amber-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded shadow-sm">3 ★</span>
+1659:                             </div>
+1660:                             <div class="flex-grow flex flex-col justify-between">
+1661:                                 <div>
+1662:                                     <div class="flex justify-between items-start gap-2">
+1663:                                         <h4 class="font-bold text-gray-800 group-hover:text-teal-700 transition-colors text-sm sm:text-base">Sài Gòn – Côn Đảo Resort</h4>
+1664:                                         <span class="bg-teal-50 text-teal-700 border border-teal-100 text-[10px] font-bold px-2 py-0.5 rounded-full shrink-0 whitespace-nowrap">~ 1.2M - 1.8M</span>
+1665:                                     </div>
+1666:                                     <p class="text-[11px] text-gray-400 mt-0.5 flex items-center gap-1">
+1667:                                         <i class="fa-solid fa-location-dot"></i> Số 18-24 Tôn Đức Thắng
+1668:                                     </p>
+1669:                                     <p class="text-xs text-gray-500 mt-2 leading-relaxed">
+1670:                                         Sở hữu vị thế ven biển rợp mát bóng cổ thụ. Hệ thống gồm 117 phòng chia làm hai khu: khu biệt thự kiểu Pháp cổ xưa và khu tòa nhà hiện đại.
+1671:                                     </p>
+1672:                                 </div>
+1673:                             </div>
+1674:                         </div>
+1675: 
+1676:                         <!-- 5. Côn Sơn Blue Sea -->
+1677:                         <div class="bg-gray-50/50 hover:bg-teal-50/20 border border-gray-100 hover:border-teal-200 p-4 rounded-xl flex flex-col sm:flex-row gap-4 transition-all duration-300 shadow-sm hover:shadow-md group">
+1678:                             <div class="w-full sm:w-32 h-24 rounded-lg overflow-hidden shrink-0 shadow-sm relative">
+1679:                                 <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80" alt="Côn Sơn Blue Sea" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+1680:                                 <span class="absolute top-1 left-1 bg-amber-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded shadow-sm">3 ★</span>
+1681:                             </div>
+1682:                             <div class="flex-grow flex flex-col justify-between">
+1683:                                 <div>
+1684:                                     <div class="flex justify-between items-start gap-2">
+1685:                                         <h4 class="font-bold text-gray-800 group-hover:text-teal-700 transition-colors text-sm sm:text-base">Côn Sơn Blue Sea</h4>
+1686:                                         <span class="bg-teal-50 text-teal-700 border border-teal-100 text-[10px] font-bold px-2 py-0.5 rounded-full shrink-0 whitespace-nowrap">~ 800K - 1.2M</span>
+1687:                                     </div>
+1688:                                     <p class="text-[11px] text-gray-400 mt-0.5 flex items-center gap-1">
+1689:                                         <i class="fa-solid fa-location-dot"></i> Đường Nguyễn Đức Thuận
+1690:                                     </p>
+1691:                                     <p class="text-xs text-gray-500 mt-2 leading-relaxed">
+1692:                                         Khách sạn mang phong cách trẻ trung. Điểm nhấn đắt giá nhất là hồ bơi vô cực ngắm cảnh vịnh biển lộng gió kết hợp quầy bar nằm trên sân thượng.
+1693:                                     </p>
+1694:                                 </div>
+1695:                             </div>
+1696:                         </div>
+1697: 
+1698:                         <!-- 6. CNLĐ – Côn Đảo Resort -->
+1699:                         <div class="bg-gray-50/50 hover:bg-teal-50/20 border border-gray-100 hover:border-teal-200 p-4 rounded-xl flex flex-col sm:flex-row gap-4 transition-all duration-300 shadow-sm hover:shadow-md group">
+1700:                             <div class="w-full sm:w-32 h-24 rounded-lg overflow-hidden shrink-0 shadow-sm relative">
+1701:                                 <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80" alt="CNLĐ Côn Đảo Resort" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+1702:                                 <span class="absolute top-1 left-1 bg-amber-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded shadow-sm">3 ★</span>
+1703:                             </div>
+1704:                             <div class="flex-grow flex flex-col justify-between">
+1705:                                 <div>
+1706:                                     <div class="flex justify-between items-start gap-2">
+1707:                                         <h4 class="font-bold text-gray-800 group-hover:text-teal-700 transition-colors text-sm sm:text-base">Nhà nghỉ dưỡng CNLĐ Resort</h4>
+1708:                                         <span class="bg-teal-50 text-teal-700 border border-teal-100 text-[10px] font-bold px-2 py-0.5 rounded-full shrink-0 whitespace-nowrap">~ 700K - 1.1M</span>
+1709:                                     </div>
+1710:                                     <p class="text-[11px] text-gray-400 mt-0.5 flex items-center gap-1">
+1711:                                         <i class="fa-solid fa-location-dot"></i> Số 8 Đường Nguyễn Đức Thuận
+1712:                                     </p>
+1713:                                     <p class="text-xs text-gray-500 mt-2 leading-relaxed">
+1714:                                         Nơi nghỉ dưỡng bình yên với bể bơi phong cách Châu Âu rộng mở, bao bọc bởi thảm cỏ xanh mướt mát lành mang lại không gian thư giãn tuyệt diệu.
+1715:                                     </p>
+1716:                                 </div>
+1717:                             </div>
+1718:                         </div>
+1719: 
+1720:                         <!-- 7. The Mystery -->
+1721:                         <div class="bg-gray-50/50 hover:bg-teal-50/20 border border-gray-100 hover:border-teal-200 p-4 rounded-xl flex flex-col sm:flex-row gap-4 transition-all duration-300 shadow-sm hover:shadow-md group">
+1722:                             <div class="w-full sm:w-32 h-24 rounded-lg overflow-hidden shrink-0 shadow-sm relative">
+1723:                                 <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=800&q=80" alt="The Mystery" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+1724:                                 <span class="absolute top-1 left-1 bg-amber-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded shadow-sm">Boutique</span>
+1725:                             </div>
+1726:                             <div class="flex-grow flex flex-col justify-between">
+1727:                                 <div>
+1728:                                     <div class="flex justify-between items-start gap-2">
+1729:                                         <h4 class="font-bold text-gray-800 group-hover:text-teal-700 transition-colors text-sm sm:text-base">The Mystery Hotel</h4>
+1730:                                         <span class="bg-teal-50 text-teal-700 border border-teal-100 text-[10px] font-bold px-2 py-0.5 rounded-full shrink-0 whitespace-nowrap">~ 650K - 950K</span>
+1731:                                     </div>
+1732:                                     <p class="text-[11px] text-gray-400 mt-0.5 flex items-center gap-1">
+1733:                                         <i class="fa-solid fa-location-dot"></i> Đường Lê Thanh Nghị
+1734:                                     </p>
+1735:                                     <p class="text-xs text-gray-500 mt-2 leading-relaxed">
+1736:                                         Phong cách Boutique cực kỳ nổi bật với tông màu trắng tinh khôi chủ đạo, điểm xuyết giàn cây leo xanh mướt, tạo nên không gian vô cùng tao nhã.
+1737:                                     </p>
+1738:                                 </div>
+1739:                             </div>
+1740:                         </div>
+1741: 
+1742:                         <!-- 8. Khách sạn Maya III -->
+1743:                         <div class="bg-gray-50/50 hover:bg-teal-50/20 border border-gray-100 hover:border-teal-200 p-4 rounded-xl flex flex-col sm:flex-row gap-4 transition-all duration-300 shadow-sm hover:shadow-md group">
+1744:                             <div class="w-full sm:w-32 h-24 rounded-lg overflow-hidden shrink-0 shadow-sm relative">
+1745:                                 <img src="https://images.unsplash.com/photo-1529290130-4ca3753253ae?w=800&q=80" alt="Maya III" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+1746:                                 <span class="absolute top-1 left-1 bg-amber-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded shadow-sm">2 ★</span>
+1747:                             </div>
+1748:                             <div class="flex-grow flex flex-col justify-between">
+1749:                                 <div>
+1750:                                     <div class="flex justify-between items-start gap-2">
+1751:                                         <h4 class="font-bold text-gray-800 group-hover:text-teal-700 transition-colors text-sm sm:text-base">Khách sạn Maya III</h4>
+1752:                                         <span class="bg-teal-50 text-teal-700 border border-teal-100 text-[10px] font-bold px-2 py-0.5 rounded-full shrink-0 whitespace-nowrap">~ 600K - 900K</span>
+1753:                                     </div>
+1754:                                     <p class="text-[11px] text-gray-400 mt-0.5 flex items-center gap-1">
+1755:                                         <i class="fa-solid fa-location-dot"></i> Đường Phạm Quốc Sắc
+1756:                                     </p>
+1757:                                     <p class="text-xs text-gray-500 mt-2 leading-relaxed">
+1758:                                         Một nét thiết kế hiện đại đan xen tài tình hơi thở cổ điển. Sử dụng tông màu trắng trang nhã, hứa hẹn mang lại cho bạn những cảm xúc ấn tượng.
+1759:                                     </p>
+1760:                                 </div>
+1761:                             </div>
+1762:                         </div>
+1763: 
+1764:                         <!-- 9. Khách sạn Tuấn Ninh II -->
+1765:                         <div class="bg-gray-50/50 hover:bg-teal-50/20 border border-gray-100 hover:border-teal-200 p-4 rounded-xl flex flex-col sm:flex-row gap-4 transition-all duration-300 shadow-sm hover:shadow-md group">
+1766:                             <div class="w-full sm:w-32 h-24 rounded-lg overflow-hidden shrink-0 shadow-sm relative">
+1767:                                 <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=80" alt="Tuấn Ninh II" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+1768:                                 <span class="absolute top-1 left-1 bg-amber-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded shadow-sm">2 ★</span>
+1769:                             </div>
+1770:                             <div class="flex-grow flex flex-col justify-between">
+1771:                                 <div>
+1772:                                     <div class="flex justify-between items-start gap-2">
+1773:                                         <h4 class="font-bold text-gray-800 group-hover:text-teal-700 transition-colors text-sm sm:text-base">Khách sạn Tuấn Ninh II</h4>
+1774:                                         <span class="bg-teal-50 text-teal-700 border border-teal-100 text-[10px] font-bold px-2 py-0.5 rounded-full shrink-0 whitespace-nowrap">~ 500K - 800K</span>
+1775:                                     </div>
+1776:                                     <p class="text-[11px] text-gray-400 mt-0.5 flex items-center gap-1">
+1777:                                         <i class="fa-solid fa-location-dot"></i> Đường Hồ Thanh Tòng, khu 7
+1778:                                     </p>
+1779:                                     <p class="text-xs text-gray-500 mt-2 leading-relaxed">
+1780:                                         Thiết kế theo xu hướng tối giản, nhẹ nhàng nhưng tinh tế, hiện đại, mang lại không gian lưu trú vô cùng gọn gàng và thoải mái cho du khách.
+1781:                                     </p>
+1782:                                 </div>
+1783:                             </div>
+1784:                         </div>
+1785: 
+1786:                     </div>
+1787:                 </div>
+1788: 
+1789:             </div>
+1790:         </section>
+1791: 
+1792:     </main>
+1793: 
+1794:     <script>
+1795:         function switchTab(tabId) {
+1796:             // Ẩn toàn bộ nội dung tabs
+1797:             document.querySelectorAll('.tab-content').forEach(content => {
+1798:                 content.classList.add('hidden');
+1799:             });
+1800:             // Reset style nút bấm
+1801:             document.querySelectorAll('.tab-btn').forEach(btn => {
+1802:                 btn.classList.remove('text-teal-700', 'border-teal-600');
+1803:                 btn.classList.add('text-gray-500', 'border-transparent');
+1804:             });
+1805: 
+1806:             // Hiển thị tab được chọn
+1807:             document.getElementById(tabId).classList.remove('hidden');
+1808:             // Cập nhật style nút bấm được chọn
+1809:             const activeBtn = document.getElementById('btn-' + tabId);
+1810:             activeBtn.classList.remove('text-gray-500', 'border-transparent');
+1811:             activeBtn.classList.add('text-teal-700', 'border-teal-600');
+1812:         }
+1813: 
+1814: // Function to handle toggle detail of a card
+1815: function toggleDetail(cardElement) {
+1816:     const detailPanel = cardElement.querySelector('.detail-panel');
+1817:     const arrow = cardElement.querySelector('.toggle-arrow');
+1818:     const toggleText = cardElement.querySelector('.toggle-text');
+1819:     const isExpanded = detailPanel.classList.contains('expanded');
+1820:     
+1821:     if (isExpanded) {
+1822:         detailPanel.classList.remove('expanded');
+1823:         cardElement.classList.remove('active-card');
+1824:         if (arrow) arrow.style.transform = 'rotate(0deg)';
+1825:         if (toggleText) toggleText.innerHTML = 'Khám phá chi tiết <i class="fa-solid fa-arrow-right-long ml-2"></i>';
+1826:     } else {
+1827:         detailPanel.classList.add('expanded');
+1828:         cardElement.classList.add('active-card');
+1829:         if (arrow) arrow.style.transform = 'rotate(180deg)';
+1830:         if (toggleText) toggleText.innerHTML = 'Thu gọn thông tin <i class="fa-solid fa-xmark ml-2"></i>';
+1831:     }
+1832: }
+1833: 
+1834: // Scroll reveal using IntersectionObserver
+1835: const observer = new IntersectionObserver((entries) => {
+1836:   entries.forEach(entry => {
+1837:     if (entry.isIntersecting) {
+1838:       entry.target.classList.add('visible');
+1839:       observer.unobserve(entry.target);
+1840:     }
+1841:   });
+1842: }, { threshold: 0.15 });
+1843: 
+1844: // Observe all destination cards and timeline items
+1845: document.addEventListener('DOMContentLoaded', () => {
+1846:   document.querySelectorAll('.destination-card, .timeline-item').forEach(el => observer.observe(el));
+1847:   loadPlanFromStorage();
+1848:   renderCustomTimeline();
+1849: });
+1850: 
+1851: // ============================================
+1852: // INTERACTIVE PLANNER ENGINE (JAVASCRIPT STATE)
+1853: // ============================================
+1854: let currentPlannerDay = 1;
+1855: let currentCustomTimelineDay = 1;
+1856: let customPlan = {
+1857:     day1: [],
+1858:     day2: [],
+1859:     day3: []
+1860: };
+1861: 
+1862: // Destination metadata for beautiful visual presentation in the scheduler
+1863: const destMeta = {
+1864:     "Vịnh Đầm Tre": { icon: "fa-water", badge: "#Mùa_rong_mơ", color: "bg-teal-50 text-teal-700 border-teal-100" },
+1865:     "Bãi Đầm Trầu": { icon: "fa-umbrella-beach", badge: "#Bãi_tắm_đẹp", color: "bg-teal-50 text-teal-700 border-teal-100" },
+1866:     "Hòn Bảy Cạnh": { icon: "fa-water", badge: "#Bảo_tồn_rùa", color: "bg-teal-50 text-teal-700 border-teal-100" },
+1867:     "Nhà tù Côn Đảo": { icon: "fa-building", badge: "#Di_tích_lịch_sử", color: "bg-gray-100 text-gray-700 border-gray-200" },
+1868:     "Nghĩa trang Hàng Dương": { icon: "fa-place-of-worship", badge: "#Tâm_linh", color: "bg-gray-100 text-gray-700 border-gray-200" },
+1869:     "Cua mặt trăng": { icon: "fa-shrimp", badge: "#Đặc_sản", color: "bg-orange-50 text-orange-700 border-orange-100" },
+1870:     "Mứt hạt bàng": { icon: "fa-cookie", badge: "#Quà_tặng", color: "bg-orange-50 text-orange-700 border-orange-100" },
+1871:     "Miếu Cậu": { icon: "fa-gopuran", badge: "#Tâm_linh", color: "bg-teal-50 text-teal-700 border-teal-100" },
+1872:     "Miếu Năm Cô": { icon: "fa-scroll", badge: "#Thờ_Ngũ_Hành", color: "bg-teal-50 text-teal-700 border-teal-100" },
+1873:     "Hòn Tài, Hòn Trác": { icon: "fa-ship", badge: "#Sinh_thái", color: "bg-teal-50 text-teal-700 border-teal-100" },
+1874:     "Miếu Cô Vân & Hòn Cau": { icon: "fa-person-surfing", badge: "#SUP_lặn_biển", color: "bg-teal-50 text-teal-700 border-teal-100" },
+1875:     "Bãi Đất Thắm": { icon: "fa-shoe-prints", badge: "#Băng_rừng", color: "bg-teal-50 text-teal-700 border-teal-100" }
+1876: };
+1877: 
+1878: // Switch Planner Mode Between Preset & Custom
+1879: function switchPlannerMode(mode) {
+1880:     const presetView = document.getElementById('planner-preset-view');
+1881:     const customView = document.getElementById('planner-custom-view');
+1882:     const btnPreset = document.getElementById('planner-btn-preset');
+1883:     const btnCustom = document.getElementById('planner-btn-custom');
+1884:     
+1885:     if (mode === 'preset') {
+1886:         presetView.classList.remove('hidden');
+1887:         presetView.classList.add('block');
+1888:         customView.classList.remove('block');
+1889:         customView.classList.add('hidden');
+1890:         
+1891:         btnPreset.classList.remove('bg-gray-100', 'text-gray-500');
+1892:         btnPreset.classList.add('bg-teal-600', 'text-white', 'shadow-md');
+1893:         btnCustom.classList.remove('bg-teal-600', 'text-white', 'shadow-md');
+1894:         btnCustom.classList.add('bg-gray-100', 'text-gray-500');
+1895:     } else {
+1896:         customView.classList.remove('hidden');
+1897:         customView.classList.add('block');
+1898:         presetView.classList.remove('block');
+1899:         presetView.classList.add('hidden');
+1900:         
+1901:         btnCustom.classList.remove('bg-gray-100', 'text-gray-500');
+1902:         btnCustom.classList.add('bg-teal-600', 'text-white', 'shadow-md');
+1903:         btnPreset.classList.remove('bg-teal-600', 'text-white', 'shadow-md');
+1904:         btnPreset.classList.add('bg-gray-100', 'text-gray-500');
+1905:         
+1906:         renderCustomTimeline();
+1907:     }
+1908: }
+1909: 
+1910: // Select Day in Input Form
+1911: function selectPlannerDay(dayNum) {
+1912:     currentPlannerDay = dayNum;
+1913:     document.querySelectorAll('.planner-day-selector').forEach(btn => {
+1914:         btn.classList.remove('bg-teal-600', 'text-white', 'border-teal-600');
+1915:         btn.classList.add('bg-white', 'text-gray-600', 'border-gray-200');
+1916:     });
+1917:     const selectedBtn = document.getElementById(`planner-day-btn-${dayNum}`);
+1918:     selectedBtn.classList.remove('bg-white', 'text-gray-600', 'border-gray-200');
+1919:     selectedBtn.classList.add('bg-teal-600', 'text-white', 'border-teal-600');
+1920: }
+1921: 
+1922: // Switch Day in Custom Timeline
+1923: function switchCustomTimelineDay(dayNum) {
+1924:     currentCustomTimelineDay = dayNum;
+1925:     document.querySelectorAll('.timeline-day-btn').forEach(btn => {
+1926:         btn.classList.remove('bg-white', 'text-teal-800', 'shadow-sm');
+1927:         btn.classList.add('text-gray-600', 'hover:text-teal-700');
+1928:     });
+1929:     const selectedBtn = document.getElementById(`timeline-day-btn-${dayNum}`);
+1930:     selectedBtn.classList.remove('text-gray-600', 'hover:text-teal-700');
+1931:     selectedBtn.classList.add('bg-white', 'text-teal-800', 'shadow-sm');
+1932:     
+1933:     renderCustomTimeline();
+1934: }
+1935: 
+1936: // Fill Suggested Time
+1937: function fillSuggestedTime(timeStr) {
+1938:     document.getElementById('planner-time-input').value = timeStr;
+1939: }
+1940: 
+1941: // Save custom plan to localStorage
+1942: function savePlanToStorage() {
+1943:     localStorage.setItem('condao_custom_plan', JSON.stringify(customPlan));
+1944: }
+1945: 
+1946: // Load custom plan from localStorage
+1947: function loadPlanFromStorage() {
+1948:     const saved = localStorage.getItem('condao_custom_plan');
+1949:     if (saved) {
+1950:         try {

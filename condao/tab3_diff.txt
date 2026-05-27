@@ -1,0 +1,138 @@
+--- orig_tab3.html
++++ curr_tab3.html
+@@ -13,92 +13,51 @@
+                         </ul>
+                     </div>
+ 
+-                                        <div>
++                    <div>
+                         <h4 class="font-bold text-lg text-gray-800 flex items-center mb-3"><i class="fa-solid fa-ferry text-teal-600 mr-2"></i> Bằng Tàu Cao Tốc</h4>
+-                        <p class="text-gray-600 text-sm mb-4">Hiện có 3 hãng tàu cao tốc chất lượng cao phục vụ việc di chuyển ra Côn Đảo từ các tỉnh thành phía Nam:</p>
+-                        
++                        <p class="text-gray-600 text-sm mb-4">Hiện có các tuyến tàu cao tốc chất lượng cao phục vụ việc di chuyển ra Côn Đảo với mức giá và lịch trình khác nhau:</p>
++
+                         <div class="space-y-4">
+-                            <!-- 1. Côn Đảo Express -->
+-                            <div class="bg-gray-50/50 hover:bg-teal-50/20 border border-gray-100 hover:border-teal-200 p-4 rounded-xl flex flex-col sm:flex-row gap-4 transition-all duration-300 shadow-sm hover:shadow-md group">
+-                                <div class="w-full sm:w-36 h-28 rounded-lg overflow-hidden shrink-0 shadow-sm relative group/img">
+-                                    <img src="https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?w=800&q=80" alt="Côn Đảo Express" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+-                                    <span class="absolute top-1.5 left-1.5 bg-teal-600 text-white text-[9px] font-extrabold px-2 py-0.5 rounded shadow-sm uppercase">Tiêu chuẩn 5★</span>
+-                                </div>
+-                                <div class="flex-grow flex flex-col justify-between">
+-                                    <div>
+-                                        <div class="flex flex-wrap justify-between items-start gap-2">
+-                                            <h5 class="font-extrabold text-gray-800 group-hover:text-teal-700 transition-colors text-sm sm:text-base">Côn Đảo Express</h5>
+-                                            <span class="bg-teal-50 text-teal-700 border border-teal-100 text-[10px] font-bold px-2 py-0.5 rounded-full">Vũng Tàu & Trần Đề</span>
+-                                        </div>
+-                                        <p class="text-[11px] text-gray-400 mt-1">Thương hiệu thuộc hãng Phú Quốc Express</p>
+-                                        <p class="text-xs text-gray-500 mt-2 leading-relaxed">
+-                                            Sử dụng dòng tàu cao tốc hai thân hiện đại, chuẩn 5 sao giúp giảm thiểu tối đa say sóng. Boong tàu ngoài trời rộng rãi cho phép tự do ngắm nhìn biển khơi trong suốt hải trình.
+-                                        </p>
+-                                        <div class="mt-2.5 flex flex-wrap items-center gap-3 text-[11px] text-teal-600 font-semibold">
+-                                            <span><i class="fa-solid fa-clock mr-1"></i> Vũng Tàu: ~5 tiếng</span>
+-                                            <span><i class="fa-solid fa-clock mr-1"></i> Trần Đề: ~2 tiếng</span>
+-                                        </div>
+-                                    </div>
+-                                </div>
+-                            </div>
+-
+-                            <!-- 2. Superdong -->
+-                            <div class="bg-gray-50/50 hover:bg-teal-50/20 border border-gray-100 hover:border-teal-200 p-4 rounded-xl flex flex-col sm:flex-row gap-4 transition-all duration-300 shadow-sm hover:shadow-md group">
+-                                <div class="w-full sm:w-36 h-28 rounded-lg overflow-hidden shrink-0 shadow-sm relative group/img">
+-                                    <img src="https://images.unsplash.com/photo-1511527844068-006b95d162c2?w=800&q=80" alt="Superdong" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+-                                    <span class="absolute top-1.5 left-1.5 bg-teal-600 text-white text-[9px] font-extrabold px-2 py-0.5 rounded shadow-sm uppercase">Lâu đời - Uy tín</span>
+-                                </div>
+-                                <div class="flex-grow flex flex-col justify-between">
+-                                    <div>
+-                                        <div class="flex flex-wrap justify-between items-start gap-2">
+-                                            <h5 class="font-extrabold text-gray-800 group-hover:text-teal-700 transition-colors text-sm sm:text-base">Hãng tàu Superdong</h5>
+-                                            <span class="bg-teal-50 text-teal-700 border border-teal-100 text-[10px] font-bold px-2 py-0.5 rounded-full">Tuyến Trần Đề</span>
+-                                        </div>
+-                                        <p class="text-[11px] text-gray-400 mt-1">Thương hiệu quen thuộc, vận hành bền bỉ</p>
+-                                        <p class="text-xs text-gray-500 mt-2 leading-relaxed">
+-                                            Hãng tàu lâu đời, uy tín hàng đầu. Tàu thiết kế chắc chắn, tốc độ di chuyển nhanh ổn định. Trang bị đầy đủ máy lạnh, ghế da êm ái, tivi giải trí và hệ thống cứu sinh tuyệt đối an toàn.
+-                                        </p>
+-                                        <div class="mt-2.5 flex items-center gap-3 text-[11px] text-teal-600 font-semibold">
+-                                            <span><i class="fa-solid fa-clock mr-1"></i> Lộ trình Trần Đề: ~2 tiếng</span>
+-                                        </div>
+-                                    </div>
+-                                </div>
+-                            </div>
+-
+-                            <!-- 3. Mai Linh Express -->
+-                            <div class="bg-gray-50/50 hover:bg-teal-50/20 border border-gray-100 hover:border-teal-200 p-4 rounded-xl flex flex-col sm:flex-row gap-4 transition-all duration-300 shadow-sm hover:shadow-md group">
+-                                <div class="w-full sm:w-36 h-28 rounded-lg overflow-hidden shrink-0 shadow-sm relative group/img">
+-                                    <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&q=80" alt="Mai Linh Express" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+-                                    <span class="absolute top-1.5 left-1.5 bg-teal-600 text-white text-[9px] font-extrabold px-2 py-0.5 rounded shadow-sm uppercase">Hiện đại - Rung lắc thấp</span>
+-                                </div>
+-                                <div class="flex-grow flex flex-col justify-between">
+-                                    <div>
+-                                        <div class="flex flex-wrap justify-between items-start gap-2">
+-                                            <h5 class="font-extrabold text-gray-800 group-hover:text-teal-700 transition-colors text-sm sm:text-base">Mai Linh Express</h5>
+-                                            <span class="bg-teal-50 text-teal-700 border border-teal-100 text-[10px] font-bold px-2 py-0.5 rounded-full">Tuyến Cần Thơ</span>
+-                                        </div>
+-                                        <p class="text-[11px] text-gray-400 mt-1">Cực kỳ thuận tiện cho du khách Miền Tây</p>
+-                                        <p class="text-xs text-gray-500 mt-2 leading-relaxed">
+-                                            Tàu cao tốc hai thân thế hệ mới với công nghệ chống rung lắc tiên tiến nhất. Thiết kế sang trọng với các hạng ghế Thường, VIP, dịch vụ khách hàng chuyên nghiệp, chu đáo.
+-                                        </p>
+-                                        <div class="mt-2.5 flex items-center gap-3 text-[11px] text-teal-600 font-semibold">
+-                                            <span><i class="fa-solid fa-clock mr-1"></i> Lộ trình Cần Thơ: Tuỳ theo thời tiết và tuyến</span>
+-                                        </div>
+-                                    </div>
+-                                </div>
+-                            </div>
+-                        </div>
+-
+-                        <!-- 💡 Lời khuyên nhỏ thời điểm đi tàu lý tưởng -->
+-                        <div class="mt-6 bg-amber-50/80 border border-amber-100 p-4 rounded-xl flex gap-3 shadow-xs">
+-                            <div class="text-amber-500 text-lg shrink-0 mt-0.5">
+-                                <i class="fa-solid fa-lightbulb"></i>
+-                            </div>
+-                            <div>
+-                                <h6 class="font-bold text-amber-800 text-sm">Mẹo nhỏ từ người đi trước</h6>
+-                                <p class="text-amber-900/80 text-xs mt-1 leading-relaxed">
+-                                    Thời điểm lý tưởng nhất để trải nghiệm đi tàu ra đảo là từ <strong>tháng 4 đến tháng 6</strong> hằng năm. Lúc này biển vô cùng êm dịu, ít sóng gió dữ dội, thời tiết trong xanh, mát mẻ giúp bạn có hải trình cực kỳ dễ chịu và ngắm nhìn đại dương tuyệt đẹp!
+-                                </p>
++                            <div class="bg-gray-50/50 hover:bg-teal-50/20 border border-gray-100 hover:border-teal-200 p-4 rounded-xl transition-all duration-300 shadow-sm hover:shadow-md">
++                                <div class="flex flex-wrap justify-between items-start gap-2 mb-2">
++                                    <h5 class="font-extrabold text-gray-800 text-base flex items-center gap-2"><i class="fa-solid fa-anchor text-teal-600"></i> Tuyến Vũng Tàu - Côn Đảo</h5>
++                                    <span class="bg-teal-600 text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase">Khoảng 3.5 - 4 tiếng</span>
++                                </div>
++                                <p class="text-sm text-gray-600 mb-3">Được khai thác chủ yếu bởi hãng Phú Quốc Express (Tàu Thăng Long - Tàu cao tốc lớn nhất Việt Nam). Chịu sóng gió tốt, tiện nghi 5 sao.</p>
++                                <div class="bg-white p-3 rounded-lg border border-gray-100 text-sm">
++                                    <p class="font-semibold text-teal-700 mb-1 border-b pb-1">Bảng giá tham khảo:</p>
++                                    <ul class="space-y-1.5 text-gray-600 mt-2">
++                                        <li class="flex justify-between"><span>Vé ECO (Thứ 2 - Thứ 5):</span> <span class="font-bold text-gray-800">790.000 VNĐ</span></li>
++                                        <li class="flex justify-between"><span>Vé ECO (Thứ 6 - CN, Lễ):</span> <span class="font-bold text-gray-800">950.000 VNĐ</span></li>
++                                        <li class="flex justify-between"><span>Trẻ em / Người cao tuổi:</span> <span class="font-bold text-gray-800">630.000đ - 760.000 VNĐ</span></li>
++                                        <li class="flex justify-between"><span>Vé VIP:</span> <span class="font-bold text-orange-600">1.000.000 - 1.100.000 VNĐ</span></li>
++                                    </ul>
++                                </div>
++                            </div>
++
++                            <div class="bg-gray-50/50 hover:bg-teal-50/20 border border-gray-100 hover:border-teal-200 p-4 rounded-xl transition-all duration-300 shadow-sm hover:shadow-md">
++                                <div class="flex flex-wrap justify-between items-start gap-2 mb-2">
++                                    <h5 class="font-extrabold text-gray-800 text-base flex items-center gap-2"><i class="fa-solid fa-anchor text-teal-600"></i> Tuyến Trần Đề (Sóc Trăng) - Côn Đảo</h5>
++                                    <span class="bg-teal-600 text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase">Khoảng 2 - 2.5 tiếng</span>
++                                </div>
++                                <p class="text-sm text-gray-600 mb-3">Được khai thác bởi Phú Quốc Express (Côn Đảo Express) và Superdong. Thời gian di chuyển ngắn nhất, phù hợp cho du khách xuất phát từ miền Tây.</p>
++                                <div class="bg-white p-3 rounded-lg border border-gray-100 text-sm">
++                                    <p class="font-semibold text-teal-700 mb-1 border-b pb-1">Bảng giá tham khảo (Côn Đảo Express):</p>
++                                    <ul class="space-y-1.5 text-gray-600 mt-2">
++                                        <li class="flex justify-between"><span>Vé ECO (Thứ 2 - Thứ 5):</span> <span class="font-bold text-gray-800">390.000 VNĐ</span></li>
++                                        <li class="flex justify-between"><span>Vé ECO (Thứ 6 - CN, Lễ):</span> <span class="font-bold text-gray-800">450.000 VNĐ</span></li>
++                                        <li class="flex justify-between"><span>Trẻ em / Người cao tuổi:</span> <span class="font-bold text-gray-800">312.000đ - 360.000 VNĐ</span></li>
++                                        <li class="flex justify-between"><span>Vé VIP:</span> <span class="font-bold text-orange-600">590.000 VNĐ</span></li>
++                                    </ul>
++                                </div>
++                            </div>
++
++                            <div class="mt-4 bg-amber-50/80 border border-amber-100 p-4 rounded-xl flex gap-3 shadow-xs">
++                                <div class="text-amber-500 text-lg shrink-0 mt-0.5"><i class="fa-solid fa-lightbulb"></i></div>
++                                <div>
++                                    <h6 class="font-bold text-amber-800 text-sm">Lưu ý</h6>
++                                    <p class="text-amber-900/80 text-xs mt-1 leading-relaxed">Giá vé có thể thay đổi tùy hãng tàu và chưa bao gồm phí cảng (khoảng 18.000 VNĐ/lượt). Nên mua vé khứ hồi trước 1-2 tuần vào mùa cao điểm để tránh cháy vé.</p>
++                                </div>
+                             </div>
+                         </div>
+                     </div>

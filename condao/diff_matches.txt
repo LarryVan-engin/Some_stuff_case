@@ -1,0 +1,9 @@
+--- Matching changes in git diff ---
+Diff line 6:              <button onclick="switchTab('tab3')" id="btn-tab3" class="tab-btn px-6 py-4 text-gray-500 font-semibold border-b-4 border-transparent transition-colors whitespace-nowrap hover:bg-teal-50 hover:text-teal-700">
+Diff line 2092: -                                <div>Tham quan <strong>Chùa Núi Một (Vân Sơn Tự)</strong> (08:30 - 09:30) tựa lưng vào núi hướng tầm mắt ngắm toàn cảnh hồ sen An Hải thơ mộng. Sau đó di chuyển viếng ngôi <strong>Miếu Năm Cô</strong> (09:30 - 10:30) cầu an lành, tài lộc cho gia đình.</div>
+Diff line 2093: +                                <div>Chinh phục núi vãn cảnh <strong>Chùa Núi Một (Vân Sơn Tự)</strong> tựa lưng vào núi hướng hồ sen An Hải tuyệt đẹp, sau đó di chuyển viếng ngôi <strong>Miếu Năm Cô</strong> linh thiêng cầu may mắn tài lộc.</div>
+Diff line 2181:                              <span class="block text-xs font-bold text-gray-500 mb-1.5">Gợi ý mốc thời gian di chuyển:</span>
+Diff line 2218: -                        <p class="text-gray-600 text-sm mb-4">Hiện có 3 hãng tàu cao tốc chất lượng cao phục vụ việc di chuyển ra Côn Đảo từ các tỉnh thành phía Nam:</p>
+Diff line 2259: -                                            Hãng tàu lâu đời, uy tín hàng đầu. Tàu thiết kế chắc chắn, tốc độ di chuyển nhanh ổn định. Trang bị đầy đủ máy lạnh, ghế da êm ái, tivi giải trí và hệ thống cứu sinh tuyệt đối an toàn.
+Diff line 2267: +                        <p class="text-gray-600 text-sm mb-4">Hiện có các tuyến tàu cao tốc chất lượng cao phục vụ việc di chuyển ra Côn Đảo với mức giá và lịch trình khác nhau:</p>
+Diff line 2312: +                                <p class="text-sm text-gray-600 mb-3">Được khai thác bởi Phú Quốc Express (Côn Đảo Express) và Superdong. Thời gian di chuyển ngắn nhất, phù hợp cho du khách xuất phát từ miền Tây.</p>

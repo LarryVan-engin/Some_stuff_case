@@ -1,0 +1,257 @@
+commit cdc1aa842e3694debf5ee36e7e2a8386795a9d6f
+Author: VAN DAC PHONG TRUC <vanphongtruc1808@gmail.com>
+Date:   Wed May 27 13:45:11 2026 +0700
+
+    commit
+
+diff --git a/condao/index.html b/condao/index.html
+index bc4ea57..9570ec2 100644
+--- a/condao/index.html
++++ b/condao/index.html
+@@ -219,7 +219,7 @@
+                             <!-- Image (Odd: Column 1-5, md:order-1) -->
+                             <div class="md:col-span-5 md:order-1">
+                                 <div class="dest-img-container shadow-md">
+-                                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80" alt="Vịnh Đầm Tre" class="dest-img">
++                                    <img src="./media__1779862551282.jpg" alt="Vịnh Đầm Tre" class="dest-img">
+                                     <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                                 </div>
+                             </div>
+@@ -227,13 +227,13 @@
+                             <div class="md:col-span-7 md:order-2 flex flex-col justify-between h-full">
+                                 <div>
+                                     <div class="flex flex-wrap gap-2 mb-3">
+-                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#Hoang_sơ</span>
+-                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#Sinh_thái</span>
+-                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#Chim_yến</span>
++                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#Mùa_rong_mơ</span>
++                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#Hoang_sơ_kỳ_vĩ</span>
++                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#Sinh_thái_biển</span>
+                                     </div>
+                                     <h3 class="text-2xl md:text-3xl font-extrabold text-gray-800 hover:text-teal-700 transition-colors mb-4">Vịnh Đầm Tre</h3>
+                                     <p class="text-gray-500 text-sm md:text-base leading-relaxed mb-6">
+-                                        Vịnh biển hoang sơ kín gió nằm phía Bắc đảo Côn Sơn, được bao bọc bởi rừng tre, rừng ngập mặn cùng rạn san hô nguyên sơ đầy sắc màu.
++                                        Vịnh biển hoang sơ kín gió nằm phía Bắc đảo Côn Sơn. Đặc biệt vào mùa rong mơ, dòng nước trong vắt để lộ cánh rừng rong mơ vàng óng lộng lẫy dưới lòng biển.
+                                     </p>
+                                 </div>
+                                 <div class="flex items-center justify-between">
+@@ -255,16 +255,16 @@
+                                         <i class="fa-solid fa-circle-info text-teal-600"></i> Giới thiệu chi tiết
+                                     </h4>
+                                     <p class="text-gray-600 leading-relaxed text-sm md:text-base">
+-                                        Nằm ở phía Bắc của Côn Đảo, vịnh Đầm Tre hoang sơ được bao bọc bởi rừng tre và rừng ngập mặn nên khá kín gió. Nơi đây sở hữu cảnh quan thiên nhiên kỳ thú, yên bình, hoàn toàn tách biệt khỏi nhịp sống ồn ào. Vịnh Đầm Tre là một bức tranh thiên nhiên tuyệt sắc, nơi biển xanh hòa quyện cùng sắc xanh của thảm thực vật đa dạng.
++                                        Nằm ở phía Bắc của Côn Đảo, vịnh Đầm Tre hoang sơ được bao bọc bởi rừng tre và rừng ngập mặn nên khá kín gió. Đặc biệt, nơi đây vào mùa rong mơ (tháng 4 - tháng 6) sẽ có cảnh sắc siêu đẹp khi cả vịnh biển được bao phủ bởi những thảm rong vàng óng dưới làn nước xanh trong vắt, kết hợp hoạt động ngắm chim yến về làm tổ.
+                                     </p>
+                                     <div class="bg-amber-50/60 border border-amber-100 p-4 rounded-xl">
+                                         <h5 class="font-bold text-amber-800 mb-1 flex items-center gap-2 text-sm md:text-base">
+                                             <i class="fa-solid fa-star text-amber-500"></i> Trải nghiệm nổi bật
+                                         </h5>
+                                         <ul class="list-disc pl-5 text-amber-900/80 text-xs md:text-sm space-y-1">
+-                                            <li>Khám phá rừng ngập mặn kỳ vĩ và đi bộ trekking xuyên rừng tre xanh mát.</li>
+-                                            <li>Bơi lội và lặn ống thở (snorkeling) ngắm rạn san hô đầy màu sắc.</li>
+-                                            <li>Quan sát thế giới tự nhiên của loài chim yến bay về làm tổ trong mùa sinh sản.</li>
++                                            <li>Tắm biển và thỏa thích bơi lội, check-in giữa thảm rong mơ vàng óng lộng lẫy.</li>
++                                            <li>Lặn ống thở (snorkeling) ngắm rạn san hô và tham quan rừng tre, rừng ngập mặn.</li>
++                                            <li>Quan sát thế giới tự nhiên của loài chim yến làm tổ trong mùa sinh sản hàng năm.</li>
+                                         </ul>
+                                     </div>
+                                     <div class="bg-teal-50/60 border border-teal-100 p-4 rounded-xl">
+@@ -272,7 +272,7 @@
+                                             <i class="fa-solid fa-clock text-teal-600"></i> Thời điểm lý tưởng
+                                         </h5>
+                                         <p class="text-teal-900/80 text-xs md:text-sm">
+-                                            Nên đi vào sáng sơ lúc thủy triều lên để vịnh ngập nước xanh trong, và lý tưởng nhất là từ tháng 3 đến tháng 9 khi thời tiết êm đềm, lặng gió.
++                                            Đặc biệt đẹp nhất là mùa rong mơ từ tháng 4 đến tháng 6 hằng năm. Nên ghé thăm lúc thủy triều lên để vịnh đầy nước xanh trong và thấy thảm rong mơ đẹp nhất.
+                                         </p>
+                                     </div>
+                                 </div>
+@@ -283,8 +283,8 @@
+                                     </h4>
+                                     <div class="grid grid-cols-2 gap-3">
+                                         <div class="group/img overflow-hidden rounded-xl shadow-sm border border-gray-100 aspect-[4/3] relative">
+-                                            <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" alt="Vịnh Đầm Tre - Vịnh biển hoang sơ">
+-                                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-2 text-white text-[10px] font-semibold text-center">Ảnh 1: Vịnh biển hoang sơ</div>
++                                            <img src="./media__1779862551282.jpg" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" alt="Vịnh Đầm Tre - Mùa rong mơ">
++                                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-2 text-white text-[10px] font-semibold text-center">Ảnh 1: Mùa rong mơ siêu đẹp</div>
+                                         </div>
+                                         <div class="group/img overflow-hidden rounded-xl shadow-sm border border-gray-100 aspect-[4/3] relative">
+                                             <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" alt="Vịnh Đầm Tre - Rừng ngập mặn">
+@@ -1069,7 +1069,7 @@
+                             <!-- Image (Odd: Column 1-5, md:order-1) -->
+                             <div class="md:col-span-5 md:order-1">
+                                 <div class="dest-img-container shadow-md">
+-                                    <img src="./media__1779859985871.jpg" alt="Miếu Cô Vân & Hòn Cau" class="dest-img">
++                                    <img src="./media__1779862597939.jpg" alt="Miếu Cô Vân & Hòn Cau" class="dest-img">
+                                     <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                                 </div>
+                             </div>
+@@ -1083,7 +1083,7 @@
+                                     </div>
+                                     <h3 class="text-2xl md:text-3xl font-extrabold text-gray-800 hover:text-teal-700 transition-colors mb-4">Miếu Cô Vân & Hòn Cau</h3>
+                                     <p class="text-gray-500 text-sm md:text-base leading-relaxed mb-6">
+-                                        Du khách đến Hòn Cau có thể lặn ngắm san hô, tham quan rừng ngập mặn. Miếu Cô Vân thì nằm sát bãi cát trắng trên đảo Hòn Cau.
++                                        Sự kết hợp hoàn hảo giữa hành trình tâm linh linh thiêng tại Miếu Cô Vân bên bãi cát trắng và hoạt động lặn biển, chèo SUP thể thao tại đảo Hòn Cau.
+                                     </p>
+                                 </div>
+                                 <div class="flex items-center justify-between">
+@@ -1112,9 +1112,9 @@
+                                             <i class="fa-solid fa-star text-amber-500"></i> Trải nghiệm nổi bật
+                                         </h5>
+                                         <ul class="list-disc pl-5 text-amber-900/80 text-xs md:text-sm space-y-1">
+-                                            <li>Viếng thăm Miếu Cô Vân nằm ngay sát bờ biển sóng vỗ êm đềm.</li>
+-                                            <li>Tham gia chèo thuyền SUP dạo mát trên làn nước Hòn Cau trong như pha lê.</li>
+-                                            <li>Thưởng thức không gian biển đảo hoang sơ, tách biệt hoàn toàn khói bụi.</li>
++                                            <li>Viếng thăm Miếu Cô Vân linh thiêng ngay sát bãi cát trắng mịn của Hòn Cau.</li>
++                                            <li>Chèo thuyền SUP dạo chơi trên làn nước trong suốt tựa pha lê ngắm san hô cực đẹp.</li>
++                                            <li>Thư giãn nằm võng đung đưa mát mẻ dưới những vòm cây mát rượi đặc trưng của đảo.</li>
+                                         </ul>
+                                     </div>
+                                     <div class="bg-teal-50/60 border border-teal-100 p-4 rounded-xl">
+@@ -1133,12 +1133,12 @@
+                                     </h4>
+                                     <div class="grid grid-cols-2 gap-3">
+                                         <div class="group/img overflow-hidden rounded-xl shadow-sm border border-gray-100 aspect-[4/3] relative">
+-                                            <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=800&q=80" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" alt="Hòn Cau - Bãi biển trong vắt">
+-                                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-2 text-white text-[10px] font-semibold text-center">Ảnh 1: Bãi biển trong vắt Hòn Cau</div>
++                                            <img src="./media__1779862597939.jpg" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" alt="Hòn Cau - Bãi biển thực tế">
++                                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-2 text-white text-[10px] font-semibold text-center">Ảnh 1: Bãi biển thực tế Hòn Cau</div>
+                                         </div>
+                                         <div class="group/img overflow-hidden rounded-xl shadow-sm border border-gray-100 aspect-[4/3] relative">
+-                                            <img src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=800&q=80" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" alt="Hòn Cau - Góc nhìn ra biển">
+-                                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-2 text-white text-[10px] font-semibold text-center">Ảnh 2: Góc nhìn ra biển</div>
++                                            <img src="./media__1779859985871.jpg" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" alt="Hòn Cau - Chèo SUP thể thao">
++                                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-2 text-white text-[10px] font-semibold text-center">Ảnh 2: Trải nghiệm chèo SUP</div>
+                                         </div>
+                                     </div>
+                                 </div>
+@@ -1148,6 +1148,91 @@
+                 </div>
+             </div>
+ 
++                <!-- 12. Bãi Đất Thắm -->
++                <div class="destination-card slide-right" onclick="if(!event.target.closest('.detail-panel')) toggleDetail(this)">
++                    <div class="p-6 md:p-8">
++                        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center">
++                            <!-- Image (Even: Column 1-5, md:order-2) -->
++                            <div class="md:col-span-5 md:order-2">
++                                <div class="dest-img-container shadow-md">
++                                    <img src="./media__1779862689016.jpg" alt="Bãi Đất Thắm" class="dest-img">
++                                    <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
++                                </div>
++                            </div>
++                            <!-- Info (Even: Column 6-12, md:order-1) -->
++                            <div class="md:col-span-7 md:order-1 flex flex-col justify-between h-full">
++                                <div>
++                                    <div class="flex flex-wrap gap-2 mb-3">
++                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#Private_Beach</span>
++                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#Băng_rừng_quốc_gia</span>
++                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#Hoang_sơ_tuyệt_đối</span>
++                                    </div>
++                                    <h3 class="text-2xl md:text-3xl font-extrabold text-gray-800 hover:text-teal-700 transition-colors mb-4">Bãi Đất Thắm</h3>
++                                    <p class="text-gray-500 text-sm md:text-base leading-relaxed mb-6">
++                                        Bãi biển biệt lập hoang sơ tuyệt đối, để đến được đây du khách phải trải nghiệm đi bộ trekking băng qua các lối mòn rợp bóng của Vườn quốc gia Côn Đảo.
++                                    </p>
++                                </div>
++                                <div class="flex items-center justify-between">
++                                    <span class="text-teal-600 font-bold text-sm flex items-center gap-2 hover:translate-x-1 transition-all toggle-text">
++                                        Khám phá chi tiết <i class="fa-solid fa-arrow-right-long ml-2"></i>
++                                    </span>
++                                    <button class="w-10 h-10 rounded-full bg-teal-50 hover:bg-teal-100 text-teal-700 flex items-center justify-center transition-colors shadow-sm focus:outline-none">
++                                        <i class="fa-solid fa-chevron-down toggle-arrow"></i>
++                                    </button>
++                                </div>
++                            </div>
++                        </div>
++                        
++                        <!-- Collapsible Detail Panel -->
++                        <div class="detail-panel">
++                            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 text-gray-600">
++                                <div class="lg:col-span-7 space-y-4">
++                                    <h4 class="font-bold text-gray-800 text-lg mb-2 flex items-center gap-2">
++                                        <i class="fa-solid fa-circle-info text-teal-600"></i> Giới thiệu chi tiết
++                                    </h4>
++                                    <p class="text-gray-600 leading-relaxed text-sm md:text-base">
++                                        Nằm ẩn mình sau những cánh rừng nhiệt đới của Vườn quốc gia Côn Đảo, Bãi Đất Thắm là một trong số ít những bãi biển còn giữ nguyên vẻ đẹp hoang dã nguyên bản nhất. Do không có đường xe chạy trực tiếp, du khách phải đi bộ trekking xuyên qua Vườn quốc gia Côn Đảo tầm 45 phút, mang lại cảm giác chinh phục thiên nhiên cực kỳ sảng khoái trước khi đắm mình vào bãi cát tĩnh lặng.
++                                    </p>
++                                    <div class="bg-amber-50/60 border border-amber-100 p-4 rounded-xl">
++                                        <h5 class="font-bold text-amber-800 mb-1 flex items-center gap-2 text-sm md:text-base">
++                                            <i class="fa-solid fa-star text-amber-500"></i> Trải nghiệm nổi bật
++                                        </h5>
++                                        <ul class="list-disc pl-5 text-amber-900/80 text-xs md:text-sm space-y-1">
++                                            <li>Trải nghiệm đi bộ trekking xuyên rừng quốc gia, chiêm ngưỡng hệ sinh thái đa dạng.</li>
++                                            <li>Tận hưởng bãi cát biệt lập hoàn toàn riêng tư, nghe tiếng sóng vỗ rì rào.</li>
++                                            <li>Chụp ảnh sống ảo cùng nhánh cây khô trôi dạt nghệ thuật bên bờ biển sỏi đá.</li>
++                                        </ul>
++                                    </div>
++                                    <div class="bg-teal-50/60 border border-teal-100 p-4 rounded-xl">
++                                        <h5 class="font-bold text-teal-800 mb-1 flex items-center gap-2 text-sm md:text-base">
++                                            <i class="fa-solid fa-clock text-teal-600"></i> Thời điểm lý tưởng
++                                        </h5>
++                                        <p class="text-teal-900/80 text-xs md:text-sm">
++                                            Nên đi vào buổi sáng mát mẻ để hành trình đi bộ băng rừng không bị quá nắng gắt, mang đầy đủ giày thể thao và nước uống.
++                                        </p>
++                                    </div>
++                                </div>
++                                
++                                <div class="lg:col-span-5 space-y-3">
++                                    <h4 class="font-bold text-gray-800 text-lg mb-2 flex items-center gap-2">
++                                        <i class="fa-solid fa-images text-teal-600"></i> Hình ảnh thực tế
++                                    </h4>
++                                    <div class="grid grid-cols-2 gap-3">
++                                        <div class="group/img overflow-hidden rounded-xl shadow-sm border border-gray-100 aspect-[4/3] relative">
++                                            <img src="./media__1779862689016.jpg" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" alt="Bãi Đất Thắm - Chilling bên bờ biển">
++                                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-2 text-white text-[10px] font-semibold text-center">Ảnh 1: Biển hoang sơ biệt lập</div>
++                                        </div>
++                                        <div class="group/img overflow-hidden rounded-xl shadow-sm border border-gray-100 aspect-[4/3] relative">
++                                            <img src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=800&q=80" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" alt="Bãi Đất Thắm - Lối mòn rừng">
++                                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-2 text-white text-[10px] font-semibold text-center">Ảnh 2: Đường rừng quốc gia</div>
++                                        </div>
++                                    </div>
++                                </div>
++                            </div>
++                        </div>
++                    </div>
++                </div>
++
+         </section>
+ 
+         <section id="tab2" class="tab-content hidden animate-fade-in">
+@@ -1320,6 +1405,7 @@
+                                     <option value="Miếu Năm Cô">9. Miếu Năm Cô (#Thờ_Ngũ_Hành)</option>
+                                     <option value="Hòn Tài, Hòn Trác">10. Hòn Tài, Hòn Trác (#Sinh_thái)</option>
+                                     <option value="Miếu Cô Vân & Hòn Cau">11. Miếu Cô Vân & Hòn Cau (#SUP_lặn_biển)</option>
++                                    <option value="Bãi Đất Thắm">12. Bãi Đất Thắm (#Băng_rừng)</option>
+                                 </select>
+                             </div>
+ 
+@@ -1775,7 +1861,7 @@ let customPlan = {
+ 
+ // Destination metadata for beautiful visual presentation in the scheduler
+ const destMeta = {
+-    "Vịnh Đầm Tre": { icon: "fa-tree", badge: "#Hoang_sơ", color: "bg-teal-50 text-teal-700 border-teal-100" },
++    "Vịnh Đầm Tre": { icon: "fa-water", badge: "#Mùa_rong_mơ", color: "bg-teal-50 text-teal-700 border-teal-100" },
+     "Bãi Đầm Trầu": { icon: "fa-umbrella-beach", badge: "#Bãi_tắm_đẹp", color: "bg-teal-50 text-teal-700 border-teal-100" },
+     "Hòn Bảy Cạnh": { icon: "fa-water", badge: "#Bảo_tồn_rùa", color: "bg-teal-50 text-teal-700 border-teal-100" },
+     "Nhà tù Côn Đảo": { icon: "fa-building", badge: "#Di_tích_lịch_sử", color: "bg-gray-100 text-gray-700 border-gray-200" },
+@@ -1785,7 +1871,8 @@ const destMeta = {
+     "Miếu Cậu": { icon: "fa-gopuran", badge: "#Tâm_linh", color: "bg-teal-50 text-teal-700 border-teal-100" },
+     "Miếu Năm Cô": { icon: "fa-scroll", badge: "#Thờ_Ngũ_Hành", color: "bg-teal-50 text-teal-700 border-teal-100" },
+     "Hòn Tài, Hòn Trác": { icon: "fa-ship", badge: "#Sinh_thái", color: "bg-teal-50 text-teal-700 border-teal-100" },
+-    "Miếu Cô Vân & Hòn Cau": { icon: "fa-person-surfing", badge: "#SUP_lặn_biển", color: "bg-teal-50 text-teal-700 border-teal-100" }
++    "Miếu Cô Vân & Hòn Cau": { icon: "fa-person-surfing", badge: "#SUP_lặn_biển", color: "bg-teal-50 text-teal-700 border-teal-100" },
++    "Bãi Đất Thắm": { icon: "fa-shoe-prints", badge: "#Băng_rừng", color: "bg-teal-50 text-teal-700 border-teal-100" }
+ };
+ 
+ // Switch Planner Mode Between Preset & Custom
+diff --git a/condao/media__1779862551282.jpg b/condao/media__1779862551282.jpg
+new file mode 100644
+index 0000000..66a850e
+Binary files /dev/null and b/condao/media__1779862551282.jpg differ
+diff --git a/condao/media__1779862597939.jpg b/condao/media__1779862597939.jpg
+new file mode 100644
+index 0000000..5aa977e
+Binary files /dev/null and b/condao/media__1779862597939.jpg differ
+diff --git a/condao/media__1779862689016.jpg b/condao/media__1779862689016.jpg
+new file mode 100644
+index 0000000..a323ef7
+Binary files /dev/null and b/condao/media__1779862689016.jpg differ

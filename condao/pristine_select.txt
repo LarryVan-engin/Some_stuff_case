@@ -1,0 +1,14 @@
+<select id="planner-dest-select" class="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-700 focus:outline-none focus:border-teal-500 transition-colors">
+                                    <option value="Vịnh Đầm Tre">1. Vịnh Đầm Tre (#Hoang_sơ)</option>
+                                    <option value="Bãi Đầm Trầu" selected>2. Bãi Đầm Trầu (#Bãi_tắm_đẹp)</option>
+                                    <option value="Hòn Bảy Cạnh">3. Hòn Bảy Cạnh (#Bảo_tồn_rùa)</option>
+                                    <option value="Nhà tù Côn Đảo">4. Nhà tù Côn Đảo (#Di_tích_lịch_sử)</option>
+                                    <option value="Nghĩa trang Hàng Dương">5. Nghĩa trang Hàng Dương (#Tâm_linh)</option>
+                                    <option value="Cua mặt trăng">6. Cua mặt trăng (#Ẩm_thực)</option>
+                                    <option value="Mứt hạt bàng">7. Mứt hạt bàng (#Quà_tặng)</option>
+                                    <option value="Miếu Cậu">8. Miếu Cậu (#Tâm_linh)</option>
+                                    <option value="Miếu Năm Cô">9. Miếu Năm Cô (#Thờ_Ngũ_Hành)</option>
+                                    <option value="Hòn Tài, Hòn Trác">10. Hòn Tài, Hòn Trác (#Sinh_thái)</option>
+                                    <option value="Miếu Cô Vân & Hòn Cau">11. Miếu Cô Vân & Hòn Cau (#SUP_lặn_biển)</option>
+                                    <option value="Bãi Đất Thắm">12. Bãi Đất Thắm (#Băng_rừng)</option>
+                                </select>
