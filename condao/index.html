@@ -19,15 +19,39 @@
     <style>
         ::-webkit-scrollbar { width: 0px; background: transparent; }
         body, html { margin: 0; padding: 0; overflow: hidden; }
+        
+        /* Container and Section */
         .scroll-container { scroll-snap-type: y mandatory; overflow-y: scroll; height: 100vh; width: 100vw; scroll-behavior: smooth; }
-        .snap-section { scroll-snap-align: start; height: 100vh; width: 100vw; position: relative; }
+        .snap-section { scroll-snap-align: start; height: 100vh; width: 100vw; position: relative; overflow: hidden; }
+        
+        /* Header */
         #main-header { transition: all 0.4s ease; border-bottom: 1px solid transparent; }
         #main-header.scrolled { background-color: rgba(15, 23, 42, 0.6); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        
+        /* Navigation Links */
         .nav-link { position: relative; padding-bottom: 4px; }
         .nav-link::after { content: ''; position: absolute; left: 50%; bottom: 0; width: 0; height: 2px; background-color: white; transition: all 0.3s ease; transform: translateX(-50%); }
         .nav-link:hover::after, .nav-link.active::after { width: 100%; }
-        .fade-in-up { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
-        .fade-in-up.is-visible { opacity: 1; transform: translateY(0); }
+        
+        /* Background Parallax */
+        .bg-image { 
+            position: absolute; inset: -15%; z-index: 0; 
+            background-size: cover; background-position: center; 
+            will-change: transform; 
+        }
+        
+        /* Staggered Fade-in Animation */
+        .fade-item { 
+            opacity: 0; 
+            transform: translateY(30px) scale(0.95); 
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); 
+        }
+        .is-visible .fade-item { 
+            opacity: 1; 
+            transform: translateY(0) scale(1); 
+        }
+        
+        /* Glass Card 3D Effect */
         .glass-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); transform-style: preserve-3d; }
         .tilt-inner { transform: translateZ(50px); }
         
@@ -150,28 +174,35 @@
             });
             navContainer.innerHTML = navHTML;
 
-            // 2. Render Các Section Địa Điểm
+            // 2. Render Các Section Địa Điểm với Parallax
             let sectionsHTML = '';
             trips.forEach((trip, index) => {
                 const isFirst = index === 0;
                 sectionsHTML += `
-                <section class="snap-section bg-cover bg-center flex items-center justify-center relative" style="background-image: url('${trip.img}'); background-color: #1a202c;">
-                    <div class="absolute inset-0 bg-overlay"></div>
+                <section class="snap-section flex items-center justify-center relative" style="background-color: #0f172a;">
+                    <!-- Lớp hình nền Parallax -->
+                    <div class="bg-image" style="background-image: url('${trip.img}');"></div>
+                    <div class="absolute inset-0 bg-overlay z-0"></div>
+                    
+                    <!-- Lớp Nội dung chính -->
                     <div class="relative z-10 w-full max-w-xl px-6" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000" data-tilt-glare="true" data-tilt-max-glare="0.2">
                         <div class="glass-card p-6 md:p-8 rounded-2xl text-center flex flex-col items-center shadow-2xl">
-                            <div class="tilt-inner fade-in-up">
-                                <span class="text-xs md:text-sm uppercase tracking-[0.3em] text-white/70 mb-3 block font-semibold">Điểm đến</span>
-                                <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4 text-white leading-tight">${trip.title}</h2>
-                                <div class="w-16 h-0.5 bg-white/40 mx-auto mb-5 rounded-full"></div>
-                                <p class="text-sm md:text-base font-light text-white/80 leading-relaxed mb-6 max-w-lg mx-auto">${trip.desc}</p>
-                                <a href="${trip.link}" class="inline-block relative overflow-hidden group bg-white/10 backdrop-blur-md border border-white/40 hover:bg-white hover:text-black hover:border-white transition-all duration-300 px-8 py-3 rounded-full text-xs font-semibold tracking-widest uppercase shadow-[0_0_15px_rgba(255,255,255,0.05)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] hover:scale-105">
-                                    Khám Phá Hành Trình
-                                </a>
+                            <div class="tilt-inner fade-container">
+                                <span class="text-xs md:text-sm uppercase tracking-[0.3em] text-white/70 mb-3 block font-semibold fade-item" style="transition-delay: 100ms">Điểm đến</span>
+                                <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4 text-white leading-tight fade-item" style="transition-delay: 200ms">${trip.title}</h2>
+                                <div class="w-16 h-0.5 bg-white/40 mx-auto mb-5 rounded-full fade-item" style="transition-delay: 300ms"></div>
+                                <p class="text-sm md:text-base font-light text-white/80 leading-relaxed mb-6 max-w-lg mx-auto fade-item" style="transition-delay: 400ms">${trip.desc}</p>
+                                <div class="fade-item" style="transition-delay: 500ms">
+                                    <a href="${trip.link}" class="inline-block relative overflow-hidden group bg-white/10 backdrop-blur-md border border-white/40 hover:bg-white hover:text-black hover:border-white transition-all duration-300 px-8 py-3 rounded-full text-xs font-semibold tracking-widest uppercase shadow-[0_0_15px_rgba(255,255,255,0.05)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] hover:scale-105">
+                                        Khám Phá Hành Trình
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    
                     ${isFirst ? `
-                    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center opacity-60 animate-bounce text-white/80">
+                    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center opacity-60 animate-bounce text-white/80 z-10">
                         <span class="text-[10px] uppercase tracking-widest mb-2">Cuộn</span>
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
                     </div>` : ''}
@@ -181,6 +212,11 @@
 
             // Khởi tạo lại hiệu ứng sau khi DOM thay đổi
             initAnimations();
+            
+            // Cập nhật parallax cho các phần tử mới được tạo
+            if (typeof updateParallax === 'function') {
+                updateParallax();
+            }
         }
 
         // KHỞI TẠO HIỆU ỨNG (Fade & Tilt)
@@ -188,17 +224,18 @@
             const container = document.getElementById('scroll-container');
             const sections = document.querySelectorAll('.snap-section');
             
-            // Intersection Observer cho Fade-in
+            // Intersection Observer cho Fade-in theo tầng (Staggered)
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    const fadeElement = entry.target.querySelector('.fade-in-up');
+                    const fadeContainer = entry.target.querySelector('.fade-container');
                     if (entry.isIntersecting) {
-                        if(fadeElement) fadeElement.classList.add('is-visible');
+                        if(fadeContainer) fadeContainer.classList.add('is-visible');
                     } else {
-                        if(fadeElement) fadeElement.classList.remove('is-visible');
+                        // Bỏ class is-visible khi cuộn đi để có thể hiệu ứng lại khi quay lại
+                        if(fadeContainer) fadeContainer.classList.remove('is-visible');
                     }
                 });
-            }, { root: container, threshold: 0.4 });
+            }, { root: container, threshold: 0.3 });
 
             sections.forEach(sec => observer.observe(sec));
 
@@ -280,17 +317,49 @@
         });
 
         // ==========================================
-        // KHỞI ĐỘNG KHI TẢI TRANG
+        // KHỞI ĐỘNG KHI TẢI TRANG & PARALLAX LOGIC
         // ==========================================
+        let isScrolling = false;
+        
+        function updateParallax() {
+            const sections = document.querySelectorAll('.snap-section');
+            const winH = window.innerHeight;
+            
+            sections.forEach(sec => {
+                const bg = sec.querySelector('.bg-image');
+                if (!bg) return;
+                
+                const rect = sec.getBoundingClientRect();
+                
+                // Chỉ tính toán và render khi section nằm trong tầm nhìn để tiết kiệm hiệu năng
+                if (rect.top > -winH && rect.top < winH) {
+                    // Tỉ lệ từ -1 (trên) đến 1 (dưới)
+                    const offset = rect.top / winH;
+                    // Background di chuyển ngược chiều cuộn để tạo độ sâu (-15% đến 15%)
+                    const yPos = -(offset * 15); 
+                    bg.style.transform = `translateY(${yPos}%) scale(1.15)`;
+                }
+            });
+            isScrolling = false;
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             renderPortfolio();
             
-            // Xử lý hiệu ứng Header làm mờ khi cuộn
+            // Xử lý hiệu ứng Header làm mờ và Parallax khi cuộn
             const container = document.getElementById('scroll-container');
             const header = document.getElementById('main-header');
+            
             container.addEventListener('scroll', () => {
+                // Header
                 if (container.scrollTop > 50) header.classList.add('scrolled');
                 else header.classList.remove('scrolled');
+                
+                // Parallax bằng requestAnimationFrame để đảm bảo 60fps
+                if (!isScrolling) {
+                    window.requestAnimationFrame(updateParallax);
+                    isScrolling = true;
+                }
             });
         });
     </script>
