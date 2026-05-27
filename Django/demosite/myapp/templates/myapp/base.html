@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>DEMO SITES for DJANGO</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <div class = "container">
+            <div class  = "header">
+                <h1>DEMO SITES for DJANGO</h1>
+            </div>
+            
+            <div class = "nav">
+               <a href="{% url 'myapp:home' %}">Home</a>
+                <a href="{% url 'myapp:rooms' %}">Rooms</a>
+                <a href="{% url 'myapp:devices' %}">Devices</a>
+                <a href="{% url 'myapp:sensors' %}">Sensors</a>
+                <a href="{% url 'myapp:lights' %}">Lights</a>
+                <a href="/admin/">Admin</a>
+            </div>
+
+            <main>
+                {% block content %}
+                {% endblock %}  
+            </main>
+        </div>
+    </body>
+</html>

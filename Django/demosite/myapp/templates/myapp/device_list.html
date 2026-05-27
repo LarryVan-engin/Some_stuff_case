@@ -1,0 +1,13 @@
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+  <h1>Devices</h1>
+  <ul>
+    {% for device in devices %}
+      <li>{{ device.name }} ({{ device.device_id }})</li>
+    {% empty %}
+      <li>No devices found.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
+</html>

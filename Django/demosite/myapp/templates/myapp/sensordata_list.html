@@ -1,0 +1,13 @@
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+  <h1>Sensor Data</h1>
+  <ul>
+    {% for s in sensordata %}
+      <li>{{ s.sensor_type }}: {{ s.value }} at {{ s.timestamp }}</li>
+    {% empty %}
+      <li>No sensor data found.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
+</html>
