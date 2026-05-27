@@ -1,0 +1,24 @@
+=== dalat.html ===
+  DEFAULT_DESTINATIONS (count=2):
+    - Đỉnh Langbiang
+    - Hồ Tuyền Lâm
+  DEFAULT_HOTELS (count=1):
+    - Hotel Colline
+  DEFAULT_FOOD (count=1):
+    - Lẩu Gà Lá É Tao Ngộ
+=== vungtau.html ===
+  DEFAULT_DESTINATIONS (count=2):
+    - Tượng Chúa Dang Tay
+    - Ngọn Hải Đăng Vũng Tàu
+  DEFAULT_HOTELS (count=1):
+    - The Imperial Hotel Vũng Tàu
+  DEFAULT_FOOD (count=1):
+    - Bánh Khọt Gốc Vú Sữa
+=== vinhhy.html ===
+  DEFAULT_DESTINATIONS (count=2):
+    - Hang Rái
+    - Đảo Bình Hưng
+  DEFAULT_HOTELS (count=1):
+    - Amanoi Resort
+  DEFAULT_FOOD (count=1):
+    - Tôm hùm Bình Hưng

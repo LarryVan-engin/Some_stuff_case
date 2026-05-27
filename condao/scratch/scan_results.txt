@@ -1,0 +1,14 @@
+
+===== SCANNING dalat.html =====
+Line 905: <input id="dest-name" type="text" class="admin-form-input" placeholder="Ví dụ: Bãi Đầm Trầu"> (Matched keywords: ['đầm trầu'])
+Total lines matched in dalat.html: 1
+
+===== SCANNING vinhhy.html =====
+Line 890: <input id="dest-name" type="text" class="admin-form-input" placeholder="Ví dụ: Bãi Đầm Trầu"> (Matched keywords: ['đầm trầu'])
+Total lines matched in vinhhy.html: 1
+
+===== SCANNING vungtau.html =====
+Line 900: <input id="dest-name" type="text" class="admin-form-input" placeholder="Ví dụ: Bãi Đầm Trầu"> (Matched keywords: ['đầm trầu'])
+Line 1385: "descLong": "Phong cảnh hùng vĩ tựa sơn hướng thủy đón đầu những ngọn sóng. Nơi tuyệt mỹ ngắm trọn vẹn đảo Hòn Bà cô độc trên mặt biển.", (Matched keywords: ['hòn bà'])
+Line 1388: "Ngắm nhìn đảo nhỏ Hòn Bà xa khơi", (Matched keywords: ['hòn bà'])
+Total lines matched in vungtau.html: 3

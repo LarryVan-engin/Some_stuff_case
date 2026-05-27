@@ -1,0 +1,66 @@
+=== DEFAULT_DESTINATIONS ===
+
+const DEFAULT_DESTINATIONS = [
+  {
+    "id": "dalat_dest_1",
+    "name": "Đỉnh Langbiang",
+    "category": "nature",
+    "rating": "4.5",
+    "img1": "https://images.unsplash.com/photo-1559592413-7cea4ee48083?w=800&q=80",
+    "img2": "https://images.unsplash.com/photo-1559592413-7cea4ee48083?w=800&q=80",
+    "tags": ["Nóc_nhà_Đà_Lạt", "Săn_mây", "Trekking"],
+    "descShort": "Đỉnh núi cao nhất Đà Lạt, nơi ghi dấu câu chuyện tình yêu huyền thoại và là điểm săn biển mây tuyệt đẹp vào sáng sớm.",
+    "descLong": "Langbiang không chỉ là biểu tượng thiên nhiên mà còn là linh hồn của Đà Lạt. Chuyến đi của tôi bắt đầu bằng việc di chuyển bằng xe Jeep xuyên qua những rặng thông già, để rồi vỡ òa trước khung cảnh hùng vĩ khi đứng trên đỉnh ngắm nhìn toàn cảnh hồ Đan Kia lấp ló dưới màn sương.",
+    "highlights": ["Đi xe Jeep xuyên rừng thông", "Săn mây vào sáng sớm tinh sương", "Thưởng thức cà phê trên đỉnh núi"],
+    "bestTime": "Nên đi vào khoảng 5h30 sáng để kịp săn mây hoặc chiều muộn ngắm hoàng hôn.",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Langbiang+Dalat",
+    "linkUrl": "",
+    "isDefault": true
+  },
+  {
+    "id": "dalat_dest_2",
+    "name": "Hồ Tuyền Lâm",
+    "category": "nature",
+    "rating": "4.8",
+    "img1": "https://images.unsplash.com/photo-1584285406087-0b19001bfa54?w=800&q=80",
+    "img2": "https://images.unsplash.com/photo-1584285406087-0b19001bfa54?w=800&q=80",
+    "tags": ["Hồ_nước_ngọt", "Chèo_SUP", "Hoàng_hôn_tím"],
+    "descShort": "Hồ nước ngọt thơ mộng nhất Đà Lạt, bao bọc bởi những ốc đảo thông xanh ngắt, mang lại cảm giác bình yên đến lạ.",
+    "descLong": "Rời xa phố thị ồn ào, tôi tìm đến Hồ Tuyền Lâm vào một buổi chiều tắt nắng. Mặt hồ phẳng lặng như gương phản chiếu bầu trời tím biếc. Trải nghiệm chèo SUP giữa hồ và hít căng lồng ngực mùi nhựa thông giúp tôi như gột rửa mọi muộn phiền.",
+    "highlights": ["Chèo SUP đón bình minh/hoàng hôn", "Cắm trại ven hồ", "Ghé thăm Thiền Viện Trúc Lâm gần đó"],
+    "bestTime": "Hoàng hôn lúc 16h30 - 17h30 là khoảnh khắc lãng mạn nhất.",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ho+Tuyen+Lam",
+    "linkUrl": "",
+    "isDefault": true
+  }
+];
+
+=== DEFAULT_HOTELS ===
+
+const DEFAULT_HOTELS = [
+  {
+    "id": "dalat_hotel_1",
+    "name": "Hotel Colline",
+    "stars": "4",
+    "price": "Từ 1.200.000 VNĐ",
+    "address": "10 Phan Bội Châu, Phường 1, Đà Lạt",
+    "desc": "Nổi bật với kiến trúc khối xếp chồng hiện đại ngay trung tâm chợ Đà Lạt, thuận tiện đi lại và mang hơi thở đô thị năng động.",
+    "imgUrl": "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80",
+    "mapsUrl": "", "linkUrl": "", "isDefault": true
+  }
+];
+
+=== DEFAULT_FOOD ===
+
+const DEFAULT_FOOD = [
+  {
+    "id": "dalat_food_1",
+    "name": "Lẩu Gà Lá É Tao Ngộ",
+    "category": "specialty",
+    "address": "Số 5 3/4, Phường 3, Đà Lạt",
+    "mapsUrl": "", "linkUrl": "",
+    "desc": "Trong cái lạnh của Đà Lạt, nồi lẩu gà lá é sôi sùng sục, vị ngọt của gà đồi quyện cùng vị the mát của lá é tạo nên bữa tối không thể hoàn hảo hơn cho chuyến đi.",
+    "imgUrl": "https://images.unsplash.com/photo-1548943487-a2e4b43b5930?w=800&q=80",
+    "isDefault": true
+  }
+];

@@ -1,0 +1,2985 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khám Phá Vĩnh Hy - Tuyệt Tác Thiên Nhiên</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Cấu hình màu sắc chủ đạo theo yêu cầu */
+        :root {
+            --primary-teal: #0d9488;
+            --sand-beige: #f5f5dc;
+        }
+
+        body {
+            background-color: #fafaf9; /* Nền trắng hơi ngà */
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Hiệu ứng Parallax cho Hero Banner */
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.55)), url('./images/vinhhy-bg.JPG');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Khắc phục lỗi background-attachment: fixed không hiển thị ảnh trên thiết bị di động (Safari/iOS/Android) */
+        @media (max-width: 1024px) {
+            .hero-bg {
+                background-attachment: scroll;
+            }
+        }
+
+        /* Hoạt họa tiêu đề & phụ đề khi tải trang */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+
+        /* --- Styles mới cho Thẻ địa điểm và Chi tiết --- */
+        .destination-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(229, 231, 235, 0.8);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+        }
+
+        .destination-card:hover {
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 16px 36px -4px rgba(13, 148, 136, 0.15);
+            border-color: rgba(13, 148, 136, 0.4);
+        }
+
+        .dest-img-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.25rem;
+            aspect-ratio: 16/10;
+        }
+
+        .dest-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .destination-card:hover .dest-img {
+            transform: scale(1.06);
+        }
+
+        /* Chi tiết mở rộng (Accordion-like) */
+        .detail-panel {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.7s cubic-bezier(0.16, 1, 0.3, 1), 
+                        opacity 0.5s ease, 
+                        margin-top 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                        padding-top 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+            margin-top: 0;
+            padding-top: 0;
+        }
+
+        .detail-panel.expanded {
+            max-height: 800px;
+            opacity: 1;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px dashed rgba(13, 148, 136, 0.2);
+        }
+
+        /* Icon mũi tên xoay */
+        .toggle-arrow {
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Thẻ đang được active */
+        .active-card {
+            border-color: rgba(13, 148, 136, 0.5);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        /* --- Timeline cho Tab 2 --- */
+        .timeline-container {
+            position: relative;
+            padding-left: 2rem;
+            border-left: 3px solid var(--primary-teal);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+        
+        .timeline-icon {
+            position: absolute;
+            left: -3rem;
+            background: white;
+            border: 3px solid var(--primary-teal);
+            color: var(--primary-teal);
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            top: 0.25rem;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #0d9488; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #0f766e; }
+    html { scroll-behavior: smooth; }
+/* Tùy chỉnh hiệu ứng hiển thị khi cuộn trang */
+.destination-card, .timeline-item {
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.destination-card.slide-left {
+  transform: translateX(-40px) translateY(10px);
+}
+
+.destination-card.slide-right {
+  transform: translateX(40px) translateY(10px);
+}
+
+.timeline-item {
+  transform: translateY(30px);
+}
+
+.destination-card.visible, .timeline-item.visible {
+  opacity: 1;
+  transform: translate(0) scale(1);
+}
+
+/* ===== ADMIN PANEL ===== */
+.admin-login-overlay {
+    position: fixed; inset: 0; z-index: 10000;
+    background: linear-gradient(135deg, #0f172a 0%, #134e4a 100%);
+    display: flex; align-items: center; justify-content: center;
+}
+.admin-panel-container {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    height: 100%;
+    min-height: 0;
+}
+@media(max-width:768px){ .admin-panel-container { grid-template-columns: 1fr; } }
+.admin-sidebar {
+    background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+    padding: 1.5rem 1rem;
+    display: flex; flex-direction: column; gap: 0.375rem;
+    overflow-y: auto;
+    border-right: 1px solid rgba(255,255,255,0.08);
+}
+.admin-sidebar-item {
+    padding: 0.75rem 1rem; border-radius: 0.75rem; cursor: pointer;
+    transition: all 0.2s; display: flex; align-items: center;
+    gap: 0.625rem; font-size: 0.8rem; font-weight: 600;
+    color: rgba(255,255,255,0.6); border: 1px solid transparent;
+}
+.admin-sidebar-item:hover { background: rgba(255,255,255,0.07); color: #5eead4; }
+.admin-sidebar-item.admin-active {
+    background: linear-gradient(135deg, #0d9488, #0f766e);
+    color: #fff; border-color: #0d9488;
+    box-shadow: 0 4px 12px rgba(13,148,136,0.3);
+}
+.admin-main { overflow-y: auto; padding: 1.5rem; background: #f8fafc; }
+.admin-section { display: none; }
+.admin-section.admin-section-visible { display: block; }
+.admin-form-label {
+    font-size: 0.7rem; font-weight: 700; color: #374151;
+    margin-bottom: 0.25rem; display: block; text-transform: uppercase; letter-spacing: 0.05em;
+}
+.admin-form-input {
+    width: 100%; border: 1.5px solid #e2e8f0; border-radius: 0.625rem;
+    padding: 0.5rem 0.75rem; font-size: 0.85rem; transition: border-color 0.2s;
+    outline: none; background: white; color: #1e293b;
+}
+.admin-form-input:focus { border-color: #0d9488; box-shadow: 0 0 0 3px rgba(13,148,136,0.12); }
+.admin-form-textarea { resize: vertical; min-height: 72px; }
+.admin-item-row {
+    background: white; border: 1px solid #e2e8f0; border-radius: 0.875rem;
+    padding: 0.875rem 1rem; display: flex; gap: 0.875rem;
+    align-items: center; transition: all 0.2s; margin-bottom: 0.5rem;
+}
+.admin-item-row:hover { border-color: #0d9488; box-shadow: 0 2px 8px rgba(13,148,136,0.1); }
+.admin-item-thumb {
+    width: 56px; height: 56px; border-radius: 0.625rem; object-fit: cover;
+    background: #f1f5f9; flex-shrink: 0;
+}
+.admin-btn-primary {
+    background: linear-gradient(135deg, #0d9488, #0f766e);
+    color: white; border: none; border-radius: 0.625rem;
+    padding: 0.5rem 1rem; font-size: 0.8rem; font-weight: 700;
+    cursor: pointer; transition: all 0.2s; display: inline-flex;
+    align-items: center; gap: 0.375rem;
+}
+.admin-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(13,148,136,0.3); }
+.admin-btn-danger {
+    background: #fff5f5; color: #e53e3e; border: 1px solid #fed7d7;
+    border-radius: 0.5rem; padding: 0.375rem 0.625rem; font-size: 0.75rem;
+    font-weight: 600; cursor: pointer; transition: all 0.2s;
+}
+.admin-btn-danger:hover { background: #e53e3e; color: white; }
+.admin-btn-secondary {
+    background: white; color: #475569; border: 1.5px solid #e2e8f0;
+    border-radius: 0.625rem; padding: 0.5rem 1rem; font-size: 0.8rem;
+    font-weight: 700; cursor: pointer; transition: all 0.2s;
+    display: inline-flex; align-items: center; gap: 0.375rem;
+}
+.admin-btn-secondary:hover { border-color: #0d9488; color: #0d9488; }
+.admin-badge {
+    padding: 0.2rem 0.5rem; border-radius: 9999px; font-size: 0.65rem;
+    font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+}
+.admin-image-preview {
+    width: 100%; aspect-ratio: 16/9; object-fit: cover;
+    border-radius: 0.625rem; background: #f1f5f9; border: 2px dashed #cbd5e1;
+    display: flex; align-items: center; justify-content: center; overflow: hidden;
+}
+.github-push-badge {
+    display: inline-flex; align-items: center; gap: 0.375rem;
+    background: #1a1a2e; color: #a8edea; font-size: 0.7rem; font-weight: 700;
+    padding: 0.25rem 0.625rem; border-radius: 9999px; border: 1px solid rgba(168,237,234,0.3);
+}
+
+/* ===== MEMORIES TAB ===== */
+.memory-gate {
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; min-height: 55vh; padding: 2rem;
+}
+.memory-album-card {
+    background: white; border-radius: 1.25rem; overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06); transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+    cursor: pointer; border: 1px solid #e2e8f0; position: relative;
+}
+.memory-album-card:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 20px 40px rgba(13,148,136,0.15);
+    border-color: rgba(13,148,136,0.35);
+}
+.memory-album-cover {
+    width: 100%; aspect-ratio: 4/3; object-fit: cover;
+    background: linear-gradient(135deg, #0f172a, #134e4a);
+}
+.memory-media-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 0.625rem; }
+@media(min-width:640px){ .memory-media-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); } }
+.memory-media-item {
+    border-radius: 0.875rem; overflow: hidden; aspect-ratio: 1; cursor: pointer;
+    position: relative; background: #f1f5f9; border: 1px solid #e2e8f0;
+    transition: all 0.3s;
+}
+.memory-media-item:hover { transform: scale(1.03); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+.memory-media-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+.memory-media-item:hover img { transform: scale(1.06); }
+.memory-media-caption {
+    position: absolute; bottom: 0; inset-x: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    color: white; font-size: 0.65rem; padding: 0.5rem 0.375rem 0.375rem;
+    text-align: center; font-weight: 500;
+}
+.memory-video-item {
+    border-radius: 0.875rem; overflow: hidden; aspect-ratio: 16/9;
+    grid-column: span 2; background: #0f172a; position: relative;
+}
+.memory-video-item iframe { width: 100%; height: 100%; border: none; }
+
+/* ===== LIGHTBOX ===== */
+.lightbox-overlay {
+    position: fixed; inset: 0; z-index: 99999; background: rgba(0,0,0,0.94);
+    display: flex; align-items: center; justify-content: center;
+    padding: 1rem; animation: fadeIn 0.2s ease;
+}
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+.lightbox-inner { position: relative; max-width: min(1000px, 95vw); max-height: 90vh; display: flex; flex-direction: column; align-items: center; }
+.lightbox-inner img { max-width: 100%; max-height: 82vh; border-radius: 0.875rem; object-fit: contain; box-shadow: 0 25px 60px rgba(0,0,0,0.4); }
+.lightbox-close {
+    position: absolute; top: -3rem; right: 0; background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2); color: white; width: 40px; height: 40px;
+    border-radius: 50%; font-size: 1.1rem; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; transition: all 0.2s;
+}
+.lightbox-close:hover { background: rgba(255,255,255,0.25); }
+.lightbox-caption { color: rgba(255,255,255,0.8); font-size: 0.85rem; margin-top: 0.875rem; text-align: center; font-style: italic; }
+
+/* ===== FOOTER ===== */
+.site-footer { background: linear-gradient(135deg, #0f172a 0%, #134e4a 100%); color: white; padding: 3.5rem 0 0; margin-top: 0; }
+.footer-brand-icon { width: 52px; height: 52px; background: linear-gradient(135deg, #0d9488, #5eead4); border-radius: 1rem; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1rem; }
+.footer-link { color: rgba(255,255,255,0.6); transition: color 0.2s; display: block; padding: 0.25rem 0; font-size: 0.875rem; text-decoration: none; }
+.footer-link:hover { color: #5eead4; padding-left: 0.375rem; }
+.footer-social-btn { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: all 0.2s; cursor: pointer; text-decoration: none; }
+.footer-social-btn:hover { background: #0d9488; border-color: #0d9488; color: white; transform: translateY(-2px); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding: 1.25rem 0; text-align: center; font-size: 0.8rem; color: rgba(255,255,255,0.4); }
+
+/* ===== CLICKABLE CARD LINKS ===== */
+.card-with-link { text-decoration: none; color: inherit; display: block; }
+.card-with-link:hover { text-decoration: none; }
+
+</style>
+</head>
+<body class="antialiased">
+
+    <header class="hero-bg relative h-[100dvh] min-h-screen flex flex-col items-center justify-center text-center px-4 overflow-hidden">
+        <div class="max-w-4xl mx-auto space-y-4">
+            <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-2 drop-shadow-lg tracking-wide uppercase opacity-0 animate-fade-in-up">Khám Phá Vĩnh Hy</h1>
+            <p class="text-lg md:text-2xl text-gray-200 max-w-2xl font-light opacity-0 animate-fade-in-up delay-200 leading-relaxed">Tuyệt tác vịnh biển hoang sơ, thiên đường nắng gió giữa rặng san hô cổ nghìn năm.</p>
+        </div>
+        <div class="absolute bottom-8 left-0 right-0 mx-auto animate-bounce cursor-pointer flex flex-col items-center justify-center text-center text-white/90 hover:text-white transition-colors" onclick="document.querySelector('.sticky').scrollIntoView({ behavior: 'smooth' })">
+            <span class="text-[10px] uppercase tracking-widest mb-1.5 font-semibold opacity-75">Cuộn xuống khám phá</span>
+            <i class="fa-solid fa-chevron-down text-xl"></i>
+        </div>
+    </header>
+
+    <div class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="max-w-6xl mx-auto flex overflow-x-auto justify-center">
+            <button onclick="switchTab('tab1')" id="btn-tab1" class="tab-btn px-6 py-4 text-teal-700 font-semibold border-b-4 border-teal-600 transition-colors whitespace-nowrap hover:bg-teal-50">
+                <i class="fa-solid fa-camera-retro mr-2"></i>Khám Phá Địa Điểm
+            </button>
+            <button onclick="switchTab('tab2')" id="btn-tab2" class="tab-btn px-6 py-4 text-gray-500 font-semibold border-b-4 border-transparent transition-colors whitespace-nowrap hover:bg-teal-50 hover:text-teal-700">
+                <i class="fa-solid fa-map-location-dot mr-2"></i>Lịch Trình 4N3Đ
+            </button>
+            <button onclick="switchTab('tab3')" id="btn-tab3" class="tab-btn px-6 py-4 text-gray-500 font-semibold border-b-4 border-transparent transition-colors whitespace-nowrap hover:bg-teal-50 hover:text-teal-700">
+                <i class="fa-solid fa-plane-departure mr-2"></i>Kênh Di Chuyển & Lưu Trú
+            </button>
+            <button onclick="switchTab('tab4')" id="btn-tab4" class="tab-btn px-6 py-4 text-gray-500 font-semibold border-b-4 border-transparent transition-colors whitespace-nowrap hover:bg-teal-50 hover:text-teal-700">
+                <i class="fa-solid fa-utensils mr-2"></i>Ẩm Thực & Cafe
+            </button>
+            <button onclick="switchTab('tab5')" id="btn-tab5" class="tab-btn px-6 py-4 text-gray-500 font-semibold border-b-4 border-transparent transition-colors whitespace-nowrap hover:bg-teal-50 hover:text-teal-700">
+                <i class="fa-solid fa-heart mr-2"></i>Kỷ Niệm Đáng Nhớ
+            </button>
+
+        </div>
+    </div>
+
+    <main class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+
+                <section id="tab1" class="tab-content block animate-fade-in">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-800">Những Điểm Đến Không Thể Bỏ Lỡ</h2>
+                <p class="text-gray-500 mt-2">Chạm vào nắng gió và rạn san hô qua từng danh thắng Vĩnh Hy.</p>
+            </div>
+            
+            <!-- Category Sub-tab Filters -->
+            <div class="flex flex-wrap justify-center gap-2 md:gap-3 mb-10 max-w-4xl mx-auto px-2" id="dest-filters">
+                <button onclick="filterDestinations('all')" class="dest-filter-btn px-4 py-2 md:px-5 md:py-2.5 rounded-full font-bold text-xs md:text-sm bg-teal-600 text-white shadow-md transition-all duration-300 flex items-center gap-2 focus:outline-none">
+                    <i class="fa-solid fa-list"></i> Tất Cả
+                </button>
+                <button onclick="filterDestinations('beach')" class="dest-filter-btn px-4 py-2 md:px-5 md:py-2.5 rounded-full font-bold text-xs md:text-sm bg-white text-gray-600 border border-gray-200 hover:bg-teal-50 hover:text-teal-700 transition-all duration-300 flex items-center gap-2 focus:outline-none">
+                    <i class="fa-solid fa-umbrella-beach text-teal-600"></i> Bãi Tắm & Sinh Thái
+                </button>
+                <button onclick="filterDestinations('history')" class="dest-filter-btn px-4 py-2 md:px-5 md:py-2.5 rounded-full font-bold text-xs md:text-sm bg-white text-gray-600 border border-gray-200 hover:bg-teal-50 hover:text-teal-700 transition-all duration-300 flex items-center gap-2 focus:outline-none">
+                    <i class="fa-solid fa-anchor text-teal-600"></i> Vịnh Biển & Trải Nghiệm
+                </button>
+                <button onclick="filterDestinations('temple')" class="dest-filter-btn px-4 py-2 md:px-5 md:py-2.5 rounded-full font-bold text-xs md:text-sm bg-white text-gray-600 border border-gray-200 hover:bg-teal-50 hover:text-teal-700 transition-all duration-300 flex items-center gap-2 focus:outline-none">
+                    <i class="fa-solid fa-compass text-teal-600"></i> Khám Phá Hoang Sơ
+                </button>
+                <button onclick="filterDestinations('food')" class="dest-filter-btn px-4 py-2 md:px-5 md:py-2.5 rounded-full font-bold text-xs md:text-sm bg-white text-gray-600 border border-gray-200 hover:bg-teal-50 hover:text-teal-700 transition-all duration-300 flex items-center gap-2 focus:outline-none">
+                    <i class="fa-solid fa-shrimp text-orange-600"></i> Đặc Sản Ẩm Thực
+                </button>
+            </div>
+            
+            <div class="space-y-12 max-w-5xl mx-auto" id="destinations-container">
+                <!-- RENDERED DYNAMICALLY BY JAVASCRIPT -->
+            </div>
+        </section>
+
+        <section id="tab2" class="tab-content hidden animate-fade-in">
+            <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-6 md:p-10 border border-gray-100">
+                <!-- Planner Tab Switcher -->
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-3 mb-8 border-b pb-6 border-gray-100">
+                    <button id="planner-btn-preset" onclick="switchPlannerMode('preset')" class="w-full sm:w-auto px-5 py-2.5 rounded-full font-bold text-xs md:text-sm bg-teal-600 text-white shadow-md transition-all duration-300 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-map-location-dot"></i> Lịch Trình Có Sẵn 4N3Đ
+                    </button>
+                    <button id="planner-btn-custom" onclick="switchPlannerMode('custom')" class="w-full sm:w-auto px-5 py-2.5 rounded-full font-bold text-xs md:text-sm bg-gray-100 text-gray-500 hover:bg-teal-50 hover:text-teal-700 transition-all duration-300 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-route"></i> Tự Thiết Kế Lịch Trình 🛠️
+                    </button>
+                </div>
+
+                <!-- 1. Preset Timeline View -->
+                <div id="planner-preset-view" class="block">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-teal-700">Lịch Trình Chi Tiết Khám Phá Vịnh Vĩnh Hy 4N3Đ</h2>
+                    <p class="text-gray-500 mt-3 text-sm md:text-base">Hành trình lướt sóng ngắm rạn san hô cổ kết hợp chinh phục cung đèo Núi Chúa hùng vĩ, sinh thái biển đảo & tiệc tôm hùm Bình Hưng.</p>
+                    <div class="mt-4 inline-flex items-center gap-2 bg-teal-50 text-teal-700 px-4 py-1.5 rounded-full text-xs font-semibold border border-teal-100">
+                        <i class="fa-solid fa-car animate-bounce"></i> Phương tiện chính: Xe khách ven biển & Máy bay (đến Cam Ranh)
+                    </div>
+                </div>
+
+                <div class="timeline-container space-y-2">
+                    <!-- Ngày 1 -->
+                    <div class="timeline-item">
+                        <div class="timeline-icon"><i class="fa-solid fa-car"></i></div>
+                        <h3 class="text-xl font-bold text-gray-800 bg-[#f5f5dc] inline-block px-4 py-1 rounded-md mb-4 shadow-sm">Ngày 1: Vịnh Vĩnh Hy Bình Yên & Khám Phá Rạn San Hô</h3>
+                        <ul class="space-y-4 text-gray-600 text-sm md:text-base leading-relaxed">
+                            <li class="flex items-start bg-gray-50/50 p-3 rounded-xl border border-gray-100 hover:border-teal-200 transition-colors">
+                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">08:00 - 11:30</div>
+                                <div>Được xe dịch vụ đón từ sân bay Cam Ranh vi vu qua cung đường đèo Núi Chúa ven đại dương tuyệt mỹ hướng vào vịnh biển hoang sơ.</div>
+                            </li>
+                            <li class="flex items-start bg-gray-50/50 p-3 rounded-xl border border-gray-100 hover:border-teal-200 transition-colors">
+                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">12:00 - 13:00</div>
+                                <div>Check-in nhận phòng tại <strong>Vĩnh Hy Resort</strong> nép mình sát mép biển vịnh bình yên, ăn trưa nạp năng lượng.</div>
+                            </li>
+                            <li class="flex items-start bg-gray-50/50 p-3 rounded-xl border border-gray-100 hover:border-teal-200 transition-colors">
+                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">14:30 - 17:30</div>
+                                <div>Lên tàu đáy kính ngắm nhìn rạn san hô đa màu sắc rực rỡ lộng lẫy dưới dòng nước trong veo như pha lê thấu đáy tại <strong>Vịnh Vĩnh Hy</strong>.</div>
+                            </li>
+                            <li class="flex items-start bg-gray-50/50 p-3 rounded-xl border border-gray-100 hover:border-teal-200 transition-colors">
+                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">18:30 - 21:00</div>
+                                <div>Dùng bữa tối hải sản tươi sống vừa đánh bắt lên như mực lá dày giòn sần sật ngọt thịt, nhum biển nướng thơm phức bùi ngậy tại <strong>Hải sản Vịnh Vĩnh Hy</strong>.</div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Ngày 2 -->
+                    <div class="timeline-item">
+                        <div class="timeline-icon"><i class="fa-solid fa-camera"></i></div>
+                        <h3 class="text-xl font-bold text-gray-800 bg-[#f5f5dc] inline-block px-4 py-1 rounded-md mb-4 shadow-sm">Ngày 2: Đón Bình Minh Hang Rái & Ghé Vườn Nho Thái An</h3>
+                        <ul class="space-y-4 text-gray-600 text-sm md:text-base leading-relaxed">
+                            <li class="flex items-start bg-gray-50/50 p-3 rounded-xl border border-gray-100 hover:border-teal-200 transition-colors">
+                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">05:00 - 08:30</div>
+                                <div>Đón những vệt bình minh dát vàng óng ánh trên bãi rạn san hô cổ FLAT phẳng mịn tuyệt tác thác tràn đại dương hoang sơ tại <strong>Hang Rái</strong>.</div>
+                            </li>
+                            <li class="flex items-start bg-gray-50/50 p-3 rounded-xl border border-gray-100 hover:border-teal-200 transition-colors">
+                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">09:00 - 11:00</div>
+                                <div>Khám phá hái những chùm nho chín ngọt tươi rói mát lạnh, chụp hình rợp bóng xinh đẹp tại <strong>Vườn Nho Thái An</strong> lừng danh.</div>
+                            </li>
+                            <li class="flex items-start bg-gray-50/50 p-3 rounded-xl border border-gray-100 hover:border-teal-200 transition-colors">
+                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">15:00 - 17:30</div>
+                                <div>Trekking ngắm cầu treo Raglai đung đưa, lội nước suối trong mát rượi tại <strong>Suối Lồ Ồ</strong> xuyên đại ngàn hoang sơ Núi Chúa.</div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Ngày 3 -->
+                    <div class="timeline-item">
+                        <div class="timeline-icon"><i class="fa-solid fa-umbrella-beach"></i></div>
+                        <h3 class="text-xl font-bold text-gray-800 bg-[#f5f5dc] inline-block px-4 py-1 rounded-md mb-4 shadow-sm">Ngày 3: Hải Đảo Bình Hưng Trong Vắt & Ăn Tôm Hùm Bè</h3>
+                        <ul class="space-y-4 text-gray-600 text-sm md:text-base leading-relaxed">
+                            <li class="flex items-start bg-gray-50/50 p-3 rounded-xl border border-gray-100 hover:border-teal-200 transition-colors">
+                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">08:30 - 15:30</div>
+                                <div>Thỏa thích tắm mát chèo SUP giữa bãi cát trắng mịn Bãi Nước Ngọt trong veo thấu đáy như pha lê ở <strong>Đảo Bình Hưng</strong>.</div>
+                            </li>
+                            <li class="flex items-start bg-gray-50/50 p-3 rounded-xl border border-gray-100 hover:border-teal-200 transition-colors">
+                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">12:00 - 13:30</div>
+                                <div>Thưởng thức đại tiệc đặc sản <strong>Tôm hùm Bình Hưng</strong> nướng bơ tỏi ngọt lịm béo ngậy thơm nức lòng ngay trên bè nổi lồng bè đại dương.</div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Ngày 4 -->
+                    <div class="timeline-item">
+                        <div class="timeline-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+                        <h3 class="text-xl font-bold text-gray-800 bg-[#f5f5dc] inline-block px-4 py-1 rounded-md mb-4 shadow-sm">Ngày 4: Thưởng Thức Bánh Xèo Phan Rang & Tạm Biệt Vịnh Biển</h3>
+                        <ul class="space-y-4 text-gray-600 text-sm md:text-base leading-relaxed">
+                            <li class="flex items-start bg-gray-50/50 p-3 rounded-xl border border-gray-100 hover:border-teal-200 transition-colors">
+                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">07:30 - 08:30</div>
+                                <div>Ăn sáng món bánh xèo đổ lò mực tươi rói giòn rụm ngập tương đậu phộng bùi béo <strong>Bánh xèo Phan Rang</strong>.</div>
+                            </li>
+                            <li class="flex items-start bg-gray-50/50 p-3 rounded-xl border border-gray-100 hover:border-teal-200 transition-colors">
+                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">09:00 - 11:00</div>
+                                <div>Ghé sạp mua đặc sản mật nho mọng ngọt lịm, tỏi Phan Rang thơm cay mang về làm quà.</div>
+                            </li>
+                            <li class="flex items-start bg-gray-50/50 p-3 rounded-xl border border-gray-100 hover:border-teal-200 transition-colors">
+                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">11:30 - 12:30</div>
+                                <div>Check-out trả phòng resort <strong>Vĩnh Hy Resort</strong>, tạm biệt vịnh biển trong lành kết thúc hành trình 4N3Đ trọn vẹn xúc cảm!</div>
+                            </li>
+                        </ul>
+                    </div>
+</div>
+</div>
+</div>
+
+<!-- 2. Custom Planner View -->
+                <div id="planner-custom-view" class="hidden space-y-6">
+                    <div class="text-center mb-8">
+                        <h2 class="text-2xl md:text-3xl font-extrabold text-teal-700">Tự Lập Kế Hoạch Cá Nhân</h2>
+                        <p class="text-gray-500 mt-2 text-xs sm:text-sm">Tự do xây dựng lịch trình, tùy chọn 11 địa điểm đẹp nhất Vĩnh Hy kèm khung giờ gợi ý.</p>
+                    </div>
+
+                    <!-- Quick Action: Load default pre-set / Clear -->
+                    <div class="flex flex-wrap justify-between items-center gap-3 bg-teal-50/50 p-4 rounded-xl border border-teal-100/50 mb-6">
+                        <span class="text-xs text-teal-800 font-semibold flex items-center gap-1.5">
+                            <i class="fa-solid fa-circle-question text-teal-600"></i> Bạn có muốn bắt đầu chỉnh sửa nhanh từ Lịch trình 4N3Đ mẫu?
+                        </span>
+                        <div class="flex gap-2">
+                            <button onclick="loadDefaultTemplate()" class="bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold px-3 py-1.5 rounded-lg transition-colors shadow-sm">
+                                <i class="fa-solid fa-file-import mr-1"></i> Nạp Lịch Trình Mẫu
+                            </button>
+                            <button onclick="clearCustomPlan()" class="bg-rose-50 hover:bg-rose-100 text-rose-700 text-xs font-bold px-3 py-1.5 rounded-lg transition-colors border border-rose-100">
+                                <i class="fa-solid fa-trash-can mr-1"></i> Xóa Hết
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Planner Form -->
+                    <div class="bg-gray-50/80 p-5 sm:p-6 rounded-2xl border border-gray-200/80 space-y-4">
+                        <h4 class="font-extrabold text-gray-800 text-sm md:text-base flex items-center gap-2">
+                            <i class="fa-solid fa-calendar-plus text-teal-600"></i> Thêm địa điểm vào lịch trình của bạn
+                        </h4>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+                            <!-- Day Selection -->
+                            <div class="md:col-span-3">
+                                <label class="block text-xs font-bold text-gray-600 uppercase mb-1.5">Chọn Ngày</label>
+                                <div class="grid grid-cols-4 gap-2">
+                                    <button type="button" onclick="selectPlannerDay(1)" id="planner-day-btn-1" class="planner-day-selector px-1 py-2 rounded-lg font-bold text-xs bg-teal-600 text-white shadow-sm border border-teal-600 transition-all text-center">N1</button>
+                                    <button type="button" onclick="selectPlannerDay(2)" id="planner-day-btn-2" class="planner-day-selector px-1 py-2 rounded-lg font-bold text-xs bg-white text-gray-600 border border-gray-200 transition-all text-center">N2</button>
+                                    <button type="button" onclick="selectPlannerDay(3)" id="planner-day-btn-3" class="planner-day-selector px-1 py-2 rounded-lg font-bold text-xs bg-white text-gray-600 border border-gray-200 transition-all text-center">N3</button>
+                                    <button type="button" onclick="selectPlannerDay(4)" id="planner-day-btn-4" class="planner-day-selector px-1 py-2 rounded-lg font-bold text-xs bg-white text-gray-600 border border-gray-200 transition-all text-center">N4</button>
+                                </div>
+                            </div>
+
+                            <!-- Destination Select -->
+                            <div class="md:col-span-5">
+                                <label class="block text-xs font-bold text-gray-600 uppercase mb-1.5">Chọn Địa Điểm</label>
+                                <select id="planner-dest-select" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 text-gray-700 shadow-inner font-semibold">
+                                    <option value="Vịnh Vĩnh Hy">1. Vịnh Vĩnh Hy (#Tuyệt_tác_vịnh_biển)</option>
+                                    <option value="Hang Rái">2. Hang Rái (#Thác_trên_biển)</option>
+                                    <option value="Đảo Bình Hưng">3. Đảo Bình Hưng (#Nước_biển_trong_vắt)</option>
+                                    <option value="Vườn Nho Thái An">4. Vườn Nho Thái An (#Hái_nho)</option>
+                                    <option value="Suối Lồ Ồ">5. Suối Lồ Ồ (#Suối_mát_trong_rừng)</option>
+</select>
+                            </div>
+
+                            <!-- Time Selector -->
+                            <div class="md:col-span-4">
+                                <label class="block text-xs font-bold text-gray-600 uppercase mb-1.5">Mốc Thời Gian</label>
+                                <input type="text" id="planner-time-input" placeholder="Ví dụ: 08:30 - 11:30" class="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-700 focus:outline-none focus:border-teal-500 transition-colors">
+                            </div>
+                        </div>
+
+                        <!-- Suggested Hour Slots Badges -->
+                        <div>
+                            <span class="block text-xs font-bold text-gray-500 mb-1.5">Gợi ý mốc thời gian di chuyển:</span>
+                            <div class="flex flex-wrap gap-2">
+                                <button type="button" onclick="fillSuggestedTime('07:30 - 08:30')" class="bg-white hover:bg-teal-50 text-gray-600 hover:text-teal-700 border border-gray-200 hover:border-teal-200 text-xs font-semibold px-3 py-1.5 rounded-full transition-all shadow-sm">07:30 - 08:30 (Ăn sáng)</button>
+                                <button type="button" onclick="fillSuggestedTime('08:30 - 11:30')" class="bg-white hover:bg-teal-50 text-gray-600 hover:text-teal-700 border border-gray-200 hover:border-teal-200 text-xs font-semibold px-3 py-1.5 rounded-full transition-all shadow-sm">08:30 - 11:30 (Tham quan sáng)</button>
+                                <button type="button" onclick="fillSuggestedTime('11:30 - 13:30')" class="bg-white hover:bg-teal-50 text-gray-600 hover:text-teal-700 border border-gray-200 hover:border-teal-200 text-xs font-semibold px-3 py-1.5 rounded-full transition-all shadow-sm">11:30 - 13:30 (Trưa/Bè nổi)</button>
+                                <button type="button" onclick="fillSuggestedTime('14:30 - 17:30')" class="bg-white hover:bg-teal-50 text-gray-600 hover:text-teal-700 border border-gray-200 hover:border-teal-200 text-xs font-semibold px-3 py-1.5 rounded-full transition-all shadow-sm">14:30 - 17:30 (Chiều mát/Tắm biển)</button>
+                                <button type="button" onclick="fillSuggestedTime('18:30 - 21:00')" class="bg-white hover:bg-teal-50 text-gray-600 hover:text-teal-700 border border-gray-200 hover:border-teal-200 text-xs font-semibold px-3 py-1.5 rounded-full transition-all shadow-sm">18:30 - 21:00 (Ăn tối)</button>
+                                <button type="button" onclick="fillSuggestedTime('21:30 - 23:30')" class="bg-white hover:bg-teal-50 text-gray-600 hover:text-teal-700 border border-gray-200 hover:border-teal-200 text-xs font-semibold px-3 py-1.5 rounded-full transition-all shadow-sm">21:30 - 23:30 (Viếng đêm linh thiêng)</button>
+                            </div>
+                        </div>
+
+                        <!-- Note Input & Add Button -->
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
+                            <div class="md:col-span-9">
+                                <label class="block text-xs font-bold text-gray-600 uppercase mb-1.5">Ghi Chú Hoạt Động / Lời Nhắc</label>
+                                <input type="text" id="planner-note-input" placeholder="Ví dụ: Mang theo đồ bơi, kính mát, chuẩn bị dâng hương..." class="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-700 focus:outline-none focus:border-teal-500 transition-colors">
+                            </div>
+                            <div class="md:col-span-3">
+                                <button type="button" onclick="addCustomItineraryItem()" class="w-full bg-teal-600 hover:bg-teal-700 text-white font-bold text-sm px-4 py-2.5 rounded-lg shadow-md transition-colors flex items-center justify-center gap-1">
+                                    <i class="fa-solid fa-plus"></i> Thêm Hoạt Động
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Real-time Custom Timeline Header & Tabs -->
+                    <div class="mt-8 space-y-6">
+                        <div class="flex items-center justify-between border-b pb-3 border-gray-100">
+                            <h4 class="font-extrabold text-gray-800 text-lg flex items-center gap-2">
+                                <i class="fa-solid fa-route text-teal-600"></i> Lịch trình tự chọn của bạn
+                            </h4>
+                            <button onclick="exportItinerary()" class="bg-white hover:bg-teal-50 text-teal-700 border border-teal-200 text-xs font-bold px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 shadow-xs">
+                                <i class="fa-solid fa-file-export animate-pulse"></i> Xuất Lịch Trình
+                            </button>
+                        </div>
+
+                        <!-- Custom Day view tabs -->
+                        <div class="flex justify-center gap-1 bg-gray-100 p-1 rounded-xl max-w-sm mx-auto">
+                            <button onclick="switchCustomTimelineDay(1)" id="timeline-day-btn-1" class="timeline-day-btn flex-1 py-2 font-bold text-xs rounded-lg transition-all text-center bg-white text-teal-800 shadow-sm">Ngày 1</button>
+                            <button onclick="switchCustomTimelineDay(2)" id="timeline-day-btn-2" class="timeline-day-btn flex-1 py-2 font-bold text-xs rounded-lg transition-all text-center text-gray-600 hover:text-teal-700">Ngày 2</button>
+                            <button onclick="switchCustomTimelineDay(3)" id="timeline-day-btn-3" class="timeline-day-btn flex-1 py-2 font-bold text-xs rounded-lg transition-all text-center text-gray-600 hover:text-teal-700">Ngày 3</button>
+                            <button onclick="switchCustomTimelineDay(4)" id="timeline-day-btn-4" class="timeline-day-btn flex-1 py-2 font-bold text-xs rounded-lg transition-all text-center text-gray-600 hover:text-teal-700">Ngày 4</button>
+                        </div>
+
+                        <!-- Custom Timeline Area -->
+                        <div class="relative pl-6 border-l-2 border-teal-500/30 space-y-6 py-2 min-h-[150px]" id="custom-timeline-container">
+                            <!-- Rendered dynamically by Javascript -->
+                        </div>
+                    </div>
+                </div>
+</div>
+        </section>
+
+        <section id="tab3" class="tab-content hidden animate-fade-in">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                
+                <div class="bg-white rounded-xl shadow-md p-8 border border-gray-100">
+                    <h3 class="text-2xl font-bold text-teal-700 mb-6 border-b pb-2"><i class="fa-solid fa-plane-departure mr-2"></i> Kênh Di Chuyển Đến Vịnh Vĩnh Hy</h3>
+                    
+                    <div class="mb-6">
+                        <h4 class="font-bold text-lg text-gray-800 flex items-center mb-2"><i class="fa-solid fa-plane text-teal-600 mr-2"></i> Bằng Máy Bay (Đến Cam Ranh)</h4>
+                        <p class="text-gray-600 text-sm mb-2">Đến Sân bay Cam Ranh (Khánh Hòa) là hành trình nhanh nhất, sau đó đi xe dịch vụ ven biển vào Vịnh.</p>
+                        <ul class="list-disc pl-5 text-gray-600 text-sm space-y-1">
+                            <li><strong>Quãng đường:</strong> Sân bay Cam Ranh - Vĩnh Hy khoảng 60km, đi qua cung đèo vịnh biển tuyệt tác Ninh Thuận.</li>
+                            <li><strong>Phương tiện trung chuyển:</strong> Giá taxi trọn gói dao động từ 600.000đ - 700.000đ/lượt.</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="font-bold text-lg text-gray-800 flex items-center mb-3"><i class="fa-solid fa-train text-teal-600 mr-2"></i> Bằng Tàu Hỏa / Xe Khách (Đến Phan Rang)</h4>
+                        <p class="text-gray-600 text-sm mb-4">Lựa chọn tàu hỏa ngắm cảnh hoặc xe giường nằm đến TP Phan Rang Tháp Chàm rồi di chuyển vào vịnh:</p>
+
+                        <div class="space-y-4">
+                            <div class="bg-gray-50/50 hover:bg-teal-50/20 border border-gray-100 hover:border-teal-200 p-4 rounded-xl transition-all duration-300 shadow-sm hover:shadow-md">
+                                <div class="flex flex-wrap justify-between items-start gap-2 mb-2">
+                                    <h5 class="font-extrabold text-gray-800 text-base flex items-center gap-2"><i class="fa-solid fa-train text-teal-600"></i> Ga Tháp Chàm hoặc Bến xe Phan Rang</h5>
+                                    <span class="bg-teal-600 text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase">Khoảng 40km vào vịnh</span>
+                                </div>
+                                <p class="text-sm text-gray-600 mb-3">Có thể di chuyển bằng xe bus công cộng Phan Rang - Vĩnh Hy (~20.000đ) hoặc bắt taxi vào vịnh khoảng 350.000đ.</p>
+                            </div>
+
+                            <div class="mt-4 bg-amber-50/80 border border-amber-100 p-4 rounded-xl flex gap-3 shadow-xs">
+                                <div class="text-amber-500 text-lg shrink-0 mt-0.5"><i class="fa-solid fa-lightbulb"></i></div>
+                                <div>
+                                    <h6 class="font-bold text-amber-800 text-sm">Lưu ý khi đi Vĩnh Hy</h6>
+                                    <p class="text-amber-900/80 text-xs mt-1 leading-relaxed">Đoạn đường ven biển rất nhiều cua dốc uốn lượn, nếu tự đi bằng xe máy cần hết sức cẩn thận. Thời điểm biển đẹp nhất là từ tháng 3 đến tháng 9 âm lịch.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md p-8 border border-gray-100 flex flex-col h-[750px]">
+                    <h3 class="text-2xl font-bold text-teal-700 mb-4 border-b pb-2 flex justify-between items-center">
+                        <span><i class="fa-solid fa-hotel mr-2"></i> Gợi Ý Lưu Trú</span>
+                        <span class="text-xs bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full font-semibold">9 Lựa chọn</span>
+                    </h3>
+                    
+                    <!-- Scrollable list of hotels -->
+                    <div class="flex-grow overflow-y-auto space-y-4 pr-2 custom-scrollbar" id="hotels-container">
+                        <!-- RENDERED DYNAMICALLY BY JAVASCRIPT -->
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="tab4" class="tab-content hidden animate-fade-in">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-800">Cẩm Nang Ẩm Thực & Cà Phê Vĩnh Hy</h2>
+                <p class="text-gray-500 mt-2">Khám phá văn hóa ẩm thực đặc trưng và những tọa độ check-in thư giãn tuyệt đẹp.</p>
+            </div>
+            
+            <!-- Tab 4 Sub-filters -->
+            <div class="flex flex-wrap justify-center gap-2 md:gap-3 mb-10 max-w-4xl mx-auto px-2" id="food-filters">
+                <button onclick="filterFood('all')" class="food-filter-btn px-4 py-2 md:px-5 md:py-2.5 rounded-full font-bold text-xs md:text-sm bg-teal-600 text-white shadow-md transition-all duration-300 flex items-center gap-2 focus:outline-none">
+                    <i class="fa-solid fa-list"></i> Tất Cả
+                </button>
+                <button onclick="filterFood('restaurant')" class="food-filter-btn px-4 py-2 md:px-5 md:py-2.5 rounded-full font-bold text-xs md:text-sm bg-white text-gray-600 border border-gray-200 hover:bg-teal-50 hover:text-teal-700 transition-all duration-300 flex items-center gap-2 focus:outline-none">
+                    <i class="fa-solid fa-utensils text-teal-600"></i> Quán Ngon Vĩnh Hy
+                </button>
+                <button onclick="filterFood('specialty')" class="food-filter-btn px-4 py-2 md:px-5 md:py-2.5 rounded-full font-bold text-xs md:text-sm bg-white text-gray-600 border border-gray-200 hover:bg-teal-50 hover:text-teal-700 transition-all duration-300 flex items-center gap-2 focus:outline-none">
+                    <i class="fa-solid fa-shrimp text-orange-600"></i> Đặc Sản Phải Thử
+                </button>
+                <button onclick="filterFood('cafe')" class="food-filter-btn px-4 py-2 md:px-5 md:py-2.5 rounded-full font-bold text-xs md:text-sm bg-white text-gray-600 border border-gray-200 hover:bg-teal-50 hover:text-teal-700 transition-all duration-300 flex items-center gap-2 focus:outline-none">
+                    <i class="fa-solid fa-coffee text-teal-600"></i> Cafe Check-in
+                </button>
+            </div>
+            
+            <!-- Grid list of 18 items -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto" id="food-container">
+                <!-- RENDERED DYNAMICALLY BY JAVASCRIPT -->
+            </div>
+        </section>
+
+
+        <!-- ========= TAB 5: KỶ NIỆM ĐÁNG NHỚ ========= -->
+        <section id="tab5" class="tab-content hidden animate-fade-in">
+            <!-- Password Gate -->
+            <div id="mem-gate" class="memory-gate">
+                <div class="text-center max-w-sm mx-auto">
+                    <div class="w-20 h-20 bg-gradient-to-br from-pink-500 to-rose-600 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-xl">
+                        <i class="fa-solid fa-heart text-white text-3xl"></i>
+                    </div>
+                    <h2 class="text-2xl font-extrabold text-gray-800 mb-2">Kỷ Niệm Đáng Nhớ</h2>
+                    <p class="text-gray-500 text-sm mb-6">Không gian riêng tư lưu giữ những khoảnh khắc đáng trân trọng.<br>Nhập mật khẩu để xem.</p>
+                    <div class="relative mb-4">
+                        <input id="mem-pass-input" type="password" placeholder="Mật khẩu..." onkeydown="if(event.key==='Enter')checkMemPass()"
+                            class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-center font-bold text-lg focus:outline-none focus:border-rose-400 transition-colors tracking-widest">
+                        <button onclick="checkMemPass()" class="absolute right-3 top-1/2 -translate-y-1/2 text-rose-500 hover:text-rose-700 transition-colors">
+                            <i class="fa-solid fa-arrow-right-to-bracket text-xl"></i>
+                        </button>
+                    </div>
+                    <p id="mem-pass-err" class="text-red-500 text-sm hidden">Mật khẩu không đúng. Thử lại nhé!</p>
+                </div>
+            </div>
+
+            <!-- Memories Content (hidden until unlocked) -->
+            <div id="mem-content" class="hidden">
+                <!-- Header -->
+                <div class="text-center mb-10">
+                    <div class="inline-flex items-center gap-3 bg-gradient-to-r from-pink-50 to-rose-50 border border-rose-100 rounded-2xl px-6 py-3 mb-4">
+                        <i class="fa-solid fa-heart text-rose-500 text-xl"></i>
+                        <span class="font-extrabold text-rose-700 text-lg">Những Kỷ Niệm Không Thể Quên</span>
+                    </div>
+                    <p class="text-gray-500 text-sm">Lưu trữ những khoảnh khắc đẹp nhất của chuyến hành trình Vĩnh Hy.</p>
+                </div>
+
+                <!-- Album Grid -->
+                <div id="memories-album-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8"></div>
+
+                <!-- Album Detail View -->
+                <div id="mem-album-detail" class="hidden">
+                    <div class="flex items-center gap-3 mb-6">
+                        <button onclick="closeAlbumDetail()" class="flex items-center gap-2 text-teal-600 hover:text-teal-800 font-bold transition-colors text-sm bg-teal-50 hover:bg-teal-100 px-4 py-2 rounded-xl">
+                            <i class="fa-solid fa-arrow-left"></i> Quay lại Albums
+                        </button>
+                        <div id="mem-album-title" class="font-extrabold text-2xl text-gray-800"></div>
+                    </div>
+                    <div id="mem-album-desc" class="text-gray-500 text-sm mb-6"></div>
+                    <div id="mem-album-items-grid" class="memory-media-grid"></div>
+                </div>
+
+                <!-- Empty State -->
+                <div id="mem-empty-state" class="hidden text-center py-16 text-gray-400">
+                    <i class="fa-solid fa-images text-5xl mb-4 opacity-30"></i>
+                    <p class="font-bold text-lg">Chưa có kỷ niệm nào</p>
+                    <p class="text-sm mt-1">Admin có thể thêm albums và hình ảnh qua tab Admin.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========= LIGHTBOX (Global, nằm ngoài tab) ========= -->
+        <div id="lightbox-overlay" class="lightbox-overlay hidden" onclick="closeLightbox(event)">
+            <div class="lightbox-inner">
+                <button class="lightbox-close" onclick="closeLightboxBtn()"><i class="fa-solid fa-xmark"></i></button>
+                <img id="lightbox-img" src="" alt="">
+                <p id="lightbox-caption" class="lightbox-caption"></p>
+            </div>
+        </div>
+
+        <!-- ========= ADMIN MODAL (overlay toàn màn hình) ========= -->
+        <div id="admin-modal" class="fixed inset-0 z-[9990] bg-black/50 hidden" onclick="closeAdminIfBackdrop(event)">
+            <!-- Admin Login Screen -->
+            <div id="admin-login-screen" class="flex items-center justify-center h-full">
+                <div class="bg-white rounded-3xl shadow-2xl p-8 w-full max-w-sm mx-4 text-center">
+                    <div class="w-16 h-16 bg-gradient-to-br from-teal-500 to-teal-700 rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-lg">
+                        <i class="fa-solid fa-shield-halved text-white text-2xl"></i>
+                    </div>
+                    <h2 class="text-xl font-extrabold text-gray-800 mb-1">Khu Vực Admin</h2>
+                    <p class="text-gray-400 text-xs mb-5">Chỉ dành cho quản trị viên website</p>
+                    <div class="relative mb-3">
+                        <input id="admin-pass-input" type="password" placeholder="Nhập mật khẩu admin..." onkeydown="if(event.key==='Enter')checkAdminPass()"
+                            class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-center font-bold focus:outline-none focus:border-teal-400 transition-colors tracking-widest">
+                    </div>
+                    <p id="admin-pass-err" class="text-red-500 text-xs mb-3 hidden">Mật khẩu không chính xác!</p>
+                    <div class="flex gap-2">
+                        <button onclick="checkAdminPass()" class="flex-1 bg-teal-600 hover:bg-teal-700 text-white font-bold py-2.5 rounded-xl transition-colors">
+                            <i class="fa-solid fa-unlock mr-1.5"></i>Đăng Nhập
+                        </button>
+                        <button onclick="closeAdminModal()" class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold py-2.5 rounded-xl transition-colors">Hủy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Admin Panel (sau khi đăng nhập) -->
+            <div id="admin-panel" class="hidden h-full flex flex-col bg-white">
+                <!-- Admin Top Bar -->
+                <div class="flex items-center justify-between px-5 py-3 bg-gray-900 text-white border-b border-gray-800 shrink-0">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 bg-teal-600 rounded-lg flex items-center justify-center">
+                            <i class="fa-solid fa-shield-halved text-white text-sm"></i>
+                        </div>
+                        <span class="font-extrabold text-sm">Admin Dashboard — Vĩnh Hy</span>
+                        <span class="bg-teal-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">Đang đăng nhập</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="exportCMSData()" class="text-gray-400 hover:text-teal-400 text-xs flex items-center gap-1 transition-colors">
+                            <i class="fa-solid fa-download"></i> Export JSON
+                        </button>
+                        <label class="text-gray-400 hover:text-teal-400 text-xs flex items-center gap-1 transition-colors cursor-pointer">
+                            <i class="fa-solid fa-upload"></i> Import JSON
+                            <input type="file" accept=".json" class="hidden" onchange="importCMSData(event)">
+                        </label>
+                        <button onclick="logoutAdmin()" class="ml-2 text-gray-400 hover:text-red-400 text-xs flex items-center gap-1 transition-colors">
+                            <i class="fa-solid fa-right-from-bracket"></i> Đăng xuất
+                        </button>
+                        <button onclick="closeAdminModal()" class="ml-2 text-gray-400 hover:text-white w-7 h-7 flex items-center justify-center rounded-full hover:bg-gray-700 transition-colors">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Admin Body -->
+                <div class="admin-panel-container flex-1 min-h-0 overflow-hidden">
+                    <!-- Sidebar -->
+                    <div class="admin-sidebar hidden md:flex">
+                        <div class="text-xs font-bold text-gray-500 uppercase tracking-widest px-2 mb-2 mt-1">Quản Lý Nội Dung</div>
+                        <div class="admin-sidebar-item admin-active" onclick="showAdminSection('dest')">
+                            <i class="fa-solid fa-location-dot"></i> Địa Điểm
+                        </div>
+                        <div class="admin-sidebar-item" onclick="showAdminSection('hotel')">
+                            <i class="fa-solid fa-hotel"></i> Lưu Trú
+                        </div>
+                        <div class="admin-sidebar-item" onclick="showAdminSection('food')">
+                            <i class="fa-solid fa-utensils"></i> Ẩm Thực
+                        </div>
+                        <div class="admin-sidebar-item" onclick="showAdminSection('mem')">
+                            <i class="fa-solid fa-images"></i> Kỷ Niệm
+                        </div>
+                        <div class="text-xs font-bold text-gray-500 uppercase tracking-widest px-2 mb-2 mt-4">Hệ Thống</div>
+                        <div class="admin-sidebar-item" onclick="showAdminSection('settings')">
+                            <i class="fa-solid fa-sliders"></i> Cài Đặt
+                        </div>
+                    </div>
+
+                    <!-- Mobile Tab Selector -->
+                    <div class="md:hidden flex overflow-x-auto gap-1 bg-gray-900 px-3 py-2 border-b border-gray-800 shrink-0" style="position:absolute;top:53px;left:0;right:0;z-index:1;">
+                        <button onclick="showAdminSection('dest')" class="admin-mob-btn text-white bg-teal-600 px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap">📍 Địa Điểm</button>
+                        <button onclick="showAdminSection('hotel')" class="admin-mob-btn text-gray-400 px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap">🏨 Lưu Trú</button>
+                        <button onclick="showAdminSection('food')" class="admin-mob-btn text-gray-400 px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap">🍽 Ẩm Thực</button>
+                        <button onclick="showAdminSection('mem')" class="admin-mob-btn text-gray-400 px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap">📸 Kỷ Niệm</button>
+                        <button onclick="showAdminSection('settings')" class="admin-mob-btn text-gray-400 px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap">⚙️ Cài Đặt</button>
+                    </div>
+
+                    <!-- Main Content Area -->
+                    <div class="admin-main md:mt-0 mt-12">
+                        <!-- ---- SECTION: DESTINATIONS ---- -->
+                        <div id="admin-sec-dest" class="admin-section admin-section-visible">
+                            <div class="flex items-center justify-between mb-5">
+                                <div>
+                                    <h2 class="text-xl font-extrabold text-gray-800">📍 Quản Lý Địa Điểm</h2>
+                                    <p class="text-gray-400 text-xs mt-0.5">Thêm/sửa/xóa các địa điểm hiển thị ở Tab 1</p>
+                                </div>
+                                <button onclick="showDestForm(null)" class="admin-btn-primary">
+                                    <i class="fa-solid fa-plus"></i> Thêm Mới
+                                </button>
+                            </div>
+
+                            <!-- Add/Edit Form -->
+                            <div id="dest-form-area" class="hidden mb-6 bg-white rounded-2xl border border-teal-100 p-5 shadow-sm">
+                                <h3 id="dest-form-title" class="font-extrabold text-gray-800 mb-4">Thêm Địa Điểm Mới</h3>
+                                <input type="hidden" id="dest-edit-id">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="admin-form-label">Tên địa điểm *</label>
+                                        <input id="dest-name" type="text" class="admin-form-input" placeholder="Ví dụ: Hang Rái Vĩnh Hy">
+                                    </div>
+                                    <div>
+                                        <label class="admin-form-label">Danh mục *</label>
+                                        <select id="dest-category" class="admin-form-input">
+                                            <option value="beach">🏖 Bãi Tắm & Sinh Thái Biển</option>
+                                            <option value="dive">🤿 Lặn Biển & Hải Đảo</option>
+                                            <option value="bay">⚓ Vịnh Biển & Trải Nghiệm</option>
+                                            <option value="nature">🧭 Khám Phá Hoang Sơ</option>
+                                            <option value="nature">🌿 Thiên Nhiên & Rừng</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="admin-form-label">Đánh giá (0-5)</label>
+                                        <input id="dest-rating" type="number" step="0.1" min="0" max="5" class="admin-form-input" placeholder="4.5">
+                                    </div>
+                                    <div>
+                                        <label class="admin-form-label">Link Google Maps</label>
+                                        <input id="dest-maps" type="url" class="admin-form-input" placeholder="https://maps.google.com/...">
+                                    </div>
+                                    <div>
+                                        <label class="admin-form-label">Link ngoài (tùy chọn) — nhấn vào card mở link này</label>
+                                        <input id="dest-link" type="url" class="admin-form-input" placeholder="https://...">
+                                    </div>
+                                    <div></div>
+                                    <div class="md:col-span-2">
+                                        <label class="admin-form-label">Mô tả ngắn *</label>
+                                        <input id="dest-desc-short" type="text" class="admin-form-input" placeholder="Mô tả 1 dòng ngắn gọn hiển thị ở card">
+                                    </div>
+                                    <div class="md:col-span-2">
+                                        <label class="admin-form-label">Mô tả chi tiết</label>
+                                        <textarea id="dest-desc-long" class="admin-form-input admin-form-textarea" placeholder="Giới thiệu đầy đủ..."></textarea>
+                                    </div>
+                                    <div class="md:col-span-2">
+                                        <label class="admin-form-label">Trải nghiệm nổi bật (mỗi điểm 1 dòng)</label>
+                                        <textarea id="dest-highlights" class="admin-form-input admin-form-textarea" placeholder="Tắm biển nước trong vắt&#10;Ngắm máy bay hạ cánh&#10;Đi bộ sang Bãi Suối Nóng"></textarea>
+                                    </div>
+                                    <div class="md:col-span-2">
+                                        <label class="admin-form-label">Thời điểm lý tưởng</label>
+                                        <input id="dest-best-time" type="text" class="admin-form-input" placeholder="Buổi sáng sớm, tránh mùa mưa tháng 7-9">
+                                    </div>
+                                    <div>
+                                        <label class="admin-form-label">Ảnh chính <span class="github-push-badge"><i class="fa-brands fa-github"></i> Auto push GitHub</span></label>
+                                        <input id="dest-img1-file" type="file" accept="image/*" onchange="previewImage(this,'dest-img1-preview')" class="admin-form-input">
+                                        <img id="dest-img1-preview" src="" alt="" class="mt-2 rounded-xl hidden" style="max-height:120px;object-fit:cover;width:100%;">
+                                        <input id="dest-img1-url" type="url" class="admin-form-input mt-2" placeholder="Hoặc dán URL ảnh trực tiếp">
+                                    </div>
+                                    <div>
+                                        <label class="admin-form-label">Ảnh phụ (tùy chọn) <span class="github-push-badge"><i class="fa-brands fa-github"></i> Auto push GitHub</span></label>
+                                        <input id="dest-img2-file" type="file" accept="image/*" onchange="previewImage(this,'dest-img2-preview')" class="admin-form-input">
+                                        <img id="dest-img2-preview" src="" alt="" class="mt-2 rounded-xl hidden" style="max-height:120px;object-fit:cover;width:100%;">
+                                        <input id="dest-img2-url" type="url" class="admin-form-input mt-2" placeholder="Hoặc dán URL ảnh trực tiếp">
+                                    </div>
+                                    <div class="md:col-span-2">
+                                        <div id="dest-github-status" class="hidden text-xs text-teal-700 bg-teal-50 border border-teal-100 rounded-lg px-3 py-2 mb-3">
+                                            <i class="fa-solid fa-circle-notch fa-spin mr-1"></i> Đang đẩy ảnh lên GitHub...
+                                        </div>
+                                        <div class="flex gap-2">
+                                            <button onclick="saveDestination()" class="admin-btn-primary">
+                                                <i class="fa-solid fa-floppy-disk"></i> Lưu & Cập Nhật
+                                            </button>
+                                            <button onclick="hideDestForm()" class="admin-btn-secondary">Hủy</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- List of Admin-added Destinations -->
+                            <div id="admin-dest-list"></div>
+
+                            <!-- Note about existing items -->
+                            <div class="mt-6 bg-blue-50 border border-blue-100 rounded-xl p-4 text-xs text-blue-700">
+                                <i class="fa-solid fa-circle-info mr-1"></i>
+                                <strong>Lưu ý:</strong> Các địa điểm bạn thêm qua đây sẽ xuất hiện ở đầu danh sách Tab 1. 
+                                Các địa điểm gốc được hardcode vẫn hiển thị bên dưới. Dữ liệu lưu tại localStorage trình duyệt này.
+                            </div>
+                        </div>
+
+                        <!-- ---- SECTION: HOTELS ---- -->
+                        <div id="admin-sec-hotel" class="admin-section">
+                            <div class="flex items-center justify-between mb-5">
+                                <div>
+                                    <h2 class="text-xl font-extrabold text-gray-800">🏨 Quản Lý Lưu Trú</h2>
+                                    <p class="text-gray-400 text-xs mt-0.5">Thêm/sửa/xóa khách sạn hiển thị ở Tab 3</p>
+                                </div>
+                                <button onclick="showHotelForm(null)" class="admin-btn-primary">
+                                    <i class="fa-solid fa-plus"></i> Thêm Mới
+                                </button>
+                            </div>
+
+                            <div id="hotel-form-area" class="hidden mb-6 bg-white rounded-2xl border border-teal-100 p-5 shadow-sm">
+                                <h3 id="hotel-form-title" class="font-extrabold text-gray-800 mb-4">Thêm Khách Sạn Mới</h3>
+                                <input type="hidden" id="hotel-edit-id">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="admin-form-label">Tên khách sạn/resort *</label>
+                                        <input id="hotel-name" type="text" class="admin-form-input" placeholder="Tên nơi lưu trú">
+                                    </div>
+                                    <div>
+                                        <label class="admin-form-label">Số sao</label>
+                                        <select id="hotel-stars" class="admin-form-input">
+                                            <option value="5">⭐⭐⭐⭐⭐ (5 sao)</option>
+                                            <option value="4">⭐⭐⭐⭐ (4 sao)</option>
+                                            <option value="3" selected>⭐⭐⭐ (3 sao)</option>
+                                            <option value="2">⭐⭐ (2 sao)</option>
+                                            <option value="Boutique">🏡 Boutique</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="admin-form-label">Khoảng giá/đêm</label>
+                                        <input id="hotel-price" type="text" class="admin-form-input" placeholder="~ 1.5M - 2.5M VNĐ">
+                                    </div>
+                                    <div>
+                                        <label class="admin-form-label">Địa chỉ</label>
+                                        <input id="hotel-address" type="text" class="admin-form-input" placeholder="Số nhà, đường, khu">
+                                    </div>
+                                    <div>
+                                        <label class="admin-form-label">Link Google Maps</label>
+                                        <input id="hotel-maps" type="url" class="admin-form-input" placeholder="https://maps.google.com/...">
+                                    </div>
+                                    <div>
+                                        <label class="admin-form-label">Link đặt phòng (Booking/Agoda...)</label>
+                                        <input id="hotel-link" type="url" class="admin-form-input" placeholder="https://booking.com/...">
+                                    </div>
+                                    <div class="md:col-span-2">
+                                        <label class="admin-form-label">Mô tả</label>
+                                        <textarea id="hotel-desc" class="admin-form-input admin-form-textarea" placeholder="Mô tả tổng quan về nơi lưu trú..."></textarea>
+                                    </div>
+                                    <div class="md:col-span-2">
+                                        <label class="admin-form-label">Ảnh thumbnail <span class="github-push-badge"><i class="fa-brands fa-github"></i> Auto push GitHub</span></label>
+                                        <input id="hotel-img-file" type="file" accept="image/*" onchange="previewImage(this,'hotel-img-preview')" class="admin-form-input">
+                                        <img id="hotel-img-preview" src="" alt="" class="mt-2 rounded-xl hidden" style="max-height:100px;object-fit:cover;width:100%;">
+                                        <input id="hotel-img-url" type="url" class="admin-form-input mt-2" placeholder="Hoặc dán URL ảnh">
+                                    </div>
+                                    <div class="md:col-span-2">
+                                        <div id="hotel-github-status" class="hidden text-xs text-teal-700 bg-teal-50 border border-teal-100 rounded-lg px-3 py-2 mb-3">
+                                            <i class="fa-solid fa-circle-notch fa-spin mr-1"></i> Đang đẩy ảnh lên GitHub...
+                                        </div>
+                                        <div class="flex gap-2">
+                                            <button onclick="saveHotel()" class="admin-btn-primary">
+                                                <i class="fa-solid fa-floppy-disk"></i> Lưu & Cập Nhật
+                                            </button>
+                                            <button onclick="hideHotelForm()" class="admin-btn-secondary">Hủy</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="admin-hotel-list"></div>
+                        </div>
+
+                        <!-- ---- SECTION: FOOD ---- -->
+                        <div id="admin-sec-food" class="admin-section">
+                            <div class="flex items-center justify-between mb-5">
+                                <div>
+                                    <h2 class="text-xl font-extrabold text-gray-800">🍽️ Quản Lý Ẩm Thực</h2>
+                                    <p class="text-gray-400 text-xs mt-0.5">Thêm/sửa/xóa món ăn & quán hiển thị ở Tab 4</p>
+                                </div>
+                                <button onclick="showFoodForm(null)" class="admin-btn-primary">
+                                    <i class="fa-solid fa-plus"></i> Thêm Mới
+                                </button>
+                            </div>
+
+                            <div id="food-form-area" class="hidden mb-6 bg-white rounded-2xl border border-teal-100 p-5 shadow-sm">
+                                <h3 id="food-form-title" class="font-extrabold text-gray-800 mb-4">Thêm Món Ăn / Quán Mới</h3>
+                                <input type="hidden" id="food-edit-id">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="admin-form-label">Tên món ăn / quán *</label>
+                                        <input id="food-name" type="text" class="admin-form-input" placeholder="Tên món hoặc nhà hàng">
+                                    </div>
+                                    <div>
+                                        <label class="admin-form-label">Danh mục *</label>
+                                        <select id="food-category" class="admin-form-input">
+                                            <option value="seafood">🦞 Hải Sản</option>
+                                            <option value="specialty">🌟 Đặc Sản Phải Thử</option>
+                                            <option value="cafe">☕ Cafe & Đồ Uống</option>
+                                            <option value="restaurant">🍽 Nhà Hàng</option>
+                                            <option value="street">🛵 Ăn Vặt & Đường Phố</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="admin-form-label">Địa chỉ</label>
+                                        <input id="food-address" type="text" class="admin-form-input" placeholder="Địa chỉ quán">
+                                    </div>
+                                    <div>
+                                        <label class="admin-form-label">Link Google Maps</label>
+                                        <input id="food-maps" type="url" class="admin-form-input" placeholder="https://maps.google.com/...">
+                                    </div>
+                                    <div>
+                                        <label class="admin-form-label">Link review / đặt bàn (tùy chọn)</label>
+                                        <input id="food-link" type="url" class="admin-form-input" placeholder="https://...">
+                                    </div>
+                                    <div></div>
+                                    <div class="md:col-span-2">
+                                        <label class="admin-form-label">Mô tả / Đặc trưng</label>
+                                        <textarea id="food-desc" class="admin-form-input admin-form-textarea" placeholder="Mô tả món ăn, hương vị, nét đặc trưng..."></textarea>
+                                    </div>
+                                    <div class="md:col-span-2">
+                                        <label class="admin-form-label">Ảnh món ăn <span class="github-push-badge"><i class="fa-brands fa-github"></i> Auto push GitHub</span></label>
+                                        <input id="food-img-file" type="file" accept="image/*" onchange="previewImage(this,'food-img-preview')" class="admin-form-input">
+                                        <img id="food-img-preview" src="" alt="" class="mt-2 rounded-xl hidden" style="max-height:100px;object-fit:cover;width:100%;">
+                                        <input id="food-img-url" type="url" class="admin-form-input mt-2" placeholder="Hoặc dán URL ảnh">
+                                    </div>
+                                    <div class="md:col-span-2">
+                                        <div id="food-github-status" class="hidden text-xs text-teal-700 bg-teal-50 border border-teal-100 rounded-lg px-3 py-2 mb-3"></div>
+                                        <div class="flex gap-2">
+                                            <button onclick="saveFood()" class="admin-btn-primary">
+                                                <i class="fa-solid fa-floppy-disk"></i> Lưu & Cập Nhật
+                                            </button>
+                                            <button onclick="hideFoodForm()" class="admin-btn-secondary">Hủy</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="admin-food-list"></div>
+                        </div>
+
+                        <!-- ---- SECTION: MEMORIES ADMIN ---- -->
+                        <div id="admin-sec-mem" class="admin-section">
+                            <div class="flex items-center justify-between mb-5">
+                                <div>
+                                    <h2 class="text-xl font-extrabold text-gray-800">📸 Quản Lý Kỷ Niệm</h2>
+                                    <p class="text-gray-400 text-xs mt-0.5">Tạo album và thêm ảnh/video cho Tab Kỷ Niệm</p>
+                                </div>
+                                <button onclick="showAlbumForm()" class="admin-btn-primary">
+                                    <i class="fa-solid fa-plus"></i> Tạo Album
+                                </button>
+                            </div>
+
+                            <!-- Album Create Form -->
+                            <div id="album-form-area" class="hidden mb-6 bg-white rounded-2xl border border-pink-100 p-5 shadow-sm">
+                                <h3 class="font-extrabold text-gray-800 mb-4">Tạo Album Kỷ Niệm Mới</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="admin-form-label">Tên album *</label>
+                                        <input id="album-name" type="text" class="admin-form-input" placeholder="Ví dụ: Ngày đầu tiên ở Vĩnh Hy">
+                                    </div>
+                                    <div>
+                                        <label class="admin-form-label">Emoji đại diện</label>
+                                        <input id="album-emoji" type="text" class="admin-form-input" placeholder="🌊" maxlength="4">
+                                    </div>
+                                    <div class="md:col-span-2">
+                                        <label class="admin-form-label">Mô tả album</label>
+                                        <input id="album-desc" type="text" class="admin-form-input" placeholder="Mô tả ngắn về album này">
+                                    </div>
+                                    <div class="md:col-span-2">
+                                        <label class="admin-form-label">Ảnh bìa album (URL hoặc link Drive chia sẻ)</label>
+                                        <input id="album-cover" type="url" class="admin-form-input" placeholder="https://drive.google.com/... hoặc https://...">
+                                    </div>
+                                    <div class="md:col-span-2 flex gap-2">
+                                        <button onclick="createAlbum()" class="admin-btn-primary"><i class="fa-solid fa-plus"></i> Tạo Album</button>
+                                        <button onclick="hideAlbumForm()" class="admin-btn-secondary">Hủy</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Albums Manager -->
+                            <div id="admin-mem-list"></div>
+                        </div>
+
+                        <!-- ---- SECTION: SETTINGS ---- -->
+                        <div id="admin-sec-settings" class="admin-section">
+                            <h2 class="text-xl font-extrabold text-gray-800 mb-2">⚙️ Cài Đặt Hệ Thống</h2>
+                            <p class="text-gray-400 text-xs mb-6">Cấu hình GitHub API và bảo mật</p>
+
+                            <!-- GitHub Config -->
+                            <div class="bg-white rounded-2xl border border-gray-200 p-5 mb-4 shadow-sm">
+                                <div class="flex items-center gap-2 mb-4">
+                                    <div class="w-8 h-8 bg-gray-900 rounded-lg flex items-center justify-center">
+                                        <i class="fa-brands fa-github text-white text-sm"></i>
+                                    </div>
+                                    <h3 class="font-extrabold text-gray-800">GitHub Integration</h3>
+                                </div>
+                                <div class="bg-amber-50 border border-amber-100 rounded-xl p-3 mb-4 text-xs text-amber-700">
+                                    <i class="fa-solid fa-triangle-exclamation mr-1"></i>
+                                    <strong>Cảnh báo bảo mật:</strong> Token được lưu trong localStorage trình duyệt. Chỉ sử dụng Fine-grained token với quyền tối thiểu (chỉ write vào repo này).
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="md:col-span-2">
+                                        <label class="admin-form-label">GitHub Personal Access Token</label>
+                                        <input id="gh-token" type="password" class="admin-form-input" placeholder="ghp_xxxxxxxxxxxx">
+                                    </div>
+                                    <div>
+                                        <label class="admin-form-label">Repository (owner/repo)</label>
+                                        <input id="gh-repo" type="text" class="admin-form-input" value="LarryVan-engin/Some_stuff_case" placeholder="owner/repo-name">
+                                    </div>
+                                    <div>
+                                        <label class="admin-form-label">Branch</label>
+                                        <input id="gh-branch" type="text" class="admin-form-input" value="main" placeholder="main">
+                                    </div>
+                                    <div class="md:col-span-2">
+                                        <label class="admin-form-label">Đường dẫn thư mục ảnh</label>
+                                        <input id="gh-path" type="text" class="admin-form-input" value="condao/images/" placeholder="condao/images/">
+                                    </div>
+                                    <div class="md:col-span-2">
+                                        <button onclick="saveGithubConfig()" class="admin-btn-primary">
+                                            <i class="fa-solid fa-floppy-disk"></i> Lưu Cài Đặt GitHub
+                                        </button>
+                                        <button onclick="testGithubConfig()" class="admin-btn-secondary ml-2">
+                                            <i class="fa-solid fa-plug"></i> Test kết nối
+                                        </button>
+                                    </div>
+                                    <div id="gh-test-result" class="md:col-span-2 text-xs rounded-lg px-3 py-2 hidden"></div>
+                                </div>
+                            </div>
+
+                            <!-- Memory Password -->
+                            <div class="bg-white rounded-2xl border border-gray-200 p-5 shadow-sm">
+                                <div class="flex items-center gap-2 mb-4">
+                                    <div class="w-8 h-8 bg-rose-500 rounded-lg flex items-center justify-center">
+                                        <i class="fa-solid fa-heart text-white text-sm"></i>
+                                    </div>
+                                    <h3 class="font-extrabold text-gray-800">Mật Khẩu Tab Kỷ Niệm</h3>
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="admin-form-label">Mật khẩu mới</label>
+                                        <input id="new-mem-pass" type="password" class="admin-form-input" placeholder="Nhập mật khẩu mới">
+                                    </div>
+                                    <div>
+                                        <label class="admin-form-label">Xác nhận mật khẩu</label>
+                                        <input id="confirm-mem-pass" type="password" class="admin-form-input" placeholder="Nhập lại mật khẩu">
+                                    </div>
+                                    <div class="md:col-span-2">
+                                        <button onclick="changeMemoryPass()" class="admin-btn-primary">
+                                            <i class="fa-solid fa-key"></i> Đổi Mật Khẩu
+                                        </button>
+                                    </div>
+                                    <div id="mem-pass-change-result" class="md:col-span-2 text-xs rounded-lg px-3 py-2 hidden"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- end admin-main -->
+                </div><!-- end admin-panel-container -->
+            </div><!-- end admin-panel -->
+        </div><!-- end admin-modal -->
+
+    </main>
+
+
+    <!-- ===== SITE FOOTER ===== -->
+    <footer class="site-footer">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-10">
+                <!-- Col 1: Brand -->
+                <div>
+                    <div class="footer-brand-icon">
+                        <i class="fa-solid fa-umbrella-beach text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-extrabold text-white mb-2">Khám Phá Vĩnh Hy</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                        Trang web cá nhân ghi lại hành trình khám phá Vĩnh Hy — tuyệt tác vịnh biển hoang sơ, rạn san hô cổ và rặng núi Chúa hùng vĩ.
+                    </p>
+                    <div class="flex items-center gap-2 mt-4">
+                        <a href="https://github.com/LarryVan-engin" target="_blank" class="footer-social-btn" title="GitHub">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                        <a href="#" class="footer-social-btn" title="Facebook">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="footer-social-btn" title="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Quick Links -->
+                <div>
+                    <h4 class="text-sm font-extrabold text-white/90 uppercase tracking-widest mb-4">Điều Hướng Nhanh</h4>
+                    <nav class="space-y-1">
+                        <a onclick="switchTab('tab1')" href="#" class="footer-link"><i class="fa-solid fa-camera-retro mr-2 text-teal-400 text-xs"></i>Khám Phá Địa Điểm</a>
+                        <a onclick="switchTab('tab2')" href="#" class="footer-link"><i class="fa-solid fa-map-location-dot mr-2 text-teal-400 text-xs"></i>Lịch Trình 4N3Đ</a>
+                        <a onclick="switchTab('tab3')" href="#" class="footer-link"><i class="fa-solid fa-plane-departure mr-2 text-teal-400 text-xs"></i>Kênh Di Chuyển & Lưu Trú</a>
+                        <a onclick="switchTab('tab4')" href="#" class="footer-link"><i class="fa-solid fa-utensils mr-2 text-teal-400 text-xs"></i>Ẩm Thực & Cafe</a>
+                        <a onclick="switchTab('tab5')" href="#" class="footer-link"><i class="fa-solid fa-heart mr-2 text-rose-400 text-xs"></i>Kỷ Niệm Đáng Nhớ</a>
+                    </nav>
+                </div>
+
+                <!-- Col 3: Author Info -->
+                <div>
+                    <h4 class="text-sm font-extrabold text-white/90 uppercase tracking-widest mb-4">Về Tác Giả</h4>
+                    <div class="flex items-start gap-3 mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-teal-400 to-teal-700 flex items-center justify-center shrink-0 shadow-lg">
+                            <i class="fa-solid fa-user text-white text-lg"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold text-white text-sm">LarryVan</p>
+                            <p class="text-gray-400 text-xs leading-relaxed mt-0.5">
+                                Lữ khách yêu thiên nhiên, nhiếp ảnh và những hành trình khám phá đảo ngọc hoang sơ.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="space-y-2 text-xs text-gray-500">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-map-marker-alt text-teal-500"></i>
+                            <span>Việt Nam</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-brands fa-github text-teal-500"></i>
+                            <a href="https://github.com/LarryVan-engin/Some_stuff_case" target="_blank" class="text-teal-400 hover:text-teal-300 transition-colors">LarryVan-engin/Some_stuff_case</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="max-w-6xl mx-auto px-4">
+                <p>© 2026 <strong class="text-teal-400">LarryVan</strong>. All rights reserved. Made with <i class="fa-solid fa-heart text-rose-400 mx-0.5"></i> for Vĩnh Hy.</p>
+                <p class="mt-1 text-[11px] opacity-60">Trang web cá nhân, phi thương mại. Hình ảnh thuộc về chủ sở hữu hoặc nguồn Wikipedia Commons.</p>
+                <button onclick="openAdminPanel()" class="mt-3 inline-flex items-center gap-1.5 text-[11px] text-white/25 hover:text-white/60 transition-colors duration-300 group">
+                    <i class="fa-solid fa-shield-halved group-hover:text-teal-400 transition-colors"></i>
+                    <span>Quản trị viên</span>
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+// ============================================================
+// DEFAULT CONTENT DATABASE (MIGRATED TO LOCALSTORAGE)
+// ============================================================
+const DEFAULT_DESTINATIONS = [
+    {
+        "id": "vinhhy_dest_1",
+        "name": "Vịnh Vĩnh Hy",
+        "category": "dive",
+        "rating": "4.8",
+        "img1": "https://images.unsplash.com/photo-1584285406087-0b19001bfa54?w=800&q=80",
+        "img2": "https://images.unsplash.com/photo-1584285406087-0b19001bfa54?w=800&q=80",
+        "tags": [
+            "Vịnh_biển_đẹp",
+            "Tàu_đáy_kính",
+            "Ngắm_san_hô"
+        ],
+        "descShort": "Một trong 4 vịnh biển hoang sơ, thơ mộng nhất Việt Nam nép mình bên Núi Chúa tráng lệ.",
+        "descLong": "Trải nghiệm đi tàu đáy kính chiêm ngưỡng rạn san hô rực rỡ sắc màu sâu dưới dòng nước trong xanh lấp lánh như pha lê.",
+        "highlights": [
+            "Tàu đáy kính ngắm san hô đa dạng",
+            "Tắm mát bơi lội vịnh biển yên bình hoang sơ",
+            "Dùng bữa bè nổi hải sản tuyệt cú mèo"
+        ],
+        "bestTime": "Nên ghé vịnh đẹp nhất từ tháng 3 đến tháng 9 trời êm sóng lặng.",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Vịnh+Vĩnh+Hy+Ninh+Thuận",
+        "linkUrl": "",
+        "isDefault": true
+    },
+    {
+        "id": "vinhhy_dest_2",
+        "name": "Hang Rái",
+        "category": "nature",
+        "rating": "4.6",
+        "img1": "https://images.unsplash.com/photo-1559592413-7cea4ee48083?w=800&q=80",
+        "img2": "https://images.unsplash.com/photo-1559592413-7cea4ee48083?w=800&q=80",
+        "tags": [
+            "Thác_trên_biển",
+            "Bãi_đá_cổ",
+            "Chụp_bình_minh"
+        ],
+        "descShort": "Tuyệt tác tự nhiên bãi rạn san hô cổ nghìn năm tạo thành thác nước đổ tràn trên đại dương kỳ bí.",
+        "descLong": "Nơi sóng xô xối xả vào bãi rạn đá cổ phẳng mịn như lòng chảo tạo nên dòng nước tràn trề kỳ ảo ngỡ ngập chốn tiên cảnh.",
+        "highlights": [
+            "Đón bình minh nhuộm hồng thác biển rực rỡ",
+            "Chụp hình bãi rạn đá vôi cổ khổng lồ",
+            "Check-in cầu gỗ ven vách đá tuyệt mỹ"
+        ],
+        "bestTime": "Khoảng 5h15 sáng đón hoàng kim bình minh dát vàng sóng vỡ kì diệu.",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hang+Rái+Ninh+Thuận",
+        "linkUrl": "",
+        "isDefault": true
+    },
+    {
+        "id": "vinhhy_dest_3",
+        "name": "Đảo Bình Hưng",
+        "category": "nature",
+        "rating": "4.7",
+        "img1": "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80",
+        "img2": "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80",
+        "tags": [
+            "Bãi_nước_ngọt",
+            "Đảo_tôm_hùm",
+            "Trong_vắt"
+        ],
+        "descShort": "Đảo nhỏ xinh đẹp vịnh Cam Ranh nổi tiếng với dòng nước biển xanh trong veo thấu đáy mát lành.",
+        "descLong": "Thả mình bơi lội bãi Nước Ngọt cát trắng mịn như nhung hoang sơ, thưởng thức tôm hùm béo ngậy nuôi lồng ngay tại bè nổi.",
+        "highlights": [
+            "Bơi lội bãi Nước Ngọt trong vắt thấu đáy",
+            "Ăn tôm hùm nướng phô mai béo ngậy ngọt ngào",
+            "Ngắm ngọn hải đăng Hòn Chút bao la"
+        ],
+        "bestTime": "Mùa hè lộng gió biển êm mát tha hồ tắm mát đảo nhỏ.",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Đảo+Bình+Hưng",
+        "linkUrl": "",
+        "isDefault": true
+    },
+    {
+        "id": "vinhhy_dest_4",
+        "name": "Vườn Nho Thái An",
+        "category": "nature",
+        "rating": "4.5",
+        "img1": "https://images.unsplash.com/photo-1549692520-acc6669e2f0c?w=800&q=80",
+        "img2": "https://images.unsplash.com/photo-1549692520-acc6669e2f0c?w=800&q=80",
+        "tags": [
+            "Hái_nho",
+            "Đặc_sản_Ninh_Thuận",
+            "Mật_nho"
+        ],
+        "descShort": "Vườn nho trĩu quả xanh đỏ sậm rợp bóng mát, thỏa sức tự tay cắt nho hái quả ngọt bùi.",
+        "descLong": "Tham quan, nếm thử nho tươi ngọt mọng nước cùng siro mật nho, rượu nho lên men tự nhiên đặc sản Ninh Thuận lừng danh.",
+        "highlights": [
+            "Tự tay cắt nho mọng chín quả ngọt lịm",
+            "Thưởng thức ly mật nho mát ngọt thanh khiết",
+            "Mua đặc sản nho tỏi làm quà ý nghĩa"
+        ],
+        "bestTime": "Nên đi ban ngày đón bóng mát rợp quả xinh xắn.",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Vườn+Nho+Thái+An",
+        "linkUrl": "",
+        "isDefault": true
+    },
+    {
+        "id": "vinhhy_dest_5",
+        "name": "Suối Lồ Ồ",
+        "category": "nature",
+        "rating": "4.4",
+        "img1": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
+        "img2": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
+        "tags": [
+            "Suối_trong_rừng",
+            "Cầu_treo",
+            "Hoang_sơ"
+        ],
+        "descShort": "Dòng suối mát lạnh ngọt lành len lỏi qua đại ngàn Núi Chúa hùng vĩ lộng gió rừng xanh.",
+        "descLong": "Trải nghiệm đi cầu treo lắc lư mạo hiểm, lội dòng suối trong vắt ngâm chân sảng khoái xua đi cái nóng gió biển oi bức cực kỳ thư thái.",
+        "highlights": [
+            "Trekking lội suối trong rừng mát lạnh sâu lắng",
+            "Check-in chiếc cầu treo đung đưa kịch tính",
+            "Khám phá bản làng Raglai hoang sơ"
+        ],
+        "bestTime": "Nên đi vào khoảng trưa mát mẻ bóng cây che lộng lộng gió ngàn.",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Suối+Lồ+Ồ+Vĩnh+Hy",
+        "linkUrl": "",
+        "isDefault": true
+    }
+];
+
+const DEFAULT_HOTELS = [
+    {
+        "id": "vinhhy_hotel_1",
+        "name": "Amanoi Resort",
+        "stars": "6",
+        "price": "Từ 24.000.000 VNĐ",
+        "address": "Vịnh Vĩnh Hy, Vĩnh Hải, Ninh Hải, Ninh Thuận",
+        "desc": "Khu nghỉ dưỡng 6 sao siêu cao cấp đầu tiên Việt Nam ẩn mình giữa Núi Chúa tráng lệ view ôm trọn vịnh Vĩnh Hy lấp lánh.",
+        "imgUrl": "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Amanoi+Resort+Vinh+Hy",
+        "linkUrl": "",
+        "isDefault": true
+    },
+    {
+        "id": "vinhhy_hotel_2",
+        "name": "Vĩnh Hy Resort",
+        "stars": "3",
+        "price": "Từ 800.000 VNĐ",
+        "address": "Vịnh Vĩnh Hy, Vĩnh Hải, Ninh Hải, Ninh Thuận",
+        "desc": "Resort nằm ngay sát bờ vịnh, tiện nghi ấm cúng, hồ bơi lớn lộng gió ôm biển bao la mát mẻ.",
+        "imgUrl": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Vịnh+Vĩnh+Hy+Resort",
+        "linkUrl": "",
+        "isDefault": true
+    }
+];
+
+const DEFAULT_FOOD = [
+    {
+        "id": "vinhhy_food_1",
+        "name": "Tôm hùm Bình Hưng",
+        "category": "specialty",
+        "address": "Đảo Bình Hưng, Vịnh Cam Ranh",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tôm+hùm+Bình+Hưng",
+        "linkUrl": "",
+        "desc": "Tôm hùm nuôi tại lồng nước sạch sâu thẳm, thịt tôm dai ngọt ngọt ngào nướng cùng phô mai béo ngậy thơm lừng.",
+        "imgUrl": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80",
+        "isDefault": true
+    },
+    {
+        "id": "vinhhy_food_2",
+        "name": "Hải sản Vịnh Vĩnh Hy",
+        "category": "seafood",
+        "address": "Cảng vịnh Vĩnh Hy, Ninh Thuận",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hải+sản+Vĩnh+Hy",
+        "linkUrl": "",
+        "desc": "Mực lá dày giòn sần sật ngọt thịt, nhum biển nướng thơm phức bùi ngậy vừa đánh bắt khơi lên.",
+        "imgUrl": "https://images.unsplash.com/photo-1548943487-a2e4b43b5930?w=800&q=80",
+        "isDefault": true
+    },
+    {
+        "id": "vinhhy_food_3",
+        "name": "Gỏi cá mai Ninh Thuận",
+        "category": "specialty",
+        "address": "Các quán dọc biển Ninh Chữ",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gỏi+cá+mai+Ninh+Thuận",
+        "linkUrl": "",
+        "desc": "Cá mai tươi ngon bóp chua thanh rắc thính gạo thơm phức cuộn bánh tráng chấm tương đậu phộng bùi béo tuyệt cú mèo.",
+        "imgUrl": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80",
+        "isDefault": true
+    },
+    {
+        "id": "vinhhy_food_4",
+        "name": "Bánh xèo Phan Rang",
+        "category": "street",
+        "address": "Bến vịnh Vĩnh Hy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bánh+xèo+Phan+Rang",
+        "linkUrl": "",
+        "desc": "Chiếc bánh xèo giòn tan nhân mực tươi rói kèm giá hẹ ăn cùng nước mắm chua ngọt hoặc nước mắm nêm đậm đà.",
+        "imgUrl": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80",
+        "isDefault": true
+    }
+];
+
+        function switchTab(tabId) {
+            // Ẩn toàn bộ nội dung tabs
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+                content.classList.remove('block');
+            });
+            // Reset style nút bấm
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('text-teal-700', 'border-teal-600');
+                btn.classList.add('text-gray-500', 'border-transparent');
+            });
+
+            // Hiển thị tab được chọn
+            const activeTab = document.getElementById(tabId);
+            activeTab.classList.remove('hidden');
+            activeTab.classList.add('block');
+            
+            // Cập nhật style nút bấm được chọn
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.classList.remove('text-gray-500', 'border-transparent');
+            activeBtn.classList.add('text-teal-700', 'border-teal-600');
+        }
+
+
+// Function to filter destinations dynamically in Tab 1
+function filterDestinations(category) {
+    // 1. Reset all filter button styles
+    document.querySelectorAll('.dest-filter-btn').forEach(btn => {
+        btn.classList.remove('bg-teal-600', 'text-white', 'shadow-md');
+        btn.classList.add('bg-white', 'text-gray-600', 'border-gray-200');
+    });
+    
+    // 2. Find and style the active filter button
+    const activeBtn = Array.from(document.querySelectorAll('.dest-filter-btn')).find(btn => {
+        return btn.getAttribute('onclick').includes(`'${category}'`);
+    });
+    if (activeBtn) {
+        activeBtn.classList.remove('bg-white', 'text-gray-600', 'border-gray-200');
+        activeBtn.classList.add('bg-teal-600', 'text-white', 'shadow-md');
+    }
+    
+    // 3. Filter the cards with elegant transitions
+    const cards = document.querySelectorAll('#destinations-container .destination-card');
+    cards.forEach(card => {
+        const cardCat = card.getAttribute('data-category');
+        if (category === 'all' || cardCat === category) {
+            card.classList.remove('hidden');
+            // Re-trigger scroll reveal transitions for filtered cards
+            setTimeout(() => {
+                card.classList.add('visible');
+            }, 50);
+        } else {
+            card.classList.add('hidden');
+        }
+    });
+}
+
+// Function to filter dining & cafe cards dynamically in Tab 4
+function filterFood(category) {
+    // 1. Reset all food filter button styles
+    document.querySelectorAll('.food-filter-btn').forEach(btn => {
+        btn.classList.remove('bg-teal-600', 'text-white', 'shadow-md');
+        btn.classList.add('bg-white', 'text-gray-600', 'border-gray-200');
+    });
+    
+    // 2. Find and style the active filter button
+    const activeBtn = Array.from(document.querySelectorAll('.food-filter-btn')).find(btn => {
+        return btn.getAttribute('onclick').includes(`'${category}'`);
+    });
+    if (activeBtn) {
+        activeBtn.classList.remove('bg-white', 'text-gray-600', 'border-gray-200');
+        activeBtn.classList.add('bg-teal-600', 'text-white', 'shadow-md');
+    }
+    
+    // 3. Filter the cards with smooth display transitions
+    const cards = document.querySelectorAll('#food-container .food-card');
+    cards.forEach(card => {
+        const cardCat = card.getAttribute('data-category');
+        if (category === 'all' || cardCat === category) {
+            card.classList.remove('hidden');
+            setTimeout(() => {
+                card.classList.add('visible');
+            }, 50);
+        } else {
+            card.classList.add('hidden');
+        }
+    });
+}
+
+
+// Function to handle toggle detail of a card
+function toggleDetail(cardElement) {
+    const detailPanel = cardElement.querySelector('.detail-panel');
+    const arrow = cardElement.querySelector('.toggle-arrow');
+    const toggleText = cardElement.querySelector('.toggle-text');
+    const isExpanded = detailPanel.classList.contains('expanded');
+    
+    if (isExpanded) {
+        detailPanel.classList.remove('expanded');
+        cardElement.classList.remove('active-card');
+        if (arrow) arrow.style.transform = 'rotate(0deg)';
+        if (toggleText) toggleText.innerHTML = 'Khám phá chi tiết <i class="fa-solid fa-arrow-right-long ml-2"></i>';
+    } else {
+        detailPanel.classList.add('expanded');
+        cardElement.classList.add('active-card');
+        if (arrow) arrow.style.transform = 'rotate(180deg)';
+        if (toggleText) toggleText.innerHTML = 'Thu gọn thông tin <i class="fa-solid fa-xmark ml-2"></i>';
+    }
+}
+
+// Scroll reveal using IntersectionObserver
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+// Observe all destination cards and timeline items
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.destination-card, .timeline-item').forEach(el => observer.observe(el));
+  populatePlannerDestinations();
+  loadPlanFromStorage();
+  renderCustomTimeline();
+});
+
+// ============================================
+// INTERACTIVE PLANNER ENGINE (JAVASCRIPT STATE)
+// ============================================
+let currentPlannerDay = 1;
+let currentCustomTimelineDay = 1;
+let customPlan = {
+    day1: [],
+    day2: [],
+    day3: [],
+    day4: []
+};
+
+// Destination metadata for beautiful visual presentation in the scheduler
+const destMeta = {
+    "Vịnh Vĩnh Hy": { icon: "fa-water", badge: "Vịnh_biển_đẹp", color: "bg-teal-50 text-teal-700 border-teal-100" },
+    "Hang Rái": { icon: "fa-mountain-sun", badge: "Thác_trên_biển", color: "bg-teal-50 text-teal-700 border-teal-100" },
+    "Đảo Bình Hưng": { icon: "fa-mountain-sun", badge: "Bãi_nước_ngọt", color: "bg-teal-50 text-teal-700 border-teal-100" },
+    "Vườn Nho Thái An": { icon: "fa-mountain-sun", badge: "Hái_nho", color: "bg-teal-50 text-teal-700 border-teal-100" },
+    "Suối Lồ Ồ": { icon: "fa-mountain-sun", badge: "Suối_trong_rừng", color: "bg-teal-50 text-teal-700 border-teal-100" },
+    "Amanoi Resort": { icon: "fa-hotel", badge: "#6★", color: "bg-blue-50 text-blue-700 border-blue-100" },
+    "Vĩnh Hy Resort": { icon: "fa-hotel", badge: "#3★", color: "bg-blue-50 text-blue-700 border-blue-100" },
+    "Tôm hùm Bình Hưng": { icon: "fa-bowl-food", badge: "#Đặc_sản", color: "bg-orange-50 text-orange-700 border-orange-100" },
+    "Hải sản Vịnh Vĩnh Hy": { icon: "fa-bowl-food", badge: "#Đặc_sản", color: "bg-orange-50 text-orange-700 border-orange-100" },
+    "Gỏi cá mai Ninh Thuận": { icon: "fa-bowl-food", badge: "#Đặc_sản", color: "bg-orange-50 text-orange-700 border-orange-100" },
+    "Bánh xèo Phan Rang": { icon: "fa-bowl-food", badge: "#Đặc_sản", color: "bg-orange-50 text-orange-700 border-orange-100" },
+    "Đường đèo ven biển": { icon: "fa-car", badge: "#Trung_chuyển", color: "bg-blue-50 text-blue-700 border-blue-100" }
+};
+
+// Switch Planner Mode Between Preset & Custom
+function switchPlannerMode(mode) {
+    const presetView = document.getElementById('planner-preset-view');
+    const customView = document.getElementById('planner-custom-view');
+    const btnPreset = document.getElementById('planner-btn-preset');
+    const btnCustom = document.getElementById('planner-btn-custom');
+    
+    if (mode === 'preset') {
+        presetView.classList.remove('hidden');
+        presetView.classList.add('block');
+        customView.classList.remove('block');
+        customView.classList.add('hidden');
+        
+        btnPreset.classList.remove('bg-gray-100', 'text-gray-500');
+        btnPreset.classList.add('bg-teal-600', 'text-white', 'shadow-md');
+        btnCustom.classList.remove('bg-teal-600', 'text-white', 'shadow-md');
+        btnCustom.classList.add('bg-gray-100', 'text-gray-500');
+    } else {
+        customView.classList.remove('hidden');
+        customView.classList.add('block');
+        presetView.classList.remove('block');
+        presetView.classList.add('hidden');
+        
+        btnCustom.classList.remove('bg-gray-100', 'text-gray-500');
+        btnCustom.classList.add('bg-teal-600', 'text-white', 'shadow-md');
+        btnPreset.classList.remove('bg-teal-600', 'text-white', 'shadow-md');
+        btnPreset.classList.add('bg-gray-100', 'text-gray-500');
+        
+        renderCustomTimeline();
+    }
+}
+
+// Select Day in Input Form
+function selectPlannerDay(dayNum) {
+    currentPlannerDay = dayNum;
+    document.querySelectorAll('.planner-day-selector').forEach(btn => {
+        btn.classList.remove('bg-teal-600', 'text-white', 'border-teal-600');
+        btn.classList.add('bg-white', 'text-gray-600', 'border-gray-200');
+    });
+    const selectedBtn = document.getElementById(`planner-day-btn-${dayNum}`);
+    selectedBtn.classList.remove('bg-white', 'text-gray-600', 'border-gray-200');
+    selectedBtn.classList.add('bg-teal-600', 'text-white', 'border-teal-600');
+}
+
+// Switch Day in Custom Timeline
+function switchCustomTimelineDay(dayNum) {
+    currentCustomTimelineDay = dayNum;
+    document.querySelectorAll('.timeline-day-btn').forEach(btn => {
+        btn.classList.remove('bg-white', 'text-teal-800', 'shadow-sm');
+        btn.classList.add('text-gray-600', 'hover:text-teal-700');
+    });
+    const selectedBtn = document.getElementById(`timeline-day-btn-${dayNum}`);
+    selectedBtn.classList.remove('text-gray-600', 'hover:text-teal-700');
+    selectedBtn.classList.add('bg-white', 'text-teal-800', 'shadow-sm');
+    
+    renderCustomTimeline();
+}
+
+// Fill Suggested Time
+function fillSuggestedTime(timeStr) {
+    document.getElementById('planner-time-input').value = timeStr;
+}
+
+// Save custom plan to localStorage
+function savePlanToStorage() {
+    localStorage.setItem('vinhhy_custom_plan', JSON.stringify(customPlan));
+}
+
+// Load custom plan from localStorage
+function populatePlannerDestinations() {
+    const destSelect = document.getElementById('planner-dest-select');
+    if (!destSelect) return;
+    destSelect.innerHTML = "";
+    const adminDests = loadData(KEYS.adminDests);
+    const allDests = [...adminDests, ...DEFAULT_DESTINATIONS];
+    const seen = new Set();
+    allDests.forEach((d, idx) => {
+        if (!seen.has(d.name)) {
+            seen.add(d.name);
+            const opt = document.createElement('option');
+            opt.value = d.name;
+            opt.textContent = `${idx + 1}. ${d.name} (${d.tags && d.tags.length ? '#' + d.tags[0] : '#Điểm_đến'})`;
+            destSelect.appendChild(opt);
+        }
+    });
+}
+
+function loadPlanFromStorage() {
+    const saved = localStorage.getItem('vinhhy_custom_plan');
+    if (saved) {
+        try {
+            customPlan = JSON.parse(saved);
+        } catch (e) {
+            console.error("Error parsing saved plan", e);
+        }
+    }
+}
+
+// Add Custom Itinerary Item
+function addCustomItineraryItem() {
+    const destSelect = document.getElementById('planner-dest-select');
+    const destName = destSelect.value;
+    const timeInput = document.getElementById('planner-time-input').value.trim();
+    const noteInput = document.getElementById('planner-note-input').value.trim();
+    
+    if (!timeInput) {
+        alert("Vui lòng điền mốc thời gian di chuyển!");
+        return;
+    }
+    
+    const newItem = {
+        id: Date.now().toString(),
+        time: timeInput,
+        dest: destName,
+        note: noteInput || "Khám phá địa danh tự do"
+    };
+    
+    customPlan[`day${currentPlannerDay}`].push(newItem);
+    
+    // Sort items by time string
+    customPlan[`day${currentPlannerDay}`].sort((a, b) => a.time.localeCompare(b.time));
+    
+    savePlanToStorage();
+    
+    // Switch view to the day we added the item to
+    switchCustomTimelineDay(currentPlannerDay);
+    
+    // Reset forms
+    document.getElementById('planner-time-input').value = "";
+    document.getElementById('planner-note-input').value = "";
+}
+
+// Delete Custom Itinerary Item
+function deleteCustomItineraryItem(itemId, dayNum) {
+    customPlan[`day${dayNum}`] = customPlan[`day${dayNum}`].filter(item => item.id !== itemId);
+    savePlanToStorage();
+    renderCustomTimeline();
+}
+
+// Render Custom Timeline HTML
+function renderCustomTimeline() {
+    const container = document.getElementById('custom-timeline-container');
+    container.innerHTML = "";
+    
+    const items = customPlan[`day${currentCustomTimelineDay}`];
+    
+    if (!items || items.length === 0) {
+        container.innerHTML = `
+            <div class="flex flex-col items-center justify-center py-8 text-gray-400">
+                <i class="fa-solid fa-route text-4xl mb-3 opacity-30"></i>
+                <p class="text-sm font-medium">Chưa có địa điểm nào trong Ngày ${currentCustomTimelineDay}</p>
+                <p class="text-xs mt-1">Hãy sử dụng bảng phía trên để lập kế hoạch di chuyển!</p>
+            </div>
+        `;
+        return;
+    }
+    
+    items.forEach(item => {
+        const meta = destMeta[item.dest] || { icon: "fa-location-dot", badge: "#Điểm_đến", color: "bg-teal-50 text-teal-700 border-teal-100" };
+        
+        const itemHtml = `
+            <div class="relative mb-6 last:mb-0 group/item flex items-start bg-gray-50/40 hover:bg-teal-50/20 border border-gray-100 hover:border-teal-100/60 p-4 rounded-xl shadow-xs transition-all duration-300">
+                <!-- Timeline Dot Indicator -->
+                <div class="absolute -left-[33px] top-5 bg-white border-2 border-teal-500 text-teal-500 w-4 h-4 rounded-full flex items-center justify-center shadow-xs"></div>
+                
+                <div class="flex-grow grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
+                    <!-- Time Badge -->
+                    <div class="sm:col-span-3">
+                        <span class="bg-teal-100 text-teal-700 font-bold px-2.5 py-1 rounded-md text-xs inline-block shadow-xs">${item.time}</span>
+                    </div>
+                    <!-- Dest Details -->
+                    <div class="sm:col-span-8 space-y-1.5">
+                        <div class="flex items-center flex-wrap gap-2">
+                            <span class="font-extrabold text-gray-800 text-sm md:text-base flex items-center gap-1.5">
+                                <i class="fa-solid ${meta.icon} text-teal-600"></i> ${item.dest}
+                            </span>
+                            <span class="${meta.color} text-[10px] font-bold px-2 py-0.5 rounded-full border">${meta.badge}</span>
+                        </div>
+                        <p class="text-xs text-gray-500 leading-relaxed"><strong class="text-teal-800/80">Hoạt động:</strong> ${item.note}</p>
+                    </div>
+                    <!-- Delete Button -->
+                    <div class="sm:col-span-1 text-right">
+                        <button onclick="deleteCustomItineraryItem('${item.id}', ${currentCustomTimelineDay})" class="text-gray-400 hover:text-rose-600 transition-colors p-2 focus:outline-none" title="Xóa địa điểm">
+                            <i class="fa-solid fa-trash-can text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+        container.insertAdjacentHTML('beforeend', itemHtml);
+    });
+}
+
+// Clear all custom plans
+function clearCustomPlan() {
+    if (confirm("Bạn có chắc chắn muốn xóa toàn bộ lịch trình tự chọn này không?")) {
+        customPlan = { day1: [], day2: [], day3: [], day4: [] };
+        savePlanToStorage();
+        renderCustomTimeline();
+    }
+}
+
+// Preload the default 4N3Đ layout as starting point
+function loadDefaultTemplate() {
+    if (confirm("Nạp lịch trình mẫu 4N3Đ? Lịch trình hiện tại của bạn sẽ bị thay thế.")) {
+        customPlan = {
+            day1: [
+                { id: "vh1", time: "08:00 - 11:30", dest: "Vịnh Vĩnh Hy", note: "Di chuyển xe đèo từ sân bay Cam Ranh vượt cung đèo vịnh biển tuyệt tác" },
+                { id: "vh2", time: "12:00 - 13:00", dest: "Vĩnh Hy Resort", note: "Check-in resort nhận phòng nghỉ ngơi nạp năng lượng" },
+                { id: "vh3", time: "14:30 - 17:30", dest: "Vịnh Vĩnh Hy", note: "Lên tàu đáy kính ngắm san hô nhiều màu sắc và tắm biển vịnh" },
+                { id: "vh4", time: "18:30 - 21:00", dest: "Hải sản Vịnh Vĩnh Hy", note: "Ăn tối hải sản tươi sống ngọt bùi tại cảng vịnh" }
+            ],
+            day2: [
+                { id: "vh5", time: "05:00 - 08:30", dest: "Hang Rái", note: "Dậy sớm ngắm bình minh trên thác biển cổ nghìn năm tuyệt mỹ" },
+                { id: "vh6", time: "09:00 - 11:00", dest: "Vườn Nho Thái An", note: "Ghé hái nho tươi chín mọng ngọt ngào và thử mật nho thơm lừng" },
+                { id: "vh7", time: "15:00 - 17:30", dest: "Suối Lồ Ồ", note: "Trekking đi bộ mát mẻ lội suối xuyên rừng Núi Chúa" }
+            ],
+            day3: [
+                { id: "vh8", time: "08:30 - 15:30", dest: "Đảo Bình Hưng", note: "Thuê cano lặn ngắm san hô Bãi Nước Ngọt, ngắm biển trong như gương" },
+                { id: "vh9", time: "12:00 - 13:30", dest: "Tôm hùm Bình Hưng", note: "Thưởng thức tôm hùm nướng béo ngậy ngọt lịm trên bè nổi đảo" }
+            ],
+            day4: [
+                { id: "vh10", time: "07:30 - 08:30", dest: "Hải sản Vịnh Vĩnh Hy", note: "Ăn sáng bánh xèo hải sản Phan Rang giòn tan thơm ngon" },
+                { id: "vh11", time: "09:00 - 11:00", dest: "Amanoi Resort", note: "Mua đặc sản nho khô và tỏi Ninh Thuận mang về làm quà" },
+                { id: "vh12", time: "11:30 - 12:30", dest: "Vĩnh Hy Resort", note: "Check-out trả phòng resort xếp hành lý rời vịnh bình yên" }
+            ]
+        };
+        savePlanToStorage();
+        renderCustomTimeline();
+    }
+}
+
+// Export custom plan to .txt file for mobile download
+function exportItinerary() {
+    let output = "=== LỊCH TRÌNH DU LỊCH VĨNH HY CỦA BẠN ===\n\n";
+    
+    for (let day = 1; day <= 4; day++) {
+        output += `--- NGÀY ${day} ---\n`;
+        const items = customPlan[`day${day}`];
+        if (items.length === 0) {
+            output += " (Chưa lập kế hoạch cho ngày này)\n";
+        } else {
+            items.forEach(item => {
+                output += `• [${item.time}] ${item.dest}\n  Hoạt động: ${item.note}\n`;
+            });
+        }
+        output += "\n";
+    }
+    
+    const blob = new Blob([output], { type: 'text/plain;charset=utf-8' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'Lich_Trinh_vinhhy.txt';
+    link.click();
+}
+
+// ============================================================
+// ===== ADMIN & MEMORIES ENGINE =====
+// ============================================================
+
+// --- Constants & State ---
+const ADMIN_PASSWORD = 'Thaodangiu';
+const DEFAULT_MEM_PASSWORD = 'Vinhhy2026';
+let adminCurrentSection = 'dest';
+let editingAlbumId = null;
+
+// --- Storage Keys ---
+const KEYS = {
+    adminDests:  'vinhhy_admin_destinations',
+    adminHotels: 'vinhhy_admin_hotels',
+    adminFood:   'vinhhy_admin_food',
+    memories:    'vinhhy_memories',
+    memPass:     'vinhhy_memory_pass',
+    ghToken:     'vinhhy_github_token',
+    ghConfig:    'vinhhy_github_config',
+};
+
+// --- Utilities ---
+function loadData(key, def=[]) {
+    try { return JSON.parse(localStorage.getItem(key)) || def; }
+    catch(e){ return def; }
+}
+function saveData(key, data) { localStorage.setItem(key, JSON.stringify(data)); }
+function genId() { return Date.now().toString(36) + Math.random().toString(36).slice(2); }
+
+// --- Simple hash (not cryptographic, just obfuscation) ---
+function simpleHash(str) {
+    let h = 5381;
+    for(let i=0;i<str.length;i++){ h = ((h<<5)+h)+str.charCodeAt(i); h|=0; }
+    return h.toString(16);
+}
+
+// ============================================================
+// ADMIN AUTH
+// ============================================================
+function openAdminPanel() {
+    const modal = document.getElementById('admin-modal');
+    modal.classList.remove('hidden');
+    if(sessionStorage.getItem('adminLoggedIn') === 'yes') {
+        showAdminPanelContent();
+    } else {
+        document.getElementById('admin-login-screen').classList.remove('hidden');
+        document.getElementById('admin-panel').classList.add('hidden');
+        setTimeout(()=>document.getElementById('admin-pass-input').focus(), 100);
+    }
+}
+
+function checkAdminPass() {
+    const input = document.getElementById('admin-pass-input').value;
+    if(input === ADMIN_PASSWORD) {
+        sessionStorage.setItem('adminLoggedIn','yes');
+        document.getElementById('admin-pass-err').classList.add('hidden');
+        document.getElementById('admin-pass-input').value = '';
+        showAdminPanelContent();
+    } else {
+        document.getElementById('admin-pass-err').classList.remove('hidden');
+        document.getElementById('admin-pass-input').value = '';
+        document.getElementById('admin-pass-input').focus();
+    }
+}
+
+function showAdminPanelContent() {
+    document.getElementById('admin-login-screen').classList.add('hidden');
+    document.getElementById('admin-panel').classList.remove('hidden');
+    loadGithubConfigToForm();
+    showAdminSection(adminCurrentSection);
+}
+
+function closeAdminModal() {
+    document.getElementById('admin-modal').classList.add('hidden');
+}
+
+function closeAdminIfBackdrop(e) {
+    if(e.target === document.getElementById('admin-modal')) closeAdminModal();
+}
+
+function logoutAdmin() {
+    sessionStorage.removeItem('adminLoggedIn');
+    closeAdminModal();
+}
+
+// ============================================================
+// ADMIN SECTION NAVIGATION
+// ============================================================
+function showAdminSection(sec) {
+    adminCurrentSection = sec;
+    document.querySelectorAll('.admin-section').forEach(el=>el.classList.remove('admin-section-visible'));
+    document.getElementById('admin-sec-'+sec).classList.add('admin-section-visible');
+    document.querySelectorAll('.admin-sidebar-item').forEach(el=>el.classList.remove('admin-active'));
+    const items = document.querySelectorAll('.admin-sidebar-item');
+    const map = { dest:0, hotel:1, food:2, mem:3, settings:4 };
+    if(items[map[sec]]) items[map[sec]].classList.add('admin-active');
+    document.querySelectorAll('.admin-mob-btn').forEach((btn,i)=>{
+        btn.classList.remove('bg-teal-600','text-white');
+        btn.classList.add('text-gray-400');
+    });
+    if(sec==='dest') renderAdminDestList();
+    if(sec==='hotel') renderAdminHotelList();
+    if(sec==='food') renderAdminFoodList();
+    if(sec==='mem') renderAdminMemList();
+    if(sec==='settings') loadGithubConfigToForm();
+}
+
+// ============================================================
+// IMAGE UTILS
+// ============================================================
+function previewImage(input, previewId) {
+    const preview = document.getElementById(previewId);
+    const file = input.files[0];
+    if(!file) return;
+    const reader = new FileReader();
+    reader.onload = e => {
+        preview.src = e.target.result;
+        preview.classList.remove('hidden');
+    };
+    reader.readAsDataURL(file);
+}
+
+async function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result.split(',')[1]);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+    });
+}
+
+async function pushImageToGitHub(fileInput, urlInput, statusElId, filenamePrefix) {
+    const urlVal = urlInput.value.trim();
+    const file = fileInput.files[0];
+
+    // If only URL is given, no GitHub push needed
+    if(!file) return urlVal || '';
+
+    const config = loadData(KEYS.ghConfig, {});
+    const token = localStorage.getItem(KEYS.ghToken) || '';
+    if(!token) {
+        const el = document.getElementById(statusElId);
+        if(el) { el.innerHTML='<i class="fa-solid fa-triangle-exclamation text-amber-500 mr-1"></i> Chưa cấu hình GitHub Token. Ảnh lưu cục bộ.'; el.classList.remove('hidden'); }
+        return URL.createObjectURL(file);
+    }
+
+    const repo = (config.repo||'LarryVan-engin/Some_stuff_case');
+    const branch = (config.branch||'main');
+    const path = (config.path||'condao/images/');
+    const ext = file.name.split('.').pop();
+    const filename = `${filenamePrefix}_${Date.now()}.${ext}`;
+    const fullPath = `${path}${filename}`.replace(/\/\//g,'/');
+    const el = document.getElementById(statusElId);
+    if(el) { el.innerHTML='<i class="fa-solid fa-circle-notch fa-spin mr-1"></i> Đang đẩy ảnh lên GitHub...'; el.classList.remove('hidden'); }
+
+    try {
+        const content = await fileToBase64(file);
+        const resp = await fetch(`https://api.github.com/repos/${repo}/contents/${fullPath}`, {
+            method: 'PUT',
+            headers: { 'Authorization': `token ${token}`, 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: `Add image: ${filename}`, content, branch })
+        });
+        const data = await resp.json();
+        if(resp.ok && data.content) {
+            const rawUrl = data.content.download_url;
+            if(el) { el.innerHTML=`<i class="fa-solid fa-check text-green-600 mr-1"></i> Đẩy lên GitHub thành công! <a href="${rawUrl}" target="_blank" class="text-teal-600 underline">Xem ảnh</a>`; }
+            return rawUrl;
+        } else {
+            if(el) { el.innerHTML=`<i class="fa-solid fa-xmark text-red-500 mr-1"></i> GitHub Error: ${data.message||'Unknown error'}`; }
+            return URL.createObjectURL(file);
+        }
+    } catch(err) {
+        if(el) { el.innerHTML=`<i class="fa-solid fa-xmark text-red-500 mr-1"></i> Lỗi kết nối: ${err.message}`; }
+        return URL.createObjectURL(file);
+    }
+}
+
+// ============================================================
+// CMS: DESTINATIONS
+// ============================================================
+function showDestForm(id) {
+    const area = document.getElementById('dest-form-area');
+    area.classList.remove('hidden');
+    document.getElementById('dest-form-title').textContent = id ? 'Chỉnh Sửa Địa Điểm' : 'Thêm Địa Điểm Mới';
+    document.getElementById('dest-edit-id').value = id || '';
+    if(id) {
+        const items = loadData(KEYS.adminDests);
+        const item = items.find(d=>d.id===id);
+        if(item) {
+            document.getElementById('dest-name').value = item.name||'';
+            document.getElementById('dest-category').value = item.category||'beach';
+            document.getElementById('dest-rating').value = item.rating||'';
+            document.getElementById('dest-maps').value = item.mapsUrl||'';
+            document.getElementById('dest-link').value = item.linkUrl||'';
+            document.getElementById('dest-desc-short').value = item.descShort||'';
+            document.getElementById('dest-desc-long').value = item.descLong||'';
+            document.getElementById('dest-highlights').value = (item.highlights||[]).join('\n');
+            document.getElementById('dest-best-time').value = item.bestTime||'';
+            document.getElementById('dest-img1-url').value = item.img1||'';
+            document.getElementById('dest-img2-url').value = item.img2||'';
+            if(item.img1) { document.getElementById('dest-img1-preview').src=item.img1; document.getElementById('dest-img1-preview').classList.remove('hidden'); }
+            if(item.img2) { document.getElementById('dest-img2-preview').src=item.img2; document.getElementById('dest-img2-preview').classList.remove('hidden'); }
+        }
+    } else {
+        ['dest-name','dest-rating','dest-maps','dest-link','dest-desc-short','dest-desc-long','dest-highlights','dest-best-time','dest-img1-url','dest-img2-url'].forEach(id=>document.getElementById(id).value='');
+        ['dest-img1-preview','dest-img2-preview'].forEach(id=>{document.getElementById(id).src=''; document.getElementById(id).classList.add('hidden');});
+    }
+    area.scrollIntoView({behavior:'smooth'});
+}
+
+function hideDestForm() { document.getElementById('dest-form-area').classList.add('hidden'); }
+
+async function saveDestination() {
+    const name = document.getElementById('dest-name').value.trim();
+    if(!name) { alert('Vui lòng nhập tên địa điểm!'); return; }
+    const img1 = await pushImageToGitHub(
+        document.getElementById('dest-img1-file'),
+        document.getElementById('dest-img1-url'),
+        'dest-github-status', 'dest_'+name.replace(/\s/g,'_').slice(0,20)+'_1'
+    );
+    const img2 = await pushImageToGitHub(
+        document.getElementById('dest-img2-file'),
+        document.getElementById('dest-img2-url'),
+        'dest-github-status', 'dest_'+name.replace(/\s/g,'_').slice(0,20)+'_2'
+    );
+    const editId = document.getElementById('dest-edit-id').value;
+    const item = {
+        id: editId || genId(),
+        name, img1, img2,
+        category: document.getElementById('dest-category').value,
+        rating: document.getElementById('dest-rating').value,
+        mapsUrl: document.getElementById('dest-maps').value.trim(),
+        linkUrl: document.getElementById('dest-link').value.trim(),
+        descShort: document.getElementById('dest-desc-short').value.trim(),
+        descLong: document.getElementById('dest-desc-long').value.trim(),
+        highlights: document.getElementById('dest-highlights').value.split('\n').map(s=>s.trim()).filter(Boolean),
+        bestTime: document.getElementById('dest-best-time').value.trim(),
+    };
+    let items = loadData(KEYS.adminDests);
+    if(editId) { items = items.map(d=>d.id===editId ? item : d); }
+    else { items.unshift(item); }
+    saveData(KEYS.adminDests, items);
+    renderAdminDestList();
+    renderAdminDestCardsInTab1();
+    hideDestForm();
+}
+
+function deleteDestination(id) {
+    if(!confirm('Xóa địa điểm này?')) return;
+    let items = loadData(KEYS.adminDests).filter(d=>d.id!==id);
+    saveData(KEYS.adminDests, items);
+    renderAdminDestList();
+    renderAdminDestCardsInTab1();
+}
+
+function renderAdminDestList() {
+    const items = loadData(KEYS.adminDests);
+    const el = document.getElementById('admin-dest-list');
+    if(!items.length) { el.innerHTML='<div class="text-center text-gray-400 py-8 text-sm"><i class="fa-solid fa-inbox text-3xl mb-2 block opacity-30"></i>Chưa có địa điểm nào được thêm.</div>'; return; }
+    el.innerHTML = items.map(d=>`
+        <div class="admin-item-row">
+            ${d.img1?`<img src="${d.img1}" class="admin-item-thumb" onerror="this.style.display='none'">`:
+            `<div class="admin-item-thumb bg-teal-50 flex items-center justify-center text-2xl">🌴</div>`}
+            <div class="flex-grow min-w-0">
+                <div class="font-bold text-gray-800 text-sm truncate">${d.name}</div>
+                <div class="text-gray-400 text-xs truncate mt-0.5">${d.descShort||''}</div>
+                <div class="flex items-center gap-2 mt-1">
+                    ${d.rating?`<span class="text-amber-500 text-xs font-bold">⭐ ${d.rating}</span>`:''}
+                    <span class="admin-badge bg-teal-50 text-teal-700 border border-teal-100">${d.category}</span>
+                </div>
+            </div>
+            <div class="flex items-center gap-1.5 shrink-0">
+                ${d.mapsUrl?`<a href="${d.mapsUrl}" target="_blank" class="text-teal-500 hover:text-teal-700 text-sm p-1.5" title="Xem Maps"><i class="fa-solid fa-map-location-dot"></i></a>`:''}
+                <button onclick="showDestForm('${d.id}')" class="text-blue-500 hover:text-blue-700 text-sm p-1.5" title="Sửa"><i class="fa-solid fa-pen"></i></button>
+                <button onclick="deleteDestination('${d.id}')" class="admin-btn-danger" title="Xóa"><i class="fa-solid fa-trash-can"></i></button>
+            </div>
+        </div>
+    `).join('');
+}
+
+const DEST_CATEGORY_LABELS = {
+    beach: '🏖 Bãi Tắm & Sinh Thái Biển',
+    dive:  '🤿 Lặn Biển & Hải Đảo',
+    bay: '⚓ Vịnh Biển & Trải Nghiệm',
+    nature: '🧭 Khám Phá Hoang Sơ',
+    nature: '🌿 Thiên Nhiên & Rừng',
+};
+
+function renderAdminDestCardsInTab1() {
+    const container = document.getElementById('destinations-container');
+    if(!container) return;
+    const items = loadData(KEYS.adminDests);
+    if(!items.length) { container.innerHTML = '<div class="text-center text-gray-400 py-12">Chưa có địa điểm nào.</div>'; return; }
+    container.innerHTML = items.map((d, idx) => renderDestCard(d, idx)).join('');
+    // Re-attach IntersectionObserver for all cards
+    document.querySelectorAll('#destinations-container .destination-card').forEach(el => observer && observer.observe(el));
+}
+
+function renderDestCard(d, idx) {
+    const catLabel = DEST_CATEGORY_LABELS[d.category] || d.category;
+    const highlights = (d.highlights||[]).map(h=>`<li>${h}</li>`).join('');
+    
+    const img1HTML = d.img1 ? `<div class="group/img overflow-hidden rounded-xl shadow-sm border border-gray-100 aspect-[4/3] relative">
+        <img src="${d.img1}" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" alt="${d.name}">
+    </div>` : '';
+    const img2HTML = d.img2 ? `<div class="group/img overflow-hidden rounded-xl shadow-sm border border-gray-100 aspect-[4/3] relative">
+        <img src="${d.img2}" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" alt="${d.name}">
+    </div>` : '';
+    
+    // For alternating orders like the original layout
+    const imgOrderClass = idx % 2 === 0 ? 'md:order-1' : 'md:order-2';
+    const infoOrderClass = idx % 2 === 0 ? 'md:order-2' : 'md:order-1';
+    const slideClass = idx % 2 === 0 ? 'slide-left' : 'slide-right';
+    
+    const cardWrapper = d.linkUrl ? `onclick="window.open('${d.linkUrl}','_blank')"` : `onclick="if(!event.target.closest('.detail-panel')) toggleDetail(this)"`;
+    
+    // Show a premium star badge for admin-added destinations
+    const badgeHTML = !d.isDefault ? `
+        <span class="bg-teal-600 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full shadow-sm">
+            <i class="fa-solid fa-star text-[9px] mr-0.5"></i> Mới
+        </span>
+    ` : '';
+    
+    // Premium tag-list under title
+    const tagsHTML = d.tags && d.tags.length ? `
+        <div class="flex flex-wrap gap-2 mb-3">
+            ${d.tags.map(t => `<span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#${t}</span>`).join('')}
+        </div>
+    ` : '';
+
+    return `
+    <div class="destination-card p-6 md:p-8 ${slideClass}" ${cardWrapper} data-category="${d.category}">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center">
+            
+            <!-- Image (alternating order) -->
+            <div class="md:col-span-5 ${imgOrderClass}">
+                ${d.img1 ? `
+                <div class="dest-img-container shadow-md">
+                    <img src="${d.img1}" alt="${d.name}" class="dest-img">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                </div>` : `
+                <div class="dest-img-container shadow-md bg-teal-50/50 flex items-center justify-center text-5xl text-teal-600">
+                    🌴
+                </div>`}
+            </div>
+            
+            <!-- Info (alternating order) -->
+            <div class="md:col-span-7 ${infoOrderClass} flex flex-col justify-between h-full">
+                <div>
+                    <div class="flex flex-wrap items-center gap-2 mb-3">
+                        ${d.rating ? `<span class="bg-amber-50 text-amber-700 border border-amber-100 px-3 py-1 rounded-full text-xs font-semibold">⭐ ${d.rating}/5</span>` : ''}
+                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">${catLabel}</span>
+                        ${badgeHTML}
+                    </div>
+                    ${tagsHTML}
+                    <h3 class="text-2xl md:text-3xl font-extrabold text-gray-800 hover:text-teal-700 transition-colors mb-4">${d.name}</h3>
+                    <p class="text-gray-500 text-sm md:text-base leading-relaxed mb-6">${d.descShort||''}</p>
+                </div>
+                
+                <div class="flex items-center justify-between gap-4">
+                    <div class="flex items-center gap-4">
+                        <span class="text-teal-600 font-bold text-sm flex items-center gap-2 hover:translate-x-1 transition-all toggle-text">
+                            Khám phá chi tiết <i class="fa-solid fa-arrow-right-long ml-2"></i>
+                        </span>
+                        ${d.mapsUrl ? `
+                        <a href="${d.mapsUrl}" target="_blank" class="px-3 py-1 rounded-full border border-gray-200 hover:border-teal-200 hover:bg-teal-50 text-gray-500 hover:text-teal-700 transition-colors flex items-center gap-1.5 text-xs font-bold" onclick="event.stopPropagation()">
+                            <i class="fa-solid fa-map-location-dot text-teal-600"></i> Bản đồ
+                        </a>` : ''}
+                    </div>
+                    <button class="w-10 h-10 rounded-full bg-teal-50 hover:bg-teal-100 text-teal-700 flex items-center justify-center transition-colors shadow-sm focus:outline-none">
+                        <i class="fa-solid fa-chevron-down toggle-arrow"></i>
+                    </button>
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- Collapsible Detail Panel (smooth CSS accordion) -->
+        ${!d.linkUrl ? `
+        <div class="detail-panel">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 text-gray-600">
+                <div class="lg:col-span-7 space-y-4">
+                    <h4 class="font-bold text-gray-800 text-lg mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-circle-info text-teal-600"></i> Giới thiệu chi tiết
+                    </h4>
+                    ${d.descLong ? `<p class="text-gray-600 leading-relaxed text-sm md:text-base">${d.descLong}</p>` : ''}
+                    ${highlights ? `
+                    <div class="bg-amber-50/60 border border-amber-100 p-4 rounded-xl">
+                        <h5 class="font-bold text-amber-800 mb-1 flex items-center gap-2 text-sm md:text-base">
+                            <i class="fa-solid fa-star text-amber-500"></i> Trải nghiệm nổi bật
+                        </h5>
+                        <ul class="list-disc pl-5 text-amber-900/80 text-xs md:text-sm space-y-1">${highlights}</ul>
+                    </div>` : ''}
+                    ${d.bestTime ? `
+                    <div class="bg-teal-50/60 border border-teal-100 p-4 rounded-xl">
+                        <h5 class="font-bold text-teal-800 mb-1 flex items-center gap-2 text-sm md:text-base">
+                            <i class="fa-solid fa-clock text-teal-600"></i> Thời điểm lý tưởng
+                        </h5>
+                        <p class="text-teal-900/80 text-xs md:text-sm">${d.bestTime}</p>
+                    </div>` : ''}
+                </div>
+                
+                <div class="lg:col-span-5 space-y-3">
+                    ${d.img1 || d.img2 ? `
+                    <h4 class="font-bold text-gray-800 text-lg mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-images text-teal-600"></i> Hình ảnh thực tế
+                    </h4>
+                    <div class="grid ${d.img1 && d.img2 ? 'grid-cols-2' : 'grid-cols-1'} gap-3">
+                        ${img1HTML}
+                        ${img2HTML}
+                    </div>` : ''}
+                </div>
+            </div>
+        </div>` : ''}
+    </div>`;
+}
+
+function toggleDestDetail(card) {
+    const panel = card.querySelector('.detail-panel');
+    if(!panel) return;
+    const isOpen = panel.style.maxHeight && panel.style.maxHeight !== '0px';
+    if(isOpen) {
+        panel.style.maxHeight = '0'; panel.style.opacity = '0';
+        panel.style.marginTop = '0'; panel.style.paddingTop = '0';
+    } else {
+        panel.style.maxHeight = panel.scrollHeight + 200 + 'px';
+        panel.style.opacity = '1'; panel.style.marginTop = '1rem'; panel.style.paddingTop = '1rem';
+    }
+}
+
+// ============================================================
+// CMS: HOTELS
+// ============================================================
+function showHotelForm(id) {
+    const area = document.getElementById('hotel-form-area');
+    area.classList.remove('hidden');
+    document.getElementById('hotel-form-title').textContent = id ? 'Chỉnh Sửa Lưu Trú' : 'Thêm Khách Sạn Mới';
+    document.getElementById('hotel-edit-id').value = id || '';
+    if(id) {
+        const item = loadData(KEYS.adminHotels).find(h=>h.id===id);
+        if(item) {
+            ['name','stars','price','address','maps','link','desc','img-url'].forEach(f=>{
+                const el = document.getElementById('hotel-'+f);
+                if(el) el.value = item[f.replace('-url','Url').replace('-','').replace('maps','mapsUrl').replace('link','linkUrl')]||item[f]||'';
+            });
+            document.getElementById('hotel-name').value=item.name||'';
+            document.getElementById('hotel-stars').value=item.stars||'3';
+            document.getElementById('hotel-price').value=item.price||'';
+            document.getElementById('hotel-address').value=item.address||'';
+            document.getElementById('hotel-maps').value=item.mapsUrl||'';
+            document.getElementById('hotel-link').value=item.linkUrl||'';
+            document.getElementById('hotel-desc').value=item.desc||'';
+            document.getElementById('hotel-img-url').value=item.imgUrl||'';
+            if(item.imgUrl){ document.getElementById('hotel-img-preview').src=item.imgUrl; document.getElementById('hotel-img-preview').classList.remove('hidden');}
+        }
+    } else {
+        ['hotel-name','hotel-price','hotel-address','hotel-maps','hotel-link','hotel-desc','hotel-img-url'].forEach(id2=>document.getElementById(id2).value='');
+        document.getElementById('hotel-img-preview').src=''; document.getElementById('hotel-img-preview').classList.add('hidden');
+    }
+    area.scrollIntoView({behavior:'smooth'});
+}
+
+function hideHotelForm() { document.getElementById('hotel-form-area').classList.add('hidden'); }
+
+async function saveHotel() {
+    const name = document.getElementById('hotel-name').value.trim();
+    if(!name){ alert('Vui lòng nhập tên!'); return; }
+    const imgUrl = await pushImageToGitHub(
+        document.getElementById('hotel-img-file'),
+        document.getElementById('hotel-img-url'),
+        'hotel-github-status', 'hotel_'+name.replace(/\s/g,'_').slice(0,20)
+    );
+    const editId = document.getElementById('hotel-edit-id').value;
+    const item = {
+        id: editId||genId(), name, imgUrl,
+        stars: document.getElementById('hotel-stars').value,
+        price: document.getElementById('hotel-price').value.trim(),
+        address: document.getElementById('hotel-address').value.trim(),
+        mapsUrl: document.getElementById('hotel-maps').value.trim(),
+        linkUrl: document.getElementById('hotel-link').value.trim(),
+        desc: document.getElementById('hotel-desc').value.trim(),
+    };
+    let items = loadData(KEYS.adminHotels);
+    if(editId) items = items.map(h=>h.id===editId?item:h); else items.unshift(item);
+    saveData(KEYS.adminHotels, items);
+    renderAdminHotelList();
+    renderAdminHotelsInTab3();
+    hideHotelForm();
+}
+
+function deleteHotel(id) {
+    if(!confirm('Xóa lưu trú này?')) return;
+    saveData(KEYS.adminHotels, loadData(KEYS.adminHotels).filter(h=>h.id!==id));
+    renderAdminHotelList();
+    renderAdminHotelsInTab3();
+}
+
+function renderAdminHotelList() {
+    const items = loadData(KEYS.adminHotels);
+    const el = document.getElementById('admin-hotel-list');
+    if(!items.length){ el.innerHTML='<div class="text-center text-gray-400 py-8 text-sm"><i class="fa-solid fa-inbox text-3xl mb-2 block opacity-30"></i>Chưa có lưu trú nào được thêm.</div>'; return; }
+    el.innerHTML = items.map(h=>`
+        <div class="admin-item-row">
+            ${h.imgUrl?`<img src="${h.imgUrl}" class="admin-item-thumb" onerror="this.style.display='none'">`:`<div class="admin-item-thumb bg-blue-50 flex items-center justify-center text-2xl">🏨</div>`}
+            <div class="flex-grow min-w-0">
+                <div class="font-bold text-gray-800 text-sm">${h.name}</div>
+                <div class="text-gray-400 text-xs mt-0.5">${h.address||''}</div>
+                <div class="flex items-center gap-2 mt-1">
+                    <span class="admin-badge bg-amber-50 text-amber-700 border border-amber-100">${h.stars} ★</span>
+                    <span class="text-teal-600 text-xs font-bold">${h.price||''}</span>
+                </div>
+            </div>
+            <div class="flex items-center gap-1.5 shrink-0">
+                ${h.linkUrl?`<a href="${h.linkUrl}" target="_blank" class="text-green-500 hover:text-green-700 text-sm p-1.5" title="Booking"><i class="fa-solid fa-link"></i></a>`:''}
+                <button onclick="showHotelForm('${h.id}')" class="text-blue-500 hover:text-blue-700 text-sm p-1.5"><i class="fa-solid fa-pen"></i></button>
+                <button onclick="deleteHotel('${h.id}')" class="admin-btn-danger"><i class="fa-solid fa-trash-can"></i></button>
+            </div>
+        </div>
+    `).join('');
+}
+
+function renderAdminHotelsInTab3() {
+    const hotelScrollDiv = document.getElementById('hotels-container');
+    if(!hotelScrollDiv) return;
+    const items = loadData(KEYS.adminHotels);
+    if(!items.length){
+        hotelScrollDiv.innerHTML = '<div class="text-center text-gray-400 py-12">Chưa có khách sạn nào.</div>';
+        return;
+    }
+    hotelScrollDiv.innerHTML = items.map(h=>{
+        const badgeHTML = !h.isDefault ? `
+            <span class="bg-teal-600 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-sm ml-2">Mới</span>
+        ` : '';
+        return `
+        <div class="bg-gray-50/50 hover:bg-teal-50/20 border border-gray-100 hover:border-teal-200 p-4 rounded-xl flex flex-col sm:flex-row gap-4 transition-all duration-300 shadow-sm hover:shadow-md group ${h.linkUrl?'cursor-pointer':''}"
+            ${h.linkUrl?`onclick="window.open('${h.linkUrl}','_blank')"`:''}>
+            <div class="w-full sm:w-32 h-24 rounded-lg overflow-hidden shrink-0 shadow-sm relative">
+                <img src="${h.imgUrl||'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400'}" alt="${h.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400'">
+                <span class="absolute top-1 left-1 bg-amber-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded shadow-sm">${h.stars} ★</span>
+            </div>
+            <div class="flex-grow flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-start gap-2">
+                        <div class="flex items-center gap-2">
+                            <h4 class="font-bold text-gray-800 group-hover:text-teal-700 transition-colors text-sm sm:text-base">${h.name}</h4>
+                            ${badgeHTML}
+                        </div>
+                        ${h.price?`<span class="bg-teal-50 text-teal-700 border border-teal-100 text-[10px] font-bold px-2 py-0.5 rounded-full shrink-0 whitespace-nowrap">${h.price}</span>`:''}
+                    </div>
+                    ${h.address?`<p class="text-[11px] text-gray-400 mt-0.5 flex items-center gap-1"><i class="fa-solid fa-location-dot"></i> ${h.address}</p>`:''}
+                    ${h.desc?`<p class="text-xs text-gray-500 mt-2 leading-relaxed">${h.desc}</p>`:''}
+                    <div class="flex gap-2 mt-2">
+                        ${h.mapsUrl?`<a href="${h.mapsUrl}" target="_blank" onclick="event.stopPropagation()" class="text-xs text-teal-600 hover:underline flex items-center gap-1"><i class="fa-solid fa-map-location-dot"></i> Maps</a>`:''}
+                        ${h.linkUrl?`<a href="${h.linkUrl}" target="_blank" onclick="event.stopPropagation()" class="text-xs text-green-600 hover:underline flex items-center gap-1"><i class="fa-solid fa-calendar-check"></i> Đặt phòng</a>`:''}
+                    </div>
+                </div>
+            </div>
+        </div>
+    `}).join('');
+}
+
+// ============================================================
+// CMS: FOOD
+// ============================================================
+function showFoodForm(id) {
+    const area = document.getElementById('food-form-area');
+    area.classList.remove('hidden');
+    document.getElementById('food-form-title').textContent = id ? 'Chỉnh Sửa Ẩm Thực' : 'Thêm Món Ăn / Quán Mới';
+    document.getElementById('food-edit-id').value = id || '';
+    if(id) {
+        const item = loadData(KEYS.adminFood).find(f=>f.id===id);
+        if(item) {
+            document.getElementById('food-name').value=item.name||'';
+            document.getElementById('food-category').value=item.category||'seafood';
+            document.getElementById('food-address').value=item.address||'';
+            document.getElementById('food-maps').value=item.mapsUrl||'';
+            document.getElementById('food-link').value=item.linkUrl||'';
+            document.getElementById('food-desc').value=item.desc||'';
+            document.getElementById('food-img-url').value=item.imgUrl||'';
+            if(item.imgUrl){ document.getElementById('food-img-preview').src=item.imgUrl; document.getElementById('food-img-preview').classList.remove('hidden'); }
+        }
+    } else {
+        ['food-name','food-address','food-maps','food-link','food-desc','food-img-url'].forEach(id2=>document.getElementById(id2).value='');
+        document.getElementById('food-img-preview').src=''; document.getElementById('food-img-preview').classList.add('hidden');
+    }
+    area.scrollIntoView({behavior:'smooth'});
+}
+
+function hideFoodForm() { document.getElementById('food-form-area').classList.add('hidden'); }
+
+async function saveFood() {
+    const name = document.getElementById('food-name').value.trim();
+    if(!name){ alert('Vui lòng nhập tên!'); return; }
+    const imgUrl = await pushImageToGitHub(
+        document.getElementById('food-img-file'),
+        document.getElementById('food-img-url'),
+        'food-github-status', 'food_'+name.replace(/\s/g,'_').slice(0,20)
+    );
+    const editId = document.getElementById('food-edit-id').value;
+    const item = {
+        id: editId||genId(), name, imgUrl,
+        category: document.getElementById('food-category').value,
+        address: document.getElementById('food-address').value.trim(),
+        mapsUrl: document.getElementById('food-maps').value.trim(),
+        linkUrl: document.getElementById('food-link').value.trim(),
+        desc: document.getElementById('food-desc').value.trim(),
+    };
+    let items = loadData(KEYS.adminFood);
+    if(editId) items = items.map(f=>f.id===editId?item:f); else items.unshift(item);
+    saveData(KEYS.adminFood, items);
+    renderAdminFoodList();
+    renderAdminFoodInTab4();
+    hideFoodForm();
+}
+
+function deleteFood(id) {
+    if(!confirm('Xóa mục ẩm thực này?')) return;
+    saveData(KEYS.adminFood, loadData(KEYS.adminFood).filter(f=>f.id!==id));
+    renderAdminFoodList();
+    renderAdminFoodInTab4();
+}
+
+function renderAdminFoodList() {
+    const items = loadData(KEYS.adminFood);
+    const el = document.getElementById('admin-food-list');
+    if(!items.length){ el.innerHTML='<div class="text-center text-gray-400 py-8 text-sm"><i class="fa-solid fa-inbox text-3xl mb-2 block opacity-30"></i>Chưa có món ăn nào được thêm.</div>'; return; }
+    el.innerHTML = items.map(f=>`
+        <div class="admin-item-row">
+            ${f.imgUrl?`<img src="${f.imgUrl}" class="admin-item-thumb" onerror="this.style.display='none'">`:`<div class="admin-item-thumb bg-orange-50 flex items-center justify-center text-2xl">🍜</div>`}
+            <div class="flex-grow min-w-0">
+                <div class="font-bold text-gray-800 text-sm">${f.name}</div>
+                <div class="text-gray-400 text-xs mt-0.5 truncate">${f.address||''}</div>
+                <span class="admin-badge bg-orange-50 text-orange-700 border border-orange-100 mt-1 inline-block">${f.category}</span>
+            </div>
+            <div class="flex items-center gap-1.5 shrink-0">
+                ${f.mapsUrl?`<a href="${f.mapsUrl}" target="_blank" class="text-teal-500 hover:text-teal-700 text-sm p-1.5"><i class="fa-solid fa-map-location-dot"></i></a>`:''}
+                <button onclick="showFoodForm('${f.id}')" class="text-blue-500 hover:text-blue-700 text-sm p-1.5"><i class="fa-solid fa-pen"></i></button>
+                <button onclick="deleteFood('${f.id}')" class="admin-btn-danger"><i class="fa-solid fa-trash-can"></i></button>
+            </div>
+        </div>
+    `).join('');
+}
+
+const FOOD_CAT_ICONS = { seafood:'🦞', specialty:'🌟', cafe:'☕', restaurant:'🍽', street:'🛵' };
+const FOOD_CAT_DATA = { seafood:'seafood', specialty:'specialty', cafe:'cafe', restaurant:'restaurant', street:'street' };
+
+function renderAdminFoodInTab4() {
+    const foodContainer = document.getElementById('food-container');
+    if(!foodContainer) return;
+    const items = loadData(KEYS.adminFood);
+    if(!items.length){
+        foodContainer.innerHTML = '<div class="text-center text-gray-400 py-12">Chưa có món ăn nào.</div>';
+        return;
+    }
+    foodContainer.innerHTML = items.map(f=>{
+        const badgeHTML = !f.isDefault ? `
+            <span class="bg-teal-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm ml-2">Mới</span>
+        ` : '';
+        return `
+        <div class="food-card bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${f.linkUrl?'cursor-pointer':''}"
+            data-category="${f.category}" ${f.linkUrl?`onclick="window.open('${f.linkUrl}','_blank')"`:''}> 
+            <div class="relative overflow-hidden aspect-video">
+                <img src="${f.imgUrl||'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600'}" alt="${f.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600'">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-gray-700 text-xs font-bold px-2.5 py-1 rounded-full">${FOOD_CAT_ICONS[f.category]||'🍴'} ${f.category}</span>
+            </div>
+            <div class="p-4">
+                <div class="flex items-center">
+                    <h3 class="font-extrabold text-gray-800 text-base group-hover:text-teal-700 transition-colors mb-1">${f.name}</h3>
+                    ${badgeHTML}
+                </div>
+                ${f.address?`<p class="text-xs text-gray-400 flex items-center gap-1 mb-2"><i class="fa-solid fa-location-dot text-teal-500"></i> ${f.address}</p>`:''}
+                ${f.desc?`<p class="text-xs text-gray-600 leading-relaxed mb-3">${f.desc}</p>`:''}
+                <div class="flex items-center gap-2">
+                    ${f.mapsUrl?`<a href="${f.mapsUrl}" target="_blank" onclick="event.stopPropagation()" class="text-xs text-teal-600 hover:text-teal-800 font-semibold flex items-center gap-1 transition-colors"><i class="fa-solid fa-map-location-dot"></i> Maps</a>`:''}
+                    ${f.linkUrl?`<a href="${f.linkUrl}" target="_blank" onclick="event.stopPropagation()" class="text-xs text-blue-600 hover:text-blue-800 font-semibold flex items-center gap-1 transition-colors ml-auto"><i class="fa-solid fa-star"></i> Review</a>`:''}
+                </div>
+            </div>
+        </div>
+    `}).join('');
+}
+
+// ============================================================
+// CMS: MEMORIES
+// ============================================================
+function checkMemPass() {
+    const input = document.getElementById('mem-pass-input').value;
+    const stored = localStorage.getItem(KEYS.memPass) || simpleHash(DEFAULT_MEM_PASSWORD);
+    if(simpleHash(input) === stored) {
+        sessionStorage.setItem('memoriesUnlocked','yes');
+        document.getElementById('mem-gate').classList.add('hidden');
+        document.getElementById('mem-content').classList.remove('hidden');
+        document.getElementById('mem-pass-err').classList.add('hidden');
+        renderMemoryAlbums();
+    } else {
+        document.getElementById('mem-pass-err').classList.remove('hidden');
+        document.getElementById('mem-pass-input').value='';
+        document.getElementById('mem-pass-input').focus();
+    }
+}
+
+function renderMemoryAlbums() {
+    const data = loadData(KEYS.memories, {albums:[]});
+    const grid = document.getElementById('memories-album-grid');
+    const empty = document.getElementById('mem-empty-state');
+    if(!data.albums||!data.albums.length) {
+        grid.innerHTML=''; empty.classList.remove('hidden'); return;
+    }
+    empty.classList.add('hidden');
+    grid.innerHTML = data.albums.map(album=>`
+        <div class="memory-album-card" onclick="openAlbum('${album.id}')">
+            <div style="aspect-ratio:4/3;overflow:hidden;background:linear-gradient(135deg,#0f172a,#134e4a)">
+                ${album.cover?`<img src="${getEmbedUrl(album.cover,'thumb')}" class="w-full h-full object-cover" onerror="this.style.display='none'">`:''}
+                ${!album.cover?`<div class="w-full h-full flex items-center justify-center text-5xl">${album.emoji||'📸'}</div>`:''}
+            </div>
+            <div class="p-4">
+                <div class="flex items-center gap-2 mb-1">
+                    <span class="text-2xl">${album.emoji||'📸'}</span>
+                    <h3 class="font-extrabold text-gray-800 text-base">${album.name}</h3>
+                </div>
+                ${album.desc?`<p class="text-gray-500 text-xs">${album.desc}</p>`:''}
+                <div class="flex items-center gap-1 mt-2 text-xs text-gray-400">
+                    <i class="fa-solid fa-images"></i>
+                    <span>${(album.items||[]).length} mục</span>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+function openAlbum(albumId) {
+    const data = loadData(KEYS.memories, {albums:[]});
+    const album = (data.albums||[]).find(a=>a.id===albumId);
+    if(!album) return;
+    document.getElementById('memories-album-grid').classList.add('hidden');
+    document.getElementById('mem-album-detail').classList.remove('hidden');
+    document.getElementById('mem-album-title').innerHTML = `<span class="mr-2">${album.emoji||'📸'}</span>${album.name}`;
+    document.getElementById('mem-album-desc').textContent = album.desc||'';
+    const grid = document.getElementById('mem-album-items-grid');
+    if(!album.items||!album.items.length) {
+        grid.innerHTML='<div class="text-gray-400 text-sm py-8 text-center col-span-full"><i class="fa-solid fa-images text-3xl mb-2 block opacity-30"></i>Album chưa có ảnh/video nào.</div>';
+        return;
+    }
+    grid.innerHTML = album.items.map((item,idx)=>{
+        if(item.type==='video') return `
+            <div class="memory-video-item">
+                <iframe src="${getEmbedUrl(item.url,'video')}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                ${item.caption?`<div class="memory-media-caption">${item.caption}</div>`:''}
+            </div>`;
+        return `
+            <div class="memory-media-item" onclick="openLightbox('${item.url.replace(/'/g,"\\'")}','${(item.caption||'').replace(/'/g,"\\'")}')">
+                <img src="${getEmbedUrl(item.url,'thumb')}" alt="${item.caption||''}" loading="lazy" onerror="this.src='https://via.placeholder.com/200x200?text=No+Image'">
+                ${item.caption?`<div class="memory-media-caption">${item.caption}</div>`:''}
+            </div>`;
+    }).join('');
+}
+
+function closeAlbumDetail() {
+    document.getElementById('mem-album-detail').classList.add('hidden');
+    document.getElementById('memories-album-grid').classList.remove('hidden');
+}
+
+function getEmbedUrl(url, type) {
+    if(!url) return '';
+    // YouTube
+    const ytMatch = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\?]+)/);
+    if(ytMatch) {
+        if(type==='video') return `https://www.youtube.com/embed/${ytMatch[1]}`;
+        return `https://img.youtube.com/vi/${ytMatch[1]}/hqdefault.jpg`;
+    }
+    // Google Drive view link → embed/thumbnail
+    const driveMatch = url.match(/drive\.google\.com\/file\/d\/([^\/]+)/);
+    if(driveMatch) {
+        const id = driveMatch[1];
+        if(type==='video') return `https://drive.google.com/file/d/${id}/preview`;
+        return `https://drive.google.com/thumbnail?id=${id}&sz=w400`;
+    }
+    // Google Drive open link
+    const driveOpen = url.match(/drive\.google\.com\/open\?id=([^&]+)/);
+    if(driveOpen) {
+        const id = driveOpen[1];
+        if(type==='video') return `https://drive.google.com/file/d/${id}/preview`;
+        return `https://drive.google.com/thumbnail?id=${id}&sz=w400`;
+    }
+    return url;
+}
+
+// Admin: Memories CRUD
+function renderAdminMemList() {
+    const data = loadData(KEYS.memories, {albums:[]});
+    const el = document.getElementById('admin-mem-list');
+    if(!data.albums||!data.albums.length) {
+        el.innerHTML='<div class="text-center text-gray-400 py-8 text-sm"><i class="fa-solid fa-inbox text-3xl mb-2 block opacity-30"></i>Chưa có album nào.</div>';
+        return;
+    }
+    el.innerHTML = data.albums.map(album=>`
+        <div class="bg-white border border-gray-200 rounded-2xl p-4 mb-4 shadow-sm">
+            <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">${album.emoji||'📸'}</span>
+                    <div>
+                        <div class="font-extrabold text-gray-800">${album.name}</div>
+                        <div class="text-xs text-gray-400">${(album.items||[]).length} mục</div>
+                    </div>
+                </div>
+                <button onclick="deleteAlbum('${album.id}')" class="admin-btn-danger text-xs">
+                    <i class="fa-solid fa-trash-can"></i> Xóa Album
+                </button>
+            </div>
+            <!-- Add item to this album -->
+            <div class="bg-gray-50 rounded-xl p-3 border border-gray-100">
+                <div class="text-xs font-bold text-gray-500 mb-2 uppercase tracking-widest">Thêm Ảnh / Video</div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-2 mb-2">
+                    <select id="mem-item-type-${album.id}" class="admin-form-input">
+                        <option value="photo">🖼 Ảnh</option>
+                        <option value="video">▶ Video (YouTube/Drive)</option>
+                    </select>
+                    <input id="mem-item-url-${album.id}" type="url" class="admin-form-input" placeholder="URL ảnh / YouTube / Google Drive link">
+                    <input id="mem-item-cap-${album.id}" type="text" class="admin-form-input" placeholder="Chú thích (tùy chọn)">
+                </div>
+                <button onclick="addMemItem('${album.id}')" class="admin-btn-primary text-xs py-1.5">
+                    <i class="fa-solid fa-plus"></i> Thêm Vào Album
+                </button>
+            </div>
+            <!-- Items list -->
+            ${(album.items||[]).length?`
+            <div class="mt-3 grid grid-cols-2 md:grid-cols-4 gap-2">
+                ${album.items.map(item=>`
+                    <div class="relative rounded-xl overflow-hidden aspect-square bg-gray-100 group">
+                        <img src="${getEmbedUrl(item.url,'thumb')}" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/100?text=...'">
+                        ${item.type==='video'?'<div class="absolute inset-0 flex items-center justify-center"><i class="fa-solid fa-play text-white text-xl opacity-80"></i></div>':''}
+                        <button onclick="deleteMemItem('${album.id}','${item.id}')" class="absolute top-1 right-1 bg-red-500 text-white rounded-full w-6 h-6 text-xs hidden group-hover:flex items-center justify-center">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                `).join('')}
+            </div>`:''}
+        </div>
+    `).join('');
+}
+
+function showAlbumForm() { document.getElementById('album-form-area').classList.remove('hidden'); }
+function hideAlbumForm() { document.getElementById('album-form-area').classList.add('hidden'); }
+
+function createAlbum() {
+    const name = document.getElementById('album-name').value.trim();
+    if(!name){ alert('Vui lòng nhập tên album!'); return; }
+    const data = loadData(KEYS.memories, {albums:[]});
+    data.albums.push({
+        id: genId(),
+        name,
+        emoji: document.getElementById('album-emoji').value.trim()||'📸',
+        desc: document.getElementById('album-desc').value.trim(),
+        cover: document.getElementById('album-cover').value.trim(),
+        items: []
+    });
+    saveData(KEYS.memories, data);
+    renderAdminMemList();
+    hideAlbumForm();
+    ['album-name','album-emoji','album-desc','album-cover'].forEach(id=>document.getElementById(id).value='');
+}
+
+function deleteAlbum(albumId) {
+    if(!confirm('Xóa album này và toàn bộ nội dung bên trong?')) return;
+    const data = loadData(KEYS.memories, {albums:[]});
+    data.albums = data.albums.filter(a=>a.id!==albumId);
+    saveData(KEYS.memories, data);
+    renderAdminMemList();
+}
+
+function addMemItem(albumId) {
+    const type = document.getElementById(`mem-item-type-${albumId}`).value;
+    const url = document.getElementById(`mem-item-url-${albumId}`).value.trim();
+    const caption = document.getElementById(`mem-item-cap-${albumId}`).value.trim();
+    if(!url){ alert('Vui lòng nhập URL!'); return; }
+    const data = loadData(KEYS.memories, {albums:[]});
+    const album = data.albums.find(a=>a.id===albumId);
+    if(!album) return;
+    album.items.push({ id: genId(), type, url, caption });
+    saveData(KEYS.memories, data);
+    renderAdminMemList();
+    document.getElementById(`mem-item-url-${albumId}`).value='';
+    document.getElementById(`mem-item-cap-${albumId}`).value='';
+}
+
+function deleteMemItem(albumId, itemId) {
+    const data = loadData(KEYS.memories, {albums:[]});
+    const album = data.albums.find(a=>a.id===albumId);
+    if(!album) return;
+    album.items = album.items.filter(i=>i.id!==itemId);
+    saveData(KEYS.memories, data);
+    renderAdminMemList();
+}
+
+// ============================================================
+// GITHUB CONFIG
+// ============================================================
+function loadGithubConfigToForm() {
+    const token = localStorage.getItem(KEYS.ghToken)||'';
+    const config = loadData(KEYS.ghConfig, {repo:'LarryVan-engin/Some_stuff_case', branch:'main', path:'condao/images/'});
+    if(document.getElementById('gh-token')) document.getElementById('gh-token').value=token;
+    if(document.getElementById('gh-repo')) document.getElementById('gh-repo').value=config.repo||'LarryVan-engin/Some_stuff_case';
+    if(document.getElementById('gh-branch')) document.getElementById('gh-branch').value=config.branch||'main';
+    if(document.getElementById('gh-path')) document.getElementById('gh-path').value=config.path||'condao/images/';
+}
+
+function saveGithubConfig() {
+    const token = document.getElementById('gh-token').value.trim();
+    const config = {
+        repo: document.getElementById('gh-repo').value.trim(),
+        branch: document.getElementById('gh-branch').value.trim(),
+        path: document.getElementById('gh-path').value.trim(),
+    };
+    if(token) localStorage.setItem(KEYS.ghToken, token);
+    saveData(KEYS.ghConfig, config);
+    showTestResult('gh-test-result', true, '✅ Đã lưu cài đặt GitHub!');
+}
+
+async function testGithubConfig() {
+    const token = document.getElementById('gh-token').value.trim();
+    const repo = document.getElementById('gh-repo').value.trim();
+    const el = document.getElementById('gh-test-result');
+    el.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin mr-1"></i> Đang kiểm tra...'; el.className='text-xs rounded-lg px-3 py-2 bg-gray-50 text-gray-600'; el.classList.remove('hidden');
+    try {
+        const resp = await fetch(`https://api.github.com/repos/${repo}`, { headers:{ Authorization: `token ${token}` } });
+        const data = await resp.json();
+        if(resp.ok) showTestResult('gh-test-result', true, `✅ Kết nối thành công! Repo: ${data.full_name} (${data.private?'Private':'Public'})`);
+        else showTestResult('gh-test-result', false, `❌ Lỗi: ${data.message}`);
+    } catch(e) {
+        showTestResult('gh-test-result', false, `❌ Không thể kết nối: ${e.message}`);
+    }
+}
+
+function showTestResult(elId, success, msg) {
+    const el = document.getElementById(elId);
+    if(!el) return;
+    el.classList.remove('hidden');
+    el.className = `text-xs rounded-lg px-3 py-2 ${success?'bg-green-50 text-green-700 border border-green-100':'bg-red-50 text-red-700 border border-red-100'}`;
+    el.innerHTML = msg;
+}
+
+// ============================================================
+// MEMORY PASSWORD CHANGE
+// ============================================================
+function changeMemoryPass() {
+    const np = document.getElementById('new-mem-pass').value;
+    const cp = document.getElementById('confirm-mem-pass').value;
+    if(!np){ showTestResult('mem-pass-change-result', false, 'Vui lòng nhập mật khẩu mới!'); return; }
+    if(np !== cp){ showTestResult('mem-pass-change-result', false, '❌ Mật khẩu xác nhận không khớp!'); return; }
+    localStorage.setItem(KEYS.memPass, simpleHash(np));
+    document.getElementById('new-mem-pass').value='';
+    document.getElementById('confirm-mem-pass').value='';
+    showTestResult('mem-pass-change-result', true, '✅ Đổi mật khẩu Tab Kỷ Niệm thành công!');
+}
+
+// ============================================================
+// EXPORT / IMPORT CMS DATA
+// ============================================================
+function exportCMSData() {
+    const backup = {
+        destinations: loadData(KEYS.adminDests),
+        hotels: loadData(KEYS.adminHotels),
+        food: loadData(KEYS.adminFood),
+        memories: loadData(KEYS.memories, {albums:[]}),
+        exportedAt: new Date().toISOString()
+    };
+    const blob = new Blob([JSON.stringify(backup, null, 2)], {type:'application/json'});
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `condao_cms_backup_${Date.now()}.json`;
+    link.click();
+}
+
+function importCMSData(event) {
+    const file = event.target.files[0];
+    if(!file) return;
+    const reader = new FileReader();
+    reader.onload = e => {
+        try {
+            const data = JSON.parse(e.target.result);
+            if(data.destinations) saveData(KEYS.adminDests, data.destinations);
+            if(data.hotels) saveData(KEYS.adminHotels, data.hotels);
+            if(data.food) saveData(KEYS.adminFood, data.food);
+            if(data.memories) saveData(KEYS.memories, data.memories);
+            alert('✅ Import thành công! Tải lại trang để thấy thay đổi.');
+            showAdminSection(adminCurrentSection);
+            renderAdminDestCardsInTab1();
+            renderAdminHotelsInTab3();
+            renderAdminFoodInTab4();
+        } catch(err) {
+            alert('❌ File JSON không hợp lệ: ' + err.message);
+        }
+    };
+    reader.readAsText(file);
+}
+
+// ============================================================
+// LIGHTBOX
+// ============================================================
+function openLightbox(imgUrl, caption) {
+    document.getElementById('lightbox-img').src = imgUrl;
+    document.getElementById('lightbox-caption').textContent = caption||'';
+    document.getElementById('lightbox-overlay').classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox(e) {
+    if(e && e.target !== document.getElementById('lightbox-overlay')) return;
+    closeLightboxBtn();
+}
+
+function closeLightboxBtn() {
+    document.getElementById('lightbox-overlay').classList.add('hidden');
+    document.body.style.overflow = '';
+}
+
+// ESC key closes lightbox
+document.addEventListener('keydown', e => {
+    if(e.key==='Escape') {
+        closeLightboxBtn();
+        closeAdminModal();
+    }
+});
+
+// ============================================================
+// ON LOAD: Render admin-added items into tabs
+// ============================================================
+(function initAdminItems() {
+    // Initialize defaults in localStorage if not done
+    if (localStorage.getItem('vinhhy_db_initialized_v4') !== 'yes') {
+        const existingDests = JSON.parse(localStorage.getItem(KEYS.adminDests)) || [];
+        const existingHotels = JSON.parse(localStorage.getItem(KEYS.adminHotels)) || [];
+        const existingFood = JSON.parse(localStorage.getItem(KEYS.adminFood)) || [];
+        
+        const mergedDests = [...existingDests.filter(d => !d.isDefault && (!d.id || !d.id.includes('condao'))), ...DEFAULT_DESTINATIONS];
+        const mergedHotels = [...existingHotels.filter(h => !h.isDefault && (!h.id || !h.id.includes('condao'))), ...DEFAULT_HOTELS];
+        const mergedFood = [...existingFood.filter(f => !f.isDefault && (!f.id || !f.id.includes('condao'))), ...DEFAULT_FOOD];
+        
+        localStorage.setItem(KEYS.adminDests, JSON.stringify(mergedDests));
+        localStorage.setItem(KEYS.adminHotels, JSON.stringify(mergedHotels));
+        localStorage.setItem(KEYS.adminFood, JSON.stringify(mergedFood));
+        
+        localStorage.setItem('vinhhy_db_initialized_v4', 'yes');
+    }
+
+    // Init memories password if not set
+    if(!localStorage.getItem(KEYS.memPass)) {
+        localStorage.setItem(KEYS.memPass, simpleHash(DEFAULT_MEM_PASSWORD));
+    }
+    // Check if memories session already unlocked
+    if(sessionStorage.getItem('memoriesUnlocked')==='yes') {
+        document.getElementById('mem-gate').classList.add('hidden');
+        document.getElementById('mem-content').classList.remove('hidden');
+        renderMemoryAlbums();
+    }
+    // Render all content (default + admin) into tabs
+    renderAdminDestCardsInTab1();
+    renderAdminHotelsInTab3();
+    renderAdminFoodInTab4();
+})();
+
+    </script>
+</body>
+</html>

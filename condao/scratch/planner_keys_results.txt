@@ -1,0 +1,78 @@
+
+===== Planner Keys in dalat.html =====
+Line 979: Các địa điểm gốc được hardcode vẫn hiển thị bên dưới. Dữ liệu lưu tại localStorage trình duyệt này.
+Line 1182: <strong>Cảnh báo bảo mật:</strong> Token được lưu trong localStorage trình duyệt. Chỉ sử dụng Fine-grained token với quyền tối thiểu (chỉ write vào repo này).
+Line 1743: // Save custom plan to localStorage
+Line 1745: localStorage.setItem('dalat_custom_plan', JSON.stringify(customPlan));
+Line 1748: // Load custom plan from localStorage
+Line 1768: const saved = localStorage.getItem('dalat_custom_plan');
+Line 1963: try { return JSON.parse(localStorage.getItem(key)) || def; }
+Line 1966: function saveData(key, data) { localStorage.setItem(key, JSON.stringify(data)); }
+Line 2079: const token = localStorage.getItem(KEYS.ghToken) || '';
+Line 2627: const stored = localStorage.getItem(KEYS.memPass) || simpleHash(DEFAULT_MEM_PASSWORD);
+Line 2838: const token = localStorage.getItem(KEYS.ghToken)||'';
+Line 2853: if(token) localStorage.setItem(KEYS.ghToken, token);
+Line 2889: localStorage.setItem(KEYS.memPass, simpleHash(np));
+Line 2968: // Initialize defaults in localStorage if not done
+Line 2969: if (localStorage.getItem('dalat_db_initialized') !== 'yes') {
+Line 2970: const existingDests = JSON.parse(localStorage.getItem(KEYS.adminDests)) || [];
+Line 2971: const existingHotels = JSON.parse(localStorage.getItem(KEYS.adminHotels)) || [];
+Line 2972: const existingFood = JSON.parse(localStorage.getItem(KEYS.adminFood)) || [];
+Line 2978: localStorage.setItem(KEYS.adminDests, JSON.stringify(mergedDests));
+Line 2979: localStorage.setItem(KEYS.adminHotels, JSON.stringify(mergedHotels));
+Line 2980: localStorage.setItem(KEYS.adminFood, JSON.stringify(mergedFood));
+Line 2982: localStorage.setItem('dalat_db_initialized', 'yes');
+Line 2986: if(!localStorage.getItem(KEYS.memPass)) {
+Line 2987: localStorage.setItem(KEYS.memPass, simpleHash(DEFAULT_MEM_PASSWORD));
+
+===== Planner Keys in vinhhy.html =====
+Line 964: Các địa điểm gốc được hardcode vẫn hiển thị bên dưới. Dữ liệu lưu tại localStorage trình duyệt này.
+Line 1167: <strong>Cảnh báo bảo mật:</strong> Token được lưu trong localStorage trình duyệt. Chỉ sử dụng Fine-grained token với quyền tối thiểu (chỉ write vào repo này).
+Line 1729: // Save custom plan to localStorage
+Line 1731: localStorage.setItem('vinhhy_custom_plan', JSON.stringify(customPlan));
+Line 1734: // Load custom plan from localStorage
+Line 1754: const saved = localStorage.getItem('vinhhy_custom_plan');
+Line 1945: try { return JSON.parse(localStorage.getItem(key)) || def; }
+Line 1948: function saveData(key, data) { localStorage.setItem(key, JSON.stringify(data)); }
+Line 2061: const token = localStorage.getItem(KEYS.ghToken) || '';
+Line 2609: const stored = localStorage.getItem(KEYS.memPass) || simpleHash(DEFAULT_MEM_PASSWORD);
+Line 2820: const token = localStorage.getItem(KEYS.ghToken)||'';
+Line 2835: if(token) localStorage.setItem(KEYS.ghToken, token);
+Line 2871: localStorage.setItem(KEYS.memPass, simpleHash(np));
+Line 2950: // Initialize defaults in localStorage if not done
+Line 2951: if (localStorage.getItem('vinhhy_db_initialized') !== 'yes') {
+Line 2952: const existingDests = JSON.parse(localStorage.getItem(KEYS.adminDests)) || [];
+Line 2953: const existingHotels = JSON.parse(localStorage.getItem(KEYS.adminHotels)) || [];
+Line 2954: const existingFood = JSON.parse(localStorage.getItem(KEYS.adminFood)) || [];
+Line 2960: localStorage.setItem(KEYS.adminDests, JSON.stringify(mergedDests));
+Line 2961: localStorage.setItem(KEYS.adminHotels, JSON.stringify(mergedHotels));
+Line 2962: localStorage.setItem(KEYS.adminFood, JSON.stringify(mergedFood));
+Line 2964: localStorage.setItem('vinhhy_db_initialized', 'yes');
+Line 2968: if(!localStorage.getItem(KEYS.memPass)) {
+Line 2969: localStorage.setItem(KEYS.memPass, simpleHash(DEFAULT_MEM_PASSWORD));
+
+===== Planner Keys in vungtau.html =====
+Line 974: Các địa điểm gốc được hardcode vẫn hiển thị bên dưới. Dữ liệu lưu tại localStorage trình duyệt này.
+Line 1177: <strong>Cảnh báo bảo mật:</strong> Token được lưu trong localStorage trình duyệt. Chỉ sử dụng Fine-grained token với quyền tối thiểu (chỉ write vào repo này).
+Line 1739: // Save custom plan to localStorage
+Line 1741: localStorage.setItem('vungtau_custom_plan', JSON.stringify(customPlan));
+Line 1744: // Load custom plan from localStorage
+Line 1764: const saved = localStorage.getItem('vungtau_custom_plan');
+Line 1956: try { return JSON.parse(localStorage.getItem(key)) || def; }
+Line 1959: function saveData(key, data) { localStorage.setItem(key, JSON.stringify(data)); }
+Line 2072: const token = localStorage.getItem(KEYS.ghToken) || '';
+Line 2620: const stored = localStorage.getItem(KEYS.memPass) || simpleHash(DEFAULT_MEM_PASSWORD);
+Line 2831: const token = localStorage.getItem(KEYS.ghToken)||'';
+Line 2846: if(token) localStorage.setItem(KEYS.ghToken, token);
+Line 2882: localStorage.setItem(KEYS.memPass, simpleHash(np));
+Line 2961: // Initialize defaults in localStorage if not done
+Line 2962: if (localStorage.getItem('vungtau_db_initialized') !== 'yes') {
+Line 2963: const existingDests = JSON.parse(localStorage.getItem(KEYS.adminDests)) || [];
+Line 2964: const existingHotels = JSON.parse(localStorage.getItem(KEYS.adminHotels)) || [];
+Line 2965: const existingFood = JSON.parse(localStorage.getItem(KEYS.adminFood)) || [];
+Line 2971: localStorage.setItem(KEYS.adminDests, JSON.stringify(mergedDests));
+Line 2972: localStorage.setItem(KEYS.adminHotels, JSON.stringify(mergedHotels));
+Line 2973: localStorage.setItem(KEYS.adminFood, JSON.stringify(mergedFood));
+Line 2975: localStorage.setItem('vungtau_db_initialized', 'yes');
+Line 2979: if(!localStorage.getItem(KEYS.memPass)) {
+Line 2980: localStorage.setItem(KEYS.memPass, simpleHash(DEFAULT_MEM_PASSWORD));

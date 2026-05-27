@@ -1,0 +1,3 @@
+Line 435: <i class="fa-solid fa-ferry animate-bounce"></i> Phương tiện chính: Tàu cao tốc chất lượng cao (Vũng Tàu - Côn Đảo)
+Line 584: <option value="Bảo tàng Côn Đảo">10. Bảo tàng Côn Đảo (#Lưu_giữ_hiện_vật)</option>
+Line 585: <option value="Nhà tù Côn Đảo (Trại Phú Hải, Phú Sơn)">11. Nhà tù Côn Đảo (Trại Phú Hải, Phú Sơn) (#Di_tích_quốc_gia)</option>

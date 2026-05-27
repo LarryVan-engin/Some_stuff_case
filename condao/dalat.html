@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Khám Phá Côn Đảo - Thiên Đường Nơi Hạ Giới</title>
+    <title>Khám Phá Đà Lạt - Thành Phố Sương Mù</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -22,11 +22,18 @@
 
         /* Hiệu ứng Parallax cho Hero Banner */
         .hero-bg {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.55)), url('./media__1779859942968.jpg');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.55)), url('./images/dalat-bg.JPG');
             background-attachment: fixed;
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
+        }
+
+        /* Khắc phục lỗi background-attachment: fixed không hiển thị ảnh trên thiết bị di động (Safari/iOS/Android) */
+        @media (max-width: 1024px) {
+            .hero-bg {
+                background-attachment: scroll;
+            }
         }
 
         /* Hoạt họa tiêu đề & phụ đề khi tải trang */
@@ -345,10 +352,10 @@
 
     <header class="hero-bg relative h-[100dvh] min-h-screen flex flex-col items-center justify-center text-center px-4 overflow-hidden">
         <div class="max-w-4xl mx-auto space-y-4">
-            <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-2 drop-shadow-lg tracking-wide uppercase opacity-0 animate-fade-in-up">Khám Phá Côn Đảo</h1>
-            <p class="text-lg md:text-2xl text-gray-200 max-w-2xl font-light opacity-0 animate-fade-in-up delay-200 leading-relaxed">Viên ngọc hoang sơ, chốn bình yên mang đậm dấu ấn lịch sử hào hùng.</p>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-2 drop-shadow-lg tracking-wide uppercase opacity-0 animate-fade-in-up">Khám Phá Đà Lạt</h1>
+            <p class="text-lg md:text-2xl text-gray-200 max-w-2xl font-light opacity-0 animate-fade-in-up delay-200 leading-relaxed">Xứ sở ngàn hoa rực rỡ, thành phố sương mù lãng mạn nơi núi rừng Tây Nguyên.</p>
         </div>
-        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer flex flex-col items-center text-white/90 hover:text-white transition-colors" onclick="document.querySelector('.sticky').scrollIntoView({ behavior: 'smooth' })">
+        <div class="absolute bottom-8 left-0 right-0 mx-auto animate-bounce cursor-pointer flex flex-col items-center justify-center text-center text-white/90 hover:text-white transition-colors" onclick="document.querySelector('.sticky').scrollIntoView({ behavior: 'smooth' })">
             <span class="text-[10px] uppercase tracking-widest mb-1.5 font-semibold opacity-75">Cuộn xuống khám phá</span>
             <i class="fa-solid fa-chevron-down text-xl"></i>
         </div>
@@ -380,7 +387,7 @@
                 <section id="tab1" class="tab-content block animate-fade-in">
             <div class="text-center mb-8">
                 <h2 class="text-3xl font-bold text-gray-800">Những Điểm Đến Không Thể Bỏ Lỡ</h2>
-                <p class="text-gray-500 mt-2">Chạm vào thiên nhiên và lịch sử qua từng danh thắng Côn Đảo.</p>
+                <p class="text-gray-500 mt-2">Chạm vào mây ngàn và thông xanh qua từng danh thắng Đà Lạt.</p>
             </div>
             
             <!-- Category Sub-tab Filters -->
@@ -392,10 +399,10 @@
                     <i class="fa-solid fa-umbrella-beach text-teal-600"></i> Bãi Tắm & Sinh Thái
                 </button>
                 <button onclick="filterDestinations('history')" class="dest-filter-btn px-4 py-2 md:px-5 md:py-2.5 rounded-full font-bold text-xs md:text-sm bg-white text-gray-600 border border-gray-200 hover:bg-teal-50 hover:text-teal-700 transition-all duration-300 flex items-center gap-2 focus:outline-none">
-                    <i class="fa-solid fa-landmark text-teal-600"></i> Lịch Sử & Tham Quan
+                    <i class="fa-solid fa-mountain-sun text-teal-600"></i> Check-in & Thiên Nhiên
                 </button>
                 <button onclick="filterDestinations('temple')" class="dest-filter-btn px-4 py-2 md:px-5 md:py-2.5 rounded-full font-bold text-xs md:text-sm bg-white text-gray-600 border border-gray-200 hover:bg-teal-50 hover:text-teal-700 transition-all duration-300 flex items-center gap-2 focus:outline-none">
-                    <i class="fa-solid fa-gopuran text-teal-600"></i> Điểm Đến Tâm Linh
+                    <i class="fa-solid fa-seedling text-teal-600"></i> Café & Trải Nghiệm
                 </button>
                 <button onclick="filterDestinations('food')" class="dest-filter-btn px-4 py-2 md:px-5 md:py-2.5 rounded-full font-bold text-xs md:text-sm bg-white text-gray-600 border border-gray-200 hover:bg-teal-50 hover:text-teal-700 transition-all duration-300 flex items-center gap-2 focus:outline-none">
                     <i class="fa-solid fa-shrimp text-orange-600"></i> Đặc Sản Ẩm Thực
@@ -422,138 +429,110 @@
                 <!-- 1. Preset Timeline View -->
                 <div id="planner-preset-view" class="block">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-extrabold text-teal-700">Lịch Trình Chi Tiết Tàu Cao Tốc 4N3Đ</h2>
-                    <p class="text-gray-500 mt-3 text-sm md:text-base">Hành trình vượt sóng đại dương kết hợp trọn vẹn khám phá lịch sử, tâm linh, sinh thái biển đảo & ẩm thực đặc sắc.</p>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-teal-700">Lịch Trình Chi Tiết Khám Phá Đà Lạt 4N3Đ</h2>
+                    <p class="text-gray-500 mt-3 text-sm md:text-base">Hành trình lãng mạn giữa ngàn hoa kết hợp săn mây rừng thông, check-in đồi chè thơ mộng & thưởng thức ẩm thực đặc trưng phố núi.</p>
                     <div class="mt-4 inline-flex items-center gap-2 bg-teal-50 text-teal-700 px-4 py-1.5 rounded-full text-xs font-semibold border border-teal-100">
-                        <i class="fa-solid fa-ferry animate-bounce"></i> Phương tiện chính: Tàu cao tốc chất lượng cao (Vũng Tàu - Côn Đảo)
+                        <i class="fa-solid fa-bus animate-bounce"></i> Phương tiện chính: Xe giường nằm Limousine & Máy bay
                     </div>
                 </div>
 
                 <div class="timeline-container space-y-2">
-                    
                     <!-- Ngày 1 -->
                     <div class="timeline-item">
-                        <div class="timeline-icon"><i class="fa-solid fa-ship"></i></div>
-                        <h3 class="text-xl font-bold text-gray-800 bg-[#f5f5dc] inline-block px-4 py-1 rounded-md mb-4 shadow-sm">Ngày 1: Hải Trình Vượt Sóng & Về Nguồn Tâm Linh</h3>
+                        <div class="timeline-icon"><i class="fa-solid fa-bus"></i></div>
+                        <h3 class="text-xl font-bold text-gray-800 bg-[#f5f5dc] inline-block px-4 py-1 rounded-md mb-4 shadow-sm">Ngày 1: Hành Trình Lên Phố Sương Mù & Đêm Chợ Đà Lạt</h3>
                         <ul class="space-y-4 text-gray-600 text-sm md:text-base leading-relaxed">
                             <li class="flex items-start bg-gray-50/50 p-3 rounded-xl border border-gray-100 hover:border-teal-200 transition-colors">
-                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">07:30 - 08:00</div>
-                                <div>Có mặt tại <strong>Cảng Cầu Đá Vũng Tàu</strong>, làm thủ tục soát vé và lên tàu cao tốc 5 sao Express.</div>
+                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">07:30 - 11:30</div>
+                                <div>Di chuyển bằng xe khách Limousine giường nằm từ TP.HCM qua cung đèo Bảo Lộc uốn lượn lộng gió mát ngắm cảnh thông ngút ngàn.</div>
                             </li>
                             <li class="flex items-start bg-gray-50/50 p-3 rounded-xl border border-gray-100 hover:border-teal-200 transition-colors">
-                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">08:00 - 12:30</div>
-                                <div><strong>Hải trình Vũng Tàu - Côn Đảo</strong>. Du khách nghỉ ngơi, tận hưởng sóng biển khơi rộng lớn trên boong tàu lộng gió ngắm biển xanh ngắt.</div>
+                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">13:30 - 14:30</div>
+                                <div>Check-in nhận phòng tại <strong>Hotel Colline</strong> ngay cạnh chợ Đà Lạt, sắp xếp hành lý đồ đạc và nghỉ ngơi chút.</div>
                             </li>
                             <li class="flex items-start bg-gray-50/50 p-3 rounded-xl border border-gray-100 hover:border-teal-200 transition-colors">
-                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">12:30 - 13:30</div>
-                                <div>Tàu cập <strong>Cảng Bến Đầm Côn Đảo</strong>. Xe đón về nhận phòng tại khách sạn trung tâm thị trấn, dùng cơm trưa niêu đặc sản thơm ngon.</div>
-                            </li>
-                            <li class="flex items-start bg-gray-50/50 p-3 rounded-xl border border-gray-100 hover:border-teal-200 transition-colors">
-                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">14:30 - 17:00</div>
-                                <div>Tham quan <strong>Bảo tàng Côn Đảo</strong> để lắng nghe thuyết minh khái quát lịch sử, sau đó viếng di tích <strong>Nhà tù Côn Đảo</strong> và <strong>Dinh Chúa Đảo</strong> để chứng kiến các dấu tích hào hùng kiên cường.</div>
+                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">15:00 - 17:30</div>
+                                <div>Dạo bộ quanh <strong>Hồ Xuân Hương</strong> ngắm liễu rủ thơ mộng, check-in đóa hoa Atiso khổng lồ tại Quảng trường Lâm Viên.</div>
                             </li>
                             <li class="flex items-start bg-gray-50/50 p-3 rounded-xl border border-gray-100 hover:border-teal-200 transition-colors">
                                 <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">18:30 - 20:00</div>
-                                <div>Dùng bữa tối hải sản tươi sống tại nhà hàng Tri Kỷ (thưởng thức cua mặt trăng đặc sản nức tiếng).</div>
+                                <div>Thưởng thức món nức tiếng <strong>Lẩu Gà Lá É Tao Ngộ</strong> nóng hổi quyện cùng vị the mát độc đáo cực kỳ ấm nồng giữa khí trời se lạnh.</div>
                             </li>
                             <li class="flex items-start bg-gray-50/50 p-3 rounded-xl border border-gray-100 hover:border-teal-200 transition-colors">
-                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">21:30 - 23:30</div>
-                                <div>Di chuyển viếng <strong>Nghĩa trang Hàng Dương</strong> và phần mộ Anh hùng Võ Thị Sáu lúc đêm muộn linh thiêng.</div>
+                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">20:30 - 22:30</div>
+                                <div>Khám phá <strong>Chợ Đêm Đà Lạt</strong>, thưởng thức sữa đậu nành nóng hổi cùng bánh tráng nướng lừng danh giòn giòn béo ngậy.</div>
                             </li>
                         </ul>
                     </div>
 
                     <!-- Ngày 2 -->
                     <div class="timeline-item">
-                        <div class="timeline-icon"><i class="fa-solid fa-person-hiking"></i></div>
-                        <h3 class="text-xl font-bold text-gray-800 bg-[#f5f5dc] inline-block px-4 py-1 rounded-md mb-4 shadow-sm">Ngày 2: Băng Rừng Quốc Gia & Khám Phá Private Beach</h3>
+                        <div class="timeline-icon"><i class="fa-solid fa-cloud"></i></div>
+                        <h3 class="text-xl font-bold text-gray-800 bg-[#f5f5dc] inline-block px-4 py-1 rounded-md mb-4 shadow-sm">Ngày 2: Săn Mây Đỉnh Langbiang & Hoàng Hôn Tuyền Lâm</h3>
                         <ul class="space-y-4 text-gray-600 text-sm md:text-base leading-relaxed">
                             <li class="flex items-start bg-gray-50/50 p-3 rounded-xl border border-gray-100 hover:border-teal-200 transition-colors">
-                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">07:30 - 08:30</div>
-                                <div>Ăn sáng món ngon đặc trưng đảo (bún riêu cua Bà Hai Khiêm) và nhâm nhi cà phê sáng.</div>
+                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">05:00 - 08:30</div>
+                                <div>Dậy sớm đi xe Jeep vượt dốc thông mát lạnh lên đỉnh <strong>Langbiang</strong> săn mây bồng bềnh phủ trắng thung lũng đón bình minh vàng rực rỡ.</div>
                             </li>
                             <li class="flex items-start bg-gray-50/50 p-3 rounded-xl border border-gray-100 hover:border-teal-200 transition-colors">
-                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">08:30 - 12:00</div>
-                                <div>Trải nghiệm đi bộ trekking 45 phút xuyên qua rừng quốc gia mát rượi, đặt chân tới <strong>Bãi Đất Thắm</strong> hoang sơ biệt lập, tự do bơi lội và chụp ảnh cùng nhánh cây khô dạt biển đầy tính nghệ thuật.</div>
+                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">09:00 - 10:00</div>
+                                <div>Ăn sáng <strong>Bánh mì xíu mại chén Hoàng Diệu</strong> cay cay nóng hổi chấm ổ bánh mì giòn rụm tuyệt vời.</div>
                             </li>
                             <li class="flex items-start bg-gray-50/50 p-3 rounded-xl border border-gray-100 hover:border-teal-200 transition-colors">
                                 <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">12:00 - 13:30</div>
-                                <div>Quay lại thị trấn, thưởng thức bữa trưa hải sản tươi sống chất lượng tại quán hải sản Sang Tuyền.</div>
+                                <div>Dùng bữa cơm lam gà nướng ống tre đặc sắc Tây Nguyên tại thung lũng thông reo.</div>
                             </li>
                             <li class="flex items-start bg-gray-50/50 p-3 rounded-xl border border-gray-100 hover:border-teal-200 transition-colors">
-                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">14:30 - 17:30</div>
-                                <div>Dâng hương cầu bình an tại ngôi miếu linh thiêng thờ <strong>Miếu Cậu</strong>, sau đó thỏa sức tắm mát, chụp ảnh ngắm máy bay hạ cánh cực sát mặt nước tại <strong>Bãi Đầm Trầu</strong> và đi bộ sang <strong>Bãi Suối Nóng</strong> hoang sơ bên cạnh.</div>
-                            </li>
-                            <li class="flex items-start bg-gray-50/50 p-3 rounded-xl border border-gray-100 hover:border-teal-200 transition-colors">
-                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">18:30 - 21:00</div>
-                                <div>Ghé cảng Bến Đầm, trải nghiệm ăn tối tuyệt vời lộng gió trên các bè nổi hải sản tươi sống.</div>
+                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">15:00 - 17:30</div>
+                                <div>Chèo SUP đón hoàng hôn tuyệt tác tím biếc rọi xuống mặt hồ phẳng lặng như gương tại <strong>Hồ Tuyền Lâm</strong> mơ mộng.</div>
                             </li>
                         </ul>
                     </div>
 
                     <!-- Ngày 3 -->
                     <div class="timeline-item">
-                        <div class="timeline-icon"><i class="fa-solid fa-umbrella-beach"></i></div>
-                        <h3 class="text-xl font-bold text-gray-800 bg-[#f5f5dc] inline-block px-4 py-1 rounded-md mb-4 shadow-sm">Ngày 3: Kỳ Quan Sinh Thái Biển Đảo</h3>
+                        <div class="timeline-icon"><i class="fa-solid fa-camera"></i></div>
+                        <h3 class="text-xl font-bold text-gray-800 bg-[#f5f5dc] inline-block px-4 py-1 rounded-md mb-4 shadow-sm">Ngày 3: Di Sản Hoài Cổ Ga Xe Lửa & Chùa Ve Chai</h3>
                         <ul class="space-y-4 text-gray-600 text-sm md:text-base leading-relaxed">
                             <li class="flex items-start bg-gray-50/50 p-3 rounded-xl border border-gray-100 hover:border-teal-200 transition-colors">
-                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">07:30 - 08:30</div>
-                                <div>Dùng bữa sáng thong thả và nhâm nhi ly cà phê view biển đón gió vịnh trong lành tại Cafe Côn Sơn.</div>
+                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">08:00 - 10:30</div>
+                                <div>Chụp hình hoài cổ bên những đầu máy xe lửa hơi nước xưa tại <strong>Ga Đà Lạt</strong> kiến trúc mái chóp độc đáo.</div>
                             </li>
                             <li class="flex items-start bg-gray-50/50 p-3 rounded-xl border border-gray-100 hover:border-teal-200 transition-colors">
-                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">08:30 - 11:30</div>
-                                <div>Lên cano lặn ngắm san hô tại <strong>Hòn Bảy Cạnh</strong> (xem rùa con, khám phá rừng ngập mặn), kết hợp sang <strong>Hòn Cau</strong> chèo SUP nước trong vắt tựa pha lê và viếng ngôi <strong>Miếu Cô Vân</strong> linh thiêng sát bờ cát trắng.</div>
+                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">11:00 - 12:30</div>
+                                <div>Viếng ngôi <strong>Chùa Linh Phước</strong> (chùa Ve Chai) tráng lệ khảm đầy sành sứ khéo léo bái Phật Quan Âm cầu bình an.</div>
                             </li>
                             <li class="flex items-start bg-gray-50/50 p-3 rounded-xl border border-gray-100 hover:border-teal-200 transition-colors">
-                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">11:30 - 13:30</div>
-                                <div>Quay lại thị trấn, ăn trưa tại quán Cây Bàng râm mát thoáng đãng và nghỉ ngơi tại khách sạn.</div>
-                            </li>
-                            <li class="flex items-start bg-gray-50/50 p-3 rounded-xl border border-gray-100 hover:border-teal-200 transition-colors">
-                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">14:30 - 17:30</div>
-                                <div>Khám phá vách đá dựng đứng hùng vĩ tại <strong>Mũi Cá Mập</strong>, check-in chụp hình tuyệt đẹp tại <strong>Cầu tàu 914</strong> lịch sử và tắm biển ngắm hoàng hôn rực rỡ tại <strong>Bãi Nhát</strong> cát mịn.</div>
-                            </li>
-                            <li class="flex items-start bg-gray-50/50 p-3 rounded-xl border border-gray-100 hover:border-teal-200 transition-colors">
-                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">18:30 - 21:00</div>
-                                <div>Dùng bữa tối ấm cúng, thư thái nhâm nhi trà nóng, nghe nhạc xưa tại Phiên Khúc Cafe hoài cổ.</div>
+                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">13:00 - 14:30</div>
+                                <div>Thưởng thức món bánh căn giòn rụm nhân trứng cút thơm bùi tại quán <strong>Bánh Căn Lệ</strong> trứ danh.</div>
                             </li>
                         </ul>
                     </div>
 
                     <!-- Ngày 4 -->
                     <div class="timeline-item">
-                        <div class="timeline-icon"><i class="fa-solid fa-mountain-sun"></i></div>
-                        <h3 class="text-xl font-bold text-gray-800 bg-[#f5f5dc] inline-block px-4 py-1 rounded-md mb-4 shadow-sm">Ngày 4: Vãn Cảnh Vân Sơn Tự & Hải Trình Quay Về</h3>
+                        <div class="timeline-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+                        <h3 class="text-xl font-bold text-gray-800 bg-[#f5f5dc] inline-block px-4 py-1 rounded-md mb-4 shadow-sm">Ngày 4: Hương Sắc Sương Mờ & Trở Về Đất Liền</h3>
                         <ul class="space-y-4 text-gray-600 text-sm md:text-base leading-relaxed">
                             <li class="flex items-start bg-gray-50/50 p-3 rounded-xl border border-gray-100 hover:border-teal-200 transition-colors">
-                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">07:30 - 08:30</div>
-                                <div>Thưởng thức đặc sản cháo hàu sữa ấm nồng bổ dưỡng cho bữa sáng khỏe khoắn.</div>
+                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">09:00 - 11:00</div>
+                                <div>Ghé sạp chợ trung tâm mua dâu tây tươi mọng, mứt hồng sấy dẻo ngọt ngào và trà atiso làm quà kỷ niệm ý nghĩa.</div>
                             </li>
                             <li class="flex items-start bg-gray-50/50 p-3 rounded-xl border border-gray-100 hover:border-teal-200 transition-colors">
-                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">08:30 - 10:30</div>
-                                <div>Chinh phục núi vãn cảnh <strong>Chùa Núi Một (Vân Sơn Tự)</strong> tựa lưng vào núi hướng hồ sen An Hải tuyệt đẹp, sau đó di chuyển viếng ngôi <strong>Miếu Năm Cô</strong> linh thiêng cầu may mắn tài lộc.</div>
-                            </li>
-                            <li class="flex items-start bg-gray-50/50 p-3 rounded-xl border border-gray-100 hover:border-teal-200 transition-colors">
-                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">10:30 - 11:30</div>
-                                <div>Ghé sạp hàng Chợ Côn Đảo mua đặc sản mứt hạt bàng rang muối/ngọt thủ công nức tiếng làm quà tặng ý nghĩa.</div>
-                            </li>
-                            <li class="flex items-start bg-gray-50/50 p-3 rounded-xl border border-gray-100 hover:border-teal-200 transition-colors">
-                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">11:30 - 12:45</div>
-                                <div>Trả phòng khách sạn, dùng bữa trưa gọn gàng nhẹ nhàng trước khi ra cảng.</div>
-                            </li>
-                            <li class="flex items-start bg-gray-50/50 p-3 rounded-xl border border-gray-100 hover:border-teal-200 transition-colors">
-                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">13:00 - 17:30</div>
-                                <div>Có mặt tại cảng Bến Đầm làm thủ tục. Tàu cao tốc rời bến lúc <strong>13:30</strong> hải trình trở về Vũng Tàu. Tàu cập cảng Vũng Tàu lúc 17:30, kết thúc hành trình 4N3Đ trọn vẹn xúc cảm!</div>
+                                <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">12:00 - 12:30</div>
+                                <div>Check-out trả phòng <strong>Hotel Colline</strong>, sắp xếp đồ đạc lên xe Limousine kết thúc hải trình 4N3Đ trọn vẹn thơ mộng!</div>
                             </li>
                         </ul>
                     </div>
-                </div>
-                </div>
+</div>
+</div>
+</div>
 
 <!-- 2. Custom Planner View -->
                 <div id="planner-custom-view" class="hidden space-y-6">
                     <div class="text-center mb-8">
                         <h2 class="text-2xl md:text-3xl font-extrabold text-teal-700">Tự Lập Kế Hoạch Cá Nhân</h2>
-                        <p class="text-gray-500 mt-2 text-xs sm:text-sm">Tự do xây dựng lịch trình, tùy chọn 11 địa điểm đẹp nhất Côn Đảo kèm khung giờ gợi ý.</p>
+                        <p class="text-gray-500 mt-2 text-xs sm:text-sm">Tự do xây dựng lịch trình, tùy chọn 11 địa điểm đẹp nhất Đà Lạt kèm khung giờ gợi ý.</p>
                     </div>
 
                     <!-- Quick Action: Load default pre-set / Clear -->
@@ -593,28 +572,12 @@
                             <div class="md:col-span-5">
                                 <label class="block text-xs font-bold text-gray-600 uppercase mb-1.5">Chọn Địa Điểm</label>
                                 <select id="planner-dest-select" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 text-gray-700 shadow-inner font-semibold">
-                                    <option value="Vịnh Đầm Tre">1. Vịnh Đầm Tre (#Mùa_rong_mơ)</option>
-                                    <option value="Bãi Đầm Trầu">2. Bãi Đầm Trầu (#Bãi_tắm_đẹp)</option>
-                                    <option value="Bãi Nhát">3. Bãi Nhát (#Phong_cảnh_hữu_tình)</option>
-                                    <option value="Bãi Suối Nóng">4. Bãi Suối Nóng (#Hoang_sơ_hiếm_có)</option>
-                                    <option value="Bãi Đá Cuội">5. Bãi Đá Cuội (#Khu_Bến_Đầm)</option>
-                                    <option value="Hòn Bảy Cạnh">6. Hòn Bảy Cạnh (#Bảo_tồn_rùa)</option>
-                                    <option value="Hòn Cau & Miếu Cô Vân">7. Hòn Cau & Miếu Cô Vân (#Hòn_Cau)</option>
-                                    <option value="Bãi Đất Thắm">8. Bãi Đất Thắm (#Private_Beach)</option>
-                                    <option value="Hòn Tài, Hòn Trác">9. Hòn Tài, Hòn Trác (#Hòn_đảo_ẩn_giấu)</option>
-                                    <option value="Bảo tàng Côn Đảo">10. Bảo tàng Côn Đảo (#Lưu_giữ_hiện_vật)</option>
-                                    <option value="Nhà tù Côn Đảo (Trại Phú Hải, Phú Sơn)">11. Nhà tù Côn Đảo (Trại Phú Hải, Phú Sơn) (#Di_tích_quốc_gia)</option>
-                                    <option value="Dinh Chúa Đảo">12. Dinh Chúa Đảo (#Kiến_trúc_Pháp_cổ)</option>
-                                    <option value="Trung Tâm Bảo Tồn Di Tích Quốc Gia">13. Trung Tâm Bảo Tồn Di Tích Quốc Gia (#Đường_Nguyễn_Huệ)</option>
-                                    <option value="Cầu tàu 914">14. Cầu tàu 914 (#Chứng_nhân_lịch_sử)</option>
-                                    <option value="Mũi Cá Mập">15. Mũi Cá Mập (#Tọa_độ_lý_tưởng)</option>
-                                    <option value="Nghĩa trang Hàng Dương">16. Nghĩa trang Hàng Dương (#Tâm_linh_thiêng_liêng)</option>
-                                    <option value="Miếu Cậu (Thiếu Gia Miếu)">17. Miếu Cậu (Thiếu Gia Miếu) (#Hoàng_tử_Cải)</option>
-                                    <option value="Miếu Năm Cô (Miếu Ngũ Hành)">18. Miếu Năm Cô (Miếu Ngũ Hành) (#Thờ_Ngũ_Hành)</option>
-                                    <option value="Chùa Núi Một (Vân Sơn Tự)">19. Chùa Núi Một (Vân Sơn Tự) (#Tựa_sơn_hướng_thủy)</option>
-                                    <option value="Cua mặt trăng">20. Cua mặt trăng (#Đặc_sản_quý_hiếm)</option>
-                                    <option value="Mứt hạt bàng">21. Mứt hạt bàng (#Quà_tặng_Côn_Đảo)</option>
-                                </select>
+                                    <option value="Đỉnh Langbiang">1. Đỉnh Langbiang (#Nóc_nhà_Đà_Lạt)</option>
+                                    <option value="Hồ Tuyền Lâm">2. Hồ Tuyền Lâm (#Chèo_SUP)</option>
+                                    <option value="Ga Đà Lạt">3. Ga Đà Lạt (#Ga_cổ_kính)</option>
+                                    <option value="Chùa Linh Phước (Chùa Ve Chai)">4. Chùa Linh Phước (Chùa Ve Chai) (#Chùa_khảm_sành)</option>
+                                    <option value="Quảng trường Lâm Viên">5. Quảng trường Lâm Viên (#Nụ_hoa_Atiso)</option>
+</select>
                             </div>
 
                             <!-- Time Selector -->
@@ -683,52 +646,33 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
                 
                 <div class="bg-white rounded-xl shadow-md p-8 border border-gray-100">
-                    <h3 class="text-2xl font-bold text-teal-700 mb-6 border-b pb-2"><i class="fa-solid fa-ship mr-2"></i> Kênh Di Chuyển Ra Đảo</h3>
+                    <h3 class="text-2xl font-bold text-teal-700 mb-6 border-b pb-2"><i class="fa-solid fa-plane-departure mr-2"></i> Kênh Di Chuyển Lên Lâm Đồng</h3>
                     
                     <div class="mb-6">
                         <h4 class="font-bold text-lg text-gray-800 flex items-center mb-2"><i class="fa-solid fa-plane text-teal-600 mr-2"></i> Bằng Máy Bay</h4>
-                        <p class="text-gray-600 text-sm mb-2">Đường bay thẳng được khai thác bởi Vietnam Airlines, Vietjet Airs và Bamboo Airways[cite: 76].</p>
+                        <p class="text-gray-600 text-sm mb-2">Sân bay Liên Khương cách trung tâm Đà Lạt khoảng 30km, kết nối trực tiếp với các hãng hàng không lớn.</p>
                         <ul class="list-disc pl-5 text-gray-600 text-sm space-y-1">
-                            <li><strong>Từ TP.HCM & Cần Thơ:</strong> Thời gian bay khoảng 55 phút[cite: 78]. Giá tham khảo dao động từ 1.200.000đ - 1.800.000đ/chiều.</li>
-                            <li><strong>Từ Hà Nội:</strong> Thời gian bay khoảng 3 giờ 30 phút[cite: 79].</li>
+                            <li><strong>Từ TP.HCM / Hà Nội / Đà Nẵng:</strong> Vé bay từ 900.000đ - 2.500.000đ/lượt.</li>
+                            <li><strong>Xe Bus Sân Bay về phố:</strong> Khoảng 40.000 VNĐ/lượt hoặc đi taxi trọn gói khoảng 250.000 VNĐ.</li>
                         </ul>
                     </div>
 
                     <div>
-                        <h4 class="font-bold text-lg text-gray-800 flex items-center mb-3"><i class="fa-solid fa-ferry text-teal-600 mr-2"></i> Bằng Tàu Cao Tốc</h4>
-                        <p class="text-gray-600 text-sm mb-4">Hiện có các tuyến tàu cao tốc chất lượng cao phục vụ việc di chuyển ra Côn Đảo với mức giá và lịch trình khác nhau:</p>
+                        <h4 class="font-bold text-lg text-gray-800 flex items-center mb-3"><i class="fa-solid fa-bus text-teal-600 mr-2"></i> Bằng Xe Khách Limousine</h4>
+                        <p class="text-gray-600 text-sm mb-4">Các dòng xe limousine giường nằm chất lượng cao đem lại hành trình thoải mái xuyên suốt ngày đêm:</p>
 
                         <div class="space-y-4">
                             <div class="bg-gray-50/50 hover:bg-teal-50/20 border border-gray-100 hover:border-teal-200 p-4 rounded-xl transition-all duration-300 shadow-sm hover:shadow-md">
                                 <div class="flex flex-wrap justify-between items-start gap-2 mb-2">
-                                    <h5 class="font-extrabold text-gray-800 text-base flex items-center gap-2"><i class="fa-solid fa-anchor text-teal-600"></i> Tuyến Vũng Tàu - Côn Đảo</h5>
-                                    <span class="bg-teal-600 text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase">Khoảng 3.5 - 4 tiếng</span>
+                                    <h5 class="font-extrabold text-gray-800 text-base flex items-center gap-2"><i class="fa-solid fa-bus text-teal-600"></i> Hãng xe Thành Bưởi & Phương Trang</h5>
+                                    <span class="bg-teal-600 text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase">Khoảng 6 - 7 tiếng</span>
                                 </div>
-                                <p class="text-sm text-gray-600 mb-3">Được khai thác chủ yếu bởi hãng Phú Quốc Express (Tàu Thăng Long - Tàu cao tốc lớn nhất Việt Nam). Chịu sóng gió tốt, tiện nghi 5 sao.</p>
+                                <p class="text-sm text-gray-600 mb-3">Tần suất chạy liên tục mỗi 30 - 60 phút từ TP.HCM, dòng xe phòng nằm cabin Vip sang trọng riêng tư.</p>
                                 <div class="bg-white p-3 rounded-lg border border-gray-100 text-sm">
                                     <p class="font-semibold text-teal-700 mb-1 border-b pb-1">Bảng giá tham khảo:</p>
                                     <ul class="space-y-1.5 text-gray-600 mt-2">
-                                        <li class="flex justify-between"><span>Vé ECO (Thứ 2 - Thứ 5):</span> <span class="font-bold text-gray-800">790.000 VNĐ</span></li>
-                                        <li class="flex justify-between"><span>Vé ECO (Thứ 6 - CN, Lễ):</span> <span class="font-bold text-gray-800">950.000 VNĐ</span></li>
-                                        <li class="flex justify-between"><span>Trẻ em / Người cao tuổi:</span> <span class="font-bold text-gray-800">630.000đ - 760.000 VNĐ</span></li>
-                                        <li class="flex justify-between"><span>Vé VIP:</span> <span class="font-bold text-orange-600">1.000.000 - 1.100.000 VNĐ</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="bg-gray-50/50 hover:bg-teal-50/20 border border-gray-100 hover:border-teal-200 p-4 rounded-xl transition-all duration-300 shadow-sm hover:shadow-md">
-                                <div class="flex flex-wrap justify-between items-start gap-2 mb-2">
-                                    <h5 class="font-extrabold text-gray-800 text-base flex items-center gap-2"><i class="fa-solid fa-anchor text-teal-600"></i> Tuyến Trần Đề (Sóc Trăng) - Côn Đảo</h5>
-                                    <span class="bg-teal-600 text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase">Khoảng 2 - 2.5 tiếng</span>
-                                </div>
-                                <p class="text-sm text-gray-600 mb-3">Được khai thác bởi Phú Quốc Express (Côn Đảo Express) và Superdong. Thời gian di chuyển ngắn nhất, phù hợp cho du khách xuất phát từ miền Tây.</p>
-                                <div class="bg-white p-3 rounded-lg border border-gray-100 text-sm">
-                                    <p class="font-semibold text-teal-700 mb-1 border-b pb-1">Bảng giá tham khảo (Côn Đảo Express):</p>
-                                    <ul class="space-y-1.5 text-gray-600 mt-2">
-                                        <li class="flex justify-between"><span>Vé ECO (Thứ 2 - Thứ 5):</span> <span class="font-bold text-gray-800">390.000 VNĐ</span></li>
-                                        <li class="flex justify-between"><span>Vé ECO (Thứ 6 - CN, Lễ):</span> <span class="font-bold text-gray-800">450.000 VNĐ</span></li>
-                                        <li class="flex justify-between"><span>Trẻ em / Người cao tuổi:</span> <span class="font-bold text-gray-800">312.000đ - 360.000 VNĐ</span></li>
-                                        <li class="flex justify-between"><span>Vé VIP:</span> <span class="font-bold text-orange-600">590.000 VNĐ</span></li>
+                                        <li class="flex justify-between"><span>Giường nằm tiêu chuẩn:</span> <span class="font-bold text-gray-800">270.000 VNĐ</span></li>
+                                        <li class="flex justify-between"><span>Phòng nằm VIP Cabin:</span> <span class="font-bold text-gray-800">380.000 - 450.000 VNĐ</span></li>
                                     </ul>
                                 </div>
                             </div>
@@ -736,8 +680,8 @@
                             <div class="mt-4 bg-amber-50/80 border border-amber-100 p-4 rounded-xl flex gap-3 shadow-xs">
                                 <div class="text-amber-500 text-lg shrink-0 mt-0.5"><i class="fa-solid fa-lightbulb"></i></div>
                                 <div>
-                                    <h6 class="font-bold text-amber-800 text-sm">Lưu ý</h6>
-                                    <p class="text-amber-900/80 text-xs mt-1 leading-relaxed">Giá vé có thể thay đổi tùy hãng tàu và chưa bao gồm phí cảng (khoảng 18.000 VNĐ/lượt). Nên mua vé khứ hồi trước 1-2 tuần vào mùa cao điểm để tránh cháy vé.</p>
+                                    <h6 class="font-bold text-amber-800 text-sm">Lưu ý khi đi Đà Lạt</h6>
+                                    <p class="text-amber-900/80 text-xs mt-1 leading-relaxed">Nên chuẩn bị sẵn áo khoác ấm vì nhiệt độ ban đêm có thể giảm rất sâu (khoảng 14 - 16 độ C). Lên lịch đặt vé trước 1 - 2 tuần cho cuối tuần cao điểm.</p>
                                 </div>
                             </div>
                         </div>
@@ -761,7 +705,7 @@
 
         <section id="tab4" class="tab-content hidden animate-fade-in">
             <div class="text-center mb-8">
-                <h2 class="text-3xl font-bold text-gray-800">Cẩm Nang Ẩm Thực & Cà Phê Côn Đảo</h2>
+                <h2 class="text-3xl font-bold text-gray-800">Cẩm Nang Ẩm Thực & Cà Phê Đà Lạt</h2>
                 <p class="text-gray-500 mt-2">Khám phá văn hóa ẩm thực đặc trưng và những tọa độ check-in thư giãn tuyệt đẹp.</p>
             </div>
             
@@ -771,7 +715,7 @@
                     <i class="fa-solid fa-list"></i> Tất Cả
                 </button>
                 <button onclick="filterFood('restaurant')" class="food-filter-btn px-4 py-2 md:px-5 md:py-2.5 rounded-full font-bold text-xs md:text-sm bg-white text-gray-600 border border-gray-200 hover:bg-teal-50 hover:text-teal-700 transition-all duration-300 flex items-center gap-2 focus:outline-none">
-                    <i class="fa-solid fa-utensils text-teal-600"></i> Quán Ngon Côn Đảo
+                    <i class="fa-solid fa-utensils text-teal-600"></i> Quán Ngon Đà Lạt
                 </button>
                 <button onclick="filterFood('specialty')" class="food-filter-btn px-4 py-2 md:px-5 md:py-2.5 rounded-full font-bold text-xs md:text-sm bg-white text-gray-600 border border-gray-200 hover:bg-teal-50 hover:text-teal-700 transition-all duration-300 flex items-center gap-2 focus:outline-none">
                     <i class="fa-solid fa-shrimp text-orange-600"></i> Đặc Sản Phải Thử
@@ -817,7 +761,7 @@
                         <i class="fa-solid fa-heart text-rose-500 text-xl"></i>
                         <span class="font-extrabold text-rose-700 text-lg">Những Kỷ Niệm Không Thể Quên</span>
                     </div>
-                    <p class="text-gray-500 text-sm">Lưu trữ những khoảnh khắc đẹp nhất của chuyến hành trình Côn Đảo.</p>
+                    <p class="text-gray-500 text-sm">Lưu trữ những khoảnh khắc đẹp nhất của chuyến hành trình Đà Lạt.</p>
                 </div>
 
                 <!-- Album Grid -->
@@ -885,7 +829,7 @@
                         <div class="w-8 h-8 bg-teal-600 rounded-lg flex items-center justify-center">
                             <i class="fa-solid fa-shield-halved text-white text-sm"></i>
                         </div>
-                        <span class="font-extrabold text-sm">Admin Dashboard — Côn Đảo</span>
+                        <span class="font-extrabold text-sm">Admin Dashboard — Đà Lạt</span>
                         <span class="bg-teal-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">Đang đăng nhập</span>
                     </div>
                     <div class="flex items-center gap-2">
@@ -958,15 +902,15 @@
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
                                         <label class="admin-form-label">Tên địa điểm *</label>
-                                        <input id="dest-name" type="text" class="admin-form-input" placeholder="Ví dụ: Bãi Đầm Trầu">
+                                        <input id="dest-name" type="text" class="admin-form-input" placeholder="Ví dụ: Thung lũng Tình Yêu">
                                     </div>
                                     <div>
                                         <label class="admin-form-label">Danh mục *</label>
                                         <select id="dest-category" class="admin-form-input">
                                             <option value="beach">🏖 Bãi Tắm & Sinh Thái Biển</option>
                                             <option value="dive">🤿 Lặn Biển & Hải Đảo</option>
-                                            <option value="history">🏛 Di Tích Lịch Sử</option>
-                                            <option value="spiritual">🙏 Tâm Linh & Văn Hóa</option>
+                                            <option value="nature">🌲 Thiên Nhiên & Check-in</option>
+                                            <option value="cafe">☕ Trải Nghiệm & Café</option>
                                             <option value="nature">🌿 Thiên Nhiên & Rừng</option>
                                         </select>
                                     </div>
@@ -1195,7 +1139,7 @@
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
                                         <label class="admin-form-label">Tên album *</label>
-                                        <input id="album-name" type="text" class="admin-form-input" placeholder="Ví dụ: Ngày đầu tiên ở Côn Đảo">
+                                        <input id="album-name" type="text" class="admin-form-input" placeholder="Ví dụ: Ngày đầu tiên ở Đà Lạt">
                                     </div>
                                     <div>
                                         <label class="admin-form-label">Emoji đại diện</label>
@@ -1309,9 +1253,9 @@
                     <div class="footer-brand-icon">
                         <i class="fa-solid fa-umbrella-beach text-white"></i>
                     </div>
-                    <h3 class="text-xl font-extrabold text-white mb-2">Khám Phá Côn Đảo</h3>
+                    <h3 class="text-xl font-extrabold text-white mb-2">Khám Phá Đà Lạt</h3>
                     <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                        Trang web cá nhân ghi lại hành trình khám phá Côn Đảo — viên ngọc hoang sơ, chốn bình yên mang đậm dấu ấn lịch sử hào hùng.
+                        Trang web cá nhân ghi lại hành trình khám phá Đà Lạt — thành phố ngàn hoa rực rỡ, xứ sở sương mù và rừng thông lãng mạn.
                     </p>
                     <div class="flex items-center gap-2 mt-4">
                         <a href="https://github.com/LarryVan-engin" target="_blank" class="footer-social-btn" title="GitHub">
@@ -1367,7 +1311,7 @@
         </div>
         <div class="footer-bottom">
             <div class="max-w-6xl mx-auto px-4">
-                <p>© 2026 <strong class="text-teal-400">LarryVan</strong>. All rights reserved. Made with <i class="fa-solid fa-heart text-rose-400 mx-0.5"></i> for Côn Đảo.</p>
+                <p>© 2026 <strong class="text-teal-400">LarryVan</strong>. All rights reserved. Made with <i class="fa-solid fa-heart text-rose-400 mx-0.5"></i> for Đà Lạt.</p>
                 <p class="mt-1 text-[11px] opacity-60">Trang web cá nhân, phi thương mại. Hình ảnh thuộc về chủ sở hữu hoặc nguồn Wikipedia Commons.</p>
                 <button onclick="openAdminPanel()" class="mt-3 inline-flex items-center gap-1.5 text-[11px] text-white/25 hover:text-white/60 transition-colors duration-300 group">
                     <i class="fa-solid fa-shield-halved group-hover:text-teal-400 transition-colors"></i>
@@ -1383,506 +1327,122 @@
 // ============================================================
 const DEFAULT_DESTINATIONS = [
     {
-        "id": "default_dest_1",
-        "name": "Vịnh Đầm Tre",
-        "category": "beach",
-        "rating": "",
-        "img1": "./media__1779862551282.jpg",
-        "img2": "./media__1779862551282.jpg",
-        "tags": [
-            "Mùa_rong_mơ",
-            "Hoang_sơ_kỳ_vĩ",
-            "Sinh_thái_biển"
-        ],
-        "descShort": "Vịnh biển hoang sơ kín gió nằm phía Bắc đảo Côn Sơn. Đặc biệt vào mùa rong mơ, dòng nước trong vắt để lộ cánh rừng rong mơ vàng óng lộng lẫy dưới lòng biển.",
-        "descLong": "Nằm ở phía Bắc của Côn Đảo, vịnh Đầm Tre hoang sơ được bao bọc bởi rừng tre và rừng ngập mặn nên khá kín gió. Đặc biệt, nơi đây vào mùa rong mơ (tháng 4 - tháng 6) sẽ có cảnh sắc siêu đẹp khi cả vịnh biển được bao phủ bởi những thảm rong vàng óng dưới làn nước xanh trong vắt, kết hợp hoạt động ngắm chim yến về làm tổ.",
-        "highlights": [
-            "Tắm biển và thỏa thích bơi lội, check-in giữa thảm rong mơ vàng óng lộng lẫy.",
-            "Lặn ống thở (snorkeling) ngắm rạn san hô và tham quan rừng tre, rừng ngập mặn.",
-            "Quan sát thế giới tự nhiên của loài chim yến làm tổ trong mùa sinh sản hàng năm."
-        ],
-        "bestTime": "Đặc biệt đẹp nhất là mùa rong mơ từ tháng 4 đến tháng 6 hằng năm. Nên ghé thăm lúc thủy triều lên để vịnh đầy nước xanh trong và thấy thảm rong mơ đẹp nhất.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Vịnh+Đầm+Tre+Côn+Đảo",
-        "linkUrl": "",
-        "isDefault": true
-    },
-    {
-        "id": "default_dest_2",
-        "name": "Bãi Đầm Trầu",
-        "category": "beach",
-        "rating": "4.3",
-        "img1": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/B%C3%A3i_%C4%90%E1%BA%A7m_Tr%E1%BA%A7u.jpg/800px-B%C3%A3i_%C4%90%E1%BA%A7m_Tr%E1%BA%A7u.jpg",
-        "img2": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/B%C3%A3i_%C4%90%E1%BA%A7m_Tr%E1%BA%A7u.jpg/800px-B%C3%A3i_%C4%90%E1%BA%A7m_Tr%E1%BA%A7u.jpg",
-        "tags": [
-            "Bãi_tắm_đẹp",
-            "Ngắm_máy_bay",
-            "Cát_mịn"
-        ],
-        "descShort": "Bãi tắm thơ mộng được xem là đẹp nhất Côn Đảo, nổi tiếng với dải cát trắng mịn màng uốn lượn và trải nghiệm ngắm máy bay đáp cực gần.",
-        "descLong": "Bãi Đầm Trầu nằm gần sân bay Cỏ Ống, có cát trắng xốp mịn, núi ôm lấy biển theo hình vòng cung thơ mộng. Nơi đây luôn có sóng nhẹ, không gian yên tĩnh và được mệnh danh là bãi tắm đẹp nhất ở quần đảo Côn Đảo. Điểm độc đáo nhất là bạn có thể thoải mái tắm mát dưới biển và vừa ngắm những chiếc máy bay cất, hạ cánh sát sạt ngay trên đầu.",
-        "highlights": [
-            "Đón những khoảnh khắc check-in độc đáo khi máy bay hạ cánh cực thấp ngay trên bãi biển.",
-            "Tắm mình trong làn nước xanh ngọc bích và thư giãn dưới bóng mát của rặng thông.",
-            "Thưởng thức nước dừa mát lạnh cùng các món hải sản chế biến tươi ngon ngay tại bãi cát."
-        ],
-        "bestTime": "Khoảng từ 14:00 đến 17:00 chiều là thời điểm đẹp nhất để ngắm máy bay và tận hưởng ánh nắng hoàng hôn dịu nhẹ.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bãi+Đầm+Trầu+Côn+Đảo",
-        "linkUrl": "",
-        "isDefault": true
-    },
-    {
-        "id": "default_dest_3",
-        "name": "Bãi Nhát",
-        "category": "beach",
-        "rating": "4.7",
-        "img1": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80",
-        "img2": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80",
-        "tags": [
-            "Phong_cảnh_hữu_tình",
-            "Nước_trong_xanh",
-            "Hoang_sơ"
-        ],
-        "descShort": "Bãi biển tuyệt đẹp với phong cảnh hữu tình thơ mộng, dòng nước trong xanh ngọc bích và bờ cát trắng mịn chỉ lộ diện khi thủy triều rút xuống.",
-        "descLong": "Nằm trên con đường độc đạo nối trung tâm thị trấn ra cảng Bến Đầm, Bãi Nhát ẩn chứa vẻ đẹp hoang sơ kỳ vĩ của thiên nhiên biển đảo. Khi thủy triều rút, một bãi cát trắng mịn lấp lánh như pha lê sẽ hiện ra phơi mình bên những con sóng rì rào, tạo nên khung cảnh thiên nhiên ngoạn mục làm say lòng du khách.",
-        "highlights": [
-            "Chiêm ngưỡng cảnh biển hoang sơ tuyệt mỹ khi bãi cát trắng lộ dần ra lúc hoàng hôn.",
-            "Tự do dạo bước chụp những khung hình nghệ thuật với các bãi đá tự nhiên ven bờ biển.",
-            "Thu vào tầm mắt hòn Bà xa xăm phía đại dương lộng gió, cảm nhận sự an lành tuyệt đối."
-        ],
-        "bestTime": "Vào buổi chiều tà, khi thủy triều xuống dần, đây là tọa độ ngắm hoàng hôn ngả sắc vàng cam quyến rũ nhất đảo.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bãi+Nhát+Côn+Đảo",
-        "linkUrl": "",
-        "isDefault": true
-    },
-    {
-        "id": "default_dest_4",
-        "name": "Bãi Suối Nóng",
-        "category": "beach",
+        "id": "dalat_dest_1",
+        "name": "Đỉnh Langbiang",
+        "category": "nature",
         "rating": "4.6",
-        "img1": "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&q=80",
-        "img2": "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&q=80",
+        "img1": "https://images.unsplash.com/photo-1559592413-7cea4ee48083?w=800&q=80",
+        "img2": "https://images.unsplash.com/photo-1559592413-7cea4ee48083?w=800&q=80",
         "tags": [
-            "Hoang_sơ_hiếm_có",
-            "Làn_nước_ấm",
-            "Viên_ngọc_ẩn"
+            "Nóc_nhà_Đà_Lạt",
+            "Săn_mây",
+            "Trekking"
         ],
-        "descShort": "Nằm ngay cạnh bãi Đầm Trầu, bãi Suối Nóng giữ trọn vẹn nét hoang dã hoang sơ hiếm có với bãi cát phẳng lặng và dòng nước ấm tự nhiên kì lạ.",
-        "descLong": "Để đến được bãi Suối Nóng, du khách đi bộ băng qua một lối mòn ngắn rợp mát từ bãi Đầm Trầu. Nơi đây có làn nước ấm kỳ lạ quanh năm do có mạch nước nóng ngầm dưới lòng biển và rừng đước nguyên sơ trù phú bao bọc tạo nên không khí biệt lập tĩnh mịch.",
+        "descShort": "Đỉnh núi cao nhất Đà Lạt, địa điểm ngắm toàn cảnh hồ Đan Kia lấp ló dưới màn sương mù bồng bềnh tuyệt đẹp.",
+        "descLong": "Đứng từ đỉnh Langbiang huyền thoại, ngắm nhìn toàn cảnh thung lũng, mây trắng bồng bềnh trôi lững lờ dưới chân đồi mang lại cảm giác chinh phục thiên nhiên cực kỳ sảng khoái cho chuyến đi.",
         "highlights": [
-            "Băng rừng đước ngập mặn phiêu lưu nhẹ nhàng để chạm tay vào bãi biển ẩn giấu.",
-            "Tắm mát thư thái trong làn nước biển ấm áp tự nhiên cực kỳ thư giãn cơ thể.",
-            "Khám phá thảm thực vật rừng ngập mặn sinh động nguyên sơ hiếm có."
+            "Đi xe Jeep xuyên rừng thông",
+            "Săn mây vào sáng sớm tinh sương",
+            "Ngắm toàn cảnh thung lũng từ trên cao"
         ],
-        "bestTime": "Nên ghé thăm vào chiều mát khi thủy triều rút để thấy bãi cát phẳng mở ra rộng lớn lãng mạn.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bãi+Suối+Nóng+Côn+Đảo",
+        "bestTime": "Nên ghé lúc sáng sớm từ 5h30 để đón biển mây lãng mạn.",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Đỉnh+Langbiang+Đà+Lạt",
         "linkUrl": "",
         "isDefault": true
     },
     {
-        "id": "default_dest_5",
-        "name": "Bãi Đá Cuội",
-        "category": "beach",
-        "rating": "4.6",
-        "img1": "https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=800&q=80",
-        "img2": "https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=800&q=80",
+        "id": "dalat_dest_2",
+        "name": "Hồ Tuyền Lâm",
+        "category": "nature",
+        "rating": "4.8",
+        "img1": "https://images.unsplash.com/photo-1584285406087-0b19001bfa54?w=800&q=80",
+        "img2": "https://images.unsplash.com/photo-1584285406087-0b19001bfa54?w=800&q=80",
         "tags": [
-            "Khu_Bến_Đầm",
-            "Đá_cuội_tự_nhiên",
-            "Yên_tĩnh_tuyệt_đối"
+            "Chèo_SUP",
+            "Hoàng_hôn_tím",
+            "Hồ_nước_ngọt"
         ],
-        "descShort": "Nằm ở khu vực Bến Đầm, bãi biển sỏi đá độc đáo này là điểm dừng chân hoang sơ lý tưởng dành cho những ai tìm kiếm sự yên tĩnh tuyệt đối.",
-        "descLong": "Nổi tiếng với hàng ngàn viên đá cuội nhẵn mịn xếp chồng lên nhau do sóng vỗ tự nhiên hàng thế kỷ. Đây là địa điểm hoang sơ tuyệt đối, chưa chịu sự tác động của dịch vụ du lịch, mang lại không gian thư giãn an lành và tĩnh mịch.",
+        "descShort": "Hồ nước ngọt lớn nhất Đà Lạt được bao quanh bởi rừng thông xanh rì, không gian tĩnh lặng, trong lành tuyệt mỹ.",
+        "descLong": "Trải nghiệm chèo thuyền SUP đón hoàng hôn tím buông xuống mặt hồ phẳng lặng như gương hoặc viếng thăm Thiền Viện Trúc Lâm thanh tịnh gần đó.",
         "highlights": [
-            "Tự tay sắp đặt hoặc dạo bước chụp ảnh nghệ thuật cùng hàng ngàn viên đá cuội tròn láng xinh xắn.",
-            "Lắng nghe tiếng sóng vỗ rì rào xô bờ tạo ra những âm thanh lạo xạo vui tai từ các viên sỏi cuội.",
-            "Cắm trại dã ngoại tự túc thư giãn giữa không gian biển núi giao hòa biệt lập."
+            "Chèo thuyền SUP thư giãn đón hoàng hôn",
+            "Cắm trại ven rừng thông phẳng lặng",
+            "Viếng Thiền Viện Trúc Lâm"
         ],
-        "bestTime": "Rất đẹp vào sáng sớm hoặc chiều mát khi ánh mặt trời rọi xiên làm lấp lánh các thảm đá sỏi bên bờ nước.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bãi+Đá+Cuội+Côn+Đảo",
+        "bestTime": "Khoảng 16h00 - 17h30 chiều mát ngắm hoàng hôn buông lãng mạn.",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hồ+Tuyền+Lâm+Đà+Lạt",
         "linkUrl": "",
         "isDefault": true
     },
     {
-        "id": "default_dest_6",
-        "name": "Hòn Bảy Cạnh",
-        "category": "beach",
-        "rating": "",
-        "img1": "https://images.unsplash.com/photo-1582967788606-a171c1080cb0?w=800&q=80",
-        "img2": "https://images.unsplash.com/photo-1582967788606-a171c1080cb0?w=800&q=80",
-        "tags": [
-            "Bảo_tồn_rùa",
-            "Lặn_ngắm_san_hồ",
-            "Đảo_hoang_sơ"
-        ],
-        "descShort": "Hòn đảo lớn thứ hai Côn Đảo, là khu bảo tồn rùa biển lớn nhất Việt Nam và sở hữu những rạn san hô nguyên sơ đẹp lộng lẫy.",
-        "descLong": "Hòn Bảy Cạnh là hòn đảo lớn thứ hai trong số 16 hòn đảo thuộc quần đảo Côn Đảo. Nơi đây được bao phủ hoàn toàn bởi rừng nhiệt đới nguyên sinh và hệ sinh thái biển vô cùng phong phú. Du khách có thể thuê cano ra đảo để thoải mái bơi lội, lặn ngắm san hô rực rỡ và đặc biệt là xem rùa mẹ đẻ trứng vào ban đêm.",
-        "highlights": [
-            "Tham gia tour lặn ngắm san hô tuyệt đẹp tại bãi biển hoang sơ của hòn đảo.",
-            "Tham quan khu bảo tồn và học hỏi quy trình ấp nở trứng rùa, thả rùa con về đại dương.",
-            "Chinh phục ngọn hải đăng cổ kính được xây dựng từ thời Pháp thuộc trên đỉnh núi."
-        ],
-        "bestTime": "Mùa rùa sinh sản từ tháng 4 đến tháng 9 hằng năm là thời gian lý tưởng nhất để ghé thăm và trải nghiệm xem rùa đẻ trứng đêm.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hòn+Bảy+Cạnh+Côn+Đảo",
-        "linkUrl": "",
-        "isDefault": true
-    },
-    {
-        "id": "default_dest_7",
-        "name": "Hòn Cau & Miếu Cô Vân",
-        "category": "beach",
-        "rating": "",
-        "img1": "./media__1779862597939.jpg",
-        "img2": "./media__1779862597939.jpg",
-        "tags": [
-            "Hòn_Cau",
-            "Miếu_Cô_Vân",
-            "Võng_biển_bảng_hiệu"
-        ],
-        "descShort": "Sự kết hợp hoàn hảo giữa hành trình tâm linh linh thiêng tại Miếu Cô Vân bên bãi cát trắng và hoạt động lặn biển, chèo SUP thể thao tại đảo Hòn Cau.",
-        "descLong": "Du khách đến Hòn Cau có thể lặn ngắm san hô, tham quan rừng ngập mặn. Miếu Cô Vân thì nằm sát bãi cát trắng trên đảo Hòn Cau. Ngôi miếu nhỏ được dựng ngay trên bãi biển xanh ngắt này được xem là một tọa độ cực kỳ linh thiêng. Việc kết hợp tham quan sinh thái biển ở Hòn Cau và viếng Miếu Cô Vân mang lại trải nghiệm rất trọn vẹn.",
-        "highlights": [
-            "Viếng thăm Miếu Cô Vân linh thiêng ngay sát bãi cát trắng mịn của Hòn Cau.",
-            "Chèo thuyền SUP dạo chơi trên làn nước trong suốt tựa pha lê ngắm san hô cực đẹp.",
-            "Thư giãn nằm võng đung đưa mát mẻ dưới những vòm cây mát rượi đặc trưng của đảo."
-        ],
-        "bestTime": "Cực kỳ lý tưởng cho các chuyến khám phá trong ngày từ tháng 4 đến tháng 9 khi nước biển trong nhất và lặng sóng.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hòn+Cau+Côn+Đảo",
-        "linkUrl": "",
-        "isDefault": true
-    },
-    {
-        "id": "default_dest_8",
-        "name": "Bãi Đất Thắm",
-        "category": "beach",
-        "rating": "",
-        "img1": "./media__1779862689016.jpg",
-        "img2": "./media__1779862689016.jpg",
-        "tags": [
-            "Private_Beach",
-            "Băng_rừng_quốc_gia",
-            "Hoang_sơ_tuyệt_đối"
-        ],
-        "descShort": "Bãi biển biệt lập hoang sơ tuyệt đối, để đến được đây du khách phải trải nghiệm đi bộ trekking băng qua các lối mòn rợp bóng của Vườn quốc gia Côn Đảo.",
-        "descLong": "Nằm ẩn mình sau những cánh rừng nhiệt đới của Vườn quốc gia Côn Đảo, Bãi Đất Thắm là một trong số ít những bãi biển còn giữ nguyên vẻ đẹp hoang dã nguyên bản nhất. Do không có đường xe chạy trực tiếp, du khách phải đi bộ trekking xuyên qua Vườn quốc gia Côn Đảo tầm 45 phút, mang lại cảm giác chinh phục thiên nhiên cực kỳ sảng khoái trước khi đắm mình vào bãi cát tĩnh lặng.",
-        "highlights": [
-            "Trải nghiệm đi bộ trekking xuyên rừng quốc gia, chiêm ngưỡng hệ sinh thái đa dạng.",
-            "Tận hưởng bãi cát biệt lập hoàn toàn riêng tư, nghe tiếng sóng vỗ rì rào.",
-            "Chụp ảnh sống ảo cùng nhánh cây khô trôi dạt nghệ thuật bên bờ biển sỏi đá."
-        ],
-        "bestTime": "Nên đi vào buổi sáng mát mẻ để hành trình đi bộ băng rừng không bị quá nắng gắt, mang đầy đủ giày thể thao và nước uống.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bãi+Đất+Thắm+Côn+Đảo",
-        "linkUrl": "",
-        "isDefault": true
-    },
-    {
-        "id": "default_dest_9",
-        "name": "Hòn Tài, Hòn Trác",
-        "category": "beach",
-        "rating": "",
-        "img1": "./media__1779859970377.jpg",
-        "img2": "https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?w=800&q=80",
-        "tags": [
-            "Hòn_đảo_ẩn_giấu",
-            "Khỉ_mặt_đỏ",
-            "Lặn_ngắm_san_hồ"
-        ],
-        "descShort": "Chuỗi đảo nhỏ hoang sơ ẩn chứa thế giới sinh thái phong phú với thảm san hô rực rỡ và cơ hội ngắm nhìn loài khỉ mặt đỏ quý hiếm ven rìa đá.",
-        "descLong": "Nằm trong chuỗi các hòn đảo nhỏ lân cận đảo chính Côn Sơn. Dù Hòn Bảy Cạnh rất nổi tiếng, Hòn Tài và Hòn Trác lại là những 'viên ngọc ẩn'. Hòn Tài sở hữu hệ sinh thái san hô vô cùng rực rỡ và là nơi bạn có cơ hội nhìn thấy loài khỉ mặt đỏ quý hiếm, cũng như theo dõi rùa biển lên bãi đẻ trứng.",
-        "highlights": [
-            "Lặn ống thở (snorkeling) khám phá thảm san hô tự nhiên tuyệt mỹ.",
-            "Du ngoạn cano ngắm nhìn cảnh quan núi đá hùng vĩ giữa biển khơi.",
-            "Cơ hội ngắm nhìn loài khỉ mặt đỏ quý hiếm đùa nghịch ven rìa đá."
-        ],
-        "bestTime": "Lý tưởng nhất cho các chuyến cano dạo biển và lặn ngắm san hô là mùa biển lặng, trời trong xanh từ tháng 3 đến hết tháng 9.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hòn+Tài+Hòn+Trác+Côn+Đảo",
-        "linkUrl": "",
-        "isDefault": true
-    },
-    {
-        "id": "default_dest_10",
-        "name": "Bảo tàng Côn Đảo",
-        "category": "history",
-        "rating": "4.6",
-        "img1": "https://images.unsplash.com/photo-1564507592333-c60657eea523?w=800&q=80",
-        "img2": "https://images.unsplash.com/photo-1564507592333-c60657eea523?w=800&q=80",
-        "tags": [
-            "Lưu_giữ_hiện_vật",
-            "Lịch_sử_hào_hùng",
-            "Điểm_dừng_đầu_tiên"
-        ],
-        "descShort": "Tọa lạc tại số 2 đường Nguyễn Huệ. Nơi lưu giữ hàng ngàn hiện vật và tư liệu lịch sử vô giá phác họa bức tranh hào hùng của hòn đảo tự do.",
-        "descLong": "Bảo tàng Côn Đảo là điểm dừng chân vô cùng ý nghĩa trong hành trình về nguồn. Nơi đây lưu giữ hàng ngàn hiện vật, tài liệu và hình ảnh lịch sử chân thực về thời kỳ đấu tranh oanh liệt chống lao tù tàn khốc, đồng thời trưng bày sinh động thảm sinh học đặc hữu trên cạn và dưới nước của Côn Đảo.",
-        "highlights": [
-            "Lắng nghe thuyết minh viên giới thiệu khái quát quá trình khai phá và đấu tranh kiên cường của hòn đảo.",
-            "Tận mắt quan sát hàng trăm bức thư tay, kỷ vật thiêng liêng từ thời chiến đấu của các chiến sĩ.",
-            "Tìm hiểu sự đa dạng sinh học độc đáo của Vườn quốc gia Côn Đảo qua các mô hình mô phỏng khoa học."
-        ],
-        "bestTime": "Thích hợp ghé thăm vào buổi sáng hoặc đầu chiều trước khi bắt đầu hành trình viếng thăm di tích hệ thống nhà tù.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bảo+tàng+Côn+Đảo",
-        "linkUrl": "",
-        "isDefault": true
-    },
-    {
-        "id": "default_dest_11",
-        "name": "Nhà tù Côn Đảo (Trại Phú Hải, Phú Sơn)",
-        "category": "history",
-        "rating": "4.6",
-        "img1": "https://upload.wikimedia.org/wikipedia/commons/4/42/Nh%C3%A0_t%C3%B9_C%C3%B4n_%C4%90%E1%BA%A3o.JPG",
-        "img2": "https://upload.wikimedia.org/wikipedia/commons/4/42/Nh%C3%A0_t%C3%B9_C%C3%B4n_%C4%90%E1%BA%A3o.JPG",
-        "tags": [
-            "Di_tích_quốc_gia",
-            "Địa_ngục_trần_gian",
-            "Kháng_chiến_kiên_trung"
-        ],
-        "descShort": "Hệ thống di tích lịch sử đặc biệt, nơi được mệnh danh là 'địa ngục trần gian' với các hầm biệt giam khắc nghiệt và khu Chuồng Cọp khét tiếng.",
-        "descLong": "Nơi đây được mệnh danh là “địa ngục trần gian”, với nhiều khu vực biệt giam, chuồng cọp. Nhà tù rộng hơn 12.000 mét vuông gồm 10 khám lớn (phòng giam lớn), 20 hầm đá biệt giam, 1 khám đặc biệt, hầm xay lúa và khu đập đá. Trại Phú Hải và Phú Sơn là hai khu trại giam điển hình nhất của hệ thống nhà tù oai hùng này.",
-        "highlights": [
-            "Tận mắt chứng kiến khu 'Chuồng cọp' Pháp/Mỹ với những hình thức biệt giam vô cùng khắc nghiệt.",
-            "Lắng nghe những câu chuyện lịch sử xúc động về ý chí kiên trung của các chiến sĩ cách mạng Việt Nam.",
-            "Tham quan phòng trưng bày di tích để hiểu rõ hơn về bức tranh toàn cảnh của hệ thống lao tù."
-        ],
-        "bestTime": "Thích hợp tham quan vào ban ngày (08:00 - 11:30 sáng hoặc 14:00 - 16:30 chiều) để thuận tiện đi bộ ngoài trời và lắng nghe thuyết minh di tích.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Nhà+tù+Côn+Đảo",
-        "linkUrl": "",
-        "isDefault": true
-    },
-    {
-        "id": "default_dest_12",
-        "name": "Dinh Chúa Đảo",
+        "id": "dalat_dest_3",
+        "name": "Ga Đà Lạt",
         "category": "history",
         "rating": "4.4",
-        "img1": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Dinh_Ch%C3%BAa_%C4%91%E1%BA%A3o_C%C3%B4n_%C4%90%E1%BA%A3o.jpg/800px-Dinh_Ch%C3%BAa_%C4%91%E1%BA%A3o_C%C3%B4n_%C4%90%E1%BA%A3o.jpg",
-        "img2": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Dinh_Ch%C3%BAa_%C4%91%E1%BA%A3o_C%C3%B4n_%C4%90%E1%BA%A3o.jpg/800px-Dinh_Ch%C3%BAa_%C4%91%E1%BA%A3o_C%C3%B4n_%C4%90%E1%BA%A3o.jpg",
+        "img1": "https://images.unsplash.com/photo-1549692520-acc6669e2f0c?w=800&q=80",
+        "img2": "https://images.unsplash.com/photo-1549692520-acc6669e2f0c?w=800&q=80",
         "tags": [
-            "Kiến_trúc_Pháp_cổ",
-            "Đầu_não_cai_trị",
-            "Lịch_sử_đối_lập"
+            "Kiến_trúc_Pháp",
+            "Ga_cổ_kính",
+            "Checkin_đẹp"
         ],
-        "descShort": "Khám phá dinh thự uy nghi mang đậm dấu ấn kiến trúc thuộc địa Pháp cổ, tìm hiểu đầu não cai trị và đời sống xa hoa của các chúa đảo ngày xưa.",
-        "descLong": "Dinh Chúa Đảo (hay Dinh Ông Lớn) được xây dựng từ cuối thế kỷ 19 mang đậm phong cách kiến trúc Pháp cổ kính. Đây từng là nơi ngự trị cai trị của 53 đời chúa đảo qua hai thời kỳ kháng chiến cứu nước, chứng kiến đầu não cai trị tàn khốc và cuộc sống xa hoa bậc nhất của giai cấp thống trị đối lập hoàn toàn với đời sống khổ sai của tù nhân.",
+        "descShort": "Nhà ga xe lửa cổ kính nhất Đông Dương mang đậm phong cách kiến trúc Pháp cổ điển pha trộn văn hóa bản địa.",
+        "descLong": "Nơi lưu giữ các đầu máy hơi nước xưa cũ đầy hoài cổ. Du khách có thể trải nghiệm mua vé tàu chạy ga Trại Mát ngắm đồi dốc lãng mạn.",
         "highlights": [
-            "Chiêm ngưỡng nét kiến trúc biệt thự Pháp cổ kính nguyên vẹn giữa những giàn cây cổ thụ xanh mát.",
-            "Tìm hiểu tiểu sử và các thủ đoạn cai trị khét tiếng của các Chúa Đảo qua tài liệu trưng bày.",
-            "Khám phá các gian phòng khách, phòng làm việc được bài trí phục dựng sang trọng."
+            "Chụp hình đầu máy xe lửa hơi nước hoài cổ",
+            "Chiêm ngưỡng kiến trúc ga mái chóp ấn tượng",
+            "Trải nghiệm đi tàu lửa cổ ra Trại Mát"
         ],
-        "bestTime": "Thích hợp tham quan kết hợp cùng Bảo tàng Côn Đảo vào các khung giờ sáng hoặc chiều mát mẻ.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dinh+Chúa+Đảo+Côn+Đảo",
+        "bestTime": "Nên đi vào ban ngày lúc trời nhiều nắng chụp ảnh rực rỡ.",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ga+Đà+Lạt",
         "linkUrl": "",
         "isDefault": true
     },
     {
-        "id": "default_dest_13",
-        "name": "Trung Tâm Bảo Tồn Di Tích Quốc Gia",
-        "category": "history",
-        "rating": "",
-        "img1": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80",
-        "img2": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80",
-        "tags": [
-            "Đường_Nguyễn_Huệ",
-            "Quản_lý_di_tích",
-            "Bảo_tồn_giá_trị"
-        ],
-        "descShort": "Tọa lạc trên đường Nguyễn Huệ, đơn vị trực tiếp gìn giữ, quản lý tôn tạo và phát huy toàn bộ các giá trị di tích lịch sử đặc biệt của Côn Đảo.",
-        "descLong": "Trung Tâm Bảo Tồn Di Tích Quốc Gia Côn Đảo đóng vai trò then chốt trong việc giữ gìn và bảo quản hàng chục điểm di tích nhà tù lịch sử, nghĩa trang anh hùng. Trung tâm đồng thời điều phối đội ngũ thuyết minh viên chuyên nghiệp, cung cấp hướng dẫn dâng hương hành lễ bài bản tại nghĩa trang Hàng Dương.",
-        "highlights": [
-            "Tìm hiểu quy trình phục dựng tỉ mỉ và khoa học các di tích lịch sử đặc biệt.",
-            "Liên hệ đăng ký thuyết minh viên đi theo tour chiêm bái, dâng lễ đầy xúc động.",
-            "Ghé thăm văn phòng trưng bày các ấn phẩm nghiên cứu lịch sử quý giá."
-        ],
-        "bestTime": "Giờ hành chính từ thứ Hai đến thứ Sáu, thích hợp liên hệ đăng ký dịch vụ thuyết minh cho đoàn du lịch đông người.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Trung+Tâm+Bảo+Tồn+Di+Tích+Quốc+Gia+Côn+Đảo",
-        "linkUrl": "",
-        "isDefault": true
-    },
-    {
-        "id": "default_dest_14",
-        "name": "Cầu tàu 914",
-        "category": "history",
-        "rating": "4.8",
-        "img1": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/C%E1%BA%A7u_t%C3%A0u_914.jpg/800px-C%E1%BA%A7u_t%C3%A0u_914.jpg",
-        "img2": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/C%E1%BA%A7u_t%C3%A0u_914.jpg/800px-C%E1%BA%A7u_t%C3%A0u_914.jpg",
-        "tags": [
-            "Chứng_nhân_lịch_sử",
-            "Công_lao_khổ_sai",
-            "Bờ_kè_biển"
-        ],
-        "descShort": "Chứng nhân trầm mặc giữa gió lộng trùng khơi, ghi dấu sự hy sinh anh dũng và tinh thần lao động phi thường của hàng ngàn chiến sĩ cách mạng.",
-        "descLong": "Cầu tàu 914 được khởi công xây dựng từ năm 1873. Cái tên '914' được gọi dựa trên con số thống kê ước tính về những chiến sĩ cách mạng kiên trung đã ngã xuống do lao dịch khổ sai tàn khốc, cưa đá và vận chuyển các hộc đá nặng hàng tấn từ núi xuống để đắp nên cầu tàu sừng sững hướng ra biển này.",
-        "highlights": [
-            "Dạo bước trên những bậc đá hộc vững chãi, lắng nghe tiếng sóng biển vỗ rì rào dưới chân cầu tàu lịch sử.",
-            "Cảm nhận sâu sắc bài học đấu tranh bất khuất trước những vết hằn đá xẻ thủ công thời kỳ cũ.",
-            "Ngắm nhìn vịnh Côn Sơn thơ mộng với những con cano, thuyền chài rập rình xa khơi."
-        ],
-        "bestTime": "Vào sáng sớm bình minh, khi những ánh nắng ban mai đầu tiên rọi chiếu lấp lánh lên mặt biển và cầu tàu rất đẹp mắt.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Cầu+tàu+914+Côn+Đảo",
-        "linkUrl": "",
-        "isDefault": true
-    },
-    {
-        "id": "default_dest_15",
-        "name": "Mũi Cá Mập",
-        "category": "history",
+        "id": "dalat_dest_4",
+        "name": "Chùa Linh Phước (Chùa Ve Chai)",
+        "category": "spiritual",
         "rating": "4.7",
-        "img1": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&q=80",
-        "img2": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&q=80",
-        "tags": [
-            "Tọa_độ_lý_tưởng",
-            "Ngắm_bình_minh",
-            "Vách_đá_hùng_vĩ"
-        ],
-        "descShort": "Tọa độ ngắm cảnh đắc địa bậc nhất Côn Đảo với mỏm đá nhô ra biển kỳ vĩ, điểm ngắm bình minh và hoàng hôn trọn vẹn thơ mộng.",
-        "descLong": "Nằm trên cung đường ven biển tuyệt đẹp nối trung tâm ra cảng Bến Đầm, Mũi Cá Mập sở hữu một vách đá hùng vĩ nhô hẳn ra rìa đại dương tựa như hàm cá mập khổng lồ. Sóng biển dữ dội vỗ vào vách đá tung bọt tuyết trắng xóa đem lại khung cảnh thiên nhiên tráng lệ phóng khoáng vô biên.",
-        "highlights": [
-            "Đón những tia nắng bình minh đầu tiên nhuộm đỏ hồng mặt đại dương bao la.",
-            "Chụp những bức ảnh check-in thiên nhiên kì vĩ ngắm cung đường uốn lượn ôm trọn bờ vịnh.",
-            "Tận hưởng làn gió biển đại dương thổi vào lồng lộng, trút bỏ mọi căng thẳng cuộc sống."
-        ],
-        "bestTime": "Tuyệt vời nhất là lúc sáng sớm tinh mơ (05:00 - 05:45) để săn khoảnh khắc bình minh mọc lên từ biển cực kỳ lộng lẫy.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mũi+Cá+Mập+Côn+Đảo",
-        "linkUrl": "",
-        "isDefault": true
-    },
-    {
-        "id": "default_dest_16",
-        "name": "Nghĩa trang Hàng Dương",
-        "category": "temple",
-        "rating": "",
-        "img1": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Ngh%C4%A9a_trang_H%C3%A0ng_D%C6%B0%C6%A1ng.jpg/800px-Ngh%C4%A9a_trang_H%C3%A0ng_D%C6%B0%C6%A1ng.jpg",
-        "img2": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Ngh%C4%A9a_trang_H%C3%A0ng_D%C6%B0%C6%A1ng.jpg/800px-Ngh%C4%A9a_trang_H%C3%A0ng_D%C6%B0%C6%A1ng.jpg",
-        "tags": [
-            "Tâm_linh_thiêng_liêng",
-            "Mộ_Cô_Sáu_đêm",
-            "Hành_trình_về_nguồn"
-        ],
-        "descShort": "Nơi an nghỉ trầm mặc của hàng ngàn chiến sĩ yêu nước kiên trung và phần mộ Anh hùng Võ Thị Sáu, điểm du lịch tâm linh thiêng liêng nhất về đêm.",
-        "descLong": "Nghĩa trang Hàng Dương là nơi có mộ của hơn 2.000 liệt sĩ và mộ Võ Thị Sáu. Đây là điểm du lịch tâm linh quan trọng. Đến đây ngoài thắp hương, bạn nên chuẩn bị đồ lễ, không thể thiếu gương, lược, hoa cúc trắng tươi. Buổi tối đêm muộn là thời điểm trang trọng và linh thiêng nhất đông đảo du khách ghé dâng lễ viếng.",
-        "highlights": [
-            "Dâng hương tưởng niệm trang trọng tại đài bia trung tâm nghĩa trang liệt sĩ oai hùng.",
-            "Viếng mộ chị Võ Thị Sáu lúc đêm muộn với lòng thành kính và biết ơn sâu sắc.",
-            "Cảm nhận không khí tĩnh lặng, ấm áp dưới bóng những hàng cây bàng cổ thụ lịch sử."
-        ],
-        "bestTime": "Khoảng thời gian từ 21:00 đến 23:59 đêm là thời điểm trang nghiêm và thiêng liêng nhất thường được đông đảo du khách lựa chọn ghé viếng mộ.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Nghĩa+trang+Hàng+Dương",
-        "linkUrl": "",
-        "isDefault": true
-    },
-    {
-        "id": "default_dest_17",
-        "name": "Miếu Cậu (Thiếu Gia Miếu)",
-        "category": "temple",
-        "rating": "",
-        "img1": "https://images.unsplash.com/photo-1596813362035-3edcff0c2487?w=800&q=80",
-        "img2": "https://images.unsplash.com/photo-1596813362035-3edcff0c2487?w=800&q=80",
-        "tags": [
-            "Hoàng_tử_Cải",
-            "Rừng_cây_Cỏ_Ống",
-            "Tâm_linh_thư_thái"
-        ],
-        "descShort": "Ngôi miếu nhỏ linh thiêng thờ Hoàng tử Cải, con trai Thứ phi Phi Yến, nằm tĩnh lặng giữa bóng cây xanh mát lành ngay sát sân bay Cỏ Ống.",
-        "descLong": "Miếu nằm gần khu vực bãi Đầm Trầu và sân bay Cỏ Ống. Nơi đây thờ Hoàng tử Cải (5 tuổi) – con trai của Chúa Nguyễn Ánh và Thứ phi Phi Yến. Nằm giữa không gian cây cối xanh mát, đây là điểm dừng chân yên tĩnh và linh thiêng thường được du khách ghé thăm ngay khi vừa đáp chuyến bay xuống đảo.",
-        "highlights": [
-            "Tìm hiểu câu chuyện lịch sử đầy cảm xúc về Hoàng tử Cải và Thứ phi Phi Yến.",
-            "Thắp hương dâng lễ cầu bình an tại ngôi miếu linh thiêng.",
-            "Cảm nhận sự bình yên dưới vòm cây xanh ngắt quanh miếu."
-        ],
-        "bestTime": "Nên ghé dâng hương dâng lễ ngay khi vừa đặt chân tới sân bay Cỏ Ống hoặc trên đường di chuyển ra bãi Đầm Trầu vì chúng rất gần nhau.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Miếu+Cậu+Côn+Đảo",
-        "linkUrl": "",
-        "isDefault": true
-    },
-    {
-        "id": "default_dest_18",
-        "name": "Miếu Năm Cô (Miếu Ngũ Hành)",
-        "category": "temple",
-        "rating": "",
         "img1": "https://images.unsplash.com/photo-1563245372-f21724e3856d?w=800&q=80",
         "img2": "https://images.unsplash.com/photo-1563245372-f21724e3856d?w=800&q=80",
         "tags": [
-            "Thờ_Ngũ_Hành",
-            "Cầu_tài_lộc",
-            "Tâm_linh_miền_biển"
+            "Khảm_sành_sứ",
+            "Chùa_Ve_Chai",
+            "Tâm_linh_thiêng"
         ],
-        "descShort": "Ngôi miếu linh thiêng thờ 5 vị nữ thần đại diện cho ngũ hành, chốn gửi gắm khát vọng cầu bình an, mưa thuận gió hòa của ngư dân trên đảo.",
-        "descLong": "Ngôi miếu này nằm ở phía Nam của đảo. Miếu thờ 5 vị nữ thần đại diện cho quyền năng của ngũ hành (Kim, Mộc, Thủy, Hỏa, Thổ). Người dân địa phương và những người đi biển thường đến đây cầu nguyện bình an, mưa thuận gió hòa và làm ăn phát đạt. Nơi đây rất thiêng liêng và mang đậm tín ngưỡng dân gian vùng biển.",
+        "descShort": "Ngôi chùa độc đáo khảm từ hàng triệu mảnh sành sứ, chai lọ đầy tinh xảo, sở hữu bức tượng Phật hoa bất tử.",
+        "descLong": "Kiến trúc khảm sành vô cùng rực rỡ và tráng lệ. Nơi thờ bức tượng Quan Thế Âm làm bằng hàng vạn đóa hoa bất tử ghi dấu kỷ lục Việt Nam.",
         "highlights": [
-            "Dâng hương chiêm bái và tìm hiểu tín ngưỡng thờ Mẫu Ngũ Hành của người Việt.",
-            "Chiêm ngưỡng khung cảnh miếu thờ yên tĩnh hướng ra phía đại dương trong xanh.",
-            "Gặp gỡ và nghe các câu chuyện văn hóa miền biển từ người quản miếu."
+            "Chiêm ngưỡng tháp chuông cao nhất Việt Nam",
+            "Viếng tượng Phật Hoa Bất Tử rực rỡ",
+            "Khám phá 18 tầng địa ngục đầy huyền bí"
         ],
-        "bestTime": "Nên đi viếng miếu vào buổi sáng mát mẻ cùng lịch trình khám phá cung đường Nam đảo tuyệt đẹp.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Miếu+Năm+Cô+Côn+Đảo",
+        "bestTime": "Nên đi buổi sáng mát mẻ vãn cảnh chùa tôn nghiêm.",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chùa+Linh+Phước+Đà+Lạt",
         "linkUrl": "",
         "isDefault": true
     },
     {
-        "id": "default_dest_19",
-        "name": "Chùa Núi Một (Vân Sơn Tự)",
-        "category": "temple",
-        "rating": "",
-        "img1": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Ch%C3%B9a_N%C3%BAi_M%E1%BB%99t.jpg/800px-Ch%C3%B9a_N%C3%BAi_M%E1%BB%99t.jpg",
-        "img2": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Ch%C3%B9a_N%C3%BAi_M%E1%BB%99t.jpg/800px-Ch%C3%B9a_N%C3%BAi_M%E1%BB%99t.jpg",
+        "id": "dalat_dest_5",
+        "name": "Quảng trường Lâm Viên",
+        "category": "nature",
+        "rating": "4.5",
+        "img1": "https://images.unsplash.com/photo-1559592413-7cea4ee48083?w=800&q=80",
+        "img2": "https://images.unsplash.com/photo-1559592413-7cea4ee48083?w=800&q=80",
         "tags": [
-            "Tựa_sơn_hướng_thủy",
-            "Hồ_sen_An_Hải",
-            "Đẹp_nhất_Đông_Nam_Bộ"
+            "Nụ_hoa_Atiso",
+            "Bông_dã_quỳ",
+            "Trái_tim_phố"
         ],
-        "descShort": "Ngôi chùa nổi tiếng sở hữu vị thế tựa sơn hướng thủy tuyệt mỹ, địa điểm hoàn hảo để tĩnh tâm cầu an và thu vào tầm mắt toàn cảnh hồ sen An Hải và vịnh biển.",
-        "descLong": "Được xây dựng uy nghi tọa lạc trên sườn núi, Vân Sơn Tự là ngôi chùa duy nhất tại Côn Đảo. Chùa sở hữu phong cảnh hữu tình bậc nhất khi phía trước hướng thẳng ra hồ sen An Hải thơ mộng và vịnh biển rộng mở bao la, tạo nên một không gian thiền tịnh linh thiêng tách biệt.",
+        "descShort": "Không gian sinh hoạt rộng lớn hướng ra hồ Xuân Hương thơ mộng, mang biểu tượng nụ hoa Atiso khổng lồ.",
+        "descLong": "Quảng trường Lâm Viên là trái tim của thành phố ngàn hoa với hai công trình biểu tượng nụ hoa Atiso và đóa dã quỳ bằng kính màu cực kỳ lộng lẫy.",
         "highlights": [
-            "Chinh phục những bậc đá rợp mát bóng rừng để dâng lễ viếng Phật cầu an lành cho gia đình.",
-            "Tĩnh lặng thưởng thức kiến trúc Phật giáo tinh xảo, ngắm đàn khỉ hoang dã đùa nghịch ven chùa.",
-            "Từ lầu chuông, ngắm nhìn bức tranh toàn cảnh hồ sen An Hải ngào ngạt hương thơm mùa hè."
+            "Check-in nụ hoa Atiso bằng kính khổng lồ",
+            "Dạo mát ngắm hồ Xuân Hương phẳng lặng",
+            "Thưởng thức sữa đậu nành nóng hổi ven đường"
         ],
-        "bestTime": "Vào buổi chiều mát mẻ, khi những tiếng chuông chùa ngân vang hòa cùng ánh hoàng hôn rọi xuống vịnh Côn Sơn.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chùa+Núi+Một+Côn+Đảo",
-        "linkUrl": "",
-        "isDefault": true
-    },
-    {
-        "id": "default_dest_20",
-        "name": "Cua mặt trăng",
-        "category": "food",
-        "rating": "",
-        "img1": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80",
-        "img2": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80",
-        "tags": [
-            "Đặc_sản_quý_hiếm",
-            "Hải_sản_bổ_dưỡng",
-            "Bè_nổi_Bến_Đầm"
-        ],
-        "descShort": "Loài đặc sản hải sản cực kỳ quý hiếm ở Côn Đảo, nổi danh với các chấm đỏ tròn độc đáo trên mai và thớ thịt cua ngọt bùi, đậm đà bổ dưỡng.",
-        "descLong": "Cua mặt trăng là loài hải sản cực kỳ quý hiếm ở Côn Đảo. Sở dĩ gọi là cua mặt trăng vì trên lưng cua có nhiều hình tròn màu đỏ đậm, pha với màu hồng tươi, trông rất hấp dẫn. Khi hấp lên, bạn ăn miếng thịt cua chấm thêm chút muối tiêu xanh sẽ cảm nhận được vị ngọt của cua ở ngay đầu lưỡi. Ngoài ra, cua mặt trăng còn được chế biến theo nhiều cách khác như sốt me, nấu lẩu.",
-        "highlights": [
-            "Thưởng thức cua hấp muối tiêu chanh hoặc chấm muối ớt xanh để cảm nhận vị ngọt đậm đà.",
-            "Trải nghiệm các cách chế biến phong phú khác như cua mặt trăng sốt me chua ngọt hoặc nấu lẩu hải sản.",
-            "Tham quan và tự tay chọn cua tươi sống tại các nhà hàng hoặc bè nổi ven cảng Bến Đầm."
-        ],
-        "bestTime": "Thích hợp thưởng thức vào các bữa trưa hoặc bữa tối bên bè nổi mát rượi lộng gió trùng khơi.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ăn+Cua+Mặt+Trăng+Côn+Đảo",
-        "linkUrl": "",
-        "isDefault": true
-    },
-    {
-        "id": "default_dest_21",
-        "name": "Mứt hạt bàng",
-        "category": "food",
-        "rating": "",
-        "img1": "https://images.unsplash.com/photo-1596547609652-9cf5d8d76921?w=800&q=80",
-        "img2": "https://images.unsplash.com/photo-1596547609652-9cf5d8d76921?w=800&q=80",
-        "tags": [
-            "Quà_tặng_Côn_Đảo",
-            "Hạt_bàng_thủ_công",
-            "Vị_rang_muối_đường"
-        ],
-        "descShort": "Món quà lưu niệm ẩm thực đặc sản nức tiếng Côn Đảo, từng hạt bàng chín vàng được rang tay khéo léo với vị mặn muối biển hoặc đường ngọt ngào, giòn rụm bùi ngậy.",
-        "descLong": "Mứt hạt bàng là đặc sản nức tiếng làm quà tặng vô cùng ý nghĩa khi đi du lịch Côn Đảo. Quả bàng chín vàng ươm được bóc lớp thịt lộ ra nhân hạt bàng trắng nõn bên trong. Hạt bàng sau đó được chế biến thủ công rang tay cực kỳ tỉ mỉ với hai hương vị: rang muối mặn bùi ngậy và rang ngọt thơm phức giòn tan.",
-        "highlights": [
-            "Dùng thử cả hai hương vị mứt hạt bàng rang muối bùi ngậy và rang ngọt thơm giòn đặc trưng.",
-            "Tìm hiểu cách làm mứt hạt bàng hoàn toàn thủ công từ đôi bàn tay kiên nhẫn của người dân địa phương.",
-            "Mua các gói mứt được đóng gói đẹp mắt làm món quà ý nghĩa khó quên cho người thân."
-        ],
-        "bestTime": "Có thể dễ dàng tìm kiếm mua tại chợ Côn Đảo hoặc các sạp hàng lưu niệm trung tâm thị trấn vào bất kỳ lúc nào.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mứt+hạt+bàng+Côn+Đảo",
+        "bestTime": "Chiều mát lộng gió hoặc buổi tối ngập tràn ánh đèn lung linh.",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Quảng+trường+Lâm+Viên+Đà+Lạt",
         "linkUrl": "",
         "isDefault": true
     }
@@ -1890,110 +1450,26 @@ const DEFAULT_DESTINATIONS = [
 
 const DEFAULT_HOTELS = [
     {
-        "id": "default_hotel_1",
-        "name": "Six Senses Côn Đảo",
-        "stars": "5",
-        "price": "",
-        "address": "",
-        "desc": "Được thiết kế tinh tế hài hòa giữa phong cảnh thơ mộng và vẻ đẹp thiên nhiên hoang sơ, mang lại một không gian riêng tư vô cùng thư thái và đẳng cấp.",
-        "imgUrl": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80",
-        "mapsUrl": "",
+        "id": "dalat_hotel_1",
+        "name": "Hotel Colline",
+        "stars": "4",
+        "price": "Từ 1.200.000 VNĐ",
+        "address": "10 Phan Bội Châu, Phường 1, Đà Lạt",
+        "desc": "Kiến trúc Bắc Âu hiện đại xếp chồng ấn tượng ngay trung tâm chợ Đà Lạt, cực kỳ tiện nghi, sang trọng.",
+        "imgUrl": "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hotel+Colline+Dalat",
         "linkUrl": "",
         "isDefault": true
     },
     {
-        "id": "default_hotel_2",
-        "name": "Poulo Condor Boutique Resort & Spa",
+        "id": "dalat_hotel_2",
+        "name": "Terracotta Hotel & Resort",
         "stars": "4",
-        "price": "",
-        "address": "",
-        "desc": "Khu nghỉ dưỡng sở hữu lối kiến trúc mang vẻ đẹp hòa quyện đặc sắc giữa nét cổ kính truyền thống Việt Nam và di sản Đông Dương thời Pháp thuộc.",
-        "imgUrl": "https://images.unsplash.com/photo-1564507592333-c60657eea523?w=800&q=80",
-        "mapsUrl": "",
-        "linkUrl": "",
-        "isDefault": true
-    },
-    {
-        "id": "default_hotel_3",
-        "name": "Marina Bay Côn Đảo Hotel",
-        "stars": "4",
-        "price": "",
-        "address": "",
-        "desc": "Tọa lạc ngay mặt biển trung tâm, khách sạn sở hữu phong cách thiết kế châu Âu hiện đại với spa cao cấp, hồ bơi lớn ngoài trời và phòng gym.",
+        "price": "Từ 1.600.000 VNĐ",
+        "address": "KDL Hồ Tuyền Lâm, Phường 3, Đà Lạt",
+        "desc": "Khu nghỉ dưỡng ẩn mình dưới rừng thông ven hồ Tuyền Lâm phẳng lặng như gương, không gian thơ mộng, mát lành.",
         "imgUrl": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
-        "mapsUrl": "",
-        "linkUrl": "",
-        "isDefault": true
-    },
-    {
-        "id": "default_hotel_4",
-        "name": "Khu nghỉ dưỡng Sài Gòn – Côn Đảo",
-        "stars": "3",
-        "price": "",
-        "address": "",
-        "desc": "Sở hữu vị thế ven biển rợp mát bóng cổ thụ. Hệ thống gồm 117 phòng chia làm hai khu: khu biệt thự kiểu Pháp cổ xưa và khu tòa nhà hiện đại.",
-        "imgUrl": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80",
-        "mapsUrl": "",
-        "linkUrl": "",
-        "isDefault": true
-    },
-    {
-        "id": "default_hotel_5",
-        "name": "Côn Sơn Blue Sea",
-        "stars": "3",
-        "price": "",
-        "address": "",
-        "desc": "Khách sạn mang phong cách trẻ trung. Điểm nhấn đắt giá nhất là hồ bơi vô cực ngắm cảnh vịnh biển lộng gió kết hợp quầy bar nằm trên sân thượng.",
-        "imgUrl": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80",
-        "mapsUrl": "",
-        "linkUrl": "",
-        "isDefault": true
-    },
-    {
-        "id": "default_hotel_6",
-        "name": "CNLĐ – Côn Đảo Resort",
-        "stars": "3",
-        "price": "",
-        "address": "",
-        "desc": "Nơi nghỉ dưỡng bình yên với bể bơi phong cách Châu Âu rộng mở, bao bọc bởi thảm cỏ xanh mướt mát lành mang lại không gian thư giãn tuyệt diệu.",
-        "imgUrl": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80",
-        "mapsUrl": "",
-        "linkUrl": "",
-        "isDefault": true
-    },
-    {
-        "id": "default_hotel_7",
-        "name": "The Mystery",
-        "stars": "3",
-        "price": "",
-        "address": "",
-        "desc": "Phong cách Boutique cực kỳ nổi bật với tông màu trắng tinh khôi chủ đạo, điểm xuyết giàn cây leo xanh mướt, tạo nên không gian vô cùng tao nhã.",
-        "imgUrl": "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=800&q=80",
-        "mapsUrl": "",
-        "linkUrl": "",
-        "isDefault": true
-    },
-    {
-        "id": "default_hotel_8",
-        "name": "Khách sạn Maya III",
-        "stars": "2",
-        "price": "",
-        "address": "",
-        "desc": "Một nét thiết kế hiện đại đan xen tài tình hơi thở cổ điển. Sử dụng tông màu trắng trang nhã, hứa hẹn mang lại cho bạn những cảm xúc ấn tượng.",
-        "imgUrl": "https://images.unsplash.com/photo-1529290130-4ca3753253ae?w=800&q=80",
-        "mapsUrl": "",
-        "linkUrl": "",
-        "isDefault": true
-    },
-    {
-        "id": "default_hotel_9",
-        "name": "Khách sạn Tuấn Ninh II",
-        "stars": "2",
-        "price": "",
-        "address": "",
-        "desc": "Thiết kế theo xu hướng tối giản, nhẹ nhàng nhưng tinh tế, hiện đại, mang lại không gian lưu trú vô cùng gọn gàng và thoải mái cho du khách.",
-        "imgUrl": "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=80",
-        "mapsUrl": "",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Terracotta+Hotel+Resort+Dalat",
         "linkUrl": "",
         "isDefault": true
     }
@@ -2001,223 +1477,47 @@ const DEFAULT_HOTELS = [
 
 const DEFAULT_FOOD = [
     {
-        "id": "default_food_1",
-        "name": "Cơm Niêu Sài Gòn Côn Đảo",
-        "category": "restaurant",
-        "address": "Khu 8 Tô Hiệu, Côn Đảo",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Cơm+niêu+Sài+Gòn+Côn+Đảo",
+        "id": "dalat_food_1",
+        "name": "Lẩu Gà Lá É Tao Ngộ",
+        "category": "specialty",
+        "address": "Số 5 Đường 3/4, Phường 3, Đà Lạt",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Lẩu+Gà+Lá+É+Tao+Ngộ+Dalat",
         "linkUrl": "",
-        "desc": "<strong>Món ngon:</strong> Buổi sáng (từ 7h00) phục vụ cơm tấm sườn, bún chả cá Côn Đảo, hủ tiếu mực. Từ 9h30 - 21h, quán phục vụ cơm niêu ăn kèm các món dân dã như cá mú đỏ kho tộ, thịt luộc cà pháo mắm tôm, canh chua cá bóp, canh cua rau đay.",
-        "imgUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&q=80",
+        "desc": "Vị ngọt thanh của thịt gà đồi săn chắc hòa cùng vị the mát độc đáo của lá é nghi ngút khói trong tiết lạnh Đà Lạt.",
+        "imgUrl": "https://images.unsplash.com/photo-1548943487-a2e4b43b5930?w=800&q=80",
         "isDefault": true
     },
     {
-        "id": "default_food_2",
-        "name": "Nhà hàng Tri Kỷ",
-        "category": "restaurant",
-        "address": "Đường Nguyễn Đức Thuận, Côn Đảo",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Nhà+hàng+Tri+Kỷ+Côn+Đảo",
+        "id": "dalat_food_2",
+        "name": "Bánh mì xíu mại chén Hoàng Diệu",
+        "category": "specialty",
+        "address": "26 Hoàng Diệu, Phường 5, Đà Lạt",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bánh+mì+xíu+mại+Hoàng+Diệu+Dalat",
         "linkUrl": "",
-        "desc": "<strong>Món ngon:</strong> Chuyên các loại hải sản tươi sống chất lượng cao như ốc, tôm, mực, cá mú, nhum biển. Đặc biệt, nhà hàng nổi tiếng với món <strong>Cua mặt trăng</strong> - một đặc sản quý hiếm lừng danh Côn Đảo.",
-        "imgUrl": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=800&q=80",
-        "isDefault": true
-    },
-    {
-        "id": "default_food_3",
-        "name": "Quán hải sản Sang Tuyền",
-        "category": "restaurant",
-        "address": "Ngã tư Phạm Hùng - Trần Phú, Côn Đảo",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Quán+hải+sản+Sang+Tuyền+Côn+Đảo",
-        "linkUrl": "",
-        "desc": "<strong>Món ngon:</strong> Phục vụ chủ yếu các món hải sản (tôm, mực, cá...) được thu mua trực tiếp từ các tàu đánh bắt vừa cập cảng nên đạt độ tươi ngon tuyệt đối, thịt săn dai và giá cả cực kỳ phải chăng.",
+        "desc": "Bánh mì giòn nóng hổi chấm nước dùng xíu mại ngọt từ xương, viên xíu mại béo ngậy kèm chả huế thơm lừng.",
         "imgUrl": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80",
         "isDefault": true
     },
     {
-        "id": "default_food_4",
-        "name": "Quán Cây Bàng",
-        "category": "restaurant",
-        "address": "Đường Trần Huy Liệu, Côn Đảo",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Quán+Cây+Bàng+Côn+Đảo",
-        "linkUrl": "",
-        "desc": "<strong>Món ngon:</strong> Phục vụ đa dạng các món hải sản biển đa dạng chế biến đậm vị. Quán có không gian sân vườn rộng rãi, thoáng mát lộng gió rất phù hợp cho gia đình hoặc nhóm bạn tụ họp vui vẻ.",
-        "imgUrl": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
-        "isDefault": true
-    },
-    {
-        "id": "default_food_5",
-        "name": "Bún riêu cua Bà Hai Khiêm",
-        "category": "restaurant",
-        "address": "Số 22 đường Nguyễn Huệ, Côn Đảo",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bún+riêu+cua+Bà+Hai+Khiêm+Côn+Đảo",
-        "linkUrl": "",
-        "desc": "<strong>Món ngon:</strong> Bát bún riêu cua thơm ngon, ngọt thanh đậm đà chuẩn vị truyền thống. Thành phần đầy đặn gồm riêu cua béo ngậy, chả cá thác lác dai giòn, huyết heo mướt và giá đỗ chần tươi mát.",
-        "imgUrl": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=800&q=80",
-        "isDefault": true
-    },
-    {
-        "id": "default_food_6",
-        "name": "Các nhà bè ở cảng Bến Đầm",
-        "category": "restaurant",
-        "address": "Cảng Bến Đầm, Côn Đảo (Cách trung tâm 15km)",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Nhà+bè+Cảng+Bến+Đầm+Côn+Đảo",
-        "linkUrl": "",
-        "desc": "<strong>Món ngon:</strong> Trải nghiệm có một không hai khi thưởng thức hải sản sống được vớt trực tiếp dưới bè nuôi và chế biến ngay tại chỗ. Ăn uống thoải mái lộng gió đại dương rì rào mát lạnh.",
-        "imgUrl": "https://images.unsplash.com/photo-1553618551-fba689030290?w=800&q=80",
-        "isDefault": true
-    },
-    {
-        "id": "default_food_7",
-        "name": "Cua mặt trăng Côn Đảo",
+        "id": "dalat_food_3",
+        "name": "Lẩu Bò Ba Toa Nhà Gỗ",
         "category": "specialty",
-        "address": "Các nhà hàng & bè nổi Côn Đảo",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ăn+Cua+Mặt+Trăng+Côn+Đảo",
+        "address": "29/1 Hoàng Diệu, Phường 5, Đà Lạt",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Lẩu+Bò+Ba+Toa+Nhà+Gỗ+Dalat",
         "linkUrl": "",
-        "desc": "Loài hải sản cực kỳ quý hiếm, phần thịt ngọt lịm săn chắc tựa thịt tôm hùm. Cua đạt hương vị ngon nhất khi đem hấp cách thủy chấm kèm muối tiêu chanh hoặc sốt me chua ngọt đậm đà.",
-        "imgUrl": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=800&q=80",
+        "desc": "Nồi lẩu bò đầy đặn sườn sụn béo ngậy ngọt nước, rau xà lách nhúng lẩu cực giòn ngọt mát ngọt ngào.",
+        "imgUrl": "https://images.unsplash.com/photo-1548943487-a2e4b43b5930?w=800&q=80",
         "isDefault": true
     },
     {
-        "id": "default_food_8",
-        "name": "Ốc vú nàng nướng mỡ hành",
-        "category": "specialty",
-        "address": "Các quán hải sản Côn Đảo",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ốc+vú+nàng+Côn+Đảo",
+        "id": "dalat_food_4",
+        "name": "Bánh Căn Lệ",
+        "category": "street",
+        "address": "27/44 Yersin, Phường 10, Đà Lạt",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bánh+Căn+Lệ+Dalat",
         "linkUrl": "",
-        "desc": "Loại ốc biển đặc trưng hình nón độc đáo, thịt ốc ngọt đậm, dai giòn sần sật. Có thể luộc, làm gỏi nhưng ngon nhất vẫn là đem nướng mỡ hành xèo xèo thơm nức trên than hồng.",
-        "imgUrl": "https://images.unsplash.com/photo-1553618551-fba689030290?w=800&q=80",
-        "isDefault": true
-    },
-    {
-        "id": "default_food_9",
-        "name": "Cá mú đỏ hấp xì dầu",
-        "category": "specialty",
-        "address": "Nhà hàng & bè nổi trung tâm",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Cá+mú+đỏ+Côn+Đảo",
-        "linkUrl": "",
-        "desc": "Loài cá mú quý hiếm da đỏ tươi lấp lánh, thớ thịt cá siêu trắng, ngọt mềm mà không bở. Thường được hấp xì dầu hành gừng, nướng mọi hoặc làm gỏi thịt cá tươi ngon.",
-        "imgUrl": "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=800&q=80",
-        "isDefault": true
-    },
-    {
-        "id": "default_food_10",
-        "name": "Gỏi cá nhám chua ngọt",
-        "category": "specialty",
-        "address": "Các quán ăn dọc bờ biển Côn Đảo",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gỏi+cá+nhám+Côn+Đảo",
-        "linkUrl": "",
-        "desc": "Món ăn lấy phần thịt sống lưng cá nhám tươi ngọt trộn cùng riềng, sả phi, trộn nước phỗng chua ngọt cay ấm. Ăn kèm các loại rau ngổ, chuối xanh chát và khế chua.",
-        "imgUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&q=80",
-        "isDefault": true
-    },
-    {
-        "id": "default_food_11",
-        "name": "Nhum biển nướng mỡ hành",
-        "category": "specialty",
-        "address": "Bè nổi cảng Bến Đầm",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Nhum+biển+nướng+Côn+Đảo",
-        "linkUrl": "",
-        "desc": "Nhum biển (cầu gai) bổ đôi, nướng lửa than hồng rực rỡ, rưới thêm mỡ hành béo ngậy, trứng cút cùng đậu phộng giòn giòn, ăn ngọt bùi béo ngậy cực kỳ bổ dưỡng.",
-        "imgUrl": "https://images.unsplash.com/photo-1553618551-fba689030290?w=800&q=80",
-        "isDefault": true
-    },
-    {
-        "id": "default_food_12",
-        "name": "Cháo hàu sữa bổ dưỡng",
-        "category": "specialty",
-        "address": "Các quán ăn sáng thị trấn",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Cháo+hàu+Côn+Đảo",
-        "linkUrl": "",
-        "desc": "Món ăn sáng đầy bổ dưỡng, tô cháo ấm nồng sánh mịn hòa quyện hoàn hảo giữa gạo thơm dẻo cùng vị ngọt thanh mát, béo múp của những con hàu sữa tươi sống vừa khai thác.",
-        "imgUrl": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=800&q=80",
-        "isDefault": true
-    },
-    {
-        "id": "default_food_13",
-        "name": "Phiên Khúc Coffee & Food",
-        "category": "cafe",
-        "address": "Đường Nguyễn Văn Linh, Côn Đảo",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Phiên+Khúc+coffee+Côn+Đảo",
-        "linkUrl": "",
-        "desc": "Không gian hoài niệm xưa cũ với các chi tiết trang trí gỗ mộc mạc mang dấu ấn thời gian. Nơi bạn có thể nhâm nhi ly trà, nghe nhạc tình ca acoustic mộc mạc và chụp những bức hình đầy hoài niệm.",
-        "imgUrl": "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&q=80",
-        "isDefault": true
-    },
-    {
-        "id": "default_food_14",
-        "name": "Quán Cafe Côn Sơn",
-        "category": "cafe",
-        "address": "Đường Tôn Đức Thắng, Côn Đảo",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Quán+cafe+Côn+Sơn+Côn+Đảo",
-        "linkUrl": "",
-        "desc": "Tọa lạc ngay trên con đường bao biển đẹp nhất đảo. Quán có view ngắm sóng vịnh Côn Sơn cực kỳ đắt giá, đón gió đại dương lộng gió, thích hợp ngắm tàu cano qua lại và đón bình minh.",
-        "imgUrl": "https://images.unsplash.com/photo-1507133750040-4a8f57021571?w=800&q=80",
-        "isDefault": true
-    },
-    {
-        "id": "default_food_15",
-        "name": "Infiniti Cafe & Resto",
-        "category": "cafe",
-        "address": "Khu 8, đường Trần Phú, Côn Đảo",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Infiniti+Cafe+Côn+Đảo",
-        "linkUrl": "",
-        "desc": "Thiết kế hiện đại xen kẽ phong cách mộc mạc rợp bóng cây xanh. Quán phục vụ nhiều thức uống sáng tạo, sinh tố nhiệt đới mát lạnh cùng các món bánh ngọt, đồ ăn Tây phong phú.",
-        "imgUrl": "https://images.unsplash.com/photo-1498804103079-a6351b050096?w=800&q=80",
-        "isDefault": true
-    },
-    {
-        "id": "default_food_16",
-        "name": "Quán Cafe Ba Lê",
-        "category": "cafe",
-        "address": "Khu 6, đường Trần Phú, Côn Đảo",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Quán+cafe+Ba+Lê+Côn+Đảo",
-        "linkUrl": "",
-        "desc": "Một ngôi nhà gỗ nhỏ xinh ẩn hiện bình yên giữa khu phố yên ả. Thích hợp để bạn trốn nắng trưa, thong thả đọc một cuốn sách hay, nghe bản nhạc Trịnh và ngắm nhìn nhịp sống chậm rãi.",
-        "imgUrl": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&q=80",
-        "isDefault": true
-    },
-    {
-        "id": "default_food_17",
-        "name": "Eden House & Coffee Côn Đảo",
-        "category": "cafe",
-        "address": "Đường Dương Bá Trạc, Côn Đảo",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Eden+House+Coffee+Côn+Đảo",
-        "linkUrl": "",
-        "desc": "Quán cafe phong cách nhà kính tuyệt đẹp rực rỡ ngập nắng và hoa lá xanh tươi bao phủ xung quanh. Tọa độ check-in sống ảo cực ngọt ngào tựa vườn cổ tích thơ mộng giữa biển đảo.",
-        "imgUrl": "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=800&q=80",
-        "isDefault": true
-    },
-    {
-        "id": "default_food_18",
-        "name": "Quán Coffee Le Condor",
-        "category": "cafe",
-        "address": "Khu 5 đường Nguyễn Huệ, Côn Đảo",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Le+Condor+Coffee+Côn+Đảo",
-        "linkUrl": "",
-        "desc": "Sở hữu lối thiết kế tối giản đương đại với tông màu trung tính đen xám trắng thanh nhã. Góc decor đậm chất nghệ thuật độc đáo hứa hẹn mang lại những tấm ảnh OOTD sống ảo chất lừ.",
-        "imgUrl": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80",
-        "isDefault": true
-    },
-    {
-        "id": "default_food_19",
-        "name": "Bánh khọt Côn Đảo",
-        "category": "specialty",
-        "address": "Bánh khọt Duyên Trang (Hoàng Phi Yến) / Cỏ Mây",
-        "mapsUrl": "",
-        "linkUrl": "",
-        "desc": "<strong>Món ngon:</strong> Thức quà dân dã phải thử. Bánh khọt được đổ giòn rụm màu vàng ươm, nhân bên trong là tôm, mực tươi rói của vùng biển đảo. Ăn kèm đu đủ chua ngọt, rau sống và nước mắm pha cực kỳ bắt miệng.",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/B%C3%A1nh_kh%E1%BB%8Dt_V%C5%A9ng_T%C3%A0u.jpg/800px-B%C3%A1nh_kh%E1%BB%8Dt_V%C5%A9ng_T%C3%A0u.jpg",
-        "isDefault": true
-    },
-    {
-        "id": "default_food_20",
-        "name": "Bánh canh ghẹ",
-        "category": "specialty",
-        "address": "Bánh canh ghẹ Ngọc (Đường Lê Hồng Phong)",
-        "mapsUrl": "",
-        "linkUrl": "",
-        "desc": "<strong>Món ngon:</strong> Món ăn đặc trưng với sợi bánh canh dai mềm, quyện trong phần nước dùng ngọt thanh, sền sệt được ninh từ ghẹ biển tươi. Topping ngập tràn thịt ghẹ chắc nịch, tạo nên bữa ăn ấm bụng.",
-        "imgUrl": "https://images.unsplash.com/photo-1594971475674-884cb4285fb7?w=800&q=80",
+        "desc": "Vỏ bánh giòn rụm bên ngoài, nhân trứng cút thơm bùi hoặc thịt bò bằm chấm mắm xíu mại mỡ hành tuyệt hảo.",
+        "imgUrl": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80",
         "isDefault": true
     }
 ];
@@ -2345,6 +1645,7 @@ const observer = new IntersectionObserver((entries) => {
 // Observe all destination cards and timeline items
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.destination-card, .timeline-item').forEach(el => observer.observe(el));
+  populatePlannerDestinations();
   loadPlanFromStorage();
   renderCustomTimeline();
 });
@@ -2363,27 +1664,17 @@ let customPlan = {
 
 // Destination metadata for beautiful visual presentation in the scheduler
 const destMeta = {
-    "Vịnh Đầm Tre": { icon: "fa-water", badge: "#Mùa_rong_mơ", color: "bg-teal-50 text-teal-700 border-teal-100" },
-    "Bãi Đầm Trầu": { icon: "fa-umbrella-beach", badge: "#Bãi_tắm_đẹp", color: "bg-teal-50 text-teal-700 border-teal-100" },
-    "Bãi Nhát": { icon: "fa-umbrella-beach", badge: "#Phong_cảnh_hữu_tình", color: "bg-teal-50 text-teal-700 border-teal-100" },
-    "Bãi Suối Nóng": { icon: "fa-umbrella-beach", badge: "#Hoang_sơ_hiếm_có", color: "bg-teal-50 text-teal-700 border-teal-100" },
-    "Bãi Đá Cuội": { icon: "fa-umbrella-beach", badge: "#Khu_Bến_Đầm", color: "bg-teal-50 text-teal-700 border-teal-100" },
-    "Hòn Bảy Cạnh": { icon: "fa-water", badge: "#Bảo_tồn_rùa", color: "bg-teal-50 text-teal-700 border-teal-100" },
-    "Hòn Cau & Miếu Cô Vân": { icon: "fa-person-surfing", badge: "#Hòn_Cau", color: "bg-teal-50 text-teal-700 border-teal-100" },
-    "Bãi Đất Thắm": { icon: "fa-shoe-prints", badge: "#Private_Beach", color: "bg-teal-50 text-teal-700 border-teal-100" },
-    "Hòn Tài, Hòn Trác": { icon: "fa-ship", badge: "#Hòn_đảo_ẩn_giấu", color: "bg-teal-50 text-teal-700 border-teal-100" },
-    "Bảo tàng Côn Đảo": { icon: "fa-landmark", badge: "#Lưu_giữ_hiện_vật", color: "bg-gray-100 text-gray-700 border-gray-200" },
-    "Nhà tù Côn Đảo (Trại Phú Hải, Phú Sơn)": { icon: "fa-building", badge: "#Di_tích_quốc_gia", color: "bg-gray-100 text-gray-700 border-gray-200" },
-    "Dinh Chúa Đảo": { icon: "fa-landmark", badge: "#Kiến_trúc_Pháp_cổ", color: "bg-gray-100 text-gray-700 border-gray-200" },
-    "Trung Tâm Bảo Tồn Di Tích Quốc Gia": { icon: "fa-landmark", badge: "#Đường_Nguyễn_Huệ", color: "bg-gray-100 text-gray-700 border-gray-200" },
-    "Cầu tàu 914": { icon: "fa-landmark", badge: "#Chứng_nhân_lịch_sử", color: "bg-gray-100 text-gray-700 border-gray-200" },
-    "Mũi Cá Mập": { icon: "fa-mountain-sun", badge: "#Tọa_độ_lý_tưởng", color: "bg-gray-100 text-gray-700 border-gray-200" },
-    "Nghĩa trang Hàng Dương": { icon: "fa-place-of-worship", badge: "#Tâm_linh_thiêng_liêng", color: "bg-teal-50 text-teal-700 border-teal-100" },
-    "Miếu Cậu (Thiếu Gia Miếu)": { icon: "fa-gopuran", badge: "#Hoàng_tử_Cải", color: "bg-teal-50 text-teal-700 border-teal-100" },
-    "Miếu Năm Cô (Miếu Ngũ Hành)": { icon: "fa-scroll", badge: "#Thờ_Ngũ_Hành", color: "bg-teal-50 text-teal-700 border-teal-100" },
-    "Chùa Núi Một (Vân Sơn Tự)": { icon: "fa-gopuran", badge: "#Tựa_sơn_hướng_thủy", color: "bg-teal-50 text-teal-700 border-teal-100" },
-    "Cua mặt trăng": { icon: "fa-shrimp", badge: "#Đặc_sản_quý_hiếm", color: "bg-orange-50 text-orange-700 border-orange-100" },
-    "Mứt hạt bàng": { icon: "fa-cookie", badge: "#Quà_tặng_Côn_Đảo", color: "bg-orange-50 text-orange-700 border-orange-100" }
+    "Đỉnh Langbiang": { icon: "fa-mountain-sun", badge: "Nóc_nhà_Đà_Lạt", color: "bg-teal-50 text-teal-700 border-teal-100" },
+    "Hồ Tuyền Lâm": { icon: "fa-mountain-sun", badge: "Chèo_SUP", color: "bg-teal-50 text-teal-700 border-teal-100" },
+    "Ga Đà Lạt": { icon: "fa-landmark", badge: "Kiến_trúc_Pháp", color: "bg-teal-50 text-teal-700 border-teal-100" },
+    "Chùa Linh Phước (Chùa Ve Chai)": { icon: "fa-gopuran", badge: "Khảm_sành_sứ", color: "bg-teal-50 text-teal-700 border-teal-100" },
+    "Quảng trường Lâm Viên": { icon: "fa-mountain-sun", badge: "Nụ_hoa_Atiso", color: "bg-teal-50 text-teal-700 border-teal-100" },
+    "Hotel Colline": { icon: "fa-hotel", badge: "#4★", color: "bg-blue-50 text-blue-700 border-blue-100" },
+    "Terracotta Hotel & Resort": { icon: "fa-hotel", badge: "#4★", color: "bg-blue-50 text-blue-700 border-blue-100" },
+    "Lẩu Gà Lá É Tao Ngộ": { icon: "fa-bowl-food", badge: "#Đặc_sản", color: "bg-orange-50 text-orange-700 border-orange-100" },
+    "Bánh mì xíu mại chén Hoàng Diệu": { icon: "fa-bowl-food", badge: "#Đặc_sản", color: "bg-orange-50 text-orange-700 border-orange-100" },
+    "Lẩu Bò Ba Toa Nhà Gỗ": { icon: "fa-bowl-food", badge: "#Đặc_sản", color: "bg-orange-50 text-orange-700 border-orange-100" },
+    "Bánh Căn Lệ": { icon: "fa-bowl-food", badge: "#Đặc_sản", color: "bg-orange-50 text-orange-700 border-orange-100" }
 };
 
 // Switch Planner Mode Between Preset & Custom
@@ -2451,12 +1742,30 @@ function fillSuggestedTime(timeStr) {
 
 // Save custom plan to localStorage
 function savePlanToStorage() {
-    localStorage.setItem('condao_custom_plan', JSON.stringify(customPlan));
+    localStorage.setItem('dalat_custom_plan', JSON.stringify(customPlan));
 }
 
 // Load custom plan from localStorage
+function populatePlannerDestinations() {
+    const destSelect = document.getElementById('planner-dest-select');
+    if (!destSelect) return;
+    destSelect.innerHTML = "";
+    const adminDests = loadData(KEYS.adminDests);
+    const allDests = [...adminDests, ...DEFAULT_DESTINATIONS];
+    const seen = new Set();
+    allDests.forEach((d, idx) => {
+        if (!seen.has(d.name)) {
+            seen.add(d.name);
+            const opt = document.createElement('option');
+            opt.value = d.name;
+            opt.textContent = `${idx + 1}. ${d.name} (${d.tags && d.tags.length ? '#' + d.tags[0] : '#Điểm_đến'})`;
+            destSelect.appendChild(opt);
+        }
+    });
+}
+
 function loadPlanFromStorage() {
-    const saved = localStorage.getItem('condao_custom_plan');
+    const saved = localStorage.getItem('dalat_custom_plan');
     if (saved) {
         try {
             customPlan = JSON.parse(saved);
@@ -2575,33 +1884,28 @@ function loadDefaultTemplate() {
     if (confirm("Nạp lịch trình mẫu 4N3Đ? Lịch trình hiện tại của bạn sẽ bị thay thế.")) {
         customPlan = {
             day1: [
-                { id: "p1", time: "07:30 - 08:00", dest: "Hòn Tài, Hòn Trác", note: "Có mặt tại Cảng Cầu Đá Vũng Tàu, làm thủ tục lên tàu cao tốc 5 sao" },
-                { id: "p2", time: "08:00 - 12:30", dest: "Hòn Tài, Hòn Trác", note: "Hải trình Vũng Tàu - Côn Đảo ngắm đại dương" },
-                { id: "p3", time: "12:30 - 13:30", dest: "Cơm Niêu Sài Gòn Côn Đảo", note: "Cập cảng Bến Đầm, xe đón về khách sạn nhận phòng, ăn trưa cơm niêu đặc sản" },
-                { id: "p4", time: "14:30 - 17:00", dest: "Nhà tù Côn Đảo (Trại Phú Hải, Phú Sơn)", note: "Tham quan Bảo tàng Côn Đảo & di tích Nhà tù Côn Đảo & Dinh Chúa Đảo" },
-                { id: "p5", time: "18:30 - 20:00", dest: "Nhà hàng Tri Kỷ", note: "Dùng bữa tối hải sản phong phú và thưởng thức Cua mặt trăng đặc sản" },
-                { id: "p6", time: "21:30 - 23:30", dest: "Nghĩa trang Hàng Dương", note: "Viếng nghĩa trang Hàng Dương và dâng hương phần mộ anh hùng Võ Thị Sáu lúc đêm muộn" }
+                { id: "dl1", time: "07:30 - 11:30", dest: "Đỉnh Langbiang", note: "Di chuyển lên Đà Lạt bằng xe khách giường nằm từ TP.HCM" },
+                { id: "dl2", time: "13:30 - 14:30", dest: "Hotel Colline", note: "Nhận phòng khách sạn, sắp xếp đồ đạc nghỉ ngơi" },
+                { id: "dl3", time: "15:00 - 17:30", dest: "Quảng trường Lâm Viên", note: "Dạo quanh Hồ Xuân Hương và ngắm hoàng hôn Atiso" },
+                { id: "dl4", time: "18:30 - 20:00", dest: "Lẩu Gà Lá É Tao Ngộ", note: "Thưởng thức lẩu gà lá é nóng hổi cực ngon" },
+                { id: "dl5", time: "20:30 - 22:30", dest: "Lẩu Gà Lá É Tao Ngộ", note: "Dạo chơi, ăn quà chợ đêm Đà Lạt se lạnh" }
             ],
             day2: [
-                { id: "p7", time: "07:30 - 08:30", dest: "Bún riêu cua Bà Hai Khiêm", note: "Ăn sáng bún riêu cua Bà Hai Khiêm và nhâm nhi cafe" },
-                { id: "p8", time: "08:30 - 12:00", dest: "Bãi Đất Thắm", note: "Trekking đi bộ xuyên rừng quốc gia Côn Đảo ra bãi biển hoang sơ Bãi Đất Thắm" },
-                { id: "p9", time: "12:00 - 13:30", dest: "Quán hải sản Sang Tuyền", note: "Ăn trưa hải sản tươi sống chất lượng tại quán Sang Tuyền" },
-                { id: "p10", time: "14:30 - 17:30", dest: "Bãi Đầm Trầu", note: "Dâng hương viếng Miếu Cậu, tắm mát Bãi Đầm Trầu ngắm máy bay hạ cánh và đi bộ sang Bãi Suối Nóng" },
-                { id: "p11", time: "18:30 - 21:00", dest: "Các nhà bè ở cảng Bến Đầm", note: "Dùng bữa tối hải sản tươi sống lộng gió trên bè nổi cảng Bến Đầm" }
+                { id: "dl6", time: "05:00 - 08:30", dest: "Đỉnh Langbiang", note: "Đi xe Jeep săn mây Langbiang lúc sáng sớm" },
+                { id: "dl7", time: "09:00 - 10:00", dest: "Bánh mì xíu mại chén Hoàng Diệu", note: "Ăn sáng bánh mì xíu mại chén nổi tiếng" },
+                { id: "dl8", time: "12:00 - 13:30", dest: "Lẩu Bò Ba Toa Nhà Gỗ", note: "Ăn trưa lẩu bò béo ngậy ngọt ngào" },
+                { id: "dl9", time: "15:00 - 17:30", dest: "Hồ Tuyền Lâm", note: "Chèo SUP ngắm hoàng hôn lãng mạn trên mặt hồ" }
             ],
             day3: [
-                { id: "p12", time: "07:30 - 08:30", dest: "Quán Cafe Côn Sơn", note: "Dùng bữa sáng thong thả và nhâm nhi cà phê view vịnh biển lộng gió" },
-                { id: "p13", time: "08:30 - 11:30", dest: "Hòn Bảy Cạnh", note: "Thuê cano lặn ngắm san hô Hòn Bảy Cạnh & chèo SUP, viếng Miếu Cô Vân ở Hòn Cau" },
-                { id: "p14", time: "11:30 - 13:30", dest: "Quán Cây Bàng", note: "Ăn trưa hải sản tươi sống râm mát tại quán Cây Bàng" },
-                { id: "p15", time: "14:30 - 17:30", dest: "Bãi Nhát", note: "Chinh phục vách đá Mũi Cá Mập, chụp ảnh Cầu tàu 914 và tắm mát đón hoàng hôn Bãi Nhát" },
-                { id: "p16", time: "18:30 - 21:00", dest: "Phiên Khúc Coffee & Food", note: "Ăn tối tự do và thư giãn nhâm nhi cafe nghe nhạc xưa tại Phiên Khúc Cafe" }
+                { id: "dl10", time: "08:00 - 10:30", dest: "Ga Đà Lạt", note: "Tham quan nhà ga cổ kính, chụp hình hơi nước xưa" },
+                { id: "dl11", time: "11:00 - 12:30", dest: "Chùa Linh Phước (Chùa Ve Chai)", note: "Viếng chùa khảm sành sứ rực rỡ ấn tượng" },
+                { id: "dl12", time: "13:00 - 14:30", dest: "Bánh Căn Lệ", note: "Dùng bữa trưa nhẹ bánh căn nóng giòn rụm" },
+                { id: "dl13", time: "15:00 - 17:30", dest: "Hồ Tuyền Lâm", note: "Ghé các quán cà phê ngắm cảnh sương mù thung lũng" }
             ],
             day4: [
-                { id: "p17", time: "07:30 - 08:30", dest: "Cháo hàu sữa bổ dưỡng", note: "Thưởng thức cháo hàu sữa bổ dưỡng cho bữa sáng" },
-                { id: "p18", time: "08:30 - 10:30", dest: "Chùa Núi Một (Vân Sơn Tự)", note: "Leo núi vãn cảnh chùa Núi Một ngắm hồ sen An Hải & viếng Miếu Năm Cô cầu bình an" },
-                { id: "p19", time: "10:30 - 11:30", dest: "Mứt hạt bàng", note: "Mua đặc sản mứt hạt bàng làm quà lưu niệm tại chợ Côn Đảo" },
-                { id: "p20", time: "11:30 - 12:45", dest: "Mứt hạt bàng", note: "Trả phòng khách sạn, dùng bữa trưa nhẹ gọn gàng" },
-                { id: "p21", time: "13:00 - 17:30", dest: "Hòn Tài, Hòn Trác", note: "Ra cảng Bến Đầm làm thủ tục lên tàu cao tốc rời bến lúc 13:30 quay về Vũng Tàu" }
+                { id: "dl14", time: "07:30 - 08:30", dest: "Bánh Căn Lệ", note: "Ăn sáng bún riêu, ngắm sương mù ven đồi" },
+                { id: "dl15", time: "09:00 - 11:00", dest: "Lẩu Gà Lá É Tao Ngộ", note: "Mua đặc sản hồng sấy dẻo và trà atiso tại chợ Đà Lạt" },
+                { id: "dl16", time: "12:00 - 12:30", dest: "Hotel Colline", note: "Check-out trả phòng khách sạn, kết thúc chuyến đi" }
             ]
         };
         savePlanToStorage();
@@ -2611,7 +1915,7 @@ function loadDefaultTemplate() {
 
 // Export custom plan to .txt file for mobile download
 function exportItinerary() {
-    let output = "=== LỊCH TRÌNH DU LỊCH CÔN ĐẢO CỦA BẠN ===\n\n";
+    let output = "=== LỊCH TRÌNH DU LỊCH ĐÀ LẠT CỦA BẠN ===\n\n";
     
     for (let day = 1; day <= 4; day++) {
         output += `--- NGÀY ${day} ---\n`;
@@ -2629,7 +1933,7 @@ function exportItinerary() {
     const blob = new Blob([output], { type: 'text/plain;charset=utf-8' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = 'Lich_Trinh_Con_Dao_Cua_Toi.txt';
+    link.download = 'Lich_Trinh_dalat.txt';
     link.click();
 }
 
@@ -2639,19 +1943,19 @@ function exportItinerary() {
 
 // --- Constants & State ---
 const ADMIN_PASSWORD = 'Thaodangiu';
-const DEFAULT_MEM_PASSWORD = 'ConDao2026';
+const DEFAULT_MEM_PASSWORD = 'Dalat2026';
 let adminCurrentSection = 'dest';
 let editingAlbumId = null;
 
 // --- Storage Keys ---
 const KEYS = {
-    adminDests:  'condao_admin_destinations',
-    adminHotels: 'condao_admin_hotels',
-    adminFood:   'condao_admin_food',
-    memories:    'condao_memories',
-    memPass:     'condao_memory_pass',
-    ghToken:     'condao_github_token',
-    ghConfig:    'condao_github_config',
+    adminDests:  'dalat_admin_destinations',
+    adminHotels: 'dalat_admin_hotels',
+    adminFood:   'dalat_admin_food',
+    memories:    'dalat_memories',
+    memPass:     'dalat_memory_pass',
+    ghToken:     'dalat_github_token',
+    ghConfig:    'dalat_github_config',
 };
 
 // --- Utilities ---
@@ -2916,81 +2220,137 @@ function renderAdminDestList() {
 const DEST_CATEGORY_LABELS = {
     beach: '🏖 Bãi Tắm & Sinh Thái Biển',
     dive:  '🤿 Lặn Biển & Hải Đảo',
-    history: '🏛 Di Tích Lịch Sử',
-    spiritual: '🙏 Tâm Linh & Văn Hóa',
+    nature: '🌲 Thiên Nhiên & Check-in',
+    cafe: '☕ Trải Nghiệm & Café',
     nature: '🌿 Thiên Nhiên & Rừng',
 };
 
 function renderAdminDestCardsInTab1() {
-    let container = document.getElementById('admin-added-dests');
-    if(!container) {
-        const destsContainer = document.getElementById('destinations-container');
-        if(!destsContainer) return;
-        container = document.createElement('div');
-        container.id = 'admin-added-dests';
-        destsContainer.parentNode.insertBefore(container, destsContainer);
-    }
+    const container = document.getElementById('destinations-container');
+    if(!container) return;
     const items = loadData(KEYS.adminDests);
-    if(!items.length) { container.innerHTML=''; return; }
-    container.innerHTML = `
-        <div class="mb-4 flex items-center gap-2 text-xs font-bold text-teal-700 bg-teal-50 border border-teal-100 px-4 py-2 rounded-xl w-fit">
-            <i class="fa-solid fa-star"></i> Địa điểm mới được thêm bởi Admin
-        </div>
-        <div class="grid grid-cols-1 gap-6 mb-8">
-            ${items.map(d => renderDestCard(d)).join('')}
-        </div>
-    `;
-    // Re-attach IntersectionObserver for new cards
-    document.querySelectorAll('#admin-added-dests .destination-card').forEach(el => observer && observer.observe(el));
+    if(!items.length) { container.innerHTML = '<div class="text-center text-gray-400 py-12">Chưa có địa điểm nào.</div>'; return; }
+    container.innerHTML = items.map((d, idx) => renderDestCard(d, idx)).join('');
+    // Re-attach IntersectionObserver for all cards
+    document.querySelectorAll('#destinations-container .destination-card').forEach(el => observer && observer.observe(el));
 }
 
-function renderDestCard(d) {
+function renderDestCard(d, idx) {
     const catLabel = DEST_CATEGORY_LABELS[d.category] || d.category;
     const highlights = (d.highlights||[]).map(h=>`<li>${h}</li>`).join('');
+    
     const img1HTML = d.img1 ? `<div class="group/img overflow-hidden rounded-xl shadow-sm border border-gray-100 aspect-[4/3] relative">
         <img src="${d.img1}" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" alt="${d.name}">
     </div>` : '';
     const img2HTML = d.img2 ? `<div class="group/img overflow-hidden rounded-xl shadow-sm border border-gray-100 aspect-[4/3] relative">
         <img src="${d.img2}" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" alt="${d.name}">
     </div>` : '';
-    const cardWrapper = d.linkUrl ? `onclick="window.open('${d.linkUrl}','_blank')"` : `onclick="toggleDestDetail(this)"`;
-    return `
-    <div class="destination-card p-4 md:p-6" ${cardWrapper}>
-        <div class="flex flex-col md:flex-row gap-4 items-start">
-            ${d.img1?`<div class="dest-img-container w-full md:w-56 shrink-0"><img src="${d.img1}" class="dest-img" alt="${d.name}"></div>`:''}
-            <div class="flex-grow">
-                <div class="flex flex-wrap items-center gap-2 mb-1">
-                    <h3 class="text-lg font-extrabold text-gray-800">${d.name}</h3>
-                    ${d.rating?`<span class="bg-amber-50 text-amber-700 border border-amber-100 text-xs font-bold px-2 py-0.5 rounded-full">⭐ ${d.rating}/5</span>`:''}
-                    <span class="bg-teal-50 text-teal-700 border border-teal-100 text-xs font-bold px-2 py-0.5 rounded-full">${catLabel}</span>
-                </div>
-                <p class="text-gray-500 text-sm leading-relaxed mb-2">${d.descShort||''}</p>
-                ${d.mapsUrl?`<a href="${d.mapsUrl}" target="_blank" onclick="event.stopPropagation()" class="text-teal-600 hover:text-teal-800 text-xs font-semibold flex items-center gap-1 w-fit">
-                    <i class="fa-solid fa-map-location-dot"></i> Xem trên Google Maps
-                </a>`:''}
-                ${!d.linkUrl?`<div class="text-xs text-gray-400 mt-2 flex items-center gap-1"><i class="fa-solid fa-chevron-down text-[10px]"></i> Nhấn để xem chi tiết</div>`:''}
-            </div>
+    
+    // For alternating orders like the original layout
+    const imgOrderClass = idx % 2 === 0 ? 'md:order-1' : 'md:order-2';
+    const infoOrderClass = idx % 2 === 0 ? 'md:order-2' : 'md:order-1';
+    const slideClass = idx % 2 === 0 ? 'slide-left' : 'slide-right';
+    
+    const cardWrapper = d.linkUrl ? `onclick="window.open('${d.linkUrl}','_blank')"` : `onclick="if(!event.target.closest('.detail-panel')) toggleDetail(this)"`;
+    
+    // Show a premium star badge for admin-added destinations
+    const badgeHTML = !d.isDefault ? `
+        <span class="bg-teal-600 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full shadow-sm">
+            <i class="fa-solid fa-star text-[9px] mr-0.5"></i> Mới
+        </span>
+    ` : '';
+    
+    // Premium tag-list under title
+    const tagsHTML = d.tags && d.tags.length ? `
+        <div class="flex flex-wrap gap-2 mb-3">
+            ${d.tags.map(t => `<span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#${t}</span>`).join('')}
         </div>
-        ${!d.linkUrl?`
-        <div class="detail-panel">
-            <div class="border-t border-gray-100 mt-4 pt-4 grid grid-cols-1 lg:grid-cols-12 gap-6 text-gray-600">
-                <div class="lg:col-span-7 space-y-4">
-                    ${d.descLong?`<p class="text-gray-600 leading-relaxed text-sm">${d.descLong}</p>`:''}
-                    ${highlights?`<div class="bg-amber-50/60 border border-amber-100 p-4 rounded-xl">
-                        <h5 class="font-bold text-amber-800 mb-2 flex items-center gap-2 text-sm"><i class="fa-solid fa-star text-amber-500"></i> Trải nghiệm nổi bật</h5>
-                        <ul class="list-disc pl-5 text-amber-900/80 text-xs space-y-1">${highlights}</ul>
-                    </div>`:''}
-                    ${d.bestTime?`<div class="bg-teal-50/60 border border-teal-100 p-4 rounded-xl">
-                        <h5 class="font-bold text-teal-800 mb-1 flex items-center gap-2 text-sm"><i class="fa-solid fa-clock text-teal-600"></i> Thời điểm lý tưởng</h5>
-                        <p class="text-teal-900/80 text-xs">${d.bestTime}</p>
-                    </div>`:''}
+    ` : '';
+
+    return `
+    <div class="destination-card p-6 md:p-8 ${slideClass}" ${cardWrapper} data-category="${d.category}">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center">
+            
+            <!-- Image (alternating order) -->
+            <div class="md:col-span-5 ${imgOrderClass}">
+                ${d.img1 ? `
+                <div class="dest-img-container shadow-md">
+                    <img src="${d.img1}" alt="${d.name}" class="dest-img">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                </div>` : `
+                <div class="dest-img-container shadow-md bg-teal-50/50 flex items-center justify-center text-5xl text-teal-600">
+                    🌴
+                </div>`}
+            </div>
+            
+            <!-- Info (alternating order) -->
+            <div class="md:col-span-7 ${infoOrderClass} flex flex-col justify-between h-full">
+                <div>
+                    <div class="flex flex-wrap items-center gap-2 mb-3">
+                        ${d.rating ? `<span class="bg-amber-50 text-amber-700 border border-amber-100 px-3 py-1 rounded-full text-xs font-semibold">⭐ ${d.rating}/5</span>` : ''}
+                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">${catLabel}</span>
+                        ${badgeHTML}
+                    </div>
+                    ${tagsHTML}
+                    <h3 class="text-2xl md:text-3xl font-extrabold text-gray-800 hover:text-teal-700 transition-colors mb-4">${d.name}</h3>
+                    <p class="text-gray-500 text-sm md:text-base leading-relaxed mb-6">${d.descShort||''}</p>
                 </div>
-                <div class="lg:col-span-5 space-y-3">
-                    ${d.img1||d.img2?`<h4 class="font-bold text-gray-800 text-lg mb-2 flex items-center gap-2"><i class="fa-solid fa-images text-teal-600"></i> Hình ảnh</h4>
-                    <div class="grid ${d.img1&&d.img2?'grid-cols-2':'grid-cols-1'} gap-3">${img1HTML}${img2HTML}</div>`:''}
+                
+                <div class="flex items-center justify-between gap-4">
+                    <div class="flex items-center gap-4">
+                        <span class="text-teal-600 font-bold text-sm flex items-center gap-2 hover:translate-x-1 transition-all toggle-text">
+                            Khám phá chi tiết <i class="fa-solid fa-arrow-right-long ml-2"></i>
+                        </span>
+                        ${d.mapsUrl ? `
+                        <a href="${d.mapsUrl}" target="_blank" class="px-3 py-1 rounded-full border border-gray-200 hover:border-teal-200 hover:bg-teal-50 text-gray-500 hover:text-teal-700 transition-colors flex items-center gap-1.5 text-xs font-bold" onclick="event.stopPropagation()">
+                            <i class="fa-solid fa-map-location-dot text-teal-600"></i> Bản đồ
+                        </a>` : ''}
+                    </div>
+                    <button class="w-10 h-10 rounded-full bg-teal-50 hover:bg-teal-100 text-teal-700 flex items-center justify-center transition-colors shadow-sm focus:outline-none">
+                        <i class="fa-solid fa-chevron-down toggle-arrow"></i>
+                    </button>
                 </div>
             </div>
-        </div>`:''}
+            
+        </div>
+        
+        <!-- Collapsible Detail Panel (smooth CSS accordion) -->
+        ${!d.linkUrl ? `
+        <div class="detail-panel">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 text-gray-600">
+                <div class="lg:col-span-7 space-y-4">
+                    <h4 class="font-bold text-gray-800 text-lg mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-circle-info text-teal-600"></i> Giới thiệu chi tiết
+                    </h4>
+                    ${d.descLong ? `<p class="text-gray-600 leading-relaxed text-sm md:text-base">${d.descLong}</p>` : ''}
+                    ${highlights ? `
+                    <div class="bg-amber-50/60 border border-amber-100 p-4 rounded-xl">
+                        <h5 class="font-bold text-amber-800 mb-1 flex items-center gap-2 text-sm md:text-base">
+                            <i class="fa-solid fa-star text-amber-500"></i> Trải nghiệm nổi bật
+                        </h5>
+                        <ul class="list-disc pl-5 text-amber-900/80 text-xs md:text-sm space-y-1">${highlights}</ul>
+                    </div>` : ''}
+                    ${d.bestTime ? `
+                    <div class="bg-teal-50/60 border border-teal-100 p-4 rounded-xl">
+                        <h5 class="font-bold text-teal-800 mb-1 flex items-center gap-2 text-sm md:text-base">
+                            <i class="fa-solid fa-clock text-teal-600"></i> Thời điểm lý tưởng
+                        </h5>
+                        <p class="text-teal-900/80 text-xs md:text-sm">${d.bestTime}</p>
+                    </div>` : ''}
+                </div>
+                
+                <div class="lg:col-span-5 space-y-3">
+                    ${d.img1 || d.img2 ? `
+                    <h4 class="font-bold text-gray-800 text-lg mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-images text-teal-600"></i> Hình ảnh thực tế
+                    </h4>
+                    <div class="grid ${d.img1 && d.img2 ? 'grid-cols-2' : 'grid-cols-1'} gap-3">
+                        ${img1HTML}
+                        ${img2HTML}
+                    </div>` : ''}
+                </div>
+            </div>
+        </div>` : ''}
     </div>`;
 }
 
@@ -3099,17 +2459,18 @@ function renderAdminHotelList() {
 }
 
 function renderAdminHotelsInTab3() {
-    let container = document.getElementById('admin-added-hotels');
-    const hotelScrollDiv = document.querySelector('#tab3 .flex-grow.overflow-y-auto');
+    const hotelScrollDiv = document.getElementById('hotels-container');
     if(!hotelScrollDiv) return;
-    if(!container) {
-        container = document.createElement('div');
-        container.id = 'admin-added-hotels';
-        hotelScrollDiv.prepend(container);
-    }
     const items = loadData(KEYS.adminHotels);
-    if(!items.length){ container.innerHTML=''; return; }
-    container.innerHTML = items.map(h=>`
+    if(!items.length){
+        hotelScrollDiv.innerHTML = '<div class="text-center text-gray-400 py-12">Chưa có khách sạn nào.</div>';
+        return;
+    }
+    hotelScrollDiv.innerHTML = items.map(h=>{
+        const badgeHTML = !h.isDefault ? `
+            <span class="bg-teal-600 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-sm ml-2">Mới</span>
+        ` : '';
+        return `
         <div class="bg-gray-50/50 hover:bg-teal-50/20 border border-gray-100 hover:border-teal-200 p-4 rounded-xl flex flex-col sm:flex-row gap-4 transition-all duration-300 shadow-sm hover:shadow-md group ${h.linkUrl?'cursor-pointer':''}"
             ${h.linkUrl?`onclick="window.open('${h.linkUrl}','_blank')"`:''}>
             <div class="w-full sm:w-32 h-24 rounded-lg overflow-hidden shrink-0 shadow-sm relative">
@@ -3119,7 +2480,10 @@ function renderAdminHotelsInTab3() {
             <div class="flex-grow flex flex-col justify-between">
                 <div>
                     <div class="flex justify-between items-start gap-2">
-                        <h4 class="font-bold text-gray-800 group-hover:text-teal-700 transition-colors text-sm sm:text-base">${h.name}</h4>
+                        <div class="flex items-center gap-2">
+                            <h4 class="font-bold text-gray-800 group-hover:text-teal-700 transition-colors text-sm sm:text-base">${h.name}</h4>
+                            ${badgeHTML}
+                        </div>
                         ${h.price?`<span class="bg-teal-50 text-teal-700 border border-teal-100 text-[10px] font-bold px-2 py-0.5 rounded-full shrink-0 whitespace-nowrap">${h.price}</span>`:''}
                     </div>
                     ${h.address?`<p class="text-[11px] text-gray-400 mt-0.5 flex items-center gap-1"><i class="fa-solid fa-location-dot"></i> ${h.address}</p>`:''}
@@ -3131,7 +2495,7 @@ function renderAdminHotelsInTab3() {
                 </div>
             </div>
         </div>
-    `).join('');
+    `}).join('');
 }
 
 // ============================================================
@@ -3220,17 +2584,18 @@ const FOOD_CAT_ICONS = { seafood:'🦞', specialty:'🌟', cafe:'☕', restauran
 const FOOD_CAT_DATA = { seafood:'seafood', specialty:'specialty', cafe:'cafe', restaurant:'restaurant', street:'street' };
 
 function renderAdminFoodInTab4() {
-    let container = document.getElementById('admin-added-food');
     const foodContainer = document.getElementById('food-container');
     if(!foodContainer) return;
-    if(!container) {
-        container = document.createElement('div');
-        container.id = 'admin-added-food';
-        foodContainer.parentNode.insertBefore(container, foodContainer);
-    }
     const items = loadData(KEYS.adminFood);
-    if(!items.length){ container.innerHTML=''; return; }
-    container.innerHTML = items.map(f=>`
+    if(!items.length){
+        foodContainer.innerHTML = '<div class="text-center text-gray-400 py-12">Chưa có món ăn nào.</div>';
+        return;
+    }
+    foodContainer.innerHTML = items.map(f=>{
+        const badgeHTML = !f.isDefault ? `
+            <span class="bg-teal-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm ml-2">Mới</span>
+        ` : '';
+        return `
         <div class="food-card bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${f.linkUrl?'cursor-pointer':''}"
             data-category="${f.category}" ${f.linkUrl?`onclick="window.open('${f.linkUrl}','_blank')"`:''}> 
             <div class="relative overflow-hidden aspect-video">
@@ -3239,7 +2604,10 @@ function renderAdminFoodInTab4() {
                 <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-gray-700 text-xs font-bold px-2.5 py-1 rounded-full">${FOOD_CAT_ICONS[f.category]||'🍴'} ${f.category}</span>
             </div>
             <div class="p-4">
-                <h3 class="font-extrabold text-gray-800 text-base group-hover:text-teal-700 transition-colors mb-1">${f.name}</h3>
+                <div class="flex items-center">
+                    <h3 class="font-extrabold text-gray-800 text-base group-hover:text-teal-700 transition-colors mb-1">${f.name}</h3>
+                    ${badgeHTML}
+                </div>
                 ${f.address?`<p class="text-xs text-gray-400 flex items-center gap-1 mb-2"><i class="fa-solid fa-location-dot text-teal-500"></i> ${f.address}</p>`:''}
                 ${f.desc?`<p class="text-xs text-gray-600 leading-relaxed mb-3">${f.desc}</p>`:''}
                 <div class="flex items-center gap-2">
@@ -3248,7 +2616,7 @@ function renderAdminFoodInTab4() {
                 </div>
             </div>
         </div>
-    `).join('');
+    `}).join('');
 }
 
 // ============================================================
@@ -3597,6 +2965,23 @@ document.addEventListener('keydown', e => {
 // ON LOAD: Render admin-added items into tabs
 // ============================================================
 (function initAdminItems() {
+    // Initialize defaults in localStorage if not done
+    if (localStorage.getItem('dalat_db_initialized_v4') !== 'yes') {
+        const existingDests = JSON.parse(localStorage.getItem(KEYS.adminDests)) || [];
+        const existingHotels = JSON.parse(localStorage.getItem(KEYS.adminHotels)) || [];
+        const existingFood = JSON.parse(localStorage.getItem(KEYS.adminFood)) || [];
+        
+        const mergedDests = [...existingDests.filter(d => !d.isDefault && (!d.id || !d.id.includes('condao'))), ...DEFAULT_DESTINATIONS];
+        const mergedHotels = [...existingHotels.filter(h => !h.isDefault && (!h.id || !h.id.includes('condao'))), ...DEFAULT_HOTELS];
+        const mergedFood = [...existingFood.filter(f => !f.isDefault && (!f.id || !f.id.includes('condao'))), ...DEFAULT_FOOD];
+        
+        localStorage.setItem(KEYS.adminDests, JSON.stringify(mergedDests));
+        localStorage.setItem(KEYS.adminHotels, JSON.stringify(mergedHotels));
+        localStorage.setItem(KEYS.adminFood, JSON.stringify(mergedFood));
+        
+        localStorage.setItem('dalat_db_initialized_v4', 'yes');
+    }
+
     // Init memories password if not set
     if(!localStorage.getItem(KEYS.memPass)) {
         localStorage.setItem(KEYS.memPass, simpleHash(DEFAULT_MEM_PASSWORD));
@@ -3607,7 +2992,7 @@ document.addEventListener('keydown', e => {
         document.getElementById('mem-content').classList.remove('hidden');
         renderMemoryAlbums();
     }
-    // Render admin-added content into existing tabs
+    // Render all content (default + admin) into tabs
     renderAdminDestCardsInTab1();
     renderAdminHotelsInTab3();
     renderAdminFoodInTab4();
