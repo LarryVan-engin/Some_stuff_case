@@ -29,6 +29,26 @@
             background-size: cover;
         }
 
+        /* Hoạt họa tiêu đề & phụ đề khi tải trang */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+
         /* --- Styles mới cho Thẻ địa điểm và Chi tiết --- */
         .destination-card {
             background: rgba(255, 255, 255, 0.75);
@@ -158,9 +178,15 @@
 </head>
 <body class="antialiased">
 
-    <header class="hero-bg h-[60vh] flex flex-col items-center justify-center text-center px-4">
-        <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-4 drop-shadow-lg tracking-wide uppercase">Khám Phá Côn Đảo</h1>
-        <p class="text-xl md:text-2xl text-gray-200 mb-8 max-w-2xl font-light">Viên ngọc hoang sơ, chốn bình yên mang đậm dấu ấn lịch sử hào hùng.</p>
+    <header class="hero-bg relative h-[100dvh] min-h-screen flex flex-col items-center justify-center text-center px-4 overflow-hidden">
+        <div class="max-w-4xl mx-auto space-y-4">
+            <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-2 drop-shadow-lg tracking-wide uppercase opacity-0 animate-fade-in-up">Khám Phá Côn Đảo</h1>
+            <p class="text-lg md:text-2xl text-gray-200 max-w-2xl font-light opacity-0 animate-fade-in-up delay-200 leading-relaxed">Viên ngọc hoang sơ, chốn bình yên mang đậm dấu ấn lịch sử hào hùng.</p>
+        </div>
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer flex flex-col items-center text-white/90 hover:text-white transition-colors" onclick="document.querySelector('.sticky').scrollIntoView({ behavior: 'smooth' })">
+            <span class="text-[10px] uppercase tracking-widest mb-1.5 font-semibold opacity-75">Cuộn xuống khám phá</span>
+            <i class="fa-solid fa-chevron-down text-xl"></i>
+        </div>
     </header>
 
     <div class="sticky top-0 z-50 bg-white shadow-md">
@@ -185,15 +211,15 @@
                 <p class="text-gray-500 mt-2">Chạm vào thiên nhiên và lịch sử qua từng khung cảnh.</p>
             </div>
             
-            <div class="space-y-12 max-w-5xl mx-auto">
-                <!-- 1. Bãi Đầm Trầu -->
+                        <div class="space-y-12 max-w-5xl mx-auto">
+                <!-- 1. Vịnh Đầm Tre -->
                 <div class="destination-card slide-left" onclick="if(!event.target.closest('.detail-panel')) toggleDetail(this)">
                     <div class="p-6 md:p-8">
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center">
                             <!-- Image (Odd: Column 1-5, md:order-1) -->
                             <div class="md:col-span-5 md:order-1">
                                 <div class="dest-img-container shadow-md">
-                                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Bãi Đầm Trầu" class="dest-img">
+                                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80" alt="Vịnh Đầm Tre" class="dest-img">
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                                 </div>
                             </div>
@@ -201,12 +227,98 @@
                             <div class="md:col-span-7 md:order-2 flex flex-col justify-between h-full">
                                 <div>
                                     <div class="flex flex-wrap gap-2 mb-3">
-                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#Thiên_nhiên</span>
-                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#Check_in</span>
+                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#Hoang_sơ</span>
+                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#Sinh_thái</span>
+                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#Chim_yến</span>
+                                    </div>
+                                    <h3 class="text-2xl md:text-3xl font-extrabold text-gray-800 hover:text-teal-700 transition-colors mb-4">Vịnh Đầm Tre</h3>
+                                    <p class="text-gray-500 text-sm md:text-base leading-relaxed mb-6">
+                                        Vịnh biển hoang sơ kín gió nằm phía Bắc đảo Côn Sơn, được bao bọc bởi rừng tre, rừng ngập mặn cùng rạn san hô nguyên sơ đầy sắc màu.
+                                    </p>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-teal-600 font-bold text-sm flex items-center gap-2 hover:translate-x-1 transition-all toggle-text">
+                                        Khám phá chi tiết <i class="fa-solid fa-arrow-right-long ml-2"></i>
+                                    </span>
+                                    <button class="w-10 h-10 rounded-full bg-teal-50 hover:bg-teal-100 text-teal-700 flex items-center justify-center transition-colors shadow-sm focus:outline-none">
+                                        <i class="fa-solid fa-chevron-down toggle-arrow"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Collapsible Detail Panel -->
+                        <div class="detail-panel">
+                            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 text-gray-600">
+                                <div class="lg:col-span-7 space-y-4">
+                                    <h4 class="font-bold text-gray-800 text-lg mb-2 flex items-center gap-2">
+                                        <i class="fa-solid fa-circle-info text-teal-600"></i> Giới thiệu chi tiết
+                                    </h4>
+                                    <p class="text-gray-600 leading-relaxed text-sm md:text-base">
+                                        Nằm ở phía Bắc của Côn Đảo, vịnh Đầm Tre hoang sơ được bao bọc bởi rừng tre và rừng ngập mặn nên khá kín gió. Nơi đây sở hữu cảnh quan thiên nhiên kỳ thú, yên bình, hoàn toàn tách biệt khỏi nhịp sống ồn ào. Vịnh Đầm Tre là một bức tranh thiên nhiên tuyệt sắc, nơi biển xanh hòa quyện cùng sắc xanh của thảm thực vật đa dạng.
+                                    </p>
+                                    <div class="bg-amber-50/60 border border-amber-100 p-4 rounded-xl">
+                                        <h5 class="font-bold text-amber-800 mb-1 flex items-center gap-2 text-sm md:text-base">
+                                            <i class="fa-solid fa-star text-amber-500"></i> Trải nghiệm nổi bật
+                                        </h5>
+                                        <ul class="list-disc pl-5 text-amber-900/80 text-xs md:text-sm space-y-1">
+                                            <li>Khám phá rừng ngập mặn kỳ vĩ và đi bộ trekking xuyên rừng tre xanh mát.</li>
+                                            <li>Bơi lội và lặn ống thở (snorkeling) ngắm rạn san hô đầy màu sắc.</li>
+                                            <li>Quan sát thế giới tự nhiên của loài chim yến bay về làm tổ trong mùa sinh sản.</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-teal-50/60 border border-teal-100 p-4 rounded-xl">
+                                        <h5 class="font-bold text-teal-800 mb-1 flex items-center gap-2 text-sm md:text-base">
+                                            <i class="fa-solid fa-clock text-teal-600"></i> Thời điểm lý tưởng
+                                        </h5>
+                                        <p class="text-teal-900/80 text-xs md:text-sm">
+                                            Nên đi vào sáng sơ lúc thủy triều lên để vịnh ngập nước xanh trong, và lý tưởng nhất là từ tháng 3 đến tháng 9 khi thời tiết êm đềm, lặng gió.
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <div class="lg:col-span-5 space-y-3">
+                                    <h4 class="font-bold text-gray-800 text-lg mb-2 flex items-center gap-2">
+                                        <i class="fa-solid fa-images text-teal-600"></i> Hình ảnh thực tế
+                                    </h4>
+                                    <div class="grid grid-cols-2 gap-3">
+                                        <div class="group/img overflow-hidden rounded-xl shadow-sm border border-gray-100 aspect-[4/3] relative">
+                                            <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" alt="Vịnh Đầm Tre - Vịnh biển hoang sơ">
+                                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-2 text-white text-[10px] font-semibold text-center">Ảnh 1: Vịnh biển hoang sơ</div>
+                                        </div>
+                                        <div class="group/img overflow-hidden rounded-xl shadow-sm border border-gray-100 aspect-[4/3] relative">
+                                            <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" alt="Vịnh Đầm Tre - Rừng ngập mặn">
+                                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-2 text-white text-[10px] font-semibold text-center">Ảnh 2: Rừng ngập mặn</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Bãi Đầm Trầu -->
+                <div class="destination-card slide-right" onclick="if(!event.target.closest('.detail-panel')) toggleDetail(this)">
+                    <div class="p-6 md:p-8">
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center">
+                            <!-- Image (Even: Column 1-5, md:order-2) -->
+                            <div class="md:col-span-5 md:order-2">
+                                <div class="dest-img-container shadow-md">
+                                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80" alt="Bãi Đầm Trầu" class="dest-img">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                                </div>
+                            </div>
+                            <!-- Info (Even: Column 6-12, md:order-1) -->
+                            <div class="md:col-span-7 md:order-1 flex flex-col justify-between h-full">
+                                <div>
+                                    <div class="flex flex-wrap gap-2 mb-3">
+                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#Bãi_tắm_đẹp</span>
+                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#Ngắm_máy_bay</span>
+                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#Cát_mịn</span>
                                     </div>
                                     <h3 class="text-2xl md:text-3xl font-extrabold text-gray-800 hover:text-teal-700 transition-colors mb-4">Bãi Đầm Trầu</h3>
                                     <p class="text-gray-500 text-sm md:text-base leading-relaxed mb-6">
-                                        Bãi tắm hoang sơ với dòng nước trong xanh ngọc bích cùng dải cát mịn uốn lượn, nổi tiếng với trải nghiệm tắm mát và ngắm máy bay hạ cánh cực sát.
+                                        Bãi tắm thơ mộng được xem là đẹp nhất Côn Đảo, nổi tiếng với dải cát trắng mịn màng uốn lượn và trải nghiệm ngắm máy bay đáp cực gần.
                                     </p>
                                 </div>
                                 <div class="flex items-center justify-between">
@@ -222,33 +334,47 @@
                         
                         <!-- Collapsible Detail Panel -->
                         <div class="detail-panel">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-600 text-sm md:text-base leading-relaxed">
-                                <div>
-                                    <h4 class="font-bold text-gray-800 text-lg mb-3 flex items-center gap-2">
+                            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 text-gray-600">
+                                <div class="lg:col-span-7 space-y-4">
+                                    <h4 class="font-bold text-gray-800 text-lg mb-2 flex items-center gap-2">
                                         <i class="fa-solid fa-circle-info text-teal-600"></i> Giới thiệu chi tiết
                                     </h4>
-                                    <p class="text-gray-600">
-                                        Đây được xem là bãi tắm đẹp nhất ở Côn Đảo với bờ cát trắng xốp mịn, có hình dáng như dải lụa ôm lấy biển[cite: 108]. Vừa tắm biển vừa ngắm máy bay hạ cánh cực chất. Thảm thực vật đa dạng kết hợp rạn san hô đầy màu sắc tạo nên hệ sinh thái biển vô cùng phong phú.
+                                    <p class="text-gray-600 leading-relaxed text-sm md:text-base">
+                                        Bãi Đầm Trầu nằm gần sân bay Cỏ Ống, có cát trắng xốp mịn, núi ôm lấy biển theo hình vòng cung thơ mộng. Nơi đây luôn có sóng nhẹ, không gian yên tĩnh và được mệnh danh là bãi tắm đẹp nhất ở quần đảo Côn Đảo. Điểm độc đáo nhất là bạn có thể thoải mái tắm mát dưới biển và vừa ngắm những chiếc máy bay cất, hạ cánh sát sạt ngay trên đầu.
                                     </p>
-                                </div>
-                                <div class="space-y-4">
                                     <div class="bg-amber-50/60 border border-amber-100 p-4 rounded-xl">
-                                        <h5 class="font-bold text-amber-800 mb-1 flex items-center gap-2">
+                                        <h5 class="font-bold text-amber-800 mb-1 flex items-center gap-2 text-sm md:text-base">
                                             <i class="fa-solid fa-star text-amber-500"></i> Trải nghiệm nổi bật
                                         </h5>
                                         <ul class="list-disc pl-5 text-amber-900/80 text-xs md:text-sm space-y-1">
-                                            <li>Ngắm những chuyến bay đáp cực thấp ngay trên bãi cát.</li>
-                                            <li>Tận hưởng làn nước mát lạnh xanh ngắt bên rặng thông rì rào.</li>
-                                            <li>Thưởng thức nước dừa ngọt mát và hải sản thơm ngon tại bãi biển.</li>
+                                            <li>Đón những khoảnh khắc check-in độc đáo khi máy bay hạ cánh cực thấp ngay trên bãi biển.</li>
+                                            <li>Tắm mình trong làn nước xanh ngọc bích và thư giãn dưới bóng mát của rặng thông.</li>
+                                            <li>Thưởng thức nước dừa mát lạnh cùng các món hải sản chế biến tươi ngon ngay tại bãi cát.</li>
                                         </ul>
                                     </div>
                                     <div class="bg-teal-50/60 border border-teal-100 p-4 rounded-xl">
-                                        <h5 class="font-bold text-teal-800 mb-1 flex items-center gap-2">
+                                        <h5 class="font-bold text-teal-800 mb-1 flex items-center gap-2 text-sm md:text-base">
                                             <i class="fa-solid fa-clock text-teal-600"></i> Thời điểm lý tưởng
                                         </h5>
                                         <p class="text-teal-900/80 text-xs md:text-sm">
-                                            Nên đi vào khoảng 14:00 - 17:00 chiều để vừa tắm mát, vừa dễ dàng bắt trọn khoảnh khắc máy bay hạ cánh.
+                                            Khoảng từ 14:00 đến 17:00 chiều là thời điểm đẹp nhất để ngắm máy bay và tận hưởng ánh nắng hoàng hôn dịu nhẹ.
                                         </p>
+                                    </div>
+                                </div>
+                                
+                                <div class="lg:col-span-5 space-y-3">
+                                    <h4 class="font-bold text-gray-800 text-lg mb-2 flex items-center gap-2">
+                                        <i class="fa-solid fa-images text-teal-600"></i> Hình ảnh thực tế
+                                    </h4>
+                                    <div class="grid grid-cols-2 gap-3">
+                                        <div class="group/img overflow-hidden rounded-xl shadow-sm border border-gray-100 aspect-[4/3] relative">
+                                            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" alt="Bãi Đầm Trầu - Bãi biển cát trắng">
+                                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-2 text-white text-[10px] font-semibold text-center">Ảnh 1: Bãi biển cát trắng</div>
+                                        </div>
+                                        <div class="group/img overflow-hidden rounded-xl shadow-sm border border-gray-100 aspect-[4/3] relative">
+                                            <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&q=80" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" alt="Bãi Đầm Trầu - Nước biển trong xanh">
+                                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-2 text-white text-[10px] font-semibold text-center">Ảnh 2: Nước biển trong xanh</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -256,27 +382,28 @@
                     </div>
                 </div>
 
-                <!-- 2. Hòn Bảy Cạnh -->
-                <div class="destination-card slide-right" onclick="if(!event.target.closest('.detail-panel')) toggleDetail(this)">
+                <!-- 3. Hòn Bảy Cạnh -->
+                <div class="destination-card slide-left" onclick="if(!event.target.closest('.detail-panel')) toggleDetail(this)">
                     <div class="p-6 md:p-8">
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center">
-                            <!-- Image (Even: Column 1-5, md:order-2) -->
-                            <div class="md:col-span-5 md:order-2">
+                            <!-- Image (Odd: Column 1-5, md:order-1) -->
+                            <div class="md:col-span-5 md:order-1">
                                 <div class="dest-img-container shadow-md">
-                                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Hòn Bảy Cạnh" class="dest-img">
+                                    <img src="https://images.unsplash.com/photo-1582967788606-a171c1080cb0?w=800&q=80" alt="Hòn Bảy Cạnh" class="dest-img">
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                                 </div>
                             </div>
-                            <!-- Info (Even: Column 6-12, md:order-1) -->
-                            <div class="md:col-span-7 md:order-1 flex flex-col justify-between h-full">
+                            <!-- Info (Odd: Column 6-12, md:order-2) -->
+                            <div class="md:col-span-7 md:order-2 flex flex-col justify-between h-full">
                                 <div>
                                     <div class="flex flex-wrap gap-2 mb-3">
-                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#Lặn_san_hô</span>
-                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#Rùa_biển</span>
+                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#Bảo_tồn_rùa</span>
+                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#Lặn_ngắm_san_hô</span>
+                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#Đảo_hoang</span>
                                     </div>
                                     <h3 class="text-2xl md:text-3xl font-extrabold text-gray-800 hover:text-teal-700 transition-colors mb-4">Hòn Bảy Cạnh</h3>
                                     <p class="text-gray-500 text-sm md:text-base leading-relaxed mb-6">
-                                        Hòn đảo lớn thứ hai Côn Đảo, nổi tiếng với hệ sinh thái biển nguyên sinh, rạn san hô rực rỡ và đặc trưng là bãi đẻ của rùa biển.
+                                        Hòn đảo lớn thứ hai Côn Đảo, là khu bảo tồn rùa biển lớn nhất Việt Nam và sở hữu những rạn san hô nguyên sơ đẹp lộng lẫy.
                                     </p>
                                 </div>
                                 <div class="flex items-center justify-between">
@@ -292,33 +419,47 @@
                         
                         <!-- Collapsible Detail Panel -->
                         <div class="detail-panel">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-600 text-sm md:text-base leading-relaxed">
-                                <div>
-                                    <h4 class="font-bold text-gray-800 text-lg mb-3 flex items-center gap-2">
+                            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 text-gray-600">
+                                <div class="lg:col-span-7 space-y-4">
+                                    <h4 class="font-bold text-gray-800 text-lg mb-2 flex items-center gap-2">
                                         <i class="fa-solid fa-circle-info text-teal-600"></i> Giới thiệu chi tiết
                                     </h4>
-                                    <p class="text-gray-600">
-                                        Hòn đảo lớn thứ hai trong số 16 hòn đảo[cite: 121]. Tới đây, bạn có thể tham gia hoạt động lặn ngắm san hô rực rỡ và đặc biệt là xem rùa mẹ lên bãi đẻ trứng[cite: 158]. Cảnh quan hoang sơ tuyệt đối với các bãi cát thoai thoải trải dài.
+                                    <p class="text-gray-600 leading-relaxed text-sm md:text-base">
+                                        Hòn Bảy Cạnh là hòn đảo lớn thứ hai trong số 16 hòn đảo thuộc quần đảo Côn Đảo. Nơi đây được bao phủ hoàn toàn bởi rừng nhiệt đới nguyên sinh và hệ sinh thái biển vô cùng phong phú. Du khách có thể thuê thuyền hoặc cano ra đảo để thoải mái bơi lội, lặn ngắm san hô rực rỡ và đặc biệt là xem rùa mẹ đẻ trứng vào ban đêm.
                                     </p>
-                                </div>
-                                <div class="space-y-4">
                                     <div class="bg-amber-50/60 border border-amber-100 p-4 rounded-xl">
-                                        <h5 class="font-bold text-amber-800 mb-1 flex items-center gap-2">
+                                        <h5 class="font-bold text-amber-800 mb-1 flex items-center gap-2 text-sm md:text-base">
                                             <i class="fa-solid fa-star text-amber-500"></i> Trải nghiệm nổi bật
                                         </h5>
                                         <ul class="list-disc pl-5 text-amber-900/80 text-xs md:text-sm space-y-1">
-                                            <li>Xem rùa mẹ đẻ trứng ban đêm (nếu đăng ký tham quan qua đêm).</li>
-                                            <li>Lặn ống thở ngắm rạn san hô vô cùng đa dạng, nhiều màu sắc.</li>
-                                            <li>Khám phá ngọn hải đăng cổ kính nằm trên đỉnh hòn Bảy Cạnh.</li>
+                                            <li>Tham gia tour lặn ngắm san hô tuyệt đẹp tại bãi biển hoang sơ của hòn đảo.</li>
+                                            <li>Tham quan khu bảo tồn và học hỏi quy trình ấp nở trứng rùa, thả rùa con về đại dương.</li>
+                                            <li>Chinh phục ngọn hải đăng cổ kính được xây dựng từ thời Pháp thuộc trên đỉnh núi.</li>
                                         </ul>
                                     </div>
                                     <div class="bg-teal-50/60 border border-teal-100 p-4 rounded-xl">
-                                        <h5 class="font-bold text-teal-800 mb-1 flex items-center gap-2">
+                                        <h5 class="font-bold text-teal-800 mb-1 flex items-center gap-2 text-sm md:text-base">
                                             <i class="fa-solid fa-clock text-teal-600"></i> Thời điểm lý tưởng
                                         </h5>
                                         <p class="text-teal-900/80 text-xs md:text-sm">
-                                            Mùa rùa biển sinh sản kéo dài từ tháng 4 đến tháng 9 hằng năm, đây là khoảng thời gian tuyệt nhất để ghé thăm đảo.
+                                            Mùa rùa sinh sản từ tháng 4 đến tháng 9 hằng năm là thời gian lý tưởng nhất để ghé thăm và trải nghiệm xem rùa đẻ trứng đêm.
                                         </p>
+                                    </div>
+                                </div>
+                                
+                                <div class="lg:col-span-5 space-y-3">
+                                    <h4 class="font-bold text-gray-800 text-lg mb-2 flex items-center gap-2">
+                                        <i class="fa-solid fa-images text-teal-600"></i> Hình ảnh thực tế
+                                    </h4>
+                                    <div class="grid grid-cols-2 gap-3">
+                                        <div class="group/img overflow-hidden rounded-xl shadow-sm border border-gray-100 aspect-[4/3] relative">
+                                            <img src="https://images.unsplash.com/photo-1582967788606-a171c1080cb0?w=800&q=80" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" alt="Hòn Bảy Cạnh - San hô">
+                                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-2 text-white text-[10px] font-semibold text-center">Ảnh 1: Rạn san hô rực rỡ</div>
+                                        </div>
+                                        <div class="group/img overflow-hidden rounded-xl shadow-sm border border-gray-100 aspect-[4/3] relative">
+                                            <img src="https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?w=800&q=80" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" alt="Hòn Bảy Cạnh - Rùa biển">
+                                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-2 text-white text-[10px] font-semibold text-center">Ảnh 2: Rùa biển đẻ trứng</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -326,84 +467,14 @@
                     </div>
                 </div>
 
-                <!-- 3. Nhà tù Côn Đảo -->
-                <div class="destination-card slide-left" onclick="if(!event.target.closest('.detail-panel')) toggleDetail(this)">
-                    <div class="p-6 md:p-8">
-                        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center">
-                            <!-- Image (Odd: Column 1-5, md:order-1) -->
-                            <div class="md:col-span-5 md:order-1">
-                                <div class="dest-img-container shadow-md">
-                                    <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Nhà tù Côn Đảo" class="dest-img">
-                                    <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                                </div>
-                            </div>
-                            <!-- Info (Odd: Column 6-12, md:order-2) -->
-                            <div class="md:col-span-7 md:order-2 flex flex-col justify-between h-full">
-                                <div>
-                                    <div class="flex flex-wrap gap-2 mb-3">
-                                        <span class="bg-gray-100 text-gray-700 border border-gray-200 px-3 py-1 rounded-full text-xs font-semibold">#Lịch_sử</span>
-                                        <span class="bg-gray-100 text-gray-700 border border-gray-200 px-3 py-1 rounded-full text-xs font-semibold">#Bảo_tàng</span>
-                                    </div>
-                                    <h3 class="text-2xl md:text-3xl font-extrabold text-gray-800 hover:text-teal-700 transition-colors mb-4">Nhà tù Côn Đảo</h3>
-                                    <p class="text-gray-500 text-sm md:text-base leading-relaxed mb-6">
-                                        Nơi được mệnh danh là “địa ngục trần gian” khét tiếng một thời, minh chứng hùng hồn cho tinh thần bất khuất vượt qua mọi thử thách của cha ông ta.
-                                    </p>
-                                </div>
-                                <div class="flex items-center justify-between">
-                                    <span class="text-teal-600 font-bold text-sm flex items-center gap-2 hover:translate-x-1 transition-all toggle-text">
-                                        Khám phá chi tiết <i class="fa-solid fa-arrow-right-long ml-2"></i>
-                                    </span>
-                                    <button class="w-10 h-10 rounded-full bg-teal-50 hover:bg-teal-100 text-teal-700 flex items-center justify-center transition-colors shadow-sm focus:outline-none">
-                                        <i class="fa-solid fa-chevron-down toggle-arrow"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Collapsible Detail Panel -->
-                        <div class="detail-panel">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-600 text-sm md:text-base leading-relaxed">
-                                <div>
-                                    <h4 class="font-bold text-gray-800 text-lg mb-3 flex items-center gap-2">
-                                        <i class="fa-solid fa-circle-info text-teal-600"></i> Giới thiệu chi tiết
-                                    </h4>
-                                    <p class="text-gray-600">
-                                        Hệ thống nhà tù do thực dân Pháp và đế quốc Mỹ xây dựng nhằm giam giữ những người yêu nước Việt Nam. Nơi đây gồm nhiều khu vực khét tiếng như Chuồng cọp Pháp, Chuồng cọp Mỹ, trại Phú Hải [cite: 136] - ghi dấu những năm tháng chiến đấu gian lao của dân tộc.
-                                    </p>
-                                </div>
-                                <div class="space-y-4">
-                                    <div class="bg-amber-50/60 border border-amber-100 p-4 rounded-xl">
-                                        <h5 class="font-bold text-amber-800 mb-1 flex items-center gap-2">
-                                            <i class="fa-solid fa-star text-amber-500"></i> Trải nghiệm nổi bật
-                                        </h5>
-                                        <ul class="list-disc pl-5 text-amber-900/80 text-xs md:text-sm space-y-1">
-                                            <li>Tham quan và lắng nghe câu chuyện về khu Chuồng cọp Pháp/Mỹ.</li>
-                                            <li>Tìm hiểu tinh thần đấu tranh bất khuất của các chiến sĩ cách mạng.</li>
-                                            <li>Ghé thăm Bảo tàng Côn Đảo để có góc nhìn lịch sử toàn cảnh nhất.</li>
-                                        </ul>
-                                    </div>
-                                    <div class="bg-teal-50/60 border border-teal-100 p-4 rounded-xl">
-                                        <h5 class="font-bold text-teal-800 mb-1 flex items-center gap-2">
-                                            <i class="fa-solid fa-clock text-teal-600"></i> Thời điểm lý tưởng
-                                        </h5>
-                                        <p class="text-teal-900/80 text-xs md:text-sm">
-                                            Phù hợp tham quan vào ban ngày (tốt nhất là buổi sáng mát mẻ từ 08:00 - 11:00 hoặc chiều từ 14:00 - 16:30) để đi bộ ngoài trời thoải mái.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 4. Nghĩa trang Hàng Dương -->
+                <!-- 4. Nhà tù Côn Đảo -->
                 <div class="destination-card slide-right" onclick="if(!event.target.closest('.detail-panel')) toggleDetail(this)">
                     <div class="p-6 md:p-8">
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center">
                             <!-- Image (Even: Column 1-5, md:order-2) -->
                             <div class="md:col-span-5 md:order-2">
                                 <div class="dest-img-container shadow-md">
-                                    <img src="https://images.unsplash.com/photo-1509114397022-ed747cca3f65?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Nghĩa trang Hàng Dương" class="dest-img">
+                                    <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=80" alt="Nhà tù Côn Đảo" class="dest-img">
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                                 </div>
                             </div>
@@ -411,12 +482,98 @@
                             <div class="md:col-span-7 md:order-1 flex flex-col justify-between h-full">
                                 <div>
                                     <div class="flex flex-wrap gap-2 mb-3">
-                                        <span class="bg-gray-100 text-gray-700 border border-gray-200 px-3 py-1 rounded-full text-xs font-semibold">#Tâm_linh</span>
-                                        <span class="bg-gray-100 text-gray-700 border border-gray-200 px-3 py-1 rounded-full text-xs font-semibold">#Viếng_thăm</span>
+                                        <span class="bg-gray-100 text-gray-700 border border-gray-200 px-3 py-1 rounded-full text-xs font-semibold">#Di_tích_lịch_sử</span>
+                                        <span class="bg-gray-100 text-gray-700 border border-gray-200 px-3 py-1 rounded-full text-xs font-semibold">#Địa_ngục_trần_gian</span>
+                                        <span class="bg-gray-100 text-gray-700 border border-gray-200 px-3 py-1 rounded-full text-xs font-semibold">#Về_nguồn</span>
+                                    </div>
+                                    <h3 class="text-2xl md:text-3xl font-extrabold text-gray-800 hover:text-teal-700 transition-colors mb-4">Nhà tù Côn Đảo (Trại Phú Hải, Trại Phú Sơn)</h3>
+                                    <p class="text-gray-500 text-sm md:text-base leading-relaxed mb-6">
+                                        Hệ thống di tích lịch sử oai hùng khét tiếng một thời, nơi giam giữ và chứng kiến tinh thần đấu tranh kiên cường của các chiến sĩ cách mạng.
+                                    </p>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-teal-600 font-bold text-sm flex items-center gap-2 hover:translate-x-1 transition-all toggle-text">
+                                        Khám phá chi tiết <i class="fa-solid fa-arrow-right-long ml-2"></i>
+                                    </span>
+                                    <button class="w-10 h-10 rounded-full bg-teal-50 hover:bg-teal-100 text-teal-700 flex items-center justify-center transition-colors shadow-sm focus:outline-none">
+                                        <i class="fa-solid fa-chevron-down toggle-arrow"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Collapsible Detail Panel -->
+                        <div class="detail-panel">
+                            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 text-gray-600">
+                                <div class="lg:col-span-7 space-y-4">
+                                    <h4 class="font-bold text-gray-800 text-lg mb-2 flex items-center gap-2">
+                                        <i class="fa-solid fa-circle-info text-teal-600"></i> Giới thiệu chi tiết
+                                    </h4>
+                                    <p class="text-gray-600 leading-relaxed text-sm md:text-base">
+                                        Nơi đây được mệnh danh là “địa ngục trần gian”, với nhiều khu vực biệt giam, chuồng cọp. Nhà tù rộng hơn 12.000 mét vuông gồm 10 khám lớn (phòng giam lớn), 20 hầm đá biệt giam, 1 khám đặc biệt, hầm xay lúa và khu đập đá. Trại Phú Hải và Phú Sơn là hai khu trại giam điển hình nhất của hệ thống nhà tù oai hùng này.
+                                    </p>
+                                    <div class="bg-amber-50/60 border border-amber-100 p-4 rounded-xl">
+                                        <h5 class="font-bold text-amber-800 mb-1 flex items-center gap-2 text-sm md:text-base">
+                                            <i class="fa-solid fa-star text-amber-500"></i> Trải nghiệm nổi bật
+                                        </h5>
+                                        <ul class="list-disc pl-5 text-amber-900/80 text-xs md:text-sm space-y-1">
+                                            <li>Tận mắt chứng kiến khu "Chuồng cọp" Pháp/Mỹ với những hình thức biệt giam vô cùng khắc nghiệt.</li>
+                                            <li>Lắng nghe những câu chuyện lịch sử xúc động về ý chí kiên trung của các chiến sĩ cách mạng Việt Nam.</li>
+                                            <li>Tham quan phòng trưng bày di tích để hiểu rõ hơn về bức tranh toàn cảnh của hệ thống lao tù.</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-teal-50/60 border border-teal-100 p-4 rounded-xl">
+                                        <h5 class="font-bold text-teal-800 mb-1 flex items-center gap-2 text-sm md:text-base">
+                                            <i class="fa-solid fa-clock text-teal-600"></i> Thời điểm lý tưởng
+                                        </h5>
+                                        <p class="text-teal-900/80 text-xs md:text-sm">
+                                            Thích hợp tham quan vào ban ngày (08:00 - 11:30 sáng hoặc 14:00 - 16:30 chiều) để thuận tiện đi bộ ngoài trời và lắng nghe thuyết minh di tích.
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <div class="lg:col-span-5 space-y-3">
+                                    <h4 class="font-bold text-gray-800 text-lg mb-2 flex items-center gap-2">
+                                        <i class="fa-solid fa-images text-teal-600"></i> Hình ảnh thực tế
+                                    </h4>
+                                    <div class="grid grid-cols-2 gap-3">
+                                        <div class="group/img overflow-hidden rounded-xl shadow-sm border border-gray-100 aspect-[4/3] relative">
+                                            <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=80" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" alt="Nhà tù - Hành lang">
+                                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-2 text-white text-[10px] font-semibold text-center">Ảnh 1: Hành lang nhà tù</div>
+                                        </div>
+                                        <div class="group/img overflow-hidden rounded-xl shadow-sm border border-gray-100 aspect-[4/3] relative">
+                                            <img src="https://images.unsplash.com/photo-1508849789987-4e5333c12b78?w=800&q=80" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" alt="Nhà tù - Di tích lịch sử">
+                                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-2 text-white text-[10px] font-semibold text-center">Ảnh 2: Di tích gạch cũ</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Nghĩa trang Hàng Dương -->
+                <div class="destination-card slide-left" onclick="if(!event.target.closest('.detail-panel')) toggleDetail(this)">
+                    <div class="p-6 md:p-8">
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center">
+                            <!-- Image (Odd: Column 1-5, md:order-1) -->
+                            <div class="md:col-span-5 md:order-1">
+                                <div class="dest-img-container shadow-md">
+                                    <img src="https://images.unsplash.com/photo-1509114397022-ed747cca3f65?w=800&q=80" alt="Nghĩa trang Hàng Dương" class="dest-img">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                                </div>
+                            </div>
+                            <!-- Info (Odd: Column 6-12, md:order-2) -->
+                            <div class="md:col-span-7 md:order-2 flex flex-col justify-between h-full">
+                                <div>
+                                    <div class="flex flex-wrap gap-2 mb-3">
+                                        <span class="bg-gray-100 text-gray-700 border border-gray-200 px-3 py-1 rounded-full text-xs font-semibold">#Tâm_linh_thiêng_liêng</span>
+                                        <span class="bg-gray-100 text-gray-700 border border-gray-200 px-3 py-1 rounded-full text-xs font-semibold">#Võ_Thị_Sáu</span>
+                                        <span class="bg-gray-100 text-gray-700 border border-gray-200 px-3 py-1 rounded-full text-xs font-semibold">#Hành_trình_về_nguồn</span>
                                     </div>
                                     <h3 class="text-2xl md:text-3xl font-extrabold text-gray-800 hover:text-teal-700 transition-colors mb-4">Nghĩa trang Hàng Dương</h3>
                                     <p class="text-gray-500 text-sm md:text-base leading-relaxed mb-6">
-                                        Điểm đến du lịch tâm linh thiêng liêng nhất tại đảo, nơi yên nghỉ của hàng ngàn chiến sĩ cách mạng cùng Anh hùng Võ Thị Sáu.
+                                        Nghĩa trang Hàng Dương là nơi có mộ của hơn 2000 liệt sĩ và mộ Võ Thị Sáu.
                                     </p>
                                 </div>
                                 <div class="flex items-center justify-between">
@@ -432,33 +589,47 @@
                         
                         <!-- Collapsible Detail Panel -->
                         <div class="detail-panel">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-600 text-sm md:text-base leading-relaxed">
-                                <div>
-                                    <h4 class="font-bold text-gray-800 text-lg mb-3 flex items-center gap-2">
+                            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 text-gray-600">
+                                <div class="lg:col-span-7 space-y-4">
+                                    <h4 class="font-bold text-gray-800 text-lg mb-2 flex items-center gap-2">
                                         <i class="fa-solid fa-circle-info text-teal-600"></i> Giới thiệu chi tiết
                                     </h4>
-                                    <p class="text-gray-600">
-                                        Đây là nghĩa trang lớn nhất Côn Đảo, nơi chôn cất hơn 20.000 chiến sĩ cách mạng qua nhiều thế hệ hệ thống lao tù. Địa danh linh thiêng nổi tiếng nhất là phần mộ của nữ anh hùng Võ Thị Sáu[cite: 141], nơi thu hút rất nhiều người đến hành lễ, dâng hương cầu bình an.
+                                    <p class="text-gray-600 leading-relaxed text-sm md:text-base">
+                                        Nghĩa trang Hàng Dương là nơi có mộ của hơn 2000 liệt sĩ và mộ Võ Thị Sáu. Đây là điểm du lịch tâm linh quan trọng. Đến đây ngoài thắp hương, bạn nên chuẩn bị đồ lễ, không thể thiếu gương, lược, hoa tươi. Buổi tối là thời điểm du khách ghé thăm nghĩa trang để thăm viếng và cầu nguyện.
                                     </p>
-                                </div>
-                                <div class="space-y-4">
                                     <div class="bg-amber-50/60 border border-amber-100 p-4 rounded-xl">
-                                        <h5 class="font-bold text-amber-800 mb-1 flex items-center gap-2">
+                                        <h5 class="font-bold text-amber-800 mb-1 flex items-center gap-2 text-sm md:text-base">
                                             <i class="fa-solid fa-star text-amber-500"></i> Trải nghiệm nổi bật
                                         </h5>
                                         <ul class="list-disc pl-5 text-amber-900/80 text-xs md:text-sm space-y-1">
-                                            <li>Dâng hương tại tượng đài tưởng niệm các anh hùng liệt sĩ.</li>
-                                            <li>Hành lễ trang nghiêm và thành kính tại phần mộ chị Võ Thị Sáu.</li>
-                                            <li>Trải nghiệm sự tôn nghiêm, ấm áp trong không khí viếng mộ đêm đặc biệt.</li>
+                                            <li>Dâng hương tưởng niệm trang trọng tại đài bia trung tâm nghĩa trang liệt sĩ oai hùng.</li>
+                                            <li>Viếng mộ chị Võ Thị Sáu lúc đêm muộn với lòng thành kính và biết ơn sâu sắc.</li>
+                                            <li>Cảm nhận không khí tĩnh lặng, ấm áp dưới bóng những hàng cây bàng cổ thụ lịch sử.</li>
                                         </ul>
                                     </div>
                                     <div class="bg-teal-50/60 border border-teal-100 p-4 rounded-xl">
-                                        <h5 class="font-bold text-teal-800 mb-1 flex items-center gap-2">
+                                        <h5 class="font-bold text-teal-800 mb-1 flex items-center gap-2 text-sm md:text-base">
                                             <i class="fa-solid fa-clock text-teal-600"></i> Thời điểm lý tưởng
                                         </h5>
                                         <p class="text-teal-900/80 text-xs md:text-sm">
-                                            Thiêng liêng và trang nghiêm nhất là hoạt động dâng hương và viếng mộ vào khoảng thời gian tối muộn từ 22:00 - 23:59 đêm[cite: 141].
+                                            Khoảng thời gian từ 21:00 đến 23:59 đêm là thời điểm trang nghiêm và thiêng liêng nhất thường được đông đảo du khách lựa chọn ghé viếng mộ.
                                         </p>
+                                    </div>
+                                </div>
+                                
+                                <div class="lg:col-span-5 space-y-3">
+                                    <h4 class="font-bold text-gray-800 text-lg mb-2 flex items-center gap-2">
+                                        <i class="fa-solid fa-images text-teal-600"></i> Hình ảnh thực tế
+                                    </h4>
+                                    <div class="grid grid-cols-2 gap-3">
+                                        <div class="group/img overflow-hidden rounded-xl shadow-sm border border-gray-100 aspect-[4/3] relative">
+                                            <img src="https://images.unsplash.com/photo-1509114397022-ed747cca3f65?w=800&q=80" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" alt="Nghĩa trang - Không gian tâm linh">
+                                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-2 text-white text-[10px] font-semibold text-center">Ảnh 1: Không gian tâm linh</div>
+                                        </div>
+                                        <div class="group/img overflow-hidden rounded-xl shadow-sm border border-gray-100 aspect-[4/3] relative">
+                                            <img src="https://images.unsplash.com/photo-1518156677180-95a2893f3e9f?w=800&q=80" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" alt="Nghĩa trang - Hàng cây tĩnh lặng">
+                                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-2 text-white text-[10px] font-semibold text-center">Ảnh 2: Hàng cây tĩnh lặng</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -466,84 +637,14 @@
                     </div>
                 </div>
 
-                <!-- 5. Cua mặt trăng -->
-                <div class="destination-card slide-left" onclick="if(!event.target.closest('.detail-panel')) toggleDetail(this)">
-                    <div class="p-6 md:p-8">
-                        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center">
-                            <!-- Image (Odd: Column 1-5, md:order-1) -->
-                            <div class="md:col-span-5 md:order-1">
-                                <div class="dest-img-container shadow-md">
-                                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cua Mặt Trăng" class="dest-img">
-                                    <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                                </div>
-                            </div>
-                            <!-- Info (Odd: Column 6-12, md:order-2) -->
-                            <div class="md:col-span-7 md:order-2 flex flex-col justify-between h-full">
-                                <div>
-                                    <div class="flex flex-wrap gap-2 mb-3">
-                                        <span class="bg-orange-50 text-orange-700 border border-orange-100 px-3 py-1 rounded-full text-xs font-semibold">#Ẩm_thực</span>
-                                        <span class="bg-orange-50 text-orange-700 border border-orange-100 px-3 py-1 rounded-full text-xs font-semibold">#Đặc_sản</span>
-                                    </div>
-                                    <h3 class="text-2xl md:text-3xl font-extrabold text-gray-800 hover:text-teal-700 transition-colors mb-4">Cua mặt trăng</h3>
-                                    <p class="text-gray-500 text-sm md:text-base leading-relaxed mb-6">
-                                        Loài cua biển cực kỳ độc đáo và quý hiếm bậc nhất vùng biển Côn Đảo, nổi tiếng với độ ngọt đậm đà của thịt cua.
-                                    </p>
-                                </div>
-                                <div class="flex items-center justify-between">
-                                    <span class="text-teal-600 font-bold text-sm flex items-center gap-2 hover:translate-x-1 transition-all toggle-text">
-                                        Khám phá chi tiết <i class="fa-solid fa-arrow-right-long ml-2"></i>
-                                    </span>
-                                    <button class="w-10 h-10 rounded-full bg-teal-50 hover:bg-teal-100 text-teal-700 flex items-center justify-center transition-colors shadow-sm focus:outline-none">
-                                        <i class="fa-solid fa-chevron-down toggle-arrow"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Collapsible Detail Panel -->
-                        <div class="detail-panel">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-600 text-sm md:text-base leading-relaxed">
-                                <div>
-                                    <h4 class="font-bold text-gray-800 text-lg mb-3 flex items-center gap-2">
-                                        <i class="fa-solid fa-circle-info text-teal-600"></i> Giới thiệu chi tiết
-                                    </h4>
-                                    <p class="text-gray-600">
-                                        Loài hải sản cực kỳ quý hiếm chỉ có ở một số vùng biển sạch của Côn Đảo[cite: 238]. Mai cua có các đốm đỏ sẫm loang lổ giống hình mặt trăng rất thú vị. Thịt cua trắng tinh khôi, ngọt thanh tự nhiên và rất săn chắc.
-                                    </p>
-                                </div>
-                                <div class="space-y-4">
-                                    <div class="bg-amber-50/60 border border-amber-100 p-4 rounded-xl">
-                                        <h5 class="font-bold text-amber-800 mb-1 flex items-center gap-2">
-                                            <i class="fa-solid fa-star text-amber-500"></i> Trải nghiệm nổi bật
-                                        </h5>
-                                        <ul class="list-disc pl-5 text-amber-900/80 text-xs md:text-sm space-y-1">
-                                            <li>Thưởng thức cua mặt trăng hấp bia chấm muối ớt chanh chuẩn vị biển.</li>
-                                            <li>Ghé thăm các bè nổi tại cảng Bến Đầm để chọn cua tươi sống tại bể.</li>
-                                            <li>Chụp hình lưu niệm cùng chiếc mai cua độc đáo có một không hai.</li>
-                                        </ul>
-                                    </div>
-                                    <div class="bg-teal-50/60 border border-teal-100 p-4 rounded-xl">
-                                        <h5 class="font-bold text-teal-800 mb-1 flex items-center gap-2">
-                                            <i class="fa-solid fa-clock text-teal-600"></i> Thời điểm lý tưởng
-                                        </h5>
-                                        <p class="text-teal-900/80 text-xs md:text-sm">
-                                            Nên thưởng thức trong bữa ăn tối tại cảng Bến Đầm hoặc các nhà hàng hải sản trung tâm đảo để có trải nghiệm ẩm thực hoàn hảo nhất.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 6. Mứt hạt bàng -->
+                <!-- 6. Cua mặt trăng -->
                 <div class="destination-card slide-right" onclick="if(!event.target.closest('.detail-panel')) toggleDetail(this)">
                     <div class="p-6 md:p-8">
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center">
                             <!-- Image (Even: Column 1-5, md:order-2) -->
                             <div class="md:col-span-5 md:order-2">
                                 <div class="dest-img-container shadow-md">
-                                    <img src="https://images.unsplash.com/photo-1596547609652-9cf5d8d76921?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mứt hạt bàng" class="dest-img">
+                                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80" alt="Cua mặt trăng" class="dest-img">
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                                 </div>
                             </div>
@@ -551,12 +652,13 @@
                             <div class="md:col-span-7 md:order-1 flex flex-col justify-between h-full">
                                 <div>
                                     <div class="flex flex-wrap gap-2 mb-3">
-                                        <span class="bg-orange-50 text-orange-700 border border-orange-100 px-3 py-1 rounded-full text-xs font-semibold">#Quà_tặng</span>
-                                        <span class="bg-orange-50 text-orange-700 border border-orange-100 px-3 py-1 rounded-full text-xs font-semibold">#Ăn_vặt</span>
+                                        <span class="bg-orange-50 text-orange-700 border border-orange-100 px-3 py-1 rounded-full text-xs font-semibold">#Đặc_sản_quý_hiếm</span>
+                                        <span class="bg-orange-50 text-orange-700 border border-orange-100 px-3 py-1 rounded-full text-xs font-semibold">#Hải_sản_bổ_dưỡng</span>
+                                        <span class="bg-orange-50 text-orange-700 border border-orange-100 px-3 py-1 rounded-full text-xs font-semibold">#Ẩm_thực_độc_đáo</span>
                                     </div>
-                                    <h3 class="text-2xl md:text-3xl font-extrabold text-gray-800 hover:text-teal-700 transition-colors mb-4">Mứt hạt bàng</h3>
+                                    <h3 class="text-2xl md:text-3xl font-extrabold text-gray-800 hover:text-teal-700 transition-colors mb-4">Cua mặt trăng</h3>
                                     <p class="text-gray-500 text-sm md:text-base leading-relaxed mb-6">
-                                        Món quà đặc sản nức tiếng đậm vị tình người đất đảo, được rang làm thủ công vô cùng kỳ công từ các cây bàng cổ thụ.
+                                        Cua mặt trăng là loài hải sản cực kỳ quý hiếm ở Côn Đảo.
                                     </p>
                                 </div>
                                 <div class="flex items-center justify-between">
@@ -572,33 +674,47 @@
                         
                         <!-- Collapsible Detail Panel -->
                         <div class="detail-panel">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-600 text-sm md:text-base leading-relaxed">
-                                <div>
-                                    <h4 class="font-bold text-gray-800 text-lg mb-3 flex items-center gap-2">
+                            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 text-gray-600">
+                                <div class="lg:col-span-7 space-y-4">
+                                    <h4 class="font-bold text-gray-800 text-lg mb-2 flex items-center gap-2">
                                         <i class="fa-solid fa-circle-info text-teal-600"></i> Giới thiệu chi tiết
                                     </h4>
-                                    <p class="text-gray-600">
-                                        Hạt bàng ở Côn Đảo được nhặt từ những cây bàng cổ thụ lịch sử, phơi khô rồi tách hạt hoàn toàn bằng tay[cite: 221]. Sau đó đem rang mặn ngọt (rang muối hoặc rang đường gừng). Có vị bùi, béo, thơm, ngậy và giòn vô cùng đặc trưng.
+                                    <p class="text-gray-600 leading-relaxed text-sm md:text-base">
+                                        Cua mặt trăng là loài hải sản cực kỳ quý hiếm ở Côn Đảo. Sở dĩ gọi là cua mặt trăng vì trên lưng cua có nhiều hình tròn màu đỏ đậm, pha với màu hồng tươi, trông rất hấp dẫn. Khi hấp lên, bạn ăn miếng thịt cua chấm thêm chút muối tiêu xanh sẽ cảm nhận được vị ngọt của cua ở ngay đầu lưỡi. Ngoài ra, cua mặt trăng còn được chế biến theo nhiều cách khác như sốt me, nấu lẩu.
                                     </p>
-                                </div>
-                                <div class="space-y-4">
                                     <div class="bg-amber-50/60 border border-amber-100 p-4 rounded-xl">
-                                        <h5 class="font-bold text-amber-800 mb-1 flex items-center gap-2">
+                                        <h5 class="font-bold text-amber-800 mb-1 flex items-center gap-2 text-sm md:text-base">
                                             <i class="fa-solid fa-star text-amber-500"></i> Trải nghiệm nổi bật
                                         </h5>
                                         <ul class="list-disc pl-5 text-amber-900/80 text-xs md:text-sm space-y-1">
-                                            <li>Dùng thử cả hai loại rang ngọt và rang muối để cảm nhận hương vị khác biệt.</li>
-                                            <li>Trò chuyện cùng người dân bản địa để hiểu thêm về nghề làm mứt hạt bàng.</li>
-                                            <li>Mua những hũ mứt nhỏ xinh về làm quà biếu ý nghĩa sau chuyến du lịch.</li>
+                                            <li>Thưởng thức cua hấp muối tiêu chanh hoặc chấm muối ớt xanh để cảm nhận vị ngọt đậm đà nơi đầu lưỡi.</li>
+                                            <li>Trải nghiệm các cách chế biến phong phú khác như cua mặt trăng sốt me chua ngọt hoặc nấu lẩu hải sản đậm vị.</li>
+                                            <li>Tham quan và tự tay chọn cua tươi sống tại các bè nổi ở cảng Bến Đầm.</li>
                                         </ul>
                                     </div>
                                     <div class="bg-teal-50/60 border border-teal-100 p-4 rounded-xl">
-                                        <h5 class="font-bold text-teal-800 mb-1 flex items-center gap-2">
+                                        <h5 class="font-bold text-teal-800 mb-1 flex items-center gap-2 text-sm md:text-base">
                                             <i class="fa-solid fa-clock text-teal-600"></i> Thời điểm lý tưởng
                                         </h5>
                                         <p class="text-teal-900/80 text-xs md:text-sm">
-                                            Có thể dễ dàng tìm thấy và chọn mua tại các sạp hàng lưu niệm ở Chợ Côn Đảo hoặc dọc đường phố vào bất cứ thời gian nào trong ngày.
+                                            Rất thích hợp để thưởng thức vào các bữa trưa hoặc bữa tối tại các nhà hàng hải sản ven biển hoặc bè nổi cảng Bến Đầm.
                                         </p>
+                                    </div>
+                                </div>
+                                
+                                <div class="lg:col-span-5 space-y-3">
+                                    <h4 class="font-bold text-gray-800 text-lg mb-2 flex items-center gap-2">
+                                        <i class="fa-solid fa-images text-teal-600"></i> Hình ảnh thực tế
+                                    </h4>
+                                    <div class="grid grid-cols-2 gap-3">
+                                        <div class="group/img overflow-hidden rounded-xl shadow-sm border border-gray-100 aspect-[4/3] relative">
+                                            <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" alt="Cua mặt trăng - Hải sản cua">
+                                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-2 text-white text-[10px] font-semibold text-center">Ảnh 1: Hải sản cua</div>
+                                        </div>
+                                        <div class="group/img overflow-hidden rounded-xl shadow-sm border border-gray-100 aspect-[4/3] relative">
+                                            <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=800&q=80" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" alt="Cua mặt trăng - Món ăn chế biến">
+                                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-2 text-white text-[10px] font-semibold text-center">Ảnh 2: Món ăn chế biến</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -606,14 +722,14 @@
                     </div>
                 </div>
 
-                <!-- 7. Miếu Cậu -->
+                <!-- 7. Mứt hạt bàng -->
                 <div class="destination-card slide-left" onclick="if(!event.target.closest('.detail-panel')) toggleDetail(this)">
                     <div class="p-6 md:p-8">
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center">
                             <!-- Image (Odd: Column 1-5, md:order-1) -->
                             <div class="md:col-span-5 md:order-1">
                                 <div class="dest-img-container shadow-md">
-                                    <img src="https://images.unsplash.com/photo-1596813362035-3edcff0c2487?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Miếu Cậu" class="dest-img">
+                                    <img src="https://images.unsplash.com/photo-1596547609652-9cf5d8d76921?w=800&q=80" alt="Mứt hạt bàng" class="dest-img">
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                                 </div>
                             </div>
@@ -621,12 +737,13 @@
                             <div class="md:col-span-7 md:order-2 flex flex-col justify-between h-full">
                                 <div>
                                     <div class="flex flex-wrap gap-2 mb-3">
-                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#Tâm_linh</span>
-                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#Lịch_sử</span>
+                                        <span class="bg-orange-50 text-orange-700 border border-orange-100 px-3 py-1 rounded-full text-xs font-semibold">#Quà_tặng_Côn_Đảo</span>
+                                        <span class="bg-orange-50 text-orange-700 border border-orange-100 px-3 py-1 rounded-full text-xs font-semibold">#Hương_vị_đặc_trưng</span>
+                                        <span class="bg-orange-50 text-orange-700 border border-orange-100 px-3 py-1 rounded-full text-xs font-semibold">#Thủ_công</span>
                                     </div>
-                                    <h3 class="text-2xl md:text-3xl font-extrabold text-gray-800 hover:text-teal-700 transition-colors mb-4">Miếu Cậu (Mộ Hoàng tử Cải)</h3>
+                                    <h3 class="text-2xl md:text-3xl font-extrabold text-gray-800 hover:text-teal-700 transition-colors mb-4">Mứt hạt bàng</h3>
                                     <p class="text-gray-500 text-sm md:text-base leading-relaxed mb-6">
-                                        Ngôi miếu linh thiêng thờ Hoàng tử Cải bên cạnh sân bay Cỏ Ống, mang câu chuyện lịch sử đầy xúc động và đậm tính nhân văn.
+                                        Mứt hạt bàng là đặc sản nức tiếng làm quà tặng vô cùng ý nghĩa khi đi du lịch Côn Đảo.
                                     </p>
                                 </div>
                                 <div class="flex items-center justify-between">
@@ -642,18 +759,101 @@
                         
                         <!-- Collapsible Detail Panel -->
                         <div class="detail-panel">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-600 text-sm md:text-base leading-relaxed">
-                                <div>
-                                    <h4 class="font-bold text-gray-800 text-lg mb-3 flex items-center gap-2">
+                            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 text-gray-600">
+                                <div class="lg:col-span-7 space-y-4">
+                                    <h4 class="font-bold text-gray-800 text-lg mb-2 flex items-center gap-2">
                                         <i class="fa-solid fa-circle-info text-teal-600"></i> Giới thiệu chi tiết
                                     </h4>
-                                    <p class="text-gray-600">
-                                        Nơi đây thờ Hoàng tử Cải (5 tuổi) – con trai của Chúa Nguyễn Ánh và Thứ phi Phi Yến. Câu chuyện bi thương của hai mẹ con chính là nguồn gốc của câu ca dao nổi tiếng: "Gió đưa cây cải về trời / Rau răm ở lại chịu đời đắng cay". Nằm giữa không gian cây cối xanh mát, đây là điểm dừng chân yên tĩnh và linh thiêng thường được du khách ghé thăm ngay khi vừa đáp chuyến bay.
+                                    <p class="text-gray-600 leading-relaxed text-sm md:text-base">
+                                        Quả bàng chín vàng ươm, bóc lớp thịt lộ ra hạt trắng nõn. Hạt bàng ở Côn Đảo được rang mặn với muối hay rang ngọt cùng đường. Hạt bàng ăn bùi, thơm giòn. Hầu như ai đến du lịch Côn Đảo cũng mua vài cân mứt hạt bàng về làm quà.
+                                    </p>
+                                    <div class="bg-amber-50/60 border border-amber-100 p-4 rounded-xl">
+                                        <h5 class="font-bold text-amber-800 mb-1 flex items-center gap-2 text-sm md:text-base">
+                                            <i class="fa-solid fa-star text-amber-500"></i> Trải nghiệm nổi bật
+                                        </h5>
+                                        <ul class="list-disc pl-5 text-amber-900/80 text-xs md:text-sm space-y-1">
+                                            <li>Dùng thử cả hai hương vị mứt hạt bàng rang muối bùi ngậy và rang ngọt thơm lừng.</li>
+                                            <li>Trò chuyện cùng các nghệ nhân bản địa để tìm hiểu công đoạn làm mứt hoàn toàn bằng tay tỉ mỉ.</li>
+                                            <li>Mua những gói mứt xinh xắn về làm quà tặng ý nghĩa cho gia đình và bạn bè sau chuyến đi.</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-teal-50/60 border border-teal-100 p-4 rounded-xl">
+                                        <h5 class="font-bold text-teal-800 mb-1 flex items-center gap-2 text-sm md:text-base">
+                                            <i class="fa-solid fa-clock text-teal-600"></i> Thời điểm lý tưởng
+                                        </h5>
+                                        <p class="text-teal-900/80 text-xs md:text-sm">
+                                            Bạn có thể dễ dàng tìm kiếm, dùng thử và chọn mua mứt hạt bàng tại Chợ Côn Đảo hoặc các sạp hàng đặc sản dọc trung tâm thị trấn vào bất kỳ lúc nào.
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <div class="lg:col-span-5 space-y-3">
+                                    <h4 class="font-bold text-gray-800 text-lg mb-2 flex items-center gap-2">
+                                        <i class="fa-solid fa-images text-teal-600"></i> Hình ảnh thực tế
+                                    </h4>
+                                    <div class="grid grid-cols-2 gap-3">
+                                        <div class="group/img overflow-hidden rounded-xl shadow-sm border border-gray-100 aspect-[4/3] relative">
+                                            <img src="https://images.unsplash.com/photo-1596547609652-9cf5d8d76921?w=800&q=80" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" alt="Mứt hạt bàng - Hạt rang">
+                                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-2 text-white text-[10px] font-semibold text-center">Ảnh 1: Hạt rang</div>
+                                        </div>
+                                        <div class="group/img overflow-hidden rounded-xl shadow-sm border border-gray-100 aspect-[4/3] relative">
+                                            <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=800&q=80" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" alt="Mứt hạt bàng - Quà lưu niệm">
+                                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-2 text-white text-[10px] font-semibold text-center">Ảnh 2: Quà lưu niệm ẩm thực</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8. Miếu Cậu (Thiếu Gia Miếu) -->
+                <div class="destination-card slide-right" onclick="if(!event.target.closest('.detail-panel')) toggleDetail(this)">
+                    <div class="p-6 md:p-8">
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center">
+                            <!-- Image (Even: Column 1-5, md:order-2) -->
+                            <div class="md:col-span-5 md:order-2">
+                                <div class="dest-img-container shadow-md">
+                                    <img src="https://images.unsplash.com/photo-1596813362035-3edcff0c2487?w=800&q=80" alt="Miếu Cậu" class="dest-img">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                                </div>
+                            </div>
+                            <!-- Info (Even: Column 6-12, md:order-1) -->
+                            <div class="md:col-span-7 md:order-1 flex flex-col justify-between h-full">
+                                <div>
+                                    <div class="flex flex-wrap gap-2 mb-3">
+                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#Lịch_sử_bi_thương</span>
+                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#Tâm_linh</span>
+                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#Cỏ_Ống</span>
+                                    </div>
+                                    <h3 class="text-2xl md:text-3xl font-extrabold text-gray-800 hover:text-teal-700 transition-colors mb-4">Miếu Cậu (Thiếu Gia Miếu)</h3>
+                                    <p class="text-gray-500 text-sm md:text-base leading-relaxed mb-6">
+                                        Miếu thờ Hoàng tử Cải bên cạnh sân bay Cỏ Ống, mang câu chuyện lịch sử đầy xúc động và đậm tính nhân văn.
                                     </p>
                                 </div>
-                                <div class="space-y-4">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-teal-600 font-bold text-sm flex items-center gap-2 hover:translate-x-1 transition-all toggle-text">
+                                        Khám phá chi tiết <i class="fa-solid fa-arrow-right-long ml-2"></i>
+                                    </span>
+                                    <button class="w-10 h-10 rounded-full bg-teal-50 hover:bg-teal-100 text-teal-700 flex items-center justify-center transition-colors shadow-sm focus:outline-none">
+                                        <i class="fa-solid fa-chevron-down toggle-arrow"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Collapsible Detail Panel -->
+                        <div class="detail-panel">
+                            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 text-gray-600">
+                                <div class="lg:col-span-7 space-y-4">
+                                    <h4 class="font-bold text-gray-800 text-lg mb-2 flex items-center gap-2">
+                                        <i class="fa-solid fa-circle-info text-teal-600"></i> Giới thiệu chi tiết
+                                    </h4>
+                                    <p class="text-gray-600 leading-relaxed text-sm md:text-base">
+                                        Miếu nằm gần khu vực bãi Đầm Trầu và sân bay Cỏ Ống. Nơi đây thờ Hoàng tử Cải (5 tuổi) – con trai của Chúa Nguyễn Ánh và Thứ phi Phi Yến. Nằm giữa không gian cây cối xanh mát, đây là điểm dừng chân yên tĩnh và linh thiêng thường được du khách ghé thăm ngay khi vừa đáp chuyến bay. Câu chuyện bi thương của hai mẹ con chính là nguồn gốc của câu ca dao nổi tiếng: "Gió đưa cây cải về trời / Rau răm ở lại chịu đời đắng cay".
+                                    </p>
                                     <div class="bg-amber-50/60 border border-amber-100 p-4 rounded-xl">
-                                        <h5 class="font-bold text-amber-800 mb-1 flex items-center gap-2">
+                                        <h5 class="font-bold text-amber-800 mb-1 flex items-center gap-2 text-sm md:text-base">
                                             <i class="fa-solid fa-star text-amber-500"></i> Trải nghiệm nổi bật
                                         </h5>
                                         <ul class="list-disc pl-5 text-amber-900/80 text-xs md:text-sm space-y-1">
@@ -663,7 +863,7 @@
                                         </ul>
                                     </div>
                                     <div class="bg-teal-50/60 border border-teal-100 p-4 rounded-xl">
-                                        <h5 class="font-bold text-teal-800 mb-1 flex items-center gap-2">
+                                        <h5 class="font-bold text-teal-800 mb-1 flex items-center gap-2 text-sm md:text-base">
                                             <i class="fa-solid fa-clock text-teal-600"></i> Thời điểm lý tưởng
                                         </h5>
                                         <p class="text-teal-900/80 text-xs md:text-sm">
@@ -671,32 +871,49 @@
                                         </p>
                                     </div>
                                 </div>
+                                
+                                <div class="lg:col-span-5 space-y-3">
+                                    <h4 class="font-bold text-gray-800 text-lg mb-2 flex items-center gap-2">
+                                        <i class="fa-solid fa-images text-teal-600"></i> Hình ảnh thực tế
+                                    </h4>
+                                    <div class="grid grid-cols-2 gap-3">
+                                        <div class="group/img overflow-hidden rounded-xl shadow-sm border border-gray-100 aspect-[4/3] relative">
+                                            <img src="https://images.unsplash.com/photo-1596813362035-3edcff0c2487?w=800&q=80" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" alt="Miếu Cậu - Không gian miếu thờ">
+                                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-2 text-white text-[10px] font-semibold text-center">Ảnh 1: Không gian miếu thờ</div>
+                                        </div>
+                                        <div class="group/img overflow-hidden rounded-xl shadow-sm border border-gray-100 aspect-[4/3] relative">
+                                            <img src="https://images.unsplash.com/photo-1542224566-6e85f2e6772f?w=800&q=80" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" alt="Miếu Cậu - Cây cối xanh mát">
+                                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-2 text-white text-[10px] font-semibold text-center">Ảnh 2: Cây cối xanh mát</div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- 8. Miếu Năm Cô -->
-                <div class="destination-card slide-right" onclick="if(!event.target.closest('.detail-panel')) toggleDetail(this)">
+                <!-- 9. Miếu Năm Cô (Miếu Ngũ Hành) -->
+                <div class="destination-card slide-left" onclick="if(!event.target.closest('.detail-panel')) toggleDetail(this)">
                     <div class="p-6 md:p-8">
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center">
-                            <!-- Image (Even: Column 1-5, md:order-2) -->
-                            <div class="md:col-span-5 md:order-2">
+                            <!-- Image (Odd: Column 1-5, md:order-1) -->
+                            <div class="md:col-span-5 md:order-1">
                                 <div class="dest-img-container shadow-md">
-                                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Miếu Năm Cô" class="dest-img">
+                                    <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?w=800&q=80" alt="Miếu Năm Cô" class="dest-img">
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                                 </div>
                             </div>
-                            <!-- Info (Even: Column 6-12, md:order-1) -->
-                            <div class="md:col-span-7 md:order-1 flex flex-col justify-between h-full">
+                            <!-- Info (Odd: Column 6-12, md:order-2) -->
+                            <div class="md:col-span-7 md:order-2 flex flex-col justify-between h-full">
                                 <div>
                                     <div class="flex flex-wrap gap-2 mb-3">
-                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#Tâm_linh</span>
-                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#Văn_hóa</span>
+                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#Thờ_Ngũ_Hành</span>
+                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#Cầu_bình_an</span>
+                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#Văn_hóa_miền_biển</span>
                                     </div>
                                     <h3 class="text-2xl md:text-3xl font-extrabold text-gray-800 hover:text-teal-700 transition-colors mb-4">Miếu Năm Cô (Miếu Ngũ Hành)</h3>
                                     <p class="text-gray-500 text-sm md:text-base leading-relaxed mb-6">
-                                        Ngôi miếu linh thiêng thờ 5 vị nữ thần Ngũ Hành ở phía Nam đảo, chốn gửi gắm ước vọng mưa thuận gió hòa của cư dân miền biển.
+                                        Ngôi miếu linh thiêng thờ 5 vị nữ thần Ngũ Hành ở phía Nam đảo, chốn gửi gắm ước vọng mưa thuận gió hòa của ngư dân miền biển.
                                     </p>
                                 </div>
                                 <div class="flex items-center justify-between">
@@ -712,18 +929,16 @@
                         
                         <!-- Collapsible Detail Panel -->
                         <div class="detail-panel">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-600 text-sm md:text-base leading-relaxed">
-                                <div>
-                                    <h4 class="font-bold text-gray-800 text-lg mb-3 flex items-center gap-2">
+                            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 text-gray-600">
+                                <div class="lg:col-span-7 space-y-4">
+                                    <h4 class="font-bold text-gray-800 text-lg mb-2 flex items-center gap-2">
                                         <i class="fa-solid fa-circle-info text-teal-600"></i> Giới thiệu chi tiết
                                     </h4>
-                                    <p class="text-gray-600">
-                                        Ngôi miếu nằm ở phía Nam của đảo Côn Sơn, thờ 5 vị nữ thần đại diện cho quyền năng của ngũ hành (Kim, Mộc, Thủy, Hỏa, Thổ). Đối với người dân địa phương và các ngư dân viễn chinh vượt sóng, đây là nơi vô cùng linh thiêng để cầu nguyện cho các chuyến biển bình an, thuận buồm xuôi gió và làm ăn phát đạt.
+                                    <p class="text-gray-600 leading-relaxed text-sm md:text-base">
+                                        Ngôi miếu này nằm ở phía Nam của đảo. Miếu thờ 5 vị nữ thần đại diện cho quyền năng của ngũ hành (Kim, Mộc, Thủy, Hỏa, Thổ). Người dân địa phương và những người đi biển thường đến đây cầu nguyện bình an, mưa thuận gió hòa và làm ăn phát đạt. Nơi đây rất thiêng liêng và mang đậm tín ngưỡng dân gian vùng biển.
                                     </p>
-                                </div>
-                                <div class="space-y-4">
                                     <div class="bg-amber-50/60 border border-amber-100 p-4 rounded-xl">
-                                        <h5 class="font-bold text-amber-800 mb-1 flex items-center gap-2">
+                                        <h5 class="font-bold text-amber-800 mb-1 flex items-center gap-2 text-sm md:text-base">
                                             <i class="fa-solid fa-star text-amber-500"></i> Trải nghiệm nổi bật
                                         </h5>
                                         <ul class="list-disc pl-5 text-amber-900/80 text-xs md:text-sm space-y-1">
@@ -733,7 +948,7 @@
                                         </ul>
                                     </div>
                                     <div class="bg-teal-50/60 border border-teal-100 p-4 rounded-xl">
-                                        <h5 class="font-bold text-teal-800 mb-1 flex items-center gap-2">
+                                        <h5 class="font-bold text-teal-800 mb-1 flex items-center gap-2 text-sm md:text-base">
                                             <i class="fa-solid fa-clock text-teal-600"></i> Thời điểm lý tưởng
                                         </h5>
                                         <p class="text-teal-900/80 text-xs md:text-sm">
@@ -741,32 +956,49 @@
                                         </p>
                                     </div>
                                 </div>
+                                
+                                <div class="lg:col-span-5 space-y-3">
+                                    <h4 class="font-bold text-gray-800 text-lg mb-2 flex items-center gap-2">
+                                        <i class="fa-solid fa-images text-teal-600"></i> Hình ảnh thực tế
+                                    </h4>
+                                    <div class="grid grid-cols-2 gap-3">
+                                        <div class="group/img overflow-hidden rounded-xl shadow-sm border border-gray-100 aspect-[4/3] relative">
+                                            <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?w=800&q=80" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" alt="Miếu Năm Cô - Kiến trúc đền miếu">
+                                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-2 text-white text-[10px] font-semibold text-center">Ảnh 1: Kiến trúc đền miếu</div>
+                                        </div>
+                                        <div class="group/img overflow-hidden rounded-xl shadow-sm border border-gray-100 aspect-[4/3] relative">
+                                            <img src="https://images.unsplash.com/photo-1501555088652-021faa106b9b?w=800&q=80" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" alt="Miếu Năm Cô - Nhang khói tâm linh">
+                                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-2 text-white text-[10px] font-semibold text-center">Ảnh 2: Nhang khói tâm linh</div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- 9. Hòn Tài & Hòn Trác -->
-                <div class="destination-card slide-left" onclick="if(!event.target.closest('.detail-panel')) toggleDetail(this)">
+                <!-- 10. Hòn Tài, Hòn Trác -->
+                <div class="destination-card slide-right" onclick="if(!event.target.closest('.detail-panel')) toggleDetail(this)">
                     <div class="p-6 md:p-8">
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center">
-                            <!-- Image (Odd: Column 1-5, md:order-1) -->
-                            <div class="md:col-span-5 md:order-1">
+                            <!-- Image (Even: Column 1-5, md:order-2) -->
+                            <div class="md:col-span-5 md:order-2">
                                 <div class="dest-img-container shadow-md">
-                                    <img src="./media__1779859970377.jpg" alt="Hòn Tài & Hòn Trác" class="dest-img">
+                                    <img src="./media__1779859970377.jpg" alt="Hòn Tài, Hòn Trác" class="dest-img">
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                                 </div>
                             </div>
-                            <!-- Info (Odd: Column 6-12, md:order-2) -->
-                            <div class="md:col-span-7 md:order-2 flex flex-col justify-between h-full">
+                            <!-- Info (Even: Column 6-12, md:order-1) -->
+                            <div class="md:col-span-7 md:order-1 flex flex-col justify-between h-full">
                                 <div>
                                     <div class="flex flex-wrap gap-2 mb-3">
-                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#Sinh_thái</span>
-                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#Lặn_biển</span>
+                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#Hòn_đảo_ẩn_giấu</span>
+                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#Khỉ_mặt_đỏ</span>
+                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#Lặn_ngắm_san_hồ</span>
                                     </div>
-                                    <h3 class="text-2xl md:text-3xl font-extrabold text-gray-800 hover:text-teal-700 transition-colors mb-4">Hòn Tài & Hòn Trác</h3>
+                                    <h3 class="text-2xl md:text-3xl font-extrabold text-gray-800 hover:text-teal-700 transition-colors mb-4">Hòn Tài, Hòn Trác</h3>
                                     <p class="text-gray-500 text-sm md:text-base leading-relaxed mb-6">
-                                        Những “viên ngọc ẩn” tuyệt mỹ của biển khơi Côn Đảo, nổi tiếng với dải san hô rực rỡ và loài khỉ mặt đỏ quý hiếm bậc nhất.
+                                        Nằm trong chuỗi các hòn đảo nhỏ lân cận đảo chính Côn Sơn. Dù Hòn Bảy Cạnh rất nổi tiếng, Hòn Tài và Hòn Trác lại là những "viên ngọc ẩn".
                                     </p>
                                 </div>
                                 <div class="flex items-center justify-between">
@@ -782,18 +1014,16 @@
                         
                         <!-- Collapsible Detail Panel -->
                         <div class="detail-panel">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-600 text-sm md:text-base leading-relaxed">
-                                <div>
-                                    <h4 class="font-bold text-gray-800 text-lg mb-3 flex items-center gap-2">
+                            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 text-gray-600">
+                                <div class="lg:col-span-7 space-y-4">
+                                    <h4 class="font-bold text-gray-800 text-lg mb-2 flex items-center gap-2">
                                         <i class="fa-solid fa-circle-info text-teal-600"></i> Giới thiệu chi tiết
                                     </h4>
-                                    <p class="text-gray-600">
-                                        Nằm kế cận đảo chính Côn Sơn, Hòn Tài và Hòn Trác là những thiên đường sinh thái còn giữ nguyên vẻ đẹp hoang dã. Hòn Tài sở hữu hệ sinh thái biển vô cùng nguyên sinh với rạn san hô đa sắc màu. Đây còn là nơi sinh sống của loài khỉ mặt đỏ quý hiếm và bãi cát êm đềm cho rùa biển lên sinh sản hằng năm.
+                                    <p class="text-gray-600 leading-relaxed text-sm md:text-base">
+                                        Nằm trong chuỗi các hòn đảo nhỏ lân cận đảo chính Côn Sơn. Dù Hòn Bảy Cạnh rất nổi tiếng, Hòn Tài và Hòn Trác lại là những "viên ngọc ẩn". Hòn Tài sở hữu hệ sinh thái san hô vô cùng rực rỡ và là nơi bạn có cơ hội nhìn thấy loài khỉ mặt đỏ quý hiếm, cũng như theo dõi rùa biển lên bãi đẻ trứng.
                                     </p>
-                                </div>
-                                <div class="space-y-4">
                                     <div class="bg-amber-50/60 border border-amber-100 p-4 rounded-xl">
-                                        <h5 class="font-bold text-amber-800 mb-1 flex items-center gap-2">
+                                        <h5 class="font-bold text-amber-800 mb-1 flex items-center gap-2 text-sm md:text-base">
                                             <i class="fa-solid fa-star text-amber-500"></i> Trải nghiệm nổi bật
                                         </h5>
                                         <ul class="list-disc pl-5 text-amber-900/80 text-xs md:text-sm space-y-1">
@@ -803,7 +1033,7 @@
                                         </ul>
                                     </div>
                                     <div class="bg-teal-50/60 border border-teal-100 p-4 rounded-xl">
-                                        <h5 class="font-bold text-teal-800 mb-1 flex items-center gap-2">
+                                        <h5 class="font-bold text-teal-800 mb-1 flex items-center gap-2 text-sm md:text-base">
                                             <i class="fa-solid fa-clock text-teal-600"></i> Thời điểm lý tưởng
                                         </h5>
                                         <p class="text-teal-900/80 text-xs md:text-sm">
@@ -811,32 +1041,49 @@
                                         </p>
                                     </div>
                                 </div>
+                                
+                                <div class="lg:col-span-5 space-y-3">
+                                    <h4 class="font-bold text-gray-800 text-lg mb-2 flex items-center gap-2">
+                                        <i class="fa-solid fa-images text-teal-600"></i> Hình ảnh thực tế
+                                    </h4>
+                                    <div class="grid grid-cols-2 gap-3">
+                                        <div class="group/img overflow-hidden rounded-xl shadow-sm border border-gray-100 aspect-[4/3] relative">
+                                            <img src="https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?w=800&q=80" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" alt="Hòn Tài Hòn Trác - Đảo nhỏ hoang sơ">
+                                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-2 text-white text-[10px] font-semibold text-center">Ảnh 1: Đảo nhỏ hoang sơ</div>
+                                        </div>
+                                        <div class="group/img overflow-hidden rounded-xl shadow-sm border border-gray-100 aspect-[4/3] relative">
+                                            <img src="https://images.unsplash.com/photo-1484557052118-f32bd25b45b5?w=800&q=80" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" alt="Hòn Tài Hòn Trác - Khỉ hoang dã">
+                                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-2 text-white text-[10px] font-semibold text-center">Ảnh 2: Khỉ hoang dã</div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- 10. Miếu Cô Vân -->
-                <div class="destination-card slide-right" onclick="if(!event.target.closest('.detail-panel')) toggleDetail(this)">
+                <!-- 11. Miếu Cô Vân & Hòn Cau -->
+                <div class="destination-card slide-left" onclick="if(!event.target.closest('.detail-panel')) toggleDetail(this)">
                     <div class="p-6 md:p-8">
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center">
-                            <!-- Image (Even: Column 1-5, md:order-2) -->
-                            <div class="md:col-span-5 md:order-2">
+                            <!-- Image (Odd: Column 1-5, md:order-1) -->
+                            <div class="md:col-span-5 md:order-1">
                                 <div class="dest-img-container shadow-md">
-                                    <img src="./media__1779859985871.jpg" alt="Miếu Cô Vân" class="dest-img">
+                                    <img src="./media__1779859985871.jpg" alt="Miếu Cô Vân & Hòn Cau" class="dest-img">
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                                 </div>
                             </div>
-                            <!-- Info (Even: Column 6-12, md:order-1) -->
-                            <div class="md:col-span-7 md:order-1 flex flex-col justify-between h-full">
+                            <!-- Info (Odd: Column 6-12, md:order-2) -->
+                            <div class="md:col-span-7 md:order-2 flex flex-col justify-between h-full">
                                 <div>
                                     <div class="flex flex-wrap gap-2 mb-3">
-                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#Tâm_linh</span>
-                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#Khám_phá</span>
+                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#Hòn_Cau</span>
+                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#Miếu_Cô_Vân</span>
+                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold">#Chèo_SUP_lặn_biển</span>
                                     </div>
-                                    <h3 class="text-2xl md:text-3xl font-extrabold text-gray-800 hover:text-teal-700 transition-colors mb-4">Miếu Cô Vân (Hòn Cau)</h3>
+                                    <h3 class="text-2xl md:text-3xl font-extrabold text-gray-800 hover:text-teal-700 transition-colors mb-4">Miếu Cô Vân & Hòn Cau</h3>
                                     <p class="text-gray-500 text-sm md:text-base leading-relaxed mb-6">
-                                        Tọa độ tâm linh linh thiêng kỳ bí nằm ngay bên dải cát trắng mịn của đảo Hòn Cau hoang sơ, mang lại sự bình yên tuyệt đối.
+                                        Du khách đến Hòn Cau có thể lặn ngắm san hô, tham quan rừng ngập mặn. Miếu Cô Vân thì nằm sát bãi cát trắng trên đảo Hòn Cau.
                                     </p>
                                 </div>
                                 <div class="flex items-center justify-between">
@@ -852,18 +1099,16 @@
                         
                         <!-- Collapsible Detail Panel -->
                         <div class="detail-panel">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-600 text-sm md:text-base leading-relaxed">
-                                <div>
-                                    <h4 class="font-bold text-gray-800 text-lg mb-3 flex items-center gap-2">
+                            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 text-gray-600">
+                                <div class="lg:col-span-7 space-y-4">
+                                    <h4 class="font-bold text-gray-800 text-lg mb-2 flex items-center gap-2">
                                         <i class="fa-solid fa-circle-info text-teal-600"></i> Giới thiệu chi tiết
                                     </h4>
-                                    <p class="text-gray-600">
-                                        Ngôi miếu nhỏ nằm sát mép bãi cát trắng ngọc bích trên đảo Hòn Cau. Không ai rõ lai lịch của Cô Vân, nhưng từ lâu nơi đây đã được xem là điểm đến linh thiêng hàng đầu giữa khơi xa. Sự kết hợp hoàn hảo giữa du lịch trải nghiệm chèo thuyền SUP, tắm biển xanh và viếng Miếu Cô Vân mang lại cảm xúc thanh thản, trọn vẹn.
+                                    <p class="text-gray-600 leading-relaxed text-sm md:text-base">
+                                        Du khách đến Hòn Cau có thể lặn ngắm san hô, tham quan rừng ngập mặn. Miếu Cô Vân thì nằm sát bãi cát trắng trên đảo Hòn Cau. Ngôi miếu nhỏ được dựng ngay trên bãi biển xanh ngắt này được xem là một tọa độ cực kỳ linh thiêng. Việc kết hợp tham quan sinh thái biển ở Hòn Cau và viếng Miếu Cô Vân mang lại trải nghiệm rất trọn vẹn.
                                     </p>
-                                </div>
-                                <div class="space-y-4">
                                     <div class="bg-amber-50/60 border border-amber-100 p-4 rounded-xl">
-                                        <h5 class="font-bold text-amber-800 mb-1 flex items-center gap-2">
+                                        <h5 class="font-bold text-amber-800 mb-1 flex items-center gap-2 text-sm md:text-base">
                                             <i class="fa-solid fa-star text-amber-500"></i> Trải nghiệm nổi bật
                                         </h5>
                                         <ul class="list-disc pl-5 text-amber-900/80 text-xs md:text-sm space-y-1">
@@ -873,7 +1118,7 @@
                                         </ul>
                                     </div>
                                     <div class="bg-teal-50/60 border border-teal-100 p-4 rounded-xl">
-                                        <h5 class="font-bold text-teal-800 mb-1 flex items-center gap-2">
+                                        <h5 class="font-bold text-teal-800 mb-1 flex items-center gap-2 text-sm md:text-base">
                                             <i class="fa-solid fa-clock text-teal-600"></i> Thời điểm lý tưởng
                                         </h5>
                                         <p class="text-teal-900/80 text-xs md:text-sm">
@@ -881,15 +1126,45 @@
                                         </p>
                                     </div>
                                 </div>
+                                
+                                <div class="lg:col-span-5 space-y-3">
+                                    <h4 class="font-bold text-gray-800 text-lg mb-2 flex items-center gap-2">
+                                        <i class="fa-solid fa-images text-teal-600"></i> Hình ảnh thực tế
+                                    </h4>
+                                    <div class="grid grid-cols-2 gap-3">
+                                        <div class="group/img overflow-hidden rounded-xl shadow-sm border border-gray-100 aspect-[4/3] relative">
+                                            <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=800&q=80" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" alt="Hòn Cau - Bãi biển trong vắt">
+                                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-2 text-white text-[10px] font-semibold text-center">Ảnh 1: Bãi biển trong vắt Hòn Cau</div>
+                                        </div>
+                                        <div class="group/img overflow-hidden rounded-xl shadow-sm border border-gray-100 aspect-[4/3] relative">
+                                            <img src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=800&q=80" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" alt="Hòn Cau - Góc nhìn ra biển">
+                                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-2 text-white text-[10px] font-semibold text-center">Ảnh 2: Góc nhìn ra biển</div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </section>
 
         <section id="tab2" class="tab-content hidden animate-fade-in">
             <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-6 md:p-10 border border-gray-100">
+                <!-- Planner Tab Switcher -->
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-3 mb-8 border-b pb-6 border-gray-100">
+                    <button id="planner-btn-preset" onclick="switchPlannerMode('preset')" class="w-full sm:w-auto px-5 py-2.5 rounded-full font-bold text-xs md:text-sm bg-teal-600 text-white shadow-md transition-all duration-300 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-map-location-dot"></i> Lịch Trình Có Sẵn 3N2Đ
+                    </button>
+                    <button id="planner-btn-custom" onclick="switchPlannerMode('custom')" class="w-full sm:w-auto px-5 py-2.5 rounded-full font-bold text-xs md:text-sm bg-gray-100 text-gray-500 hover:bg-teal-50 hover:text-teal-700 transition-all duration-300 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-route"></i> Tự Thiết Kế Lịch Trình 🛠️
+                    </button>
+                </div>
+
+                <!-- 1. Preset Timeline View -->
+                <div id="planner-preset-view" class="block">
+                    
                 <div class="text-center mb-12">
                     <h2 class="text-3xl md:text-4xl font-extrabold text-teal-700">Lịch Trình Chi Tiết Tàu Cao Tốc 3N2Đ</h2>
                     <p class="text-gray-500 mt-3 text-sm md:text-base">Hành trình vượt sóng đại dương kết hợp trọn vẹn khám phá lịch sử, tâm linh & sinh thái biển đảo.</p>
@@ -988,7 +1263,125 @@
                         </ul>
                     </div>
                 </div>
-            </div>
+            
+                </div>
+
+                <!-- 2. Custom Planner View -->
+                <div id="planner-custom-view" class="hidden space-y-6">
+                    <div class="text-center mb-8">
+                        <h2 class="text-2xl md:text-3xl font-extrabold text-teal-700">Tự Lập Kế Hoạch Cá Nhân</h2>
+                        <p class="text-gray-500 mt-2 text-xs sm:text-sm">Tự do xây dựng lịch trình, tùy chọn 11 địa điểm đẹp nhất Côn Đảo kèm khung giờ gợi ý.</p>
+                    </div>
+
+                    <!-- Quick Action: Load default pre-set / Clear -->
+                    <div class="flex flex-wrap justify-between items-center gap-3 bg-teal-50/50 p-4 rounded-xl border border-teal-100/50 mb-6">
+                        <span class="text-xs text-teal-800 font-semibold flex items-center gap-1.5">
+                            <i class="fa-solid fa-circle-question text-teal-600"></i> Bạn có muốn bắt đầu chỉnh sửa nhanh từ Lịch trình 3N2Đ mẫu?
+                        </span>
+                        <div class="flex gap-2">
+                            <button onclick="loadDefaultTemplate()" class="bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold px-3 py-1.5 rounded-lg transition-colors shadow-sm">
+                                <i class="fa-solid fa-file-import mr-1"></i> Nạp Lịch Trình Mẫu
+                            </button>
+                            <button onclick="clearCustomPlan()" class="bg-rose-50 hover:bg-rose-100 text-rose-700 text-xs font-bold px-3 py-1.5 rounded-lg transition-colors border border-rose-100">
+                                <i class="fa-solid fa-trash-can mr-1"></i> Xóa Hết
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Planner Form -->
+                    <div class="bg-gray-50/80 p-5 sm:p-6 rounded-2xl border border-gray-200/80 space-y-4">
+                        <h4 class="font-extrabold text-gray-800 text-sm md:text-base flex items-center gap-2">
+                            <i class="fa-solid fa-calendar-plus text-teal-600"></i> Thêm địa điểm vào lịch trình của bạn
+                        </h4>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+                            <!-- Day Selection -->
+                            <div class="md:col-span-3">
+                                <label class="block text-xs font-bold text-gray-600 uppercase mb-1.5">Chọn Ngày</label>
+                                <div class="grid grid-cols-3 gap-2">
+                                    <button type="button" onclick="selectPlannerDay(1)" id="planner-day-btn-1" class="planner-day-selector px-2 py-2 rounded-lg font-bold text-xs bg-teal-600 text-white shadow-sm border border-teal-600 transition-all text-center">N1</button>
+                                    <button type="button" onclick="selectPlannerDay(2)" id="planner-day-btn-2" class="planner-day-selector px-2 py-2 rounded-lg font-bold text-xs bg-white text-gray-600 border border-gray-200 transition-all text-center">N2</button>
+                                    <button type="button" onclick="selectPlannerDay(3)" id="planner-day-btn-3" class="planner-day-selector px-2 py-2 rounded-lg font-bold text-xs bg-white text-gray-600 border border-gray-200 transition-all text-center">N3</button>
+                                </div>
+                            </div>
+
+                            <!-- Destination Select -->
+                            <div class="md:col-span-5">
+                                <label class="block text-xs font-bold text-gray-600 uppercase mb-1.5">Chọn Địa Điểm</label>
+                                <select id="planner-dest-select" class="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-700 focus:outline-none focus:border-teal-500 transition-colors">
+                                    <option value="Vịnh Đầm Tre">1. Vịnh Đầm Tre (#Hoang_sơ)</option>
+                                    <option value="Bãi Đầm Trầu" selected>2. Bãi Đầm Trầu (#Bãi_tắm_đẹp)</option>
+                                    <option value="Hòn Bảy Cạnh">3. Hòn Bảy Cạnh (#Bảo_tồn_rùa)</option>
+                                    <option value="Nhà tù Côn Đảo">4. Nhà tù Côn Đảo (#Di_tích_lịch_sử)</option>
+                                    <option value="Nghĩa trang Hàng Dương">5. Nghĩa trang Hàng Dương (#Tâm_linh)</option>
+                                    <option value="Cua mặt trăng">6. Cua mặt trăng (#Ẩm_thực)</option>
+                                    <option value="Mứt hạt bàng">7. Mứt hạt bàng (#Quà_tặng)</option>
+                                    <option value="Miếu Cậu">8. Miếu Cậu (#Tâm_linh)</option>
+                                    <option value="Miếu Năm Cô">9. Miếu Năm Cô (#Thờ_Ngũ_Hành)</option>
+                                    <option value="Hòn Tài, Hòn Trác">10. Hòn Tài, Hòn Trác (#Sinh_thái)</option>
+                                    <option value="Miếu Cô Vân & Hòn Cau">11. Miếu Cô Vân & Hòn Cau (#SUP_lặn_biển)</option>
+                                </select>
+                            </div>
+
+                            <!-- Time Selector -->
+                            <div class="md:col-span-4">
+                                <label class="block text-xs font-bold text-gray-600 uppercase mb-1.5">Mốc Thời Gian</label>
+                                <input type="text" id="planner-time-input" placeholder="Ví dụ: 08:30 - 11:30" class="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-700 focus:outline-none focus:border-teal-500 transition-colors">
+                            </div>
+                        </div>
+
+                        <!-- Suggested Hour Slots Badges -->
+                        <div>
+                            <span class="block text-xs font-bold text-gray-500 mb-1.5">Gợi ý mốc thời gian di chuyển:</span>
+                            <div class="flex flex-wrap gap-2">
+                                <button type="button" onclick="fillSuggestedTime('07:30 - 08:30')" class="bg-white hover:bg-teal-50 text-gray-600 hover:text-teal-700 border border-gray-200 hover:border-teal-200 text-[10px] font-semibold px-2.5 py-1 rounded-full transition-all">07:30 - 08:30 (Ăn sáng)</button>
+                                <button type="button" onclick="fillSuggestedTime('08:30 - 11:30')" class="bg-white hover:bg-teal-50 text-gray-600 hover:text-teal-700 border border-gray-200 hover:border-teal-200 text-[10px] font-semibold px-2.5 py-1 rounded-full transition-all">08:30 - 11:30 (Tham quan sáng)</button>
+                                <button type="button" onclick="fillSuggestedTime('11:30 - 13:30')" class="bg-white hover:bg-teal-50 text-gray-600 hover:text-teal-700 border border-gray-200 hover:border-teal-200 text-[10px] font-semibold px-2.5 py-1 rounded-full transition-all">11:30 - 13:30 (Trưa/Bè nổi)</button>
+                                <button type="button" onclick="fillSuggestedTime('14:30 - 17:30')" class="bg-white hover:bg-teal-50 text-gray-600 hover:text-teal-700 border border-gray-200 hover:border-teal-200 text-[10px] font-semibold px-2.5 py-1 rounded-full transition-all">14:30 - 17:30 (Chiều mát/Tắm biển)</button>
+                                <button type="button" onclick="fillSuggestedTime('18:30 - 21:00')" class="bg-white hover:bg-teal-50 text-gray-600 hover:text-teal-700 border border-gray-200 hover:border-teal-200 text-[10px] font-semibold px-2.5 py-1 rounded-full transition-all">18:30 - 21:00 (Ăn tối)</button>
+                                <button type="button" onclick="fillSuggestedTime('21:30 - 23:30')" class="bg-white hover:bg-teal-50 text-gray-600 hover:text-teal-700 border border-gray-200 hover:border-teal-200 text-[10px] font-semibold px-2.5 py-1 rounded-full transition-all">21:30 - 23:30 (Viếng đêm linh thiêng)</button>
+                            </div>
+                        </div>
+
+                        <!-- Note Input & Add Button -->
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
+                            <div class="md:col-span-9">
+                                <label class="block text-xs font-bold text-gray-600 uppercase mb-1.5">Ghi Chú Hoạt Động / Lời Nhắc</label>
+                                <input type="text" id="planner-note-input" placeholder="Ví dụ: Mang theo đồ bơi, kính mát, chuẩn bị dâng hương..." class="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-700 focus:outline-none focus:border-teal-500 transition-colors">
+                            </div>
+                            <div class="md:col-span-3">
+                                <button type="button" onclick="addCustomItineraryItem()" class="w-full bg-teal-600 hover:bg-teal-700 text-white font-bold text-sm px-4 py-2.5 rounded-lg shadow-md transition-colors flex items-center justify-center gap-1">
+                                    <i class="fa-solid fa-plus"></i> Thêm Hoạt Động
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Real-time Custom Timeline Header & Tabs -->
+                    <div class="mt-8 space-y-6">
+                        <div class="flex items-center justify-between border-b pb-3 border-gray-100">
+                            <h4 class="font-extrabold text-gray-800 text-lg flex items-center gap-2">
+                                <i class="fa-solid fa-route text-teal-600"></i> Lịch trình tự chọn của bạn
+                            </h4>
+                            <button onclick="exportItinerary()" class="bg-white hover:bg-teal-50 text-teal-700 border border-teal-200 text-xs font-bold px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 shadow-xs">
+                                <i class="fa-solid fa-file-export animate-pulse"></i> Xuất Lịch Trình
+                            </button>
+                        </div>
+
+                        <!-- Custom Day view tabs -->
+                        <div class="flex justify-center gap-2 bg-gray-100 p-1 rounded-xl max-w-xs mx-auto">
+                            <button onclick="switchCustomTimelineDay(1)" id="timeline-day-btn-1" class="timeline-day-btn flex-1 py-2 font-bold text-xs rounded-lg transition-all text-center bg-white text-teal-800 shadow-sm">Ngày 1</button>
+                            <button onclick="switchCustomTimelineDay(2)" id="timeline-day-btn-2" class="timeline-day-btn flex-1 py-2 font-bold text-xs rounded-lg transition-all text-center text-gray-600 hover:text-teal-700">Ngày 2</button>
+                            <button onclick="switchCustomTimelineDay(3)" id="timeline-day-btn-3" class="timeline-day-btn flex-1 py-2 font-bold text-xs rounded-lg transition-all text-center text-gray-600 hover:text-teal-700">Ngày 3</button>
+                        </div>
+
+                        <!-- Custom Timeline Area -->
+                        <div class="relative pl-6 border-l-2 border-teal-500/30 space-y-6 py-2 min-h-[150px]" id="custom-timeline-container">
+                            <!-- Rendered dynamically by Javascript -->
+                        </div>
+                    </div>
+                </div>
+</div>
         </section>
 
         <section id="tab3" class="tab-content hidden animate-fade-in">
@@ -1006,37 +1399,93 @@
                         </ul>
                     </div>
 
-                    <div>
-                        <h4 class="font-bold text-lg text-gray-800 flex items-center mb-2"><i class="fa-solid fa-ferry text-teal-600 mr-2"></i> Bằng Tàu Cao Tốc</h4>
-                        <p class="text-gray-600 text-sm mb-3">Tùy theo tuyến xuất phát, bạn có thể chọn các hãng tàu và lộ trình sau:</p>
-                        <div class="overflow-x-auto">
-                            <table class="min-w-full bg-white border border-gray-200 text-sm">
-                                <thead class="bg-gray-50">
-                                    <tr>
-                                        <th class="py-2 px-3 border-b font-semibold text-left">Tuyến Đường</th>
-                                        <th class="py-2 px-3 border-b font-semibold text-left">Hãng Tàu</th>
-                                        <th class="py-2 px-3 border-b font-semibold text-left">Thời Gian</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="py-2 px-3 border-b">Trần Đề (Sóc Trăng) - Côn Đảo</td>
-                                        <td class="py-2 px-3 border-b">Superdong, Côn Đảo Express [cite: 87]</td>
-                                        <td class="py-2 px-3 border-b">~2 Tiếng [cite: 86]</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="py-2 px-3 border-b">Vũng Tàu - Côn Đảo</td>
-                                        <td class="py-2 px-3 border-b">Côn Đảo Express [cite: 85]</td>
-                                        <td class="py-2 px-3 border-b">~5 Tiếng [cite: 84]</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="py-2 px-3 border-b">Cần Thơ - Côn Đảo</td>
-                                        <td class="py-2 px-3 border-b">Mai Linh Express [cite: 88]</td>
-                                        <td class="py-2 px-3 border-b">Tuỳ lộ trình</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <p class="text-xs text-gray-400 mt-2 italic">* Lưu ý: Giá vé tàu cao tốc dao động từ 310.000đ đến hơn 700.000đ (tùy xuất phát điểm và hạng ghế - Thường/VIP). Vui lòng kiểm tra lại với hãng ở thời điểm đi.</p>
+                                        <div>
+                        <h4 class="font-bold text-lg text-gray-800 flex items-center mb-3"><i class="fa-solid fa-ferry text-teal-600 mr-2"></i> Bằng Tàu Cao Tốc</h4>
+                        <p class="text-gray-600 text-sm mb-4">Hiện có 3 hãng tàu cao tốc chất lượng cao phục vụ việc di chuyển ra Côn Đảo từ các tỉnh thành phía Nam:</p>
+                        
+                        <div class="space-y-4">
+                            <!-- 1. Côn Đảo Express -->
+                            <div class="bg-gray-50/50 hover:bg-teal-50/20 border border-gray-100 hover:border-teal-200 p-4 rounded-xl flex flex-col sm:flex-row gap-4 transition-all duration-300 shadow-sm hover:shadow-md group">
+                                <div class="w-full sm:w-36 h-28 rounded-lg overflow-hidden shrink-0 shadow-sm relative group/img">
+                                    <img src="https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?w=800&q=80" alt="Côn Đảo Express" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                    <span class="absolute top-1.5 left-1.5 bg-teal-600 text-white text-[9px] font-extrabold px-2 py-0.5 rounded shadow-sm uppercase">Tiêu chuẩn 5★</span>
+                                </div>
+                                <div class="flex-grow flex flex-col justify-between">
+                                    <div>
+                                        <div class="flex flex-wrap justify-between items-start gap-2">
+                                            <h5 class="font-extrabold text-gray-800 group-hover:text-teal-700 transition-colors text-sm sm:text-base">Côn Đảo Express</h5>
+                                            <span class="bg-teal-50 text-teal-700 border border-teal-100 text-[10px] font-bold px-2 py-0.5 rounded-full">Vũng Tàu & Trần Đề</span>
+                                        </div>
+                                        <p class="text-[11px] text-gray-400 mt-1">Thương hiệu thuộc hãng Phú Quốc Express</p>
+                                        <p class="text-xs text-gray-500 mt-2 leading-relaxed">
+                                            Sử dụng dòng tàu cao tốc hai thân hiện đại, chuẩn 5 sao giúp giảm thiểu tối đa say sóng. Boong tàu ngoài trời rộng rãi cho phép tự do ngắm nhìn biển khơi trong suốt hải trình.
+                                        </p>
+                                        <div class="mt-2.5 flex flex-wrap items-center gap-3 text-[11px] text-teal-600 font-semibold">
+                                            <span><i class="fa-solid fa-clock mr-1"></i> Vũng Tàu: ~5 tiếng</span>
+                                            <span><i class="fa-solid fa-clock mr-1"></i> Trần Đề: ~2 tiếng</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 2. Superdong -->
+                            <div class="bg-gray-50/50 hover:bg-teal-50/20 border border-gray-100 hover:border-teal-200 p-4 rounded-xl flex flex-col sm:flex-row gap-4 transition-all duration-300 shadow-sm hover:shadow-md group">
+                                <div class="w-full sm:w-36 h-28 rounded-lg overflow-hidden shrink-0 shadow-sm relative group/img">
+                                    <img src="https://images.unsplash.com/photo-1511527844068-006b95d162c2?w=800&q=80" alt="Superdong" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                    <span class="absolute top-1.5 left-1.5 bg-teal-600 text-white text-[9px] font-extrabold px-2 py-0.5 rounded shadow-sm uppercase">Lâu đời - Uy tín</span>
+                                </div>
+                                <div class="flex-grow flex flex-col justify-between">
+                                    <div>
+                                        <div class="flex flex-wrap justify-between items-start gap-2">
+                                            <h5 class="font-extrabold text-gray-800 group-hover:text-teal-700 transition-colors text-sm sm:text-base">Hãng tàu Superdong</h5>
+                                            <span class="bg-teal-50 text-teal-700 border border-teal-100 text-[10px] font-bold px-2 py-0.5 rounded-full">Tuyến Trần Đề</span>
+                                        </div>
+                                        <p class="text-[11px] text-gray-400 mt-1">Thương hiệu quen thuộc, vận hành bền bỉ</p>
+                                        <p class="text-xs text-gray-500 mt-2 leading-relaxed">
+                                            Hãng tàu lâu đời, uy tín hàng đầu. Tàu thiết kế chắc chắn, tốc độ di chuyển nhanh ổn định. Trang bị đầy đủ máy lạnh, ghế da êm ái, tivi giải trí và hệ thống cứu sinh tuyệt đối an toàn.
+                                        </p>
+                                        <div class="mt-2.5 flex items-center gap-3 text-[11px] text-teal-600 font-semibold">
+                                            <span><i class="fa-solid fa-clock mr-1"></i> Lộ trình Trần Đề: ~2 tiếng</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 3. Mai Linh Express -->
+                            <div class="bg-gray-50/50 hover:bg-teal-50/20 border border-gray-100 hover:border-teal-200 p-4 rounded-xl flex flex-col sm:flex-row gap-4 transition-all duration-300 shadow-sm hover:shadow-md group">
+                                <div class="w-full sm:w-36 h-28 rounded-lg overflow-hidden shrink-0 shadow-sm relative group/img">
+                                    <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&q=80" alt="Mai Linh Express" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                    <span class="absolute top-1.5 left-1.5 bg-teal-600 text-white text-[9px] font-extrabold px-2 py-0.5 rounded shadow-sm uppercase">Hiện đại - Rung lắc thấp</span>
+                                </div>
+                                <div class="flex-grow flex flex-col justify-between">
+                                    <div>
+                                        <div class="flex flex-wrap justify-between items-start gap-2">
+                                            <h5 class="font-extrabold text-gray-800 group-hover:text-teal-700 transition-colors text-sm sm:text-base">Mai Linh Express</h5>
+                                            <span class="bg-teal-50 text-teal-700 border border-teal-100 text-[10px] font-bold px-2 py-0.5 rounded-full">Tuyến Cần Thơ</span>
+                                        </div>
+                                        <p class="text-[11px] text-gray-400 mt-1">Cực kỳ thuận tiện cho du khách Miền Tây</p>
+                                        <p class="text-xs text-gray-500 mt-2 leading-relaxed">
+                                            Tàu cao tốc hai thân thế hệ mới với công nghệ chống rung lắc tiên tiến nhất. Thiết kế sang trọng với các hạng ghế Thường, VIP, dịch vụ khách hàng chuyên nghiệp, chu đáo.
+                                        </p>
+                                        <div class="mt-2.5 flex items-center gap-3 text-[11px] text-teal-600 font-semibold">
+                                            <span><i class="fa-solid fa-clock mr-1"></i> Lộ trình Cần Thơ: Tuỳ theo thời tiết và tuyến</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 💡 Lời khuyên nhỏ thời điểm đi tàu lý tưởng -->
+                        <div class="mt-6 bg-amber-50/80 border border-amber-100 p-4 rounded-xl flex gap-3 shadow-xs">
+                            <div class="text-amber-500 text-lg shrink-0 mt-0.5">
+                                <i class="fa-solid fa-lightbulb"></i>
+                            </div>
+                            <div>
+                                <h6 class="font-bold text-amber-800 text-sm">Mẹo nhỏ từ người đi trước</h6>
+                                <p class="text-amber-900/80 text-xs mt-1 leading-relaxed">
+                                    Thời điểm lý tưởng nhất để trải nghiệm đi tàu ra đảo là từ <strong>tháng 4 đến tháng 6</strong> hằng năm. Lúc này biển vô cùng êm dịu, ít sóng gió dữ dội, thời tiết trong xanh, mát mẻ giúp bạn có hải trình cực kỳ dễ chịu và ngắm nhìn đại dương tuyệt đẹp!
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1309,7 +1758,276 @@ const observer = new IntersectionObserver((entries) => {
 // Observe all destination cards and timeline items
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.destination-card, .timeline-item').forEach(el => observer.observe(el));
+  loadPlanFromStorage();
+  renderCustomTimeline();
 });
+
+// ============================================
+// INTERACTIVE PLANNER ENGINE (JAVASCRIPT STATE)
+// ============================================
+let currentPlannerDay = 1;
+let currentCustomTimelineDay = 1;
+let customPlan = {
+    day1: [],
+    day2: [],
+    day3: []
+};
+
+// Destination metadata for beautiful visual presentation in the scheduler
+const destMeta = {
+    "Vịnh Đầm Tre": { icon: "fa-tree", badge: "#Hoang_sơ", color: "bg-teal-50 text-teal-700 border-teal-100" },
+    "Bãi Đầm Trầu": { icon: "fa-umbrella-beach", badge: "#Bãi_tắm_đẹp", color: "bg-teal-50 text-teal-700 border-teal-100" },
+    "Hòn Bảy Cạnh": { icon: "fa-water", badge: "#Bảo_tồn_rùa", color: "bg-teal-50 text-teal-700 border-teal-100" },
+    "Nhà tù Côn Đảo": { icon: "fa-building", badge: "#Di_tích_lịch_sử", color: "bg-gray-100 text-gray-700 border-gray-200" },
+    "Nghĩa trang Hàng Dương": { icon: "fa-place-of-worship", badge: "#Tâm_linh", color: "bg-gray-100 text-gray-700 border-gray-200" },
+    "Cua mặt trăng": { icon: "fa-shrimp", badge: "#Đặc_sản", color: "bg-orange-50 text-orange-700 border-orange-100" },
+    "Mứt hạt bàng": { icon: "fa-cookie", badge: "#Quà_tặng", color: "bg-orange-50 text-orange-700 border-orange-100" },
+    "Miếu Cậu": { icon: "fa-gopuran", badge: "#Tâm_linh", color: "bg-teal-50 text-teal-700 border-teal-100" },
+    "Miếu Năm Cô": { icon: "fa-scroll", badge: "#Thờ_Ngũ_Hành", color: "bg-teal-50 text-teal-700 border-teal-100" },
+    "Hòn Tài, Hòn Trác": { icon: "fa-ship", badge: "#Sinh_thái", color: "bg-teal-50 text-teal-700 border-teal-100" },
+    "Miếu Cô Vân & Hòn Cau": { icon: "fa-person-surfing", badge: "#SUP_lặn_biển", color: "bg-teal-50 text-teal-700 border-teal-100" }
+};
+
+// Switch Planner Mode Between Preset & Custom
+function switchPlannerMode(mode) {
+    const presetView = document.getElementById('planner-preset-view');
+    const customView = document.getElementById('planner-custom-view');
+    const btnPreset = document.getElementById('planner-btn-preset');
+    const btnCustom = document.getElementById('planner-btn-custom');
+    
+    if (mode === 'preset') {
+        presetView.classList.remove('hidden');
+        presetView.classList.add('block');
+        customView.classList.remove('block');
+        customView.classList.add('hidden');
+        
+        btnPreset.classList.remove('bg-gray-100', 'text-gray-500');
+        btnPreset.classList.add('bg-teal-600', 'text-white', 'shadow-md');
+        btnCustom.classList.remove('bg-teal-600', 'text-white', 'shadow-md');
+        btnCustom.classList.add('bg-gray-100', 'text-gray-500');
+    } else {
+        customView.classList.remove('hidden');
+        customView.classList.add('block');
+        presetView.classList.remove('block');
+        presetView.classList.add('hidden');
+        
+        btnCustom.classList.remove('bg-gray-100', 'text-gray-500');
+        btnCustom.classList.add('bg-teal-600', 'text-white', 'shadow-md');
+        btnPreset.classList.remove('bg-teal-600', 'text-white', 'shadow-md');
+        btnPreset.classList.add('bg-gray-100', 'text-gray-500');
+        
+        renderCustomTimeline();
+    }
+}
+
+// Select Day in Input Form
+function selectPlannerDay(dayNum) {
+    currentPlannerDay = dayNum;
+    document.querySelectorAll('.planner-day-selector').forEach(btn => {
+        btn.classList.remove('bg-teal-600', 'text-white', 'border-teal-600');
+        btn.classList.add('bg-white', 'text-gray-600', 'border-gray-200');
+    });
+    const selectedBtn = document.getElementById(`planner-day-btn-${dayNum}`);
+    selectedBtn.classList.remove('bg-white', 'text-gray-600', 'border-gray-200');
+    selectedBtn.classList.add('bg-teal-600', 'text-white', 'border-teal-600');
+}
+
+// Switch Day in Custom Timeline
+function switchCustomTimelineDay(dayNum) {
+    currentCustomTimelineDay = dayNum;
+    document.querySelectorAll('.timeline-day-btn').forEach(btn => {
+        btn.classList.remove('bg-white', 'text-teal-800', 'shadow-sm');
+        btn.classList.add('text-gray-600', 'hover:text-teal-700');
+    });
+    const selectedBtn = document.getElementById(`timeline-day-btn-${dayNum}`);
+    selectedBtn.classList.remove('text-gray-600', 'hover:text-teal-700');
+    selectedBtn.classList.add('bg-white', 'text-teal-800', 'shadow-sm');
+    
+    renderCustomTimeline();
+}
+
+// Fill Suggested Time
+function fillSuggestedTime(timeStr) {
+    document.getElementById('planner-time-input').value = timeStr;
+}
+
+// Save custom plan to localStorage
+function savePlanToStorage() {
+    localStorage.setItem('condao_custom_plan', JSON.stringify(customPlan));
+}
+
+// Load custom plan from localStorage
+function loadPlanFromStorage() {
+    const saved = localStorage.getItem('condao_custom_plan');
+    if (saved) {
+        try {
+            customPlan = JSON.parse(saved);
+        } catch (e) {
+            console.error("Error parsing saved plan", e);
+        }
+    }
+}
+
+// Add Custom Itinerary Item
+function addCustomItineraryItem() {
+    const destSelect = document.getElementById('planner-dest-select');
+    const destName = destSelect.value;
+    const timeInput = document.getElementById('planner-time-input').value.trim();
+    const noteInput = document.getElementById('planner-note-input').value.trim();
+    
+    if (!timeInput) {
+        alert("Vui lòng điền mốc thời gian di chuyển!");
+        return;
+    }
+    
+    const newItem = {
+        id: Date.now().toString(),
+        time: timeInput,
+        dest: destName,
+        note: noteInput || "Khám phá địa danh tự do"
+    };
+    
+    customPlan[`day${currentPlannerDay}`].push(newItem);
+    
+    // Sort items by time string
+    customPlan[`day${currentPlannerDay}`].sort((a, b) => a.time.localeCompare(b.time));
+    
+    savePlanToStorage();
+    
+    // Switch view to the day we added the item to
+    switchCustomTimelineDay(currentPlannerDay);
+    
+    // Reset forms
+    document.getElementById('planner-time-input').value = "";
+    document.getElementById('planner-note-input').value = "";
+}
+
+// Delete Custom Itinerary Item
+function deleteCustomItineraryItem(itemId, dayNum) {
+    customPlan[`day${dayNum}`] = customPlan[`day${dayNum}`].filter(item => item.id !== itemId);
+    savePlanToStorage();
+    renderCustomTimeline();
+}
+
+// Render Custom Timeline HTML
+function renderCustomTimeline() {
+    const container = document.getElementById('custom-timeline-container');
+    container.innerHTML = "";
+    
+    const items = customPlan[`day${currentCustomTimelineDay}`];
+    
+    if (!items || items.length === 0) {
+        container.innerHTML = `
+            <div class="flex flex-col items-center justify-center py-8 text-gray-400">
+                <i class="fa-solid fa-route text-4xl mb-3 opacity-30"></i>
+                <p class="text-sm font-medium">Chưa có địa điểm nào trong Ngày ${currentCustomTimelineDay}</p>
+                <p class="text-xs mt-1">Hãy sử dụng bảng phía trên để lập kế hoạch di chuyển!</p>
+            </div>
+        `;
+        return;
+    }
+    
+    items.forEach(item => {
+        const meta = destMeta[item.dest] || { icon: "fa-location-dot", badge: "#Điểm_đến", color: "bg-teal-50 text-teal-700 border-teal-100" };
+        
+        const itemHtml = `
+            <div class="relative mb-6 last:mb-0 group/item flex items-start bg-gray-50/40 hover:bg-teal-50/20 border border-gray-100 hover:border-teal-100/60 p-4 rounded-xl shadow-xs transition-all duration-300">
+                <!-- Timeline Dot Indicator -->
+                <div class="absolute -left-[33px] top-5 bg-white border-2 border-teal-500 text-teal-500 w-4 h-4 rounded-full flex items-center justify-center shadow-xs"></div>
+                
+                <div class="flex-grow grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
+                    <!-- Time Badge -->
+                    <div class="sm:col-span-3">
+                        <span class="bg-teal-100 text-teal-700 font-bold px-2.5 py-1 rounded-md text-xs inline-block shadow-xs">${item.time}</span>
+                    </div>
+                    <!-- Dest Details -->
+                    <div class="sm:col-span-8 space-y-1.5">
+                        <div class="flex items-center flex-wrap gap-2">
+                            <span class="font-extrabold text-gray-800 text-sm md:text-base flex items-center gap-1.5">
+                                <i class="fa-solid ${meta.icon} text-teal-600"></i> ${item.dest}
+                            </span>
+                            <span class="${meta.color} text-[10px] font-bold px-2 py-0.5 rounded-full border">${meta.badge}</span>
+                        </div>
+                        <p class="text-xs text-gray-500 leading-relaxed"><strong class="text-teal-800/80">Hoạt động:</strong> ${item.note}</p>
+                    </div>
+                    <!-- Delete Button -->
+                    <div class="sm:col-span-1 text-right">
+                        <button onclick="deleteCustomItineraryItem('${item.id}', ${currentCustomTimelineDay})" class="text-gray-400 hover:text-rose-600 transition-colors p-2 focus:outline-none" title="Xóa địa điểm">
+                            <i class="fa-solid fa-trash-can text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+        container.insertAdjacentHTML('beforeend', itemHtml);
+    });
+}
+
+// Clear all custom plans
+function clearCustomPlan() {
+    if (confirm("Bạn có chắc chắn muốn xóa toàn bộ lịch trình tự chọn này không?")) {
+        customPlan = { day1: [], day2: [], day3: [] };
+        savePlanToStorage();
+        renderCustomTimeline();
+    }
+}
+
+// Preload the default 3N2Đ layout as starting point
+function loadDefaultTemplate() {
+    if (confirm("Nạp lịch trình mẫu 3N2Đ? Lịch trình hiện tại của bạn sẽ bị thay thế.")) {
+        customPlan = {
+            day1: [
+                { id: "p1", time: "07:30 - 08:00", dest: "Hòn Tài, Hòn Trác", note: "Có mặt tại Cảng Cầu Đá Vũng Tàu, làm thủ tục lên tàu cao tốc 5 sao" },
+                { id: "p2", time: "08:00 - 12:30", dest: "Hòn Tài, Hòn Trác", note: "Hải trình Vũng Tàu - Côn Đảo ngắm đại dương" },
+                { id: "p3", time: "12:30 - 13:30", dest: "Cua mặt trăng", note: "Cập cảng Bến Đầm, xe đón về khách sạn nhận phòng, ăn trưa đặc sản" },
+                { id: "p4", time: "14:30 - 17:00", dest: "Nhà tù Côn Đảo", note: "Tham quan Bảo tàng Côn Đảo & hệ thống Nhà tù Côn Đảo (Trại Phú Hải, Phú Sơn)" },
+                { id: "p5", time: "18:30 - 20:00", dest: "Cua mặt trăng", note: "Dùng bữa tối hải sản phong phú" },
+                { id: "p6", time: "21:30 - 23:30", dest: "Nghĩa trang Hàng Dương", note: "Viếng nghĩa trang Hàng Dương và dâng hương phần mộ anh hùng Võ Thị Sáu lúc đêm muộn" }
+            ],
+            day2: [
+                { id: "p7", time: "07:30 - 08:30", dest: "Mứt hạt bàng", note: "Ăn sáng bún riêu đặc sản, uống cà phê view vịnh biển" },
+                { id: "p8", time: "08:30 - 11:30", dest: "Hòn Bảy Cạnh", note: "Thuê cano lặn ngắm san hô bãi cát, tìm hiểu bảo tồn rùa biển" },
+                { id: "p9", time: "11:30 - 13:30", dest: "Cua mặt trăng", note: "Ăn trưa hải sản tươi sống trên bè nổi cảng Bến Đầm" },
+                { id: "p10", time: "14:30 - 15:15", dest: "Miếu Cậu", note: "Dâng hương viếng Miếu Cậu (Hoàng tử Cải) linh thiêng" },
+                { id: "p11", time: "15:15 - 17:30", dest: "Bãi Đầm Trầu", note: "Thư giãn, tắm mát và check-in ngắm máy bay hạ cánh cực sát mặt nước" },
+                { id: "p12", time: "18:30 - 21:00", dest: "Cua mặt trăng", note: "Dùng bữa tối hải sản tự do tại thị trấn" }
+            ],
+            day3: [
+                { id: "p13", time: "07:30 - 08:30", dest: "Mứt hạt bàng", note: "Ăn sáng thong thả, mua quà mứt hạt bàng tại chợ Côn Đảo" },
+                { id: "p14", time: "08:30 - 09:30", dest: "Miếu Năm Cô", note: "Tham quan viếng chùa Núi Một & Miếu Năm Cô cầu bình an, tài lộc" },
+                { id: "p15", time: "09:30 - 10:30", dest: "Vịnh Đầm Tre", note: "Tham quan sinh thái rừng tre rừng ngập mặn vịnh Đầm Tre" },
+                { id: "p16", time: "11:30 - 12:45", dest: "Mứt hạt bàng", note: "Trả phòng khách sạn, dùng bữa trưa nhẹ" },
+                { id: "p17", time: "13:00 - 18:00", dest: "Hòn Tài, Hòn Trác", note: "Ra cảng Bến Đầm làm thủ tục, tàu cao tốc về lại Vũng Tàu" }
+            ]
+        };
+        savePlanToStorage();
+        renderCustomTimeline();
+    }
+}
+
+// Export custom plan to .txt file for mobile download
+function exportItinerary() {
+    let output = "=== LỊCH TRÌNH DU LỊCH CÔN ĐẢO CỦA BẠN ===\n\n";
+    
+    for (let day = 1; day <= 3; day++) {
+        output += `--- NGÀY ${day} ---\n`;
+        const items = customPlan[`day${day}`];
+        if (items.length === 0) {
+            output += " (Chưa lập kế hoạch cho ngày này)\n";
+        } else {
+            items.forEach(item => {
+                output += `• [${item.time}] ${item.dest}\n  Hoạt động: ${item.note}\n`;
+            });
+        }
+        output += "\n";
+    }
+    
+    const blob = new Blob([output], { type: 'text/plain;charset=utf-8' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'Lich_Trinh_Con_Dao_Cua_Toi.txt';
+    link.click();
+}
     </script>
 </body>
 </html>
