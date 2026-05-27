@@ -29,6 +29,13 @@
             background-size: cover;
         }
 
+        /* Khắc phục lỗi background-attachment: fixed không hiển thị ảnh trên thiết bị di động (Safari/iOS/Android) */
+        @media (max-width: 1024px) {
+            .hero-bg {
+                background-attachment: scroll;
+            }
+        }
+
         /* Hoạt họa tiêu đề & phụ đề khi tải trang */
         @keyframes fadeInUp {
             from {
