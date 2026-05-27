@@ -1,0 +1,588 @@
+{
+  "destinations": [
+    {
+      "id": "default_dest_1",
+      "name": "Vịnh Đầm Tre",
+      "category": "beach",
+      "rating": "",
+      "img1": "./media__1779862551282.jpg",
+      "img2": "./media__1779862551282.jpg",
+      "tags": [
+        "Mùa_rong_mơ",
+        "Hoang_sơ_kỳ_vĩ",
+        "Sinh_thái_biển"
+      ],
+      "descShort": "Vịnh biển hoang sơ kín gió nằm phía Bắc đảo Côn Sơn. Đặc biệt vào mùa rong mơ, dòng nước trong vắt để lộ cánh rừng rong mơ vàng óng lộng lẫy dưới lòng biển.",
+      "descLong": "Nằm ở phía Bắc của Côn Đảo, vịnh Đầm Tre hoang sơ được bao bọc bởi rừng tre và rừng ngập mặn nên khá kín gió. Đặc biệt, nơi đây vào mùa rong mơ (tháng 4 - tháng 6) sẽ có cảnh sắc siêu đẹp khi cả vịnh biển được bao phủ bởi những thảm rong vàng óng dưới làn nước xanh trong vắt, kết hợp hoạt động ngắm chim yến về làm tổ.",
+      "highlights": [
+        "Tắm biển và thỏa thích bơi lội, check-in giữa thảm rong mơ vàng óng lộng lẫy.",
+        "Lặn ống thở (snorkeling) ngắm rạn san hô và tham quan rừng tre, rừng ngập mặn.",
+        "Quan sát thế giới tự nhiên của loài chim yến làm tổ trong mùa sinh sản hàng năm."
+      ],
+      "bestTime": "Đặc biệt đẹp nhất là mùa rong mơ từ tháng 4 đến tháng 6 hằng năm. Nên ghé thăm lúc thủy triều lên để vịnh đầy nước xanh trong và thấy thảm rong mơ đẹp nhất.",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Vịnh+Đầm+Tre+Côn+Đảo",
+      "linkUrl": ""
+    },
+    {
+      "id": "default_dest_2",
+      "name": "Bãi Đầm Trầu",
+      "category": "beach",
+      "rating": "4.3",
+      "img1": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/B%C3%A3i_%C4%90%E1%BA%A7m_Tr%E1%BA%A7u.jpg/800px-B%C3%A3i_%C4%90%E1%BA%A7m_Tr%E1%BA%A7u.jpg",
+      "img2": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/B%C3%A3i_%C4%90%E1%BA%A7m_Tr%E1%BA%A7u.jpg/800px-B%C3%A3i_%C4%90%E1%BA%A7m_Tr%E1%BA%A7u.jpg",
+      "tags": [
+        "Bãi_tắm_đẹp",
+        "Ngắm_máy_bay",
+        "Cát_mịn"
+      ],
+      "descShort": "Bãi tắm thơ mộng được xem là đẹp nhất Côn Đảo, nổi tiếng với dải cát trắng mịn màng uốn lượn và trải nghiệm ngắm máy bay đáp cực gần.",
+      "descLong": "Bãi Đầm Trầu nằm gần sân bay Cỏ Ống, có cát trắng xốp mịn, núi ôm lấy biển theo hình vòng cung thơ mộng. Nơi đây luôn có sóng nhẹ, không gian yên tĩnh và được mệnh danh là bãi tắm đẹp nhất ở quần đảo Côn Đảo. Điểm độc đáo nhất là bạn có thể thoải mái tắm mát dưới biển và vừa ngắm những chiếc máy bay cất, hạ cánh sát sạt ngay trên đầu.",
+      "highlights": [
+        "Đón những khoảnh khắc check-in độc đáo khi máy bay hạ cánh cực thấp ngay trên bãi biển.",
+        "Tắm mình trong làn nước xanh ngọc bích và thư giãn dưới bóng mát của rặng thông.",
+        "Thưởng thức nước dừa mát lạnh cùng các món hải sản chế biến tươi ngon ngay tại bãi cát."
+      ],
+      "bestTime": "Khoảng từ 14:00 đến 17:00 chiều là thời điểm đẹp nhất để ngắm máy bay và tận hưởng ánh nắng hoàng hôn dịu nhẹ.",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bãi+Đầm+Trầu+Côn+Đảo",
+      "linkUrl": ""
+    },
+    {
+      "id": "default_dest_3",
+      "name": "Bãi Nhát",
+      "category": "beach",
+      "rating": "4.7",
+      "img1": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80",
+      "img2": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80",
+      "tags": [
+        "Phong_cảnh_hữu_tình",
+        "Nước_trong_xanh",
+        "Hoang_sơ"
+      ],
+      "descShort": "Bãi biển tuyệt đẹp với phong cảnh hữu tình thơ mộng, dòng nước trong xanh ngọc bích và bờ cát trắng mịn chỉ lộ diện khi thủy triều rút xuống.",
+      "descLong": "Nằm trên con đường độc đạo nối trung tâm thị trấn ra cảng Bến Đầm, Bãi Nhát ẩn chứa vẻ đẹp hoang sơ kỳ vĩ của thiên nhiên biển đảo. Khi thủy triều rút, một bãi cát trắng mịn lấp lánh như pha lê sẽ hiện ra phơi mình bên những con sóng rì rào, tạo nên khung cảnh thiên nhiên ngoạn mục làm say lòng du khách.",
+      "highlights": [
+        "Chiêm ngưỡng cảnh biển hoang sơ tuyệt mỹ khi bãi cát trắng lộ dần ra lúc hoàng hôn.",
+        "Tự do dạo bước chụp những khung hình nghệ thuật với các bãi đá tự nhiên ven bờ biển.",
+        "Thu vào tầm mắt hòn Bà xa xăm phía đại dương lộng gió, cảm nhận sự an lành tuyệt đối."
+      ],
+      "bestTime": "Vào buổi chiều tà, khi thủy triều xuống dần, đây là tọa độ ngắm hoàng hôn ngả sắc vàng cam quyến rũ nhất đảo.",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bãi+Nhát+Côn+Đảo",
+      "linkUrl": ""
+    },
+    {
+      "id": "default_dest_4",
+      "name": "Bãi Suối Nóng",
+      "category": "beach",
+      "rating": "4.6",
+      "img1": "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&q=80",
+      "img2": "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&q=80",
+      "tags": [
+        "Hoang_sơ_hiếm_có",
+        "Làn_nước_ấm",
+        "Viên_ngọc_ẩn"
+      ],
+      "descShort": "Nằm ngay cạnh bãi Đầm Trầu, bãi Suối Nóng giữ trọn vẹn nét hoang dã hoang sơ hiếm có với bãi cát phẳng lặng và dòng nước ấm tự nhiên kì lạ.",
+      "descLong": "Để đến được bãi Suối Nóng, du khách đi bộ băng qua một lối mòn ngắn rợp mát từ bãi Đầm Trầu. Nơi đây có làn nước ấm kỳ lạ quanh năm do có mạch nước nóng ngầm dưới lòng biển và rừng đước nguyên sơ trù phú bao bọc tạo nên không khí biệt lập tĩnh mịch.",
+      "highlights": [
+        "Băng rừng đước ngập mặn phiêu lưu nhẹ nhàng để chạm tay vào bãi biển ẩn giấu.",
+        "Tắm mát thư thái trong làn nước biển ấm áp tự nhiên cực kỳ thư giãn cơ thể.",
+        "Khám phá thảm thực vật rừng ngập mặn sinh động nguyên sơ hiếm có."
+      ],
+      "bestTime": "Nên ghé thăm vào chiều mát khi thủy triều rút để thấy bãi cát phẳng mở ra rộng lớn lãng mạn.",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bãi+Suối+Nóng+Côn+Đảo",
+      "linkUrl": ""
+    },
+    {
+      "id": "default_dest_5",
+      "name": "Bãi Đá Cuội",
+      "category": "beach",
+      "rating": "4.6",
+      "img1": "https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=800&q=80",
+      "img2": "https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=800&q=80",
+      "tags": [
+        "Khu_Bến_Đầm",
+        "Đá_cuội_tự_nhiên",
+        "Yên_tĩnh_tuyệt_đối"
+      ],
+      "descShort": "Nằm ở khu vực Bến Đầm, bãi biển sỏi đá độc đáo này là điểm dừng chân hoang sơ lý tưởng dành cho những ai tìm kiếm sự yên tĩnh tuyệt đối.",
+      "descLong": "Nổi tiếng với hàng ngàn viên đá cuội nhẵn mịn xếp chồng lên nhau do sóng vỗ tự nhiên hàng thế kỷ. Đây là địa điểm hoang sơ tuyệt đối, chưa chịu sự tác động của dịch vụ du lịch, mang lại không gian thư giãn an lành và tĩnh mịch.",
+      "highlights": [
+        "Tự tay sắp đặt hoặc dạo bước chụp ảnh nghệ thuật cùng hàng ngàn viên đá cuội tròn láng xinh xắn.",
+        "Lắng nghe tiếng sóng vỗ rì rào xô bờ tạo ra những âm thanh lạo xạo vui tai từ các viên sỏi cuội.",
+        "Cắm trại dã ngoại tự túc thư giãn giữa không gian biển núi giao hòa biệt lập."
+      ],
+      "bestTime": "Rất đẹp vào sáng sớm hoặc chiều mát khi ánh mặt trời rọi xiên làm lấp lánh các thảm đá sỏi bên bờ nước.",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bãi+Đá+Cuội+Côn+Đảo",
+      "linkUrl": ""
+    },
+    {
+      "id": "default_dest_6",
+      "name": "Hòn Bảy Cạnh",
+      "category": "beach",
+      "rating": "",
+      "img1": "https://images.unsplash.com/photo-1582967788606-a171c1080cb0?w=800&q=80",
+      "img2": "https://images.unsplash.com/photo-1582967788606-a171c1080cb0?w=800&q=80",
+      "tags": [
+        "Bảo_tồn_rùa",
+        "Lặn_ngắm_san_hồ",
+        "Đảo_hoang_sơ"
+      ],
+      "descShort": "Hòn đảo lớn thứ hai Côn Đảo, là khu bảo tồn rùa biển lớn nhất Việt Nam và sở hữu những rạn san hô nguyên sơ đẹp lộng lẫy.",
+      "descLong": "Hòn Bảy Cạnh là hòn đảo lớn thứ hai trong số 16 hòn đảo thuộc quần đảo Côn Đảo. Nơi đây được bao phủ hoàn toàn bởi rừng nhiệt đới nguyên sinh và hệ sinh thái biển vô cùng phong phú. Du khách có thể thuê cano ra đảo để thoải mái bơi lội, lặn ngắm san hô rực rỡ và đặc biệt là xem rùa mẹ đẻ trứng vào ban đêm.",
+      "highlights": [
+        "Tham gia tour lặn ngắm san hô tuyệt đẹp tại bãi biển hoang sơ của hòn đảo.",
+        "Tham quan khu bảo tồn và học hỏi quy trình ấp nở trứng rùa, thả rùa con về đại dương.",
+        "Chinh phục ngọn hải đăng cổ kính được xây dựng từ thời Pháp thuộc trên đỉnh núi."
+      ],
+      "bestTime": "Mùa rùa sinh sản từ tháng 4 đến tháng 9 hằng năm là thời gian lý tưởng nhất để ghé thăm và trải nghiệm xem rùa đẻ trứng đêm.",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hòn+Bảy+Cạnh+Côn+Đảo",
+      "linkUrl": ""
+    },
+    {
+      "id": "default_dest_7",
+      "name": "Hòn Cau & Miếu Cô Vân",
+      "category": "beach",
+      "rating": "",
+      "img1": "./media__1779862597939.jpg",
+      "img2": "./media__1779862597939.jpg",
+      "tags": [
+        "Hòn_Cau",
+        "Miếu_Cô_Vân",
+        "Võng_biển_bảng_hiệu"
+      ],
+      "descShort": "Sự kết hợp hoàn hảo giữa hành trình tâm linh linh thiêng tại Miếu Cô Vân bên bãi cát trắng và hoạt động lặn biển, chèo SUP thể thao tại đảo Hòn Cau.",
+      "descLong": "Du khách đến Hòn Cau có thể lặn ngắm san hô, tham quan rừng ngập mặn. Miếu Cô Vân thì nằm sát bãi cát trắng trên đảo Hòn Cau. Ngôi miếu nhỏ được dựng ngay trên bãi biển xanh ngắt này được xem là một tọa độ cực kỳ linh thiêng. Việc kết hợp tham quan sinh thái biển ở Hòn Cau và viếng Miếu Cô Vân mang lại trải nghiệm rất trọn vẹn.",
+      "highlights": [
+        "Viếng thăm Miếu Cô Vân linh thiêng ngay sát bãi cát trắng mịn của Hòn Cau.",
+        "Chèo thuyền SUP dạo chơi trên làn nước trong suốt tựa pha lê ngắm san hô cực đẹp.",
+        "Thư giãn nằm võng đung đưa mát mẻ dưới những vòm cây mát rượi đặc trưng của đảo."
+      ],
+      "bestTime": "Cực kỳ lý tưởng cho các chuyến khám phá trong ngày từ tháng 4 đến tháng 9 khi nước biển trong nhất và lặng sóng.",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hòn+Cau+Côn+Đảo",
+      "linkUrl": ""
+    },
+    {
+      "id": "default_dest_8",
+      "name": "Bãi Đất Thắm",
+      "category": "beach",
+      "rating": "",
+      "img1": "./media__1779862689016.jpg",
+      "img2": "./media__1779862689016.jpg",
+      "tags": [
+        "Private_Beach",
+        "Băng_rừng_quốc_gia",
+        "Hoang_sơ_tuyệt_đối"
+      ],
+      "descShort": "Bãi biển biệt lập hoang sơ tuyệt đối, để đến được đây du khách phải trải nghiệm đi bộ trekking băng qua các lối mòn rợp bóng của Vườn quốc gia Côn Đảo.",
+      "descLong": "Nằm ẩn mình sau những cánh rừng nhiệt đới của Vườn quốc gia Côn Đảo, Bãi Đất Thắm là một trong số ít những bãi biển còn giữ nguyên vẻ đẹp hoang dã nguyên bản nhất. Do không có đường xe chạy trực tiếp, du khách phải đi bộ trekking xuyên qua Vườn quốc gia Côn Đảo tầm 45 phút, mang lại cảm giác chinh phục thiên nhiên cực kỳ sảng khoái trước khi đắm mình vào bãi cát tĩnh lặng.",
+      "highlights": [
+        "Trải nghiệm đi bộ trekking xuyên rừng quốc gia, chiêm ngưỡng hệ sinh thái đa dạng.",
+        "Tận hưởng bãi cát biệt lập hoàn toàn riêng tư, nghe tiếng sóng vỗ rì rào.",
+        "Chụp ảnh sống ảo cùng nhánh cây khô trôi dạt nghệ thuật bên bờ biển sỏi đá."
+      ],
+      "bestTime": "Nên đi vào buổi sáng mát mẻ để hành trình đi bộ băng rừng không bị quá nắng gắt, mang đầy đủ giày thể thao và nước uống.",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bãi+Đất+Thắm+Côn+Đảo",
+      "linkUrl": ""
+    },
+    {
+      "id": "default_dest_9",
+      "name": "Hòn Tài, Hòn Trác",
+      "category": "beach",
+      "rating": "",
+      "img1": "./media__1779859970377.jpg",
+      "img2": "https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?w=800&q=80",
+      "tags": [
+        "Hòn_đảo_ẩn_giấu",
+        "Khỉ_mặt_đỏ",
+        "Lặn_ngắm_san_hồ"
+      ],
+      "descShort": "Chuỗi đảo nhỏ hoang sơ ẩn chứa thế giới sinh thái phong phú với thảm san hô rực rỡ và cơ hội ngắm nhìn loài khỉ mặt đỏ quý hiếm ven rìa đá.",
+      "descLong": "Nằm trong chuỗi các hòn đảo nhỏ lân cận đảo chính Côn Sơn. Dù Hòn Bảy Cạnh rất nổi tiếng, Hòn Tài và Hòn Trác lại là những 'viên ngọc ẩn'. Hòn Tài sở hữu hệ sinh thái san hô vô cùng rực rỡ và là nơi bạn có cơ hội nhìn thấy loài khỉ mặt đỏ quý hiếm, cũng như theo dõi rùa biển lên bãi đẻ trứng.",
+      "highlights": [
+        "Lặn ống thở (snorkeling) khám phá thảm san hô tự nhiên tuyệt mỹ.",
+        "Du ngoạn cano ngắm nhìn cảnh quan núi đá hùng vĩ giữa biển khơi.",
+        "Cơ hội ngắm nhìn loài khỉ mặt đỏ quý hiếm đùa nghịch ven rìa đá."
+      ],
+      "bestTime": "Lý tưởng nhất cho các chuyến cano dạo biển và lặn ngắm san hô là mùa biển lặng, trời trong xanh từ tháng 3 đến hết tháng 9.",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hòn+Tài+Hòn+Trác+Côn+Đảo",
+      "linkUrl": ""
+    },
+    {
+      "id": "default_dest_10",
+      "name": "Bảo tàng Côn Đảo",
+      "category": "history",
+      "rating": "4.6",
+      "img1": "https://images.unsplash.com/photo-1564507592333-c60657eea523?w=800&q=80",
+      "img2": "https://images.unsplash.com/photo-1564507592333-c60657eea523?w=800&q=80",
+      "tags": [
+        "Lưu_giữ_hiện_vật",
+        "Lịch_sử_hào_hùng",
+        "Điểm_dừng_đầu_tiên"
+      ],
+      "descShort": "Tọa lạc tại số 2 đường Nguyễn Huệ. Nơi lưu giữ hàng ngàn hiện vật và tư liệu lịch sử vô giá phác họa bức tranh hào hùng của hòn đảo tự do.",
+      "descLong": "Bảo tàng Côn Đảo là điểm dừng chân vô cùng ý nghĩa trong hành trình về nguồn. Nơi đây lưu giữ hàng ngàn hiện vật, tài liệu và hình ảnh lịch sử chân thực về thời kỳ đấu tranh oanh liệt chống lao tù tàn khốc, đồng thời trưng bày sinh động thảm sinh học đặc hữu trên cạn và dưới nước của Côn Đảo.",
+      "highlights": [
+        "Lắng nghe thuyết minh viên giới thiệu khái quát quá trình khai phá và đấu tranh kiên cường của hòn đảo.",
+        "Tận mắt quan sát hàng trăm bức thư tay, kỷ vật thiêng liêng từ thời chiến đấu của các chiến sĩ.",
+        "Tìm hiểu sự đa dạng sinh học độc đáo của Vườn quốc gia Côn Đảo qua các mô hình mô phỏng khoa học."
+      ],
+      "bestTime": "Thích hợp ghé thăm vào buổi sáng hoặc đầu chiều trước khi bắt đầu hành trình viếng thăm di tích hệ thống nhà tù.",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bảo+tàng+Côn+Đảo",
+      "linkUrl": ""
+    },
+    {
+      "id": "default_dest_11",
+      "name": "Nhà tù Côn Đảo (Trại Phú Hải, Phú Sơn)",
+      "category": "history",
+      "rating": "4.6",
+      "img1": "https://upload.wikimedia.org/wikipedia/commons/4/42/Nh%C3%A0_t%C3%B9_C%C3%B4n_%C4%90%E1%BA%A3o.JPG",
+      "img2": "https://upload.wikimedia.org/wikipedia/commons/4/42/Nh%C3%A0_t%C3%B9_C%C3%B4n_%C4%90%E1%BA%A3o.JPG",
+      "tags": [
+        "Di_tích_quốc_gia",
+        "Địa_ngục_trần_gian",
+        "Kháng_chiến_kiên_trung"
+      ],
+      "descShort": "Hệ thống di tích lịch sử đặc biệt, nơi được mệnh danh là 'địa ngục trần gian' với các hầm biệt giam khắc nghiệt và khu Chuồng Cọp khét tiếng.",
+      "descLong": "Nơi đây được mệnh danh là “địa ngục trần gian”, với nhiều khu vực biệt giam, chuồng cọp. Nhà tù rộng hơn 12.000 mét vuông gồm 10 khám lớn (phòng giam lớn), 20 hầm đá biệt giam, 1 khám đặc biệt, hầm xay lúa và khu đập đá. Trại Phú Hải và Phú Sơn là hai khu trại giam điển hình nhất của hệ thống nhà tù oai hùng này.",
+      "highlights": [
+        "Tận mắt chứng kiến khu 'Chuồng cọp' Pháp/Mỹ với những hình thức biệt giam vô cùng khắc nghiệt.",
+        "Lắng nghe những câu chuyện lịch sử xúc động về ý chí kiên trung của các chiến sĩ cách mạng Việt Nam.",
+        "Tham quan phòng trưng bày di tích để hiểu rõ hơn về bức tranh toàn cảnh của hệ thống lao tù."
+      ],
+      "bestTime": "Thích hợp tham quan vào ban ngày (08:00 - 11:30 sáng hoặc 14:00 - 16:30 chiều) để thuận tiện đi bộ ngoài trời và lắng nghe thuyết minh di tích.",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Nhà+tù+Côn+Đảo",
+      "linkUrl": ""
+    },
+    {
+      "id": "default_dest_12",
+      "name": "Dinh Chúa Đảo",
+      "category": "history",
+      "rating": "4.4",
+      "img1": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Dinh_Ch%C3%BAa_%C4%91%E1%BA%A3o_C%C3%B4n_%C4%90%E1%BA%A3o.jpg/800px-Dinh_Ch%C3%BAa_%C4%91%E1%BA%A3o_C%C3%B4n_%C4%90%E1%BA%A3o.jpg",
+      "img2": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Dinh_Ch%C3%BAa_%C4%91%E1%BA%A3o_C%C3%B4n_%C4%90%E1%BA%A3o.jpg/800px-Dinh_Ch%C3%BAa_%C4%91%E1%BA%A3o_C%C3%B4n_%C4%90%E1%BA%A3o.jpg",
+      "tags": [
+        "Kiến_trúc_Pháp_cổ",
+        "Đầu_não_cai_trị",
+        "Lịch_sử_đối_lập"
+      ],
+      "descShort": "Khám phá dinh thự uy nghi mang đậm dấu ấn kiến trúc thuộc địa Pháp cổ, tìm hiểu đầu não cai trị và đời sống xa hoa của các chúa đảo ngày xưa.",
+      "descLong": "Dinh Chúa Đảo (hay Dinh Ông Lớn) được xây dựng từ cuối thế kỷ 19 mang đậm phong cách kiến trúc Pháp cổ kính. Đây từng là nơi ngự trị cai trị của 53 đời chúa đảo qua hai thời kỳ kháng chiến cứu nước, chứng kiến đầu não cai trị tàn khốc và cuộc sống xa hoa bậc nhất của giai cấp thống trị đối lập hoàn toàn với đời sống khổ sai của tù nhân.",
+      "highlights": [
+        "Chiêm ngưỡng nét kiến trúc biệt thự Pháp cổ kính nguyên vẹn giữa những giàn cây cổ thụ xanh mát.",
+        "Tìm hiểu tiểu sử và các thủ đoạn cai trị khét tiếng của các Chúa Đảo qua tài liệu trưng bày.",
+        "Khám phá các gian phòng khách, phòng làm việc được bài trí phục dựng sang trọng."
+      ],
+      "bestTime": "Thích hợp tham quan kết hợp cùng Bảo tàng Côn Đảo vào các khung giờ sáng hoặc chiều mát mẻ.",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dinh+Chúa+Đảo+Côn+Đảo",
+      "linkUrl": ""
+    },
+    {
+      "id": "default_dest_13",
+      "name": "Trung Tâm Bảo Tồn Di Tích Quốc Gia",
+      "category": "history",
+      "rating": "",
+      "img1": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80",
+      "img2": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80",
+      "tags": [
+        "Đường_Nguyễn_Huệ",
+        "Quản_lý_di_tích",
+        "Bảo_tồn_giá_trị"
+      ],
+      "descShort": "Tọa lạc trên đường Nguyễn Huệ, đơn vị trực tiếp gìn giữ, quản lý tôn tạo và phát huy toàn bộ các giá trị di tích lịch sử đặc biệt của Côn Đảo.",
+      "descLong": "Trung Tâm Bảo Tồn Di Tích Quốc Gia Côn Đảo đóng vai trò then chốt trong việc giữ gìn và bảo quản hàng chục điểm di tích nhà tù lịch sử, nghĩa trang anh hùng. Trung tâm đồng thời điều phối đội ngũ thuyết minh viên chuyên nghiệp, cung cấp hướng dẫn dâng hương hành lễ bài bản tại nghĩa trang Hàng Dương.",
+      "highlights": [
+        "Tìm hiểu quy trình phục dựng tỉ mỉ và khoa học các di tích lịch sử đặc biệt.",
+        "Liên hệ đăng ký thuyết minh viên đi theo tour chiêm bái, dâng lễ đầy xúc động.",
+        "Ghé thăm văn phòng trưng bày các ấn phẩm nghiên cứu lịch sử quý giá."
+      ],
+      "bestTime": "Giờ hành chính từ thứ Hai đến thứ Sáu, thích hợp liên hệ đăng ký dịch vụ thuyết minh cho đoàn du lịch đông người.",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Trung+Tâm+Bảo+Tồn+Di+Tích+Quốc+Gia+Côn+Đảo",
+      "linkUrl": ""
+    },
+    {
+      "id": "default_dest_14",
+      "name": "Cầu tàu 914",
+      "category": "history",
+      "rating": "4.8",
+      "img1": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/C%E1%BA%A7u_t%C3%A0u_914.jpg/800px-C%E1%BA%A7u_t%C3%A0u_914.jpg",
+      "img2": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/C%E1%BA%A7u_t%C3%A0u_914.jpg/800px-C%E1%BA%A7u_t%C3%A0u_914.jpg",
+      "tags": [
+        "Chứng_nhân_lịch_sử",
+        "Công_lao_khổ_sai",
+        "Bờ_kè_biển"
+      ],
+      "descShort": "Chứng nhân trầm mặc giữa gió lộng trùng khơi, ghi dấu sự hy sinh anh dũng và tinh thần lao động phi thường của hàng ngàn chiến sĩ cách mạng.",
+      "descLong": "Cầu tàu 914 được khởi công xây dựng từ năm 1873. Cái tên '914' được gọi dựa trên con số thống kê ước tính về những chiến sĩ cách mạng kiên trung đã ngã xuống do lao dịch khổ sai tàn khốc, cưa đá và vận chuyển các hộc đá nặng hàng tấn từ núi xuống để đắp nên cầu tàu sừng sững hướng ra biển này.",
+      "highlights": [
+        "Dạo bước trên những bậc đá hộc vững chãi, lắng nghe tiếng sóng biển vỗ rì rào dưới chân cầu tàu lịch sử.",
+        "Cảm nhận sâu sắc bài học đấu tranh bất khuất trước những vết hằn đá xẻ thủ công thời kỳ cũ.",
+        "Ngắm nhìn vịnh Côn Sơn thơ mộng với những con cano, thuyền chài rập rình xa khơi."
+      ],
+      "bestTime": "Vào sáng sớm bình minh, khi những ánh nắng ban mai đầu tiên rọi chiếu lấp lánh lên mặt biển và cầu tàu rất đẹp mắt.",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Cầu+tàu+914+Côn+Đảo",
+      "linkUrl": ""
+    },
+    {
+      "id": "default_dest_15",
+      "name": "Mũi Cá Mập",
+      "category": "history",
+      "rating": "4.7",
+      "img1": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&q=80",
+      "img2": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&q=80",
+      "tags": [
+        "Tọa_độ_lý_tưởng",
+        "Ngắm_bình_minh",
+        "Vách_đá_hùng_vĩ"
+      ],
+      "descShort": "Tọa độ ngắm cảnh đắc địa bậc nhất Côn Đảo với mỏm đá nhô ra biển kỳ vĩ, điểm ngắm bình minh và hoàng hôn trọn vẹn thơ mộng.",
+      "descLong": "Nằm trên cung đường ven biển tuyệt đẹp nối trung tâm ra cảng Bến Đầm, Mũi Cá Mập sở hữu một vách đá hùng vĩ nhô hẳn ra rìa đại dương tựa như hàm cá mập khổng lồ. Sóng biển dữ dội vỗ vào vách đá tung bọt tuyết trắng xóa đem lại khung cảnh thiên nhiên tráng lệ phóng khoáng vô biên.",
+      "highlights": [
+        "Đón những tia nắng bình minh đầu tiên nhuộm đỏ hồng mặt đại dương bao la.",
+        "Chụp những bức ảnh check-in thiên nhiên kì vĩ ngắm cung đường uốn lượn ôm trọn bờ vịnh.",
+        "Tận hưởng làn gió biển đại dương thổi vào lồng lộng, trút bỏ mọi căng thẳng cuộc sống."
+      ],
+      "bestTime": "Tuyệt vời nhất là lúc sáng sớm tinh mơ (05:00 - 05:45) để săn khoảnh khắc bình minh mọc lên từ biển cực kỳ lộng lẫy.",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mũi+Cá+Mập+Côn+Đảo",
+      "linkUrl": ""
+    },
+    {
+      "id": "default_dest_16",
+      "name": "Nghĩa trang Hàng Dương",
+      "category": "temple",
+      "rating": "",
+      "img1": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Ngh%C4%A9a_trang_H%C3%A0ng_D%C6%B0%C6%A1ng.jpg/800px-Ngh%C4%A9a_trang_H%C3%A0ng_D%C6%B0%C6%A1ng.jpg",
+      "img2": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Ngh%C4%A9a_trang_H%C3%A0ng_D%C6%B0%C6%A1ng.jpg/800px-Ngh%C4%A9a_trang_H%C3%A0ng_D%C6%B0%C6%A1ng.jpg",
+      "tags": [
+        "Tâm_linh_thiêng_liêng",
+        "Mộ_Cô_Sáu_đêm",
+        "Hành_trình_về_nguồn"
+      ],
+      "descShort": "Nơi an nghỉ trầm mặc của hàng ngàn chiến sĩ yêu nước kiên trung và phần mộ Anh hùng Võ Thị Sáu, điểm du lịch tâm linh thiêng liêng nhất về đêm.",
+      "descLong": "Nghĩa trang Hàng Dương là nơi có mộ của hơn 2.000 liệt sĩ và mộ Võ Thị Sáu. Đây là điểm du lịch tâm linh quan trọng. Đến đây ngoài thắp hương, bạn nên chuẩn bị đồ lễ, không thể thiếu gương, lược, hoa cúc trắng tươi. Buổi tối đêm muộn là thời điểm trang trọng và linh thiêng nhất đông đảo du khách ghé dâng lễ viếng.",
+      "highlights": [
+        "Dâng hương tưởng niệm trang trọng tại đài bia trung tâm nghĩa trang liệt sĩ oai hùng.",
+        "Viếng mộ chị Võ Thị Sáu lúc đêm muộn với lòng thành kính và biết ơn sâu sắc.",
+        "Cảm nhận không khí tĩnh lặng, ấm áp dưới bóng những hàng cây bàng cổ thụ lịch sử."
+      ],
+      "bestTime": "Khoảng thời gian từ 21:00 đến 23:59 đêm là thời điểm trang nghiêm và thiêng liêng nhất thường được đông đảo du khách lựa chọn ghé viếng mộ.",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Nghĩa+trang+Hàng+Dương",
+      "linkUrl": ""
+    },
+    {
+      "id": "default_dest_17",
+      "name": "Miếu Cậu (Thiếu Gia Miếu)",
+      "category": "temple",
+      "rating": "",
+      "img1": "https://images.unsplash.com/photo-1596813362035-3edcff0c2487?w=800&q=80",
+      "img2": "https://images.unsplash.com/photo-1596813362035-3edcff0c2487?w=800&q=80",
+      "tags": [
+        "Hoàng_tử_Cải",
+        "Rừng_cây_Cỏ_Ống",
+        "Tâm_linh_thư_thái"
+      ],
+      "descShort": "Ngôi miếu nhỏ linh thiêng thờ Hoàng tử Cải, con trai Thứ phi Phi Yến, nằm tĩnh lặng giữa bóng cây xanh mát lành ngay sát sân bay Cỏ Ống.",
+      "descLong": "Miếu nằm gần khu vực bãi Đầm Trầu và sân bay Cỏ Ống. Nơi đây thờ Hoàng tử Cải (5 tuổi) – con trai của Chúa Nguyễn Ánh và Thứ phi Phi Yến. Nằm giữa không gian cây cối xanh mát, đây là điểm dừng chân yên tĩnh và linh thiêng thường được du khách ghé thăm ngay khi vừa đáp chuyến bay xuống đảo.",
+      "highlights": [
+        "Tìm hiểu câu chuyện lịch sử đầy cảm xúc về Hoàng tử Cải và Thứ phi Phi Yến.",
+        "Thắp hương dâng lễ cầu bình an tại ngôi miếu linh thiêng.",
+        "Cảm nhận sự bình yên dưới vòm cây xanh ngắt quanh miếu."
+      ],
+      "bestTime": "Nên ghé dâng hương dâng lễ ngay khi vừa đặt chân tới sân bay Cỏ Ống hoặc trên đường di chuyển ra bãi Đầm Trầu vì chúng rất gần nhau.",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Miếu+Cậu+Côn+Đảo",
+      "linkUrl": ""
+    },
+    {
+      "id": "default_dest_18",
+      "name": "Miếu Năm Cô (Miếu Ngũ Hành)",
+      "category": "temple",
+      "rating": "",
+      "img1": "https://images.unsplash.com/photo-1563245372-f21724e3856d?w=800&q=80",
+      "img2": "https://images.unsplash.com/photo-1563245372-f21724e3856d?w=800&q=80",
+      "tags": [
+        "Thờ_Ngũ_Hành",
+        "Cầu_tài_lộc",
+        "Tâm_linh_miền_biển"
+      ],
+      "descShort": "Ngôi miếu linh thiêng thờ 5 vị nữ thần đại diện cho ngũ hành, chốn gửi gắm khát vọng cầu bình an, mưa thuận gió hòa của ngư dân trên đảo.",
+      "descLong": "Ngôi miếu này nằm ở phía Nam của đảo. Miếu thờ 5 vị nữ thần đại diện cho quyền năng của ngũ hành (Kim, Mộc, Thủy, Hỏa, Thổ). Người dân địa phương và những người đi biển thường đến đây cầu nguyện bình an, mưa thuận gió hòa và làm ăn phát đạt. Nơi đây rất thiêng liêng và mang đậm tín ngưỡng dân gian vùng biển.",
+      "highlights": [
+        "Dâng hương chiêm bái và tìm hiểu tín ngưỡng thờ Mẫu Ngũ Hành của người Việt.",
+        "Chiêm ngưỡng khung cảnh miếu thờ yên tĩnh hướng ra phía đại dương trong xanh.",
+        "Gặp gỡ và nghe các câu chuyện văn hóa miền biển từ người quản miếu."
+      ],
+      "bestTime": "Nên đi viếng miếu vào buổi sáng mát mẻ cùng lịch trình khám phá cung đường Nam đảo tuyệt đẹp.",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Miếu+Năm+Cô+Côn+Đảo",
+      "linkUrl": ""
+    },
+    {
+      "id": "default_dest_19",
+      "name": "Chùa Núi Một (Vân Sơn Tự)",
+      "category": "temple",
+      "rating": "",
+      "img1": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Ch%C3%B9a_N%C3%BAi_M%E1%BB%99t.jpg/800px-Ch%C3%B9a_N%C3%BAi_M%E1%BB%99t.jpg",
+      "img2": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Ch%C3%B9a_N%C3%BAi_M%E1%BB%99t.jpg/800px-Ch%C3%B9a_N%C3%BAi_M%E1%BB%99t.jpg",
+      "tags": [
+        "Tựa_sơn_hướng_thủy",
+        "Hồ_sen_An_Hải",
+        "Đẹp_nhất_Đông_Nam_Bộ"
+      ],
+      "descShort": "Ngôi chùa nổi tiếng sở hữu vị thế tựa sơn hướng thủy tuyệt mỹ, địa điểm hoàn hảo để tĩnh tâm cầu an và thu vào tầm mắt toàn cảnh hồ sen An Hải và vịnh biển.",
+      "descLong": "Được xây dựng uy nghi tọa lạc trên sườn núi, Vân Sơn Tự là ngôi chùa duy nhất tại Côn Đảo. Chùa sở hữu phong cảnh hữu tình bậc nhất khi phía trước hướng thẳng ra hồ sen An Hải thơ mộng và vịnh biển rộng mở bao la, tạo nên một không gian thiền tịnh linh thiêng tách biệt.",
+      "highlights": [
+        "Chinh phục những bậc đá rợp mát bóng rừng để dâng lễ viếng Phật cầu an lành cho gia đình.",
+        "Tĩnh lặng thưởng thức kiến trúc Phật giáo tinh xảo, ngắm đàn khỉ hoang dã đùa nghịch ven chùa.",
+        "Từ lầu chuông, ngắm nhìn bức tranh toàn cảnh hồ sen An Hải ngào ngạt hương thơm mùa hè."
+      ],
+      "bestTime": "Vào buổi chiều mát mẻ, khi những tiếng chuông chùa ngân vang hòa cùng ánh hoàng hôn rọi xuống vịnh Côn Sơn.",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chùa+Núi+Một+Côn+Đảo",
+      "linkUrl": ""
+    },
+    {
+      "id": "default_dest_20",
+      "name": "Cua mặt trăng",
+      "category": "food",
+      "rating": "",
+      "img1": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80",
+      "img2": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80",
+      "tags": [
+        "Đặc_sản_quý_hiếm",
+        "Hải_sản_bổ_dưỡng",
+        "Bè_nổi_Bến_Đầm"
+      ],
+      "descShort": "Loài đặc sản hải sản cực kỳ quý hiếm ở Côn Đảo, nổi danh với các chấm đỏ tròn độc đáo trên mai và thớ thịt cua ngọt bùi, đậm đà bổ dưỡng.",
+      "descLong": "Cua mặt trăng là loài hải sản cực kỳ quý hiếm ở Côn Đảo. Sở dĩ gọi là cua mặt trăng vì trên lưng cua có nhiều hình tròn màu đỏ đậm, pha với màu hồng tươi, trông rất hấp dẫn. Khi hấp lên, bạn ăn miếng thịt cua chấm thêm chút muối tiêu xanh sẽ cảm nhận được vị ngọt của cua ở ngay đầu lưỡi. Ngoài ra, cua mặt trăng còn được chế biến theo nhiều cách khác như sốt me, nấu lẩu.",
+      "highlights": [
+        "Thưởng thức cua hấp muối tiêu chanh hoặc chấm muối ớt xanh để cảm nhận vị ngọt đậm đà.",
+        "Trải nghiệm các cách chế biến phong phú khác như cua mặt trăng sốt me chua ngọt hoặc nấu lẩu hải sản.",
+        "Tham quan và tự tay chọn cua tươi sống tại các nhà hàng hoặc bè nổi ven cảng Bến Đầm."
+      ],
+      "bestTime": "Thích hợp thưởng thức vào các bữa trưa hoặc bữa tối bên bè nổi mát rượi lộng gió trùng khơi.",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ăn+Cua+Mặt+Trăng+Côn+Đảo",
+      "linkUrl": ""
+    },
+    {
+      "id": "default_dest_21",
+      "name": "Mứt hạt bàng",
+      "category": "food",
+      "rating": "",
+      "img1": "https://images.unsplash.com/photo-1596547609652-9cf5d8d76921?w=800&q=80",
+      "img2": "https://images.unsplash.com/photo-1596547609652-9cf5d8d76921?w=800&q=80",
+      "tags": [
+        "Quà_tặng_Côn_Đảo",
+        "Hạt_bàng_thủ_công",
+        "Vị_rang_muối_đường"
+      ],
+      "descShort": "Món quà lưu niệm ẩm thực đặc sản nức tiếng Côn Đảo, từng hạt bàng chín vàng được rang tay khéo léo với vị mặn muối biển hoặc đường ngọt ngào, giòn rụm bùi ngậy.",
+      "descLong": "Mứt hạt bàng là đặc sản nức tiếng làm quà tặng vô cùng ý nghĩa khi đi du lịch Côn Đảo. Quả bàng chín vàng ươm được bóc lớp thịt lộ ra nhân hạt bàng trắng nõn bên trong. Hạt bàng sau đó được chế biến thủ công rang tay cực kỳ tỉ mỉ với hai hương vị: rang muối mặn bùi ngậy và rang ngọt thơm phức giòn tan.",
+      "highlights": [
+        "Dùng thử cả hai hương vị mứt hạt bàng rang muối bùi ngậy và rang ngọt thơm giòn đặc trưng.",
+        "Tìm hiểu cách làm mứt hạt bàng hoàn toàn thủ công từ đôi bàn tay kiên nhẫn của người dân địa phương.",
+        "Mua các gói mứt được đóng gói đẹp mắt làm món quà ý nghĩa khó quên cho người thân."
+      ],
+      "bestTime": "Có thể dễ dàng tìm kiếm mua tại chợ Côn Đảo hoặc các sạp hàng lưu niệm trung tâm thị trấn vào bất kỳ lúc nào.",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mứt+hạt+bàng+Côn+Đảo",
+      "linkUrl": ""
+    }
+  ],
+  "hotels": [
+    {
+      "id": "default_hotel_1",
+      "name": "Six Senses Côn Đảo",
+      "stars": "5",
+      "price": "",
+      "address": "",
+      "desc": "Được thiết kế tinh tế hài hòa giữa phong cảnh thơ mộng và vẻ đẹp thiên nhiên hoang sơ, mang lại một không gian riêng tư vô cùng thư thái và đẳng cấp.",
+      "imgUrl": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80",
+      "mapsUrl": "",
+      "linkUrl": ""
+    },
+    {
+      "id": "default_hotel_2",
+      "name": "Poulo Condor Boutique Resort & Spa",
+      "stars": "4",
+      "price": "",
+      "address": "",
+      "desc": "Khu nghỉ dưỡng sở hữu lối kiến trúc mang vẻ đẹp hòa quyện đặc sắc giữa nét cổ kính truyền thống Việt Nam và di sản Đông Dương thời Pháp thuộc.",
+      "imgUrl": "https://images.unsplash.com/photo-1564507592333-c60657eea523?w=800&q=80",
+      "mapsUrl": "",
+      "linkUrl": ""
+    },
+    {
+      "id": "default_hotel_3",
+      "name": "Marina Bay Côn Đảo Hotel",
+      "stars": "4",
+      "price": "",
+      "address": "",
+      "desc": "Tọa lạc ngay mặt biển trung tâm, khách sạn sở hữu phong cách thiết kế châu Âu hiện đại với spa cao cấp, hồ bơi lớn ngoài trời và phòng gym.",
+      "imgUrl": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
+      "mapsUrl": "",
+      "linkUrl": ""
+    },
+    {
+      "id": "default_hotel_4",
+      "name": "Khu nghỉ dưỡng Sài Gòn – Côn Đảo",
+      "stars": "3",
+      "price": "",
+      "address": "",
+      "desc": "Sở hữu vị thế ven biển rợp mát bóng cổ thụ. Hệ thống gồm 117 phòng chia làm hai khu: khu biệt thự kiểu Pháp cổ xưa và khu tòa nhà hiện đại.",
+      "imgUrl": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80",
+      "mapsUrl": "",
+      "linkUrl": ""
+    },
+    {
+      "id": "default_hotel_5",
+      "name": "Côn Sơn Blue Sea",
+      "stars": "3",
+      "price": "",
+      "address": "",
+      "desc": "Khách sạn mang phong cách trẻ trung. Điểm nhấn đắt giá nhất là hồ bơi vô cực ngắm cảnh vịnh biển lộng gió kết hợp quầy bar nằm trên sân thượng.",
+      "imgUrl": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80",
+      "mapsUrl": "",
+      "linkUrl": ""
+    },
+    {
+      "id": "default_hotel_6",
+      "name": "CNLĐ – Côn Đảo Resort",
+      "stars": "3",
+      "price": "",
+      "address": "",
+      "desc": "Nơi nghỉ dưỡng bình yên với bể bơi phong cách Châu Âu rộng mở, bao bọc bởi thảm cỏ xanh mướt mát lành mang lại không gian thư giãn tuyệt diệu.",
+      "imgUrl": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80",
+      "mapsUrl": "",
+      "linkUrl": ""
+    },
+    {
+      "id": "default_hotel_7",
+      "name": "The Mystery",
+      "stars": "3",
+      "price": "",
+      "address": "",
+      "desc": "Phong cách Boutique cực kỳ nổi bật với tông màu trắng tinh khôi chủ đạo, điểm xuyết giàn cây leo xanh mướt, tạo nên không gian vô cùng tao nhã.",
+      "imgUrl": "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=800&q=80",
+      "mapsUrl": "",
+      "linkUrl": ""
+    },
+    {
+      "id": "default_hotel_8",
+      "name": "Khách sạn Maya III",
+      "stars": "2",
+      "price": "",
+      "address": "",
+      "desc": "Một nét thiết kế hiện đại đan xen tài tình hơi thở cổ điển. Sử dụng tông màu trắng trang nhã, hứa hẹn mang lại cho bạn những cảm xúc ấn tượng.",
+      "imgUrl": "https://images.unsplash.com/photo-1529290130-4ca3753253ae?w=800&q=80",
+      "mapsUrl": "",
+      "linkUrl": ""
+    },
+    {
+      "id": "default_hotel_9",
+      "name": "Khách sạn Tuấn Ninh II",
+      "stars": "2",
+      "price": "",
+      "address": "",
+      "desc": "Thiết kế theo xu hướng tối giản, nhẹ nhàng nhưng tinh tế, hiện đại, mang lại không gian lưu trú vô cùng gọn gàng và thoải mái cho du khách.",
+      "imgUrl": "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=80",
+      "mapsUrl": "",
+      "linkUrl": ""
+    }
+  ]
+}

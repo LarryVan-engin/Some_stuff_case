@@ -1,0 +1,536 @@
+<section id="tab4" class="tab-content hidden animate-fade-in">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-800">Cẩm Nang Ẩm Thực & Cà Phê Côn Đảo</h2>
+                <p class="text-gray-500 mt-2">Khám phá văn hóa ẩm thực đặc trưng và những tọa độ check-in thư giãn tuyệt đẹp.</p>
+            </div>
+            
+            <!-- Tab 4 Sub-filters -->
+            <div class="flex flex-wrap justify-center gap-2 md:gap-3 mb-10 max-w-4xl mx-auto px-2" id="food-filters">
+                <button onclick="filterFood('all')" class="food-filter-btn px-4 py-2 md:px-5 md:py-2.5 rounded-full font-bold text-xs md:text-sm bg-teal-600 text-white shadow-md transition-all duration-300 flex items-center gap-2 focus:outline-none">
+                    <i class="fa-solid fa-list"></i> Tất Cả
+                </button>
+                <button onclick="filterFood('restaurant')" class="food-filter-btn px-4 py-2 md:px-5 md:py-2.5 rounded-full font-bold text-xs md:text-sm bg-white text-gray-600 border border-gray-200 hover:bg-teal-50 hover:text-teal-700 transition-all duration-300 flex items-center gap-2 focus:outline-none">
+                    <i class="fa-solid fa-utensils text-teal-600"></i> Quán Ngon Côn Đảo
+                </button>
+                <button onclick="filterFood('specialty')" class="food-filter-btn px-4 py-2 md:px-5 md:py-2.5 rounded-full font-bold text-xs md:text-sm bg-white text-gray-600 border border-gray-200 hover:bg-teal-50 hover:text-teal-700 transition-all duration-300 flex items-center gap-2 focus:outline-none">
+                    <i class="fa-solid fa-shrimp text-orange-600"></i> Đặc Sản Phải Thử
+                </button>
+                <button onclick="filterFood('cafe')" class="food-filter-btn px-4 py-2 md:px-5 md:py-2.5 rounded-full font-bold text-xs md:text-sm bg-white text-gray-600 border border-gray-200 hover:bg-teal-50 hover:text-teal-700 transition-all duration-300 flex items-center gap-2 focus:outline-none">
+                    <i class="fa-solid fa-coffee text-teal-600"></i> Cafe Check-in
+                </button>
+            </div>
+            
+            <!-- Grid list of 18 items -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto" id="food-container">
+                <!-- Card: Cơm Niêu Sài Gòn Côn Đảo -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-all duration-300 flex flex-col h-full food-card animate-fade-in" data-category="restaurant">
+                    <!-- Image -->
+                    <div class="h-48 w-full overflow-hidden relative shrink-0">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&q=80" alt="Cơm Niêu Sài Gòn Côn Đảo" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-orange-50 text-orange-700 border-orange-100 text-[10px] md:text-xs font-bold px-2.5 py-0.5 rounded-full border shadow-sm">🍽️ Quán cơm niêu dân dã</span>
+                    </div>
+                    <!-- Body -->
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-extrabold text-gray-800 text-base md:text-lg mb-2 hover:text-teal-700 transition-colors">Cơm Niêu Sài Gòn Côn Đảo</h4>
+                            <p class="text-[11px] text-gray-400 mb-3 flex items-start gap-1">
+                                <i class="fa-solid fa-location-dot mt-0.5 text-teal-600"></i> Khu 8 Tô Hiệu, Côn Đảo
+                            </p>
+                            <p class="text-xs text-gray-500 leading-relaxed mb-4">
+                                <strong>Món ngon:</strong> Buổi sáng (từ 7h00) phục vụ cơm tấm sườn, bún chả cá Côn Đảo, hủ tiếu mực. Từ 9h30 - 21h, quán phục vụ cơm niêu ăn kèm các món dân dã như cá mú đỏ kho tộ, thịt luộc cà pháo mắm tôm, canh chua cá bóp, canh cua rau đay.
+                            </p>
+                        </div>
+                        <!-- Footer -->
+                        <div class="border-t pt-3 border-gray-100 flex items-center justify-between">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Cơm+niêu+Sài+Gòn+Côn+Đảo" target="_blank" class="px-3 py-1 rounded-full border border-gray-200 hover:border-teal-200 hover:bg-teal-50 text-gray-500 hover:text-teal-700 transition-colors flex items-center gap-1.5 text-xs font-bold w-full justify-center">
+                                <i class="fa-solid fa-map-location-dot text-teal-600"></i> Bản đồ Google Maps
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card: Nhà hàng Tri Kỷ -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-all duration-300 flex flex-col h-full food-card animate-fade-in" data-category="restaurant">
+                    <!-- Image -->
+                    <div class="h-48 w-full overflow-hidden relative shrink-0">
+                        <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=800&q=80" alt="Nhà hàng Tri Kỷ" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-orange-50 text-orange-700 border-orange-100 text-[10px] md:text-xs font-bold px-2.5 py-0.5 rounded-full border shadow-sm">🦞 Hải sản tươi sống</span>
+                    </div>
+                    <!-- Body -->
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-extrabold text-gray-800 text-base md:text-lg mb-2 hover:text-teal-700 transition-colors">Nhà hàng Tri Kỷ</h4>
+                            <p class="text-[11px] text-gray-400 mb-3 flex items-start gap-1">
+                                <i class="fa-solid fa-location-dot mt-0.5 text-teal-600"></i> Đường Nguyễn Đức Thuận, Côn Đảo
+                            </p>
+                            <p class="text-xs text-gray-500 leading-relaxed mb-4">
+                                <strong>Món ngon:</strong> Chuyên các loại hải sản tươi sống chất lượng cao như ốc, tôm, mực, cá mú, nhum biển. Đặc biệt, nhà hàng nổi tiếng với món <strong>Cua mặt trăng</strong> - một đặc sản quý hiếm lừng danh Côn Đảo.
+                            </p>
+                        </div>
+                        <!-- Footer -->
+                        <div class="border-t pt-3 border-gray-100 flex items-center justify-between">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Nhà+hàng+Tri+Kỷ+Côn+Đảo" target="_blank" class="px-3 py-1 rounded-full border border-gray-200 hover:border-teal-200 hover:bg-teal-50 text-gray-500 hover:text-teal-700 transition-colors flex items-center gap-1.5 text-xs font-bold w-full justify-center">
+                                <i class="fa-solid fa-map-location-dot text-teal-600"></i> Bản đồ Google Maps
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card: Quán hải sản Sang Tuyền -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-all duration-300 flex flex-col h-full food-card animate-fade-in" data-category="restaurant">
+                    <!-- Image -->
+                    <div class="h-48 w-full overflow-hidden relative shrink-0">
+                        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80" alt="Quán hải sản Sang Tuyền" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-orange-50 text-orange-700 border-orange-100 text-[10px] md:text-xs font-bold px-2.5 py-0.5 rounded-full border shadow-sm">🦐 Thu mua trực tiếp</span>
+                    </div>
+                    <!-- Body -->
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-extrabold text-gray-800 text-base md:text-lg mb-2 hover:text-teal-700 transition-colors">Quán hải sản Sang Tuyền</h4>
+                            <p class="text-[11px] text-gray-400 mb-3 flex items-start gap-1">
+                                <i class="fa-solid fa-location-dot mt-0.5 text-teal-600"></i> Ngã tư Phạm Hùng - Trần Phú, Côn Đảo
+                            </p>
+                            <p class="text-xs text-gray-500 leading-relaxed mb-4">
+                                <strong>Món ngon:</strong> Phục vụ chủ yếu các món hải sản (tôm, mực, cá...) được thu mua trực tiếp từ các tàu đánh bắt vừa cập cảng nên đạt độ tươi ngon tuyệt đối, thịt săn dai và giá cả cực kỳ phải chăng.
+                            </p>
+                        </div>
+                        <!-- Footer -->
+                        <div class="border-t pt-3 border-gray-100 flex items-center justify-between">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Quán+hải+sản+Sang+Tuyền+Côn+Đảo" target="_blank" class="px-3 py-1 rounded-full border border-gray-200 hover:border-teal-200 hover:bg-teal-50 text-gray-500 hover:text-teal-700 transition-colors flex items-center gap-1.5 text-xs font-bold w-full justify-center">
+                                <i class="fa-solid fa-map-location-dot text-teal-600"></i> Bản đồ Google Maps
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card: Quán Cây Bàng -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-all duration-300 flex flex-col h-full food-card animate-fade-in" data-category="restaurant">
+                    <!-- Image -->
+                    <div class="h-48 w-full overflow-hidden relative shrink-0">
+                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80" alt="Quán Cây Bàng" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-orange-50 text-orange-700 border-orange-100 text-[10px] md:text-xs font-bold px-2.5 py-0.5 rounded-full border shadow-sm">🐟 Không gian rộng rãi</span>
+                    </div>
+                    <!-- Body -->
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-extrabold text-gray-800 text-base md:text-lg mb-2 hover:text-teal-700 transition-colors">Quán Cây Bàng</h4>
+                            <p class="text-[11px] text-gray-400 mb-3 flex items-start gap-1">
+                                <i class="fa-solid fa-location-dot mt-0.5 text-teal-600"></i> Đường Trần Huy Liệu, Côn Đảo
+                            </p>
+                            <p class="text-xs text-gray-500 leading-relaxed mb-4">
+                                <strong>Món ngon:</strong> Phục vụ đa dạng các món hải sản biển đa dạng chế biến đậm vị. Quán có không gian sân vườn rộng rãi, thoáng mát lộng gió rất phù hợp cho gia đình hoặc nhóm bạn tụ họp vui vẻ.
+                            </p>
+                        </div>
+                        <!-- Footer -->
+                        <div class="border-t pt-3 border-gray-100 flex items-center justify-between">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Quán+Cây+Bàng+Côn+Đảo" target="_blank" class="px-3 py-1 rounded-full border border-gray-200 hover:border-teal-200 hover:bg-teal-50 text-gray-500 hover:text-teal-700 transition-colors flex items-center gap-1.5 text-xs font-bold w-full justify-center">
+                                <i class="fa-solid fa-map-location-dot text-teal-600"></i> Bản đồ Google Maps
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card: Bún riêu cua Bà Hai Khiêm -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-all duration-300 flex flex-col h-full food-card animate-fade-in" data-category="restaurant">
+                    <!-- Image -->
+                    <div class="h-48 w-full overflow-hidden relative shrink-0">
+                        <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=800&q=80" alt="Bún riêu cua Bà Hai Khiêm" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-orange-50 text-orange-700 border-orange-100 text-[10px] md:text-xs font-bold px-2.5 py-0.5 rounded-full border shadow-sm">🍜 Điểm ăn sáng nức tiếng</span>
+                    </div>
+                    <!-- Body -->
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-extrabold text-gray-800 text-base md:text-lg mb-2 hover:text-teal-700 transition-colors">Bún riêu cua Bà Hai Khiêm</h4>
+                            <p class="text-[11px] text-gray-400 mb-3 flex items-start gap-1">
+                                <i class="fa-solid fa-location-dot mt-0.5 text-teal-600"></i> Số 22 đường Nguyễn Huệ, Côn Đảo
+                            </p>
+                            <p class="text-xs text-gray-500 leading-relaxed mb-4">
+                                <strong>Món ngon:</strong> Bát bún riêu cua thơm ngon, ngọt thanh đậm đà chuẩn vị truyền thống. Thành phần đầy đặn gồm riêu cua béo ngậy, chả cá thác lác dai giòn, huyết heo mướt và giá đỗ chần tươi mát.
+                            </p>
+                        </div>
+                        <!-- Footer -->
+                        <div class="border-t pt-3 border-gray-100 flex items-center justify-between">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Bún+riêu+cua+Bà+Hai+Khiêm+Côn+Đảo" target="_blank" class="px-3 py-1 rounded-full border border-gray-200 hover:border-teal-200 hover:bg-teal-50 text-gray-500 hover:text-teal-700 transition-colors flex items-center gap-1.5 text-xs font-bold w-full justify-center">
+                                <i class="fa-solid fa-map-location-dot text-teal-600"></i> Bản đồ Google Maps
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card: Các nhà bè ở cảng Bến Đầm -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-all duration-300 flex flex-col h-full food-card animate-fade-in" data-category="restaurant">
+                    <!-- Image -->
+                    <div class="h-48 w-full overflow-hidden relative shrink-0">
+                        <img src="https://images.unsplash.com/photo-1553618551-fba689030290?w=800&q=80" alt="Các nhà bè ở cảng Bến Đầm" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-orange-50 text-orange-700 border-orange-100 text-[10px] md:text-xs font-bold px-2.5 py-0.5 rounded-full border shadow-sm">🛶 Ẩm thực bè nổi độc đáo</span>
+                    </div>
+                    <!-- Body -->
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-extrabold text-gray-800 text-base md:text-lg mb-2 hover:text-teal-700 transition-colors">Các nhà bè ở cảng Bến Đầm</h4>
+                            <p class="text-[11px] text-gray-400 mb-3 flex items-start gap-1">
+                                <i class="fa-solid fa-location-dot mt-0.5 text-teal-600"></i> Cảng Bến Đầm, Côn Đảo (Cách trung tâm 15km)
+                            </p>
+                            <p class="text-xs text-gray-500 leading-relaxed mb-4">
+                                <strong>Món ngon:</strong> Trải nghiệm có một không hai khi thưởng thức hải sản sống được vớt trực tiếp dưới bè nuôi và chế biến ngay tại chỗ. Ăn uống thoải mái lộng gió đại dương rì rào mát lạnh.
+                            </p>
+                        </div>
+                        <!-- Footer -->
+                        <div class="border-t pt-3 border-gray-100 flex items-center justify-between">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Nhà+bè+Cảng+Bến+Đầm+Côn+Đảo" target="_blank" class="px-3 py-1 rounded-full border border-gray-200 hover:border-teal-200 hover:bg-teal-50 text-gray-500 hover:text-teal-700 transition-colors flex items-center gap-1.5 text-xs font-bold w-full justify-center">
+                                <i class="fa-solid fa-map-location-dot text-teal-600"></i> Bản đồ Google Maps
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card: Cua mặt trăng Côn Đảo -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-all duration-300 flex flex-col h-full food-card animate-fade-in" data-category="specialty">
+                    <!-- Image -->
+                    <div class="h-48 w-full overflow-hidden relative shrink-0">
+                        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=800&q=80" alt="Cua mặt trăng Côn Đảo" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-amber-50 text-amber-700 border-amber-100 text-[10px] md:text-xs font-bold px-2.5 py-0.5 rounded-full border shadow-sm">🦀 Đặc sản quý hiếm bậc nhất</span>
+                    </div>
+                    <!-- Body -->
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-extrabold text-gray-800 text-base md:text-lg mb-2 hover:text-teal-700 transition-colors">Cua mặt trăng Côn Đảo</h4>
+                            <p class="text-[11px] text-gray-400 mb-3 flex items-start gap-1">
+                                <i class="fa-solid fa-location-dot mt-0.5 text-teal-600"></i> Các nhà hàng & bè nổi Côn Đảo
+                            </p>
+                            <p class="text-xs text-gray-500 leading-relaxed mb-4">
+                                Loài hải sản cực kỳ quý hiếm, phần thịt ngọt lịm săn chắc tựa thịt tôm hùm. Cua đạt hương vị ngon nhất khi đem hấp cách thủy chấm kèm muối tiêu chanh hoặc sốt me chua ngọt đậm đà.
+                            </p>
+                        </div>
+                        <!-- Footer -->
+                        <div class="border-t pt-3 border-gray-100 flex items-center justify-between">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Ăn+Cua+Mặt+Trăng+Côn+Đảo" target="_blank" class="px-3 py-1 rounded-full border border-gray-200 hover:border-teal-200 hover:bg-teal-50 text-gray-500 hover:text-teal-700 transition-colors flex items-center gap-1.5 text-xs font-bold w-full justify-center">
+                                <i class="fa-solid fa-map-location-dot text-teal-600"></i> Bản đồ Google Maps
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card: Ốc vú nàng nướng mỡ hành -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-all duration-300 flex flex-col h-full food-card animate-fade-in" data-category="specialty">
+                    <!-- Image -->
+                    <div class="h-48 w-full overflow-hidden relative shrink-0">
+                        <img src="https://images.unsplash.com/photo-1553618551-fba689030290?w=800&q=80" alt="Ốc vú nàng nướng mỡ hành" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-amber-50 text-amber-700 border-amber-100 text-[10px] md:text-xs font-bold px-2.5 py-0.5 rounded-full border shadow-sm">🐚 Hình dáng độc lạ ngọt thịt</span>
+                    </div>
+                    <!-- Body -->
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-extrabold text-gray-800 text-base md:text-lg mb-2 hover:text-teal-700 transition-colors">Ốc vú nàng nướng mỡ hành</h4>
+                            <p class="text-[11px] text-gray-400 mb-3 flex items-start gap-1">
+                                <i class="fa-solid fa-location-dot mt-0.5 text-teal-600"></i> Các quán hải sản Côn Đảo
+                            </p>
+                            <p class="text-xs text-gray-500 leading-relaxed mb-4">
+                                Loại ốc biển đặc trưng hình nón độc đáo, thịt ốc ngọt đậm, dai giòn sần sật. Có thể luộc, làm gỏi nhưng ngon nhất vẫn là đem nướng mỡ hành xèo xèo thơm nức trên than hồng.
+                            </p>
+                        </div>
+                        <!-- Footer -->
+                        <div class="border-t pt-3 border-gray-100 flex items-center justify-between">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Ốc+vú+nàng+Côn+Đảo" target="_blank" class="px-3 py-1 rounded-full border border-gray-200 hover:border-teal-200 hover:bg-teal-50 text-gray-500 hover:text-teal-700 transition-colors flex items-center gap-1.5 text-xs font-bold w-full justify-center">
+                                <i class="fa-solid fa-map-location-dot text-teal-600"></i> Bản đồ Google Maps
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card: Cá mú đỏ hấp xì dầu -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-all duration-300 flex flex-col h-full food-card animate-fade-in" data-category="specialty">
+                    <!-- Image -->
+                    <div class="h-48 w-full overflow-hidden relative shrink-0">
+                        <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=800&q=80" alt="Cá mú đỏ hấp xì dầu" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-amber-50 text-amber-700 border-amber-100 text-[10px] md:text-xs font-bold px-2.5 py-0.5 rounded-full border shadow-sm">🐟 Vua cá biển Côn Đảo</span>
+                    </div>
+                    <!-- Body -->
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-extrabold text-gray-800 text-base md:text-lg mb-2 hover:text-teal-700 transition-colors">Cá mú đỏ hấp xì dầu</h4>
+                            <p class="text-[11px] text-gray-400 mb-3 flex items-start gap-1">
+                                <i class="fa-solid fa-location-dot mt-0.5 text-teal-600"></i> Nhà hàng & bè nổi trung tâm
+                            </p>
+                            <p class="text-xs text-gray-500 leading-relaxed mb-4">
+                                Loài cá mú quý hiếm da đỏ tươi lấp lánh, thớ thịt cá siêu trắng, ngọt mềm mà không bở. Thường được hấp xì dầu hành gừng, nướng mọi hoặc làm gỏi thịt cá tươi ngon.
+                            </p>
+                        </div>
+                        <!-- Footer -->
+                        <div class="border-t pt-3 border-gray-100 flex items-center justify-between">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Cá+mú+đỏ+Côn+Đảo" target="_blank" class="px-3 py-1 rounded-full border border-gray-200 hover:border-teal-200 hover:bg-teal-50 text-gray-500 hover:text-teal-700 transition-colors flex items-center gap-1.5 text-xs font-bold w-full justify-center">
+                                <i class="fa-solid fa-map-location-dot text-teal-600"></i> Bản đồ Google Maps
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card: Gỏi cá nhám chua ngọt -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-all duration-300 flex flex-col h-full food-card animate-fade-in" data-category="specialty">
+                    <!-- Image -->
+                    <div class="h-48 w-full overflow-hidden relative shrink-0">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&q=80" alt="Gỏi cá nhám chua ngọt" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-amber-50 text-amber-700 border-amber-100 text-[10px] md:text-xs font-bold px-2.5 py-0.5 rounded-full border shadow-sm">🥗 Hương vị biển khơi bùng nổ</span>
+                    </div>
+                    <!-- Body -->
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-extrabold text-gray-800 text-base md:text-lg mb-2 hover:text-teal-700 transition-colors">Gỏi cá nhám chua ngọt</h4>
+                            <p class="text-[11px] text-gray-400 mb-3 flex items-start gap-1">
+                                <i class="fa-solid fa-location-dot mt-0.5 text-teal-600"></i> Các quán ăn dọc bờ biển Côn Đảo
+                            </p>
+                            <p class="text-xs text-gray-500 leading-relaxed mb-4">
+                                Món ăn lấy phần thịt sống lưng cá nhám tươi ngọt trộn cùng riềng, sả phi, trộn nước phỗng chua ngọt cay ấm. Ăn kèm các loại rau ngổ, chuối xanh chát và khế chua.
+                            </p>
+                        </div>
+                        <!-- Footer -->
+                        <div class="border-t pt-3 border-gray-100 flex items-center justify-between">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Gỏi+cá+nhám+Côn+Đảo" target="_blank" class="px-3 py-1 rounded-full border border-gray-200 hover:border-teal-200 hover:bg-teal-50 text-gray-500 hover:text-teal-700 transition-colors flex items-center gap-1.5 text-xs font-bold w-full justify-center">
+                                <i class="fa-solid fa-map-location-dot text-teal-600"></i> Bản đồ Google Maps
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card: Nhum biển nướng mỡ hành -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-all duration-300 flex flex-col h-full food-card animate-fade-in" data-category="specialty">
+                    <!-- Image -->
+                    <div class="h-48 w-full overflow-hidden relative shrink-0">
+                        <img src="https://images.unsplash.com/photo-1553618551-fba689030290?w=800&q=80" alt="Nhum biển nướng mỡ hành" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-amber-50 text-amber-700 border-amber-100 text-[10px] md:text-xs font-bold px-2.5 py-0.5 rounded-full border shadow-sm">🌰 Nhân sâm của đại dương</span>
+                    </div>
+                    <!-- Body -->
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-extrabold text-gray-800 text-base md:text-lg mb-2 hover:text-teal-700 transition-colors">Nhum biển nướng mỡ hành</h4>
+                            <p class="text-[11px] text-gray-400 mb-3 flex items-start gap-1">
+                                <i class="fa-solid fa-location-dot mt-0.5 text-teal-600"></i> Bè nổi cảng Bến Đầm
+                            </p>
+                            <p class="text-xs text-gray-500 leading-relaxed mb-4">
+                                Nhum biển (cầu gai) bổ đôi, nướng lửa than hồng rực rỡ, rưới thêm mỡ hành béo ngậy, trứng cút cùng đậu phộng giòn giòn, ăn ngọt bùi béo ngậy cực kỳ bổ dưỡng.
+                            </p>
+                        </div>
+                        <!-- Footer -->
+                        <div class="border-t pt-3 border-gray-100 flex items-center justify-between">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Nhum+biển+nướng+Côn+Đảo" target="_blank" class="px-3 py-1 rounded-full border border-gray-200 hover:border-teal-200 hover:bg-teal-50 text-gray-500 hover:text-teal-700 transition-colors flex items-center gap-1.5 text-xs font-bold w-full justify-center">
+                                <i class="fa-solid fa-map-location-dot text-teal-600"></i> Bản đồ Google Maps
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card: Cháo hàu sữa bổ dưỡng -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-all duration-300 flex flex-col h-full food-card animate-fade-in" data-category="specialty">
+                    <!-- Image -->
+                    <div class="h-48 w-full overflow-hidden relative shrink-0">
+                        <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=800&q=80" alt="Cháo hàu sữa bổ dưỡng" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-amber-50 text-amber-700 border-amber-100 text-[10px] md:text-xs font-bold px-2.5 py-0.5 rounded-full border shadow-sm">🥣 Ấm lòng bữa sáng biển khơi</span>
+                    </div>
+                    <!-- Body -->
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-extrabold text-gray-800 text-base md:text-lg mb-2 hover:text-teal-700 transition-colors">Cháo hàu sữa bổ dưỡng</h4>
+                            <p class="text-[11px] text-gray-400 mb-3 flex items-start gap-1">
+                                <i class="fa-solid fa-location-dot mt-0.5 text-teal-600"></i> Các quán ăn sáng thị trấn
+                            </p>
+                            <p class="text-xs text-gray-500 leading-relaxed mb-4">
+                                Món ăn sáng đầy bổ dưỡng, tô cháo ấm nồng sánh mịn hòa quyện hoàn hảo giữa gạo thơm dẻo cùng vị ngọt thanh mát, béo múp của những con hàu sữa tươi sống vừa khai thác.
+                            </p>
+                        </div>
+                        <!-- Footer -->
+                        <div class="border-t pt-3 border-gray-100 flex items-center justify-between">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Cháo+hàu+Côn+Đảo" target="_blank" class="px-3 py-1 rounded-full border border-gray-200 hover:border-teal-200 hover:bg-teal-50 text-gray-500 hover:text-teal-700 transition-colors flex items-center gap-1.5 text-xs font-bold w-full justify-center">
+                                <i class="fa-solid fa-map-location-dot text-teal-600"></i> Bản đồ Google Maps
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card: Phiên Khúc Coffee & Food -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-all duration-300 flex flex-col h-full food-card animate-fade-in" data-category="cafe">
+                    <!-- Image -->
+                    <div class="h-48 w-full overflow-hidden relative shrink-0">
+                        <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&q=80" alt="Phiên Khúc Coffee & Food" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-teal-50 text-teal-700 border-teal-100 text-[10px] md:text-xs font-bold px-2.5 py-0.5 rounded-full border shadow-sm">☕ Không gian hoài cổ vintage</span>
+                    </div>
+                    <!-- Body -->
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-extrabold text-gray-800 text-base md:text-lg mb-2 hover:text-teal-700 transition-colors">Phiên Khúc Coffee & Food</h4>
+                            <p class="text-[11px] text-gray-400 mb-3 flex items-start gap-1">
+                                <i class="fa-solid fa-location-dot mt-0.5 text-teal-600"></i> Đường Nguyễn Văn Linh, Côn Đảo
+                            </p>
+                            <p class="text-xs text-gray-500 leading-relaxed mb-4">
+                                Không gian hoài niệm xưa cũ với các chi tiết trang trí gỗ mộc mạc mang dấu ấn thời gian. Nơi bạn có thể nhâm nhi ly trà, nghe nhạc tình ca acoustic mộc mạc và chụp những bức hình đầy hoài niệm.
+                            </p>
+                        </div>
+                        <!-- Footer -->
+                        <div class="border-t pt-3 border-gray-100 flex items-center justify-between">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Phiên+Khúc+coffee+Côn+Đảo" target="_blank" class="px-3 py-1 rounded-full border border-gray-200 hover:border-teal-200 hover:bg-teal-50 text-gray-500 hover:text-teal-700 transition-colors flex items-center gap-1.5 text-xs font-bold w-full justify-center">
+                                <i class="fa-solid fa-map-location-dot text-teal-600"></i> Bản đồ Google Maps
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card: Quán Cafe Côn Sơn -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-all duration-300 flex flex-col h-full food-card animate-fade-in" data-category="cafe">
+                    <!-- Image -->
+                    <div class="h-48 w-full overflow-hidden relative shrink-0">
+                        <img src="https://images.unsplash.com/photo-1507133750040-4a8f57021571?w=800&q=80" alt="Quán Cafe Côn Sơn" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-teal-50 text-teal-700 border-teal-100 text-[10px] md:text-xs font-bold px-2.5 py-0.5 rounded-full border shadow-sm">🌊 View biển vịnh Côn Sơn trực diện</span>
+                    </div>
+                    <!-- Body -->
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-extrabold text-gray-800 text-base md:text-lg mb-2 hover:text-teal-700 transition-colors">Quán Cafe Côn Sơn</h4>
+                            <p class="text-[11px] text-gray-400 mb-3 flex items-start gap-1">
+                                <i class="fa-solid fa-location-dot mt-0.5 text-teal-600"></i> Đường Tôn Đức Thắng, Côn Đảo
+                            </p>
+                            <p class="text-xs text-gray-500 leading-relaxed mb-4">
+                                Tọa lạc ngay trên con đường bao biển đẹp nhất đảo. Quán có view ngắm sóng vịnh Côn Sơn cực kỳ đắt giá, đón gió đại dương lộng gió, thích hợp ngắm tàu cano qua lại và đón bình minh.
+                            </p>
+                        </div>
+                        <!-- Footer -->
+                        <div class="border-t pt-3 border-gray-100 flex items-center justify-between">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Quán+cafe+Côn+Sơn+Côn+Đảo" target="_blank" class="px-3 py-1 rounded-full border border-gray-200 hover:border-teal-200 hover:bg-teal-50 text-gray-500 hover:text-teal-700 transition-colors flex items-center gap-1.5 text-xs font-bold w-full justify-center">
+                                <i class="fa-solid fa-map-location-dot text-teal-600"></i> Bản đồ Google Maps
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card: Infiniti Cafe & Resto -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-all duration-300 flex flex-col h-full food-card animate-fade-in" data-category="cafe">
+                    <!-- Image -->
+                    <div class="h-48 w-full overflow-hidden relative shrink-0">
+                        <img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?w=800&q=80" alt="Infiniti Cafe & Resto" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-teal-50 text-teal-700 border-teal-100 text-[10px] md:text-xs font-bold px-2.5 py-0.5 rounded-full border shadow-sm">🌿 Không gian xanh hiện đại</span>
+                    </div>
+                    <!-- Body -->
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-extrabold text-gray-800 text-base md:text-lg mb-2 hover:text-teal-700 transition-colors">Infiniti Cafe & Resto</h4>
+                            <p class="text-[11px] text-gray-400 mb-3 flex items-start gap-1">
+                                <i class="fa-solid fa-location-dot mt-0.5 text-teal-600"></i> Khu 8, đường Trần Phú, Côn Đảo
+                            </p>
+                            <p class="text-xs text-gray-500 leading-relaxed mb-4">
+                                Thiết kế hiện đại xen kẽ phong cách mộc mạc rợp bóng cây xanh. Quán phục vụ nhiều thức uống sáng tạo, sinh tố nhiệt đới mát lạnh cùng các món bánh ngọt, đồ ăn Tây phong phú.
+                            </p>
+                        </div>
+                        <!-- Footer -->
+                        <div class="border-t pt-3 border-gray-100 flex items-center justify-between">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Infiniti+Cafe+Côn+Đảo" target="_blank" class="px-3 py-1 rounded-full border border-gray-200 hover:border-teal-200 hover:bg-teal-50 text-gray-500 hover:text-teal-700 transition-colors flex items-center gap-1.5 text-xs font-bold w-full justify-center">
+                                <i class="fa-solid fa-map-location-dot text-teal-600"></i> Bản đồ Google Maps
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card: Quán Cafe Ba Lê -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-all duration-300 flex flex-col h-full food-card animate-fade-in" data-category="cafe">
+                    <!-- Image -->
+                    <div class="h-48 w-full overflow-hidden relative shrink-0">
+                        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&q=80" alt="Quán Cafe Ba Lê" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-teal-50 text-teal-700 border-teal-100 text-[10px] md:text-xs font-bold px-2.5 py-0.5 rounded-full border shadow-sm">🏡 Quán nhỏ bình yên mộc mạc</span>
+                    </div>
+                    <!-- Body -->
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-extrabold text-gray-800 text-base md:text-lg mb-2 hover:text-teal-700 transition-colors">Quán Cafe Ba Lê</h4>
+                            <p class="text-[11px] text-gray-400 mb-3 flex items-start gap-1">
+                                <i class="fa-solid fa-location-dot mt-0.5 text-teal-600"></i> Khu 6, đường Trần Phú, Côn Đảo
+                            </p>
+                            <p class="text-xs text-gray-500 leading-relaxed mb-4">
+                                Một ngôi nhà gỗ nhỏ xinh ẩn hiện bình yên giữa khu phố yên ả. Thích hợp để bạn trốn nắng trưa, thong thả đọc một cuốn sách hay, nghe bản nhạc Trịnh và ngắm nhìn nhịp sống chậm rãi.
+                            </p>
+                        </div>
+                        <!-- Footer -->
+                        <div class="border-t pt-3 border-gray-100 flex items-center justify-between">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Quán+cafe+Ba+Lê+Côn+Đảo" target="_blank" class="px-3 py-1 rounded-full border border-gray-200 hover:border-teal-200 hover:bg-teal-50 text-gray-500 hover:text-teal-700 transition-colors flex items-center gap-1.5 text-xs font-bold w-full justify-center">
+                                <i class="fa-solid fa-map-location-dot text-teal-600"></i> Bản đồ Google Maps
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card: Eden House & Coffee Côn Đảo -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-all duration-300 flex flex-col h-full food-card animate-fade-in" data-category="cafe">
+                    <!-- Image -->
+                    <div class="h-48 w-full overflow-hidden relative shrink-0">
+                        <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=800&q=80" alt="Eden House & Coffee Côn Đảo" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-teal-50 text-teal-700 border-teal-100 text-[10px] md:text-xs font-bold px-2.5 py-0.5 rounded-full border shadow-sm">🏡 Nhà kính ngập nắng tiên cảnh</span>
+                    </div>
+                    <!-- Body -->
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-extrabold text-gray-800 text-base md:text-lg mb-2 hover:text-teal-700 transition-colors">Eden House & Coffee Côn Đảo</h4>
+                            <p class="text-[11px] text-gray-400 mb-3 flex items-start gap-1">
+                                <i class="fa-solid fa-location-dot mt-0.5 text-teal-600"></i> Đường Dương Bá Trạc, Côn Đảo
+                            </p>
+                            <p class="text-xs text-gray-500 leading-relaxed mb-4">
+                                Quán cafe phong cách nhà kính tuyệt đẹp rực rỡ ngập nắng và hoa lá xanh tươi bao phủ xung quanh. Tọa độ check-in sống ảo cực ngọt ngào tựa vườn cổ tích thơ mộng giữa biển đảo.
+                            </p>
+                        </div>
+                        <!-- Footer -->
+                        <div class="border-t pt-3 border-gray-100 flex items-center justify-between">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Eden+House+Coffee+Côn+Đảo" target="_blank" class="px-3 py-1 rounded-full border border-gray-200 hover:border-teal-200 hover:bg-teal-50 text-gray-500 hover:text-teal-700 transition-colors flex items-center gap-1.5 text-xs font-bold w-full justify-center">
+                                <i class="fa-solid fa-map-location-dot text-teal-600"></i> Bản đồ Google Maps
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card: Quán Coffee Le Condor -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-all duration-300 flex flex-col h-full food-card animate-fade-in" data-category="cafe">
+                    <!-- Image -->
+                    <div class="h-48 w-full overflow-hidden relative shrink-0">
+                        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80" alt="Quán Coffee Le Condor" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-teal-50 text-teal-700 border-teal-100 text-[10px] md:text-xs font-bold px-2.5 py-0.5 rounded-full border shadow-sm">🖤 Tối giản nghệ thuật cực nghệ</span>
+                    </div>
+                    <!-- Body -->
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-extrabold text-gray-800 text-base md:text-lg mb-2 hover:text-teal-700 transition-colors">Quán Coffee Le Condor</h4>
+                            <p class="text-[11px] text-gray-400 mb-3 flex items-start gap-1">
+                                <i class="fa-solid fa-location-dot mt-0.5 text-teal-600"></i> Khu 5 đường Nguyễn Huệ, Côn Đảo
+                            </p>
+                            <p class="text-xs text-gray-500 leading-relaxed mb-4">
+                                Sở hữu lối thiết kế tối giản đương đại với tông màu trung tính đen xám trắng thanh nhã. Góc decor đậm chất nghệ thuật độc đáo hứa hẹn mang lại những tấm ảnh OOTD sống ảo chất lừ.
+                            </p>
+                        </div>
+                        <!-- Footer -->
+                        <div class="border-t pt-3 border-gray-100 flex items-center justify-between">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Le+Condor+Coffee+Côn+Đảo" target="_blank" class="px-3 py-1 rounded-full border border-gray-200 hover:border-teal-200 hover:bg-teal-50 text-gray-500 hover:text-teal-700 transition-colors flex items-center gap-1.5 text-xs font-bold w-full justify-center">
+                                <i class="fa-solid fa-map-location-dot text-teal-600"></i> Bản đồ Google Maps
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card: Bánh khọt Côn Đảo -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-all duration-300 flex flex-col h-full food-card animate-fade-in" data-category="specialty">
+                    <div class="h-48 w-full overflow-hidden relative shrink-0">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/B%C3%A1nh_kh%E1%BB%8Dt_V%C5%A9ng_T%C3%A0u.jpg/800px-B%C3%A1nh_kh%E1%BB%8Dt_V%C5%A9ng_T%C3%A0u.jpg" alt="Bánh khọt Côn Đảo" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-orange-50 text-orange-700 border-orange-100 text-[10px] md:text-xs font-bold px-2.5 py-0.5 rounded-full border shadow-sm">🥢 Dân dã địa phương</span>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-extrabold text-gray-800 text-base md:text-lg mb-2 hover:text-teal-700 transition-colors">Bánh khọt Côn Đảo</h4>
+                            <p class="text-[11px] text-gray-400 mb-3 flex items-start gap-1">
+                                <i class="fa-solid fa-location-dot mt-0.5 text-teal-600"></i> Bánh khọt Duyên Trang (Hoàng Phi Yến) / Cỏ Mây
+                            </p>
+                            <p class="text-xs text-gray-500 leading-relaxed mb-4">
+                                <strong>Món ngon:</strong> Thức quà dân dã phải thử. Bánh khọt được đổ giòn rụm màu vàng ươm, nhân bên trong là tôm, mực tươi rói của vùng biển đảo. Ăn kèm đu đủ chua ngọt, rau sống và nước mắm pha cực kỳ bắt miệng.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card: Bánh canh ghẹ -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-all duration-300 flex flex-col h-full food-card animate-fade-in" data-category="specialty">
+                    <div class="h-48 w-full overflow-hidden relative shrink-0">
+                        <img src="https://images.unsplash.com/photo-1594971475674-884cb4285fb7?w=800&q=80" alt="Bánh canh ghẹ" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-orange-50 text-orange-700 border-orange-100 text-[10px] md:text-xs font-bold px-2.5 py-0.5 rounded-full border shadow-sm">🍜 Ngọt thanh vị biển</span>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-extrabold text-gray-800 text-base md:text-lg mb-2 hover:text-teal-700 transition-colors">Bánh canh ghẹ</h4>
+                            <p class="text-[11px] text-gray-400 mb-3 flex items-start gap-1">
+                                <i class="fa-solid fa-location-dot mt-0.5 text-teal-600"></i> Bánh canh ghẹ Ngọc (Đường Lê Hồng Phong)
+                            </p>
+                            <p class="text-xs text-gray-500 leading-relaxed mb-4">
+                                <strong>Món ngon:</strong> Món ăn đặc trưng với sợi bánh canh dai mềm, quyện trong phần nước dùng ngọt thanh, sền sệt được ninh từ ghẹ biển tươi. Topping ngập tràn thịt ghẹ chắc nịch, tạo nên bữa ăn ấm bụng.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ========= TAB 5: KỶ NIỆM ĐÁNG NHỚ ========= -->
+        
