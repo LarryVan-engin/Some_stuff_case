@@ -826,6 +826,9 @@
                         </div>
                         <span class="font-extrabold text-sm">Admin Dashboard — Vũng Tàu</span>
                         <span class="bg-teal-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">Đang đăng nhập</span>
+                        <span id="github-sync-indicator" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gray-800 text-gray-400 flex items-center gap-1 transition-all duration-300">
+                            <i class="fa-solid fa-cloud"></i> Kiểm tra đồng bộ...
+                        </span>
                     </div>
                     <div class="flex items-center gap-2">
                         <button onclick="exportCMSData()" class="text-gray-400 hover:text-teal-400 text-xs flex items-center gap-1 transition-colors">
@@ -1956,7 +1959,12 @@ function loadData(key, def=[]) {
     try { return JSON.parse(localStorage.getItem(key)) || def; }
     catch(e){ return def; }
 }
-function saveData(key, data) { localStorage.setItem(key, JSON.stringify(data)); }
+function saveData(key, data) {
+    localStorage.setItem(key, JSON.stringify(data));
+    if ([KEYS.adminDests, KEYS.adminHotels, KEYS.adminFood, KEYS.memories].includes(key)) {
+        triggerAutoSyncToGitHub();
+    }
+}
 function genId() { return Date.now().toString(36) + Math.random().toString(36).slice(2); }
 
 // --- Simple hash (not cryptographic, just obfuscation) ---
@@ -2872,6 +2880,161 @@ function showTestResult(elId, success, msg) {
 }
 
 // ============================================================
+// AUTOMATIC GITHUB SYNC ENGINE
+// ============================================================
+function showSyncStatus(status, message) {
+    const el = document.getElementById('github-sync-indicator');
+    if (!el) return;
+    el.title = message;
+    el.className = "text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1 transition-all duration-300 ";
+    
+    if (status === 'success') {
+        el.className += "bg-green-600 text-white";
+        el.innerHTML = '<i class="fa-solid fa-cloud-arrow-up"></i> Đã đồng bộ';
+    } else if (status === 'error') {
+        el.className += "bg-red-600 text-white animate-bounce";
+        el.innerHTML = '<i class="fa-solid fa-cloud-slash"></i> Lỗi đồng bộ';
+    } else if (status === 'syncing' || status === 'fetching') {
+        el.className += "bg-teal-600 text-white animate-pulse";
+        el.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Đang đồng bộ...';
+    } else if (status === 'no_config') {
+        el.className += "bg-gray-800 text-gray-400";
+        el.innerHTML = '<i class="fa-solid fa-cloud"></i> Offline';
+    } else if (status === 'checking') {
+        el.className += "bg-gray-700 text-gray-300 animate-pulse";
+        el.innerHTML = '<i class="fa-solid fa-cloud-arrow-down"></i> Kiểm tra...';
+    }
+}
+
+let syncTimeout = null;
+function triggerAutoSyncToGitHub() {
+    if (syncTimeout) clearTimeout(syncTimeout);
+    syncTimeout = setTimeout(pushDbToGitHub, 1500);
+}
+
+async function pushDbToGitHub() {
+    const token = localStorage.getItem(KEYS.ghToken) || '';
+    const config = loadData(KEYS.ghConfig, {});
+    if (!token || !config.repo) {
+        showSyncStatus('no_config', 'Chưa cấu hình GitHub Token hoặc Repo.');
+        return;
+    }
+
+    const repo = config.repo;
+    const branch = config.branch || 'main';
+    
+    let baseFolder = 'vungtau/';
+    if (config.path) {
+        baseFolder = config.path.replace(/images\/?$/, '');
+        if (baseFolder && !baseFolder.endsWith('/')) baseFolder += '/';
+    }
+    const fullPath = `${baseFolder}db.json`.replace(/\/\//g, '/');
+
+    const dbData = {
+        destinations: loadData(KEYS.adminDests),
+        hotels: loadData(KEYS.adminHotels),
+        food: loadData(KEYS.adminFood),
+        memories: loadData(KEYS.memories, {albums:[]}),
+        updatedAt: new Date().toISOString()
+    };
+
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(dbData, null, 2))));
+    showSyncStatus('syncing', 'Đang đồng bộ dữ liệu lên GitHub...');
+
+    try {
+        let sha = null;
+        const getResp = await fetch(`https://api.github.com/repos/${repo}/contents/${fullPath}?ref=${branch}`, {
+            headers: { 'Authorization': `token ${token}` }
+        });
+        if (getResp.ok) {
+            const fileInfo = await getResp.json();
+            sha = fileInfo.sha;
+        }
+
+        const putBody = {
+            message: `Auto sync CMS data: ${new Date().toISOString()}`,
+            content: content,
+            branch: branch
+        };
+        if (sha) putBody.sha = sha;
+
+        const putResp = await fetch(`https://api.github.com/repos/${repo}/contents/${fullPath}`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `token ${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(putBody)
+        });
+
+        if (putResp.ok) {
+            showSyncStatus('success', 'Đồng bộ GitHub thành công!');
+        } else {
+            const errData = await putResp.json();
+            showSyncStatus('error', `Lỗi đồng bộ: ${errData.message}`);
+        }
+    } catch (err) {
+        showSyncStatus('error', `Lỗi kết nối đồng bộ: ${err.message}`);
+    }
+}
+
+async function syncDbFromGitHub() {
+    const token = localStorage.getItem(KEYS.ghToken) || '';
+    const config = loadData(KEYS.ghConfig, {});
+    if (!token || !config.repo) {
+        showSyncStatus('no_config', 'Chưa cấu hình GitHub Token hoặc Repo.');
+        return;
+    }
+
+    const repo = config.repo;
+    const branch = config.branch || 'main';
+    
+    let baseFolder = 'vungtau/';
+    if (config.path) {
+        baseFolder = config.path.replace(/images\/?$/, '');
+        if (baseFolder && !baseFolder.endsWith('/')) baseFolder += '/';
+    }
+    const fullPath = `${baseFolder}db.json`.replace(/\/\//g, '/');
+
+    showSyncStatus('checking', 'Đang kiểm tra dữ liệu mới từ GitHub...');
+
+    try {
+        const resp = await fetch(`https://api.github.com/repos/${repo}/contents/${fullPath}?ref=${branch}`, {
+            headers: { 'Authorization': `token ${token}` }
+        });
+        if (resp.ok) {
+            const fileInfo = await resp.json();
+            const decodedContent = decodeURIComponent(escape(atob(fileInfo.content.replace(/\s/g, ''))));
+            const data = JSON.parse(decodedContent);
+
+            if (data.destinations) saveDataDirectly(KEYS.adminDests, data.destinations);
+            if (data.hotels) saveDataDirectly(KEYS.adminHotels, data.hotels);
+            if (data.food) saveDataDirectly(KEYS.adminFood, data.food);
+            if (data.memories) saveDataDirectly(KEYS.memories, data.memories);
+
+            renderAdminDestCardsInTab1();
+            renderAdminHotelsInTab3();
+            renderAdminFoodInTab4();
+            if (sessionStorage.getItem('adminLoggedIn') === 'yes') {
+                renderAdminDestList();
+                renderAdminHotelList();
+                renderAdminFoodList();
+                renderAdminMemList();
+            }
+            showSyncStatus('success', 'Đã đồng bộ từ GitHub!');
+        } else {
+            showSyncStatus('success', 'Đã sẵn sàng đồng bộ.');
+        }
+    } catch (err) {
+        showSyncStatus('error', `Không thể tải dữ liệu từ GitHub: ${err.message}`);
+    }
+}
+
+function saveDataDirectly(key, data) {
+    localStorage.setItem(key, JSON.stringify(data));
+}
+
+// ============================================================
 // MEMORY PASSWORD CHANGE
 // ============================================================
 function changeMemoryPass() {
@@ -2989,6 +3152,9 @@ document.addEventListener('keydown', e => {
     renderAdminDestCardsInTab1();
     renderAdminHotelsInTab3();
     renderAdminFoodInTab4();
+    
+    // Auto sync from GitHub on page load
+    syncDbFromGitHub();
 })();
 
     </script>
