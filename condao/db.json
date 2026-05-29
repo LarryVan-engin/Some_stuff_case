@@ -513,6 +513,17 @@
   ],
   "hotels": [
     {
+      "id": "mpr2lafkw2cjbszvj",
+      "name": "Nam Hai Hotel",
+      "imgUrl": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/810210897.jpg?k=794d0752e58361110348ca0fa28e4f330216a75ec118bc6647d62c151d15b601&o=",
+      "stars": "2",
+      "price": "~ 500 - 1.2M VND",
+      "address": "5 Đường Trần Phú, Côn Đảo, Việt Nam Vị trí xuất sắc - được cho điểm 9.3/10!(điểm từ 86 đánh giá) Được khách đánh giá sau khi họ nghỉ tại Nam Hai Hotel.",
+      "mapsUrl": "https://maps.app.goo.gl/YJ8uwaEjiLNw3rYXA",
+      "linkUrl": "https://www.booking.com/hotel/vn/nam-hai-con-dao-con-dao1.vi.html?aid=356980&label=gog235jc-10CAso9AFCGWhvbWVzdGF5LW5oYS10b2ktY29uLWRhbzFIKlgDaPQBiAEBmAEzuAEXyAEM2AED6AEB-AEBiAIBqAIBuALX1-bQBsACAdICJGY0M2IyYmY4LTE1N2MtNDYwOC04Y2FlLWRkODM2MjViNTAxNdgCAeACAQ&sid=d5b4f1e277f7843cf58b9b97677ce34d&all_sr_blocks=1546820804_0_2_0_0&checkin=2026-05-31&checkout=2026-06-01&dest_id=-3711308&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=1&highlighted_blocks=1546820804_0_2_0_0&hpos=1&matching_block_id=1546820804_0_2_0_0&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&sr_pri_blocks=1546820804_0_2_0_0__57868759&srepoch=1780067978&srpvid=05726b4dd3d0073b&type=total&ucfs=1&",
+      "desc": "Nằm ở Côn Đảo, cách Bãi biển An Hải 5 phút đi bộ, Nam Hai Hotel cung cấp chỗ nghỉ có khu vườn, chỗ đậu xe riêng miễn phí, sân hiên và nhà hàng. Ngoài quầy bar, khách sạn 3 sao này còn có các phòng với điều hòa được trang bị Wi-Fi miễn phí, trong đó mỗi phòng đều có phòng tắm riêng. Chỗ nghỉ này cung cấp dịch vụ phòng và quầy lễ tân 24 giờ cho khách.\n\nTại khách sạn, các phòng đều có tủ quần áo. Các phòng được thiết kế có bàn làm việc và TV màn hình phẳng, ngoài ra một số phòng tại Nam Hai Hotel có ban công. Tại chỗ nghỉ, tất cả các phòng đều có ga trải giường và khăn tắm.\n\nNam Hai Hotel có phục vụ bữa sáng kiểu Á.\n\nCác điểm tham quan nổi tiếng gần khách sạn bao gồm Bảo tàng Côn Đảo, Nhà Tù Côn Đảo và Bảo tàng Cách mạng. Sân bay Côn Đảo cách 14 km."
+    },
+    {
       "id": "mpr21pmd0jb9jn40vsum",
       "name": "Orson Hotel & Resort Con Dao",
       "imgUrl": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhGEOSoY9zev0_hayp-lvIQ7bnldLkfiIhcBsmtznE7clRTZ_6aEGvDjXnJuYp4NoIVO7B8AV7Xk4XIQc-QaM_1cNmUl4--hkBaMbbAt-elHbqepC1o0WPRX-kCME5yWCCbBTOyDbUE8VbfXG9L22sxzHkD4gn-_10crt5hmLENrRmhFJOYvvDojgQ=w408-h302-k-no",
@@ -832,5 +843,5 @@
   "memories": {
     "albums": []
   },
-  "updatedAt": "2026-05-29T15:19:16.027Z"
+  "updatedAt": "2026-05-29T15:21:49.298Z"
 }
