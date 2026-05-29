@@ -513,6 +513,17 @@
   ],
   "hotels": [
     {
+      "id": "mpr21pmd0jb9jn40vsum",
+      "name": "Orson Hotel & Resort Con Dao",
+      "imgUrl": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhGEOSoY9zev0_hayp-lvIQ7bnldLkfiIhcBsmtznE7clRTZ_6aEGvDjXnJuYp4NoIVO7B8AV7Xk4XIQc-QaM_1cNmUl4--hkBaMbbAt-elHbqepC1o0WPRX-kCME5yWCCbBTOyDbUE8VbfXG9L22sxzHkD4gn-_10crt5hmLENrRmhFJOYvvDojgQ=w408-h302-k-no",
+      "stars": "4",
+      "price": "~1.6M - 2.1M VND",
+      "address": "10 Bến Đầm, Côn Đảo, Hồ Chí Minh 790000, Việt Nam",
+      "mapsUrl": "https://maps.app.goo.gl/sq3BZsANXaF72San7",
+      "linkUrl": "https://www.google.com/aclk?sa=L&ai=DChsSEwjEqcr24d6UAxUvhmYCHSqwKX8YACICCAEQAxoCc20&co=1&ase=2&gclid=CjwKCAjw8uTQBhAdEiwAVvtJyi3zIEnO-NoA-fVDZDLyHqmAf8m2R6gB385ZHUgiCvcmqgrw3Hp8oBoCO3QQAvD_BwE&cid=CAASzQHkaBe7VQYk1Qv-UpN3jQvug66SzksR2q4jKAKZqMGbSg7pTyob2VeUUbLCU1A6jB8bkYCBRELl64jY_px2Mp4LPnPzz3_JSu3xrVDpYcSBZZWGD2dcb-5gkynqRklTW8LBvtmNsjU2ML3ARNSAUNISkFUD7yI673e5KqD8zc71H8ODHNvKhTBQtAEqnCymF6wAfLbLlHaJXmbazITInOFuOALiHX7FN52pNyiQjFrXXId46gnVzX-cG30qHRSfDkd5088CxK0O3BXtY_SB&cce=2&category=acrcp_v1_32&sig=AOD64_22rCc35j1l-hf5YrtTNuawvhY7hg&nis=4&adurl",
+      "desc": "The Great Nature skillfully created Orson Hotel & Resort Con Dao in a perfect location gloriously backed up by Con Son mountain and overlooking the vast ocean bringing our valued guests a feeling of sweet romance and true relaxation during their stay here"
+    },
+    {
       "id": "default_hotel_1",
       "name": "Six Senses Côn Đảo",
       "stars": "5",
@@ -568,18 +579,6 @@
       "address": "",
       "desc": "Nơi nghỉ dưỡng bình yên với bể bơi phong cách Châu Âu rộng mở, bao bọc bởi thảm cỏ xanh mướt mát lành mang lại không gian thư giãn tuyệt diệu.",
       "imgUrl": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80",
-      "mapsUrl": "",
-      "linkUrl": "",
-      "isDefault": true
-    },
-    {
-      "id": "default_hotel_7",
-      "name": "The Mystery",
-      "stars": "3",
-      "price": "",
-      "address": "",
-      "desc": "Phong cách Boutique cực kỳ nổi bật với tông màu trắng tinh khôi chủ đạo, điểm xuyết giàn cây leo xanh mướt, tạo nên không gian vô cùng tao nhã.",
-      "imgUrl": "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=800&q=80",
       "mapsUrl": "",
       "linkUrl": "",
       "isDefault": true
@@ -834,5 +833,5 @@
   "memories": {
     "albums": []
   },
-  "updatedAt": "2026-05-29T15:00:36.311Z"
+  "updatedAt": "2026-05-29T15:06:35.863Z"
 }
