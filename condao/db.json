@@ -598,14 +598,13 @@
     {
       "id": "default_hotel_9",
       "name": "Khách sạn Tuấn Ninh II",
+      "imgUrl": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/595150946.jpg?k=869d24180a8d440b326e0554b2c87a7a7aef7047db2f29b1d5b3fa21ae2c3cfb&o=",
       "stars": "2",
       "price": "",
       "address": "",
-      "desc": "Thiết kế theo xu hướng tối giản, nhẹ nhàng nhưng tinh tế, hiện đại, mang lại không gian lưu trú vô cùng gọn gàng và thoải mái cho du khách.",
-      "imgUrl": "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=80",
       "mapsUrl": "",
       "linkUrl": "",
-      "isDefault": true
+      "desc": "Tuấn Ninh Hotel II nằm ở Côn Đảo, cách Nhà tù Phú Hải 9 phút đi bộ và Chùa Vân Sơn 2.5 km. Chỗ nghỉ cách Bến Đầm Vũng Tàu khoảng 12 km, Bảo tàng Cách mạng 5 phút đi bộ và Trại giam Phú Sơn 600 m. Khách sạn có hồ bơi ngoài trời. Dịch vụ phòng và Wi-Fi miễn phí.\n\nVới phòng tắm riêng được trang bị vòi sen và đồ vệ sinh cá nhân miễn phí, các căn tại khách sạn có TV màn hình phẳng và điều hòa, trong đó một số phòng có sân hiên. Tại Tuấn Ninh Hotel II, các phòng được thiết kế có ga trải giường và khăn tắm.\n\nKhách có thể chơi bóng bàn tại chỗ nghỉ. Ngoài ra, chỗ nghỉ có dịch vụ thuê xe đạp.\n\nCác điểm tham quan nổi tiếng gần Tuấn Ninh Hotel II bao gồm Bãi biển Lò Vôi, Bảo tàng Côn Đảo và Nhà Tù Côn Đảo. Chỗ nghỉ cách Sân bay Côn Đảo 14 km và cung cấp dịch vụ đưa đón sân bay mất phí."
     }
   ],
   "food": [
@@ -833,5 +832,5 @@
   "memories": {
     "albums": []
   },
-  "updatedAt": "2026-05-29T15:06:35.863Z"
+  "updatedAt": "2026-05-29T15:16:59.974Z"
 }
