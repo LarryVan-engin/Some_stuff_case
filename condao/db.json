@@ -446,10 +446,10 @@
     },
     {
       "id": "default_dest_19",
-      "name": "Chùa Núi Một (Vân Sơn Tự) không mún đi",
+      "name": "Chùa Núi Một (Vân Sơn Tự)",
       "img1": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Ch%C3%B9a_N%C3%BAi_M%E1%BB%99t.jpg/800px-Ch%C3%B9a_N%C3%BAi_M%E1%BB%99t.jpg",
       "img2": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Ch%C3%B9a_N%C3%BAi_M%E1%BB%99t.jpg/800px-Ch%C3%B9a_N%C3%BAi_M%E1%BB%99t.jpg",
-      "category": "",
+      "category": "beach",
       "rating": "",
       "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chùa+Núi+Một+Côn+Đảo",
       "linkUrl": "",
@@ -846,5 +846,5 @@
   "memories": {
     "albums": []
   },
-  "updatedAt": "2026-05-29T14:58:44.129Z"
+  "updatedAt": "2026-05-29T14:59:28.985Z"
 }
