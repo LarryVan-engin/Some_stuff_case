@@ -600,10 +600,10 @@
       "name": "Khách sạn Tuấn Ninh II",
       "imgUrl": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/595150946.jpg?k=869d24180a8d440b326e0554b2c87a7a7aef7047db2f29b1d5b3fa21ae2c3cfb&o=",
       "stars": "2",
-      "price": "",
-      "address": "",
-      "mapsUrl": "",
-      "linkUrl": "",
+      "price": "~900 - 1.7M VND",
+      "address": "Hồ Thanh Tòng, Khu 7, Thị trấn Côn Đảo, Côn Đảo, Việt Nam Vị trí xuất sắc - được cho điểm 9.4/10!(điểm từ 417 đánh giá) Được khách đánh giá sau khi họ nghỉ tại Tuấn Ninh Hotel II.",
+      "mapsUrl": "https://maps.app.goo.gl/ZesYeDHRLwt9xEXL9",
+      "linkUrl": "https://www.booking.com/hotel/vn/tuan-ninh-house-con-dao.vi.html?aid=356980&label=gog235jc-10CAso9AFCGWhvbWVzdGF5LW5oYS10b2ktY29uLWRhbzFIKlgDaPQBiAEBmAEzuAEXyAEM2AED6AEB-AEBiAIBqAIBuALX1-bQBsACAdICJGY0M2IyYmY4LTE1N2MtNDYwOC04Y2FlLWRkODM2MjViNTAxNdgCAeACAQ&sid=d5b4f1e277f7843cf58b9b97677ce34d&all_sr_blocks=719273306_426048954_2_0_0&checkin=2026-05-31&checkout=2026-06-01&dest_id=-3711308&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=3&highlighted_blocks=719273306_426048954_2_0_0&hpos=3&matching_block_id=719273306_426048954_2_0_0&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&sr_pri_blocks=719273306_426048954_2_0_0__98325000&srepoch=1780067758&srpvid=05726b4dd3d0073b&type=total&ucfs=1&",
       "desc": "Tuấn Ninh Hotel II nằm ở Côn Đảo, cách Nhà tù Phú Hải 9 phút đi bộ và Chùa Vân Sơn 2.5 km. Chỗ nghỉ cách Bến Đầm Vũng Tàu khoảng 12 km, Bảo tàng Cách mạng 5 phút đi bộ và Trại giam Phú Sơn 600 m. Khách sạn có hồ bơi ngoài trời. Dịch vụ phòng và Wi-Fi miễn phí.\n\nVới phòng tắm riêng được trang bị vòi sen và đồ vệ sinh cá nhân miễn phí, các căn tại khách sạn có TV màn hình phẳng và điều hòa, trong đó một số phòng có sân hiên. Tại Tuấn Ninh Hotel II, các phòng được thiết kế có ga trải giường và khăn tắm.\n\nKhách có thể chơi bóng bàn tại chỗ nghỉ. Ngoài ra, chỗ nghỉ có dịch vụ thuê xe đạp.\n\nCác điểm tham quan nổi tiếng gần Tuấn Ninh Hotel II bao gồm Bãi biển Lò Vôi, Bảo tàng Côn Đảo và Nhà Tù Côn Đảo. Chỗ nghỉ cách Sân bay Côn Đảo 14 km và cung cấp dịch vụ đưa đón sân bay mất phí."
     }
   ],
@@ -832,5 +832,5 @@
   "memories": {
     "albums": []
   },
-  "updatedAt": "2026-05-29T15:16:59.974Z"
+  "updatedAt": "2026-05-29T15:19:16.027Z"
 }
