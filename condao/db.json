@@ -513,6 +513,17 @@
   ],
   "hotels": [
     {
+      "id": "mpr30ik43gwzzq26fkc",
+      "name": "Conson Hotel",
+      "imgUrl": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/606119325.jpg?k=83d94af74d7d4a04b4046625f3b6d64a6ab78011ac8e07e0e9aadb7a4c7a3790&o=",
+      "stars": "2",
+      "price": "~ 700 - 1.1M VND",
+      "address": "Số 2 Đường Lương Thế Trân, Côn Đảo, Hồ Chí Minh 790000, Việt Nam",
+      "mapsUrl": "https://maps.app.goo.gl/uNxtzj8NM6YeDaPc7",
+      "linkUrl": "https://www.booking.com/hotel/vn/conson-ba-ria-vung-tau.vi.html?aid=356980&label=gog235jc-10CAso9AFCGWhvbWVzdGF5LW5oYS10b2ktY29uLWRhbzFIKlgDaPQBiAEBmAEzuAEXyAEM2AED6AEB-AEBiAIBqAIBuALX1-bQBsACAdICJGY0M2IyYmY4LTE1N2MtNDYwOC04Y2FlLWRkODM2MjViNTAxNdgCAeACAQ&sid=d5b4f1e277f7843cf58b9b97677ce34d&all_sr_blocks=663794306_0_2_0_0&checkin=2026-05-31&checkout=2026-06-01&dest_id=-3711308&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=8&highlighted_blocks=663794306_0_2_0_0&hpos=8&matching_block_id=663794306_0_2_0_0&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&sr_pri_blocks=663794306_0_2_0_0__74665970&srepoch=1780068692&srpvid=05726b4dd3d0073b&type=total&ucfs=1&",
+      "desc": "Tọa lạc ở Côn Đảo, cách Bãi biển An Hải chỉ vài bước chân và Bãi biển Lò Vôi 1.9 km, Conson Hotel cung cấp chỗ nghỉ có khu vườn và Wi-Fi miễn phí cũng như chỗ đậu xe riêng miễn phí cho khách lái xe. Khách sạn 2 sao này có dịch vụ phòng và quầy lễ tân 24 giờ. Chỗ nghỉ này cung cấp dịch vụ tiền sảnh, bàn bán tour và dịch vụ thu đổi ngoại tệ cho khách.\n\nCác phòng ở khách sạn được trang bị ấm đun nước. Mỗi phòng đều có điều hòa và TV màn hình phẳng, ngoài ra một số căn tại Conson Hotel có sân hiên. Tại chỗ nghỉ, các phòng được thiết kế có ga trải giường và khăn tắm.\n\nCác điểm tham quan nổi tiếng gần Conson Hotel bao gồm Bảo tàng Côn Đảo, Nhà Tù Côn Đảo và Bảo tàng Cách mạng. Sân bay Côn Đảo cách 15 km, đồng thời chỗ nghỉ có cung cấp dịch vụ đưa đón sân bay mất phí."
+    },
+    {
       "id": "mpr2v7bfclwcnl278qn",
       "name": "Golden Rose Hotel",
       "imgUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHw2zzeIM-_iffbgMKbY3JfXKLhHZiFg_DCCXtqh9Jj8NhLqryRpPa5Ch_RWz2BK-BEv_5jWOpIZiRZAOw2IKv-qzknCXcBRp0mWkz1Dm8UcWIwb_MNo7ZEOXZ3_CL8HF8lhLKCpf9IsKs=w408-h306-k-no",
@@ -854,5 +865,5 @@
   "memories": {
     "albums": []
   },
-  "updatedAt": "2026-05-29T15:32:19.872Z"
+  "updatedAt": "2026-05-29T15:33:39.671Z"
 }
