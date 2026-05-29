@@ -525,18 +525,6 @@
       "isDefault": true
     },
     {
-      "id": "default_hotel_2",
-      "name": "Poulo Condor Boutique Resort & Spa",
-      "stars": "4",
-      "price": "",
-      "address": "",
-      "desc": "Khu nghỉ dưỡng sở hữu lối kiến trúc mang vẻ đẹp hòa quyện đặc sắc giữa nét cổ kính truyền thống Việt Nam và di sản Đông Dương thời Pháp thuộc.",
-      "imgUrl": "https://images.unsplash.com/photo-1564507592333-c60657eea523?w=800&q=80",
-      "mapsUrl": "",
-      "linkUrl": "",
-      "isDefault": true
-    },
-    {
       "id": "default_hotel_3",
       "name": "Marina Bay Côn Đảo Hotel",
       "stars": "4",
@@ -846,5 +834,5 @@
   "memories": {
     "albums": []
   },
-  "updatedAt": "2026-05-29T14:59:28.985Z"
+  "updatedAt": "2026-05-29T15:00:36.311Z"
 }
