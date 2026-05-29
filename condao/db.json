@@ -446,16 +446,13 @@
     },
     {
       "id": "default_dest_19",
-      "name": "Chùa Núi Một (Vân Sơn Tự)",
-      "category": "temple",
-      "rating": "",
+      "name": "Chùa Núi Một (Vân Sơn Tự) không mún đi",
       "img1": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Ch%C3%B9a_N%C3%BAi_M%E1%BB%99t.jpg/800px-Ch%C3%B9a_N%C3%BAi_M%E1%BB%99t.jpg",
       "img2": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Ch%C3%B9a_N%C3%BAi_M%E1%BB%99t.jpg/800px-Ch%C3%B9a_N%C3%BAi_M%E1%BB%99t.jpg",
-      "tags": [
-        "Tựa_sơn_hướng_thủy",
-        "Hồ_sen_An_Hải",
-        "Đẹp_nhất_Đông_Nam_Bộ"
-      ],
+      "category": "",
+      "rating": "",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chùa+Núi+Một+Côn+Đảo",
+      "linkUrl": "",
       "descShort": "Ngôi chùa nổi tiếng sở hữu vị thế tựa sơn hướng thủy tuyệt mỹ, địa điểm hoàn hảo để tĩnh tâm cầu an và thu vào tầm mắt toàn cảnh hồ sen An Hải và vịnh biển.",
       "descLong": "Được xây dựng uy nghi tọa lạc trên sườn núi, Vân Sơn Tự là ngôi chùa duy nhất tại Côn Đảo. Chùa sở hữu phong cảnh hữu tình bậc nhất khi phía trước hướng thẳng ra hồ sen An Hải thơ mộng và vịnh biển rộng mở bao la, tạo nên một không gian thiền tịnh linh thiêng tách biệt.",
       "highlights": [
@@ -463,10 +460,7 @@
         "Tĩnh lặng thưởng thức kiến trúc Phật giáo tinh xảo, ngắm đàn khỉ hoang dã đùa nghịch ven chùa.",
         "Từ lầu chuông, ngắm nhìn bức tranh toàn cảnh hồ sen An Hải ngào ngạt hương thơm mùa hè."
       ],
-      "bestTime": "Vào buổi chiều mát mẻ, khi những tiếng chuông chùa ngân vang hòa cùng ánh hoàng hôn rọi xuống vịnh Côn Sơn.",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chùa+Núi+Một+Côn+Đảo",
-      "linkUrl": "",
-      "isDefault": true
+      "bestTime": "Vào buổi chiều mát mẻ, khi những tiếng chuông chùa ngân vang hòa cùng ánh hoàng hôn rọi xuống vịnh Côn Sơn."
     },
     {
       "id": "default_dest_20",
@@ -852,5 +846,5 @@
   "memories": {
     "albums": []
   },
-  "updatedAt": "2026-05-29T14:55:25.055Z"
+  "updatedAt": "2026-05-29T14:58:44.129Z"
 }
