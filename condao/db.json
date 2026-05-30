@@ -513,6 +513,17 @@
   ],
   "hotels": [
     {
+      "id": "mprxn0evle048z6qo4",
+      "name": "Garden House Côn Đảo",
+      "imgUrl": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/844093419.jpg?k=db6e116d1533ae35f49ed1d254d0003f267302f7645f926333d7600d29dcbdec&o=",
+      "stars": "4",
+      "price": "~ 500 - 880k VND",
+      "address": "Phan Chu Trinh, Khu 2, Côn Đảo, Hồ Chí Minh 78000, Việt Nam",
+      "mapsUrl": "https://maps.app.goo.gl/73yn7y57JBL4y5vm8",
+      "linkUrl": "https://www.booking.com/hotel/vn/garden-house-con-dao-vung-tau1234567891011.vi.html?aid=356980&label=gog235jc-10CAso9AFCGWhvbWVzdGF5LW5oYS10b2ktY29uLWRhbzFIKlgDaPQBiAEBmAEzuAEXyAEM2AED6AEB-AEBiAIBqAIBuALX1-bQBsACAdICJGY0M2IyYmY4LTE1N2MtNDYwOC04Y2FlLWRkODM2MjViNTAxNdgCAeACAQ&sid=d5b4f1e277f7843cf58b9b97677ce34d&all_sr_blocks=679210802_366530636_2_2_0&checkin=2026-06-20&checkout=2026-06-21&dest_id=-3711308&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=10&highlighted_blocks=679210802_366530636_2_2_0&hpos=10&matching_block_id=679210802_366530636_2_2_0&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&sr_pri_blocks=679210802_366530636_2_2_0__53100000&srepoch=1780120124&srpvid=85d4245076ce10b0&type=total&ucfs=1&",
+      "desc": "Địa điểm khách sản khá gần với các vị trí tham quan, cách các nơi ăn uống cũng gần, đường dễ đi.\nCô chủ rất dễ thương, gần gủi và nhiệt tình\nXe đưa đón giá cả hợp lý 50k/người/lượt, xe rộng rãi thoải mái\nPhí thuê xe máy 150k/ngày cũng hợp lý\nPhí phòng cũng khá hợp lý, mặc dù do lỗi nhỏ nhằm phòng kg giống với phòng đã đặt nhưng phòng nhận cũng khá ổn sạch sẽ và rộng rải\nChỉ có máy nước nóng lạnh và k hông có tủ lạnh làm nên khi cần uống thức uống với đá phải xuống quầy xin cô chủ nếu được có thể bổ sung 1 tủ lạnh mini thì thuận tiện hơn cho khách hàng khi cần uống đá"
+    },
+    {
       "id": "mprxjsulk0drd7z9e2a",
       "name": "HẢI SƠN HOTEL",
       "imgUrl": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/352627550.jpg?k=ae7fa4327701054be7fdb0b71fa63d1aba914b54ae159a9639b1d06711dbf418&o=",
@@ -871,5 +882,5 @@
   "memories": {
     "albums": []
   },
-  "updatedAt": "2026-05-30T05:48:27.946Z"
+  "updatedAt": "2026-05-30T05:50:57.716Z"
 }
