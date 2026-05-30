@@ -513,15 +513,15 @@
   ],
   "hotels": [
     {
-      "id": "mprxifl5x3hz2ygb8of",
+      "id": "mprxjsulk0drd7z9e2a",
       "name": "HẢI SƠN HOTEL",
       "imgUrl": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/352627550.jpg?k=ae7fa4327701054be7fdb0b71fa63d1aba914b54ae159a9639b1d06711dbf418&o=",
-      "stars": "2",
-      "price": "",
+      "stars": "3",
+      "price": "~ 600 - 800 VND",
       "address": "Đường Nguyễn Huệ, Côn Đảo, Hồ Chí Minh, Việt Nam",
       "mapsUrl": "https://maps.app.goo.gl/C8MtpTJRs6SX4gJ3A",
       "linkUrl": "https://www.booking.com/hotel/vn/hai-son-ba-ria-vung-tau.vi.html?aid=356980&label=gog235jc-10CAso9AFCGWhvbWVzdGF5LW5oYS10b2ktY29uLWRhbzFIKlgDaPQBiAEBmAEzuAEXyAEM2AED6AEB-AEBiAIBqAIBuALX1-bQBsACAdICJGY0M2IyYmY4LTE1N2MtNDYwOC04Y2FlLWRkODM2MjViNTAxNdgCAeACAQ&sid=d5b4f1e277f7843cf58b9b97677ce34d&all_sr_blocks=701997202_351631795_2_0_0&checkin=2026-06-20&checkout=2026-06-21&dest_id=-3711308&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=9&highlighted_blocks=701997202_351631795_2_0_0&hpos=9&matching_block_id=701997202_351631795_2_0_0&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&sr_pri_blocks=701997202_351631795_2_0_0__60000000&srepoch=1780119841&srpvid=85d4245076ce10b0&type=total&ucfs=1&#_",
-      "desc": "Chị Chủ phải nói là siêu dễ thương luôn.\nGọi cho mình căn dặn đủ thứ trước khi lên tàu ra Đảo. Nhờ chị mà tụi mình có chuyến đi vui vẻ không bị mệt.\nKhách sạn ngay trung tâm đi tham quan du lịch rất ok.\nQuán ăn xung quanh ngon."
+      "desc": "Tọa lạc cách Bãi biển An Hải 7 phút đi bộ, HẢI SƠN HOTEL cung cấp chỗ nghỉ 2 sao ở Côn Đảo, đồng thời có khu vườn, khu vực bãi biển riêng và sân hiên. Ngoài dịch vụ phòng, chỗ nghỉ này còn có công viên nước. Đây là chỗ nghỉ không gây dị ứng và nằm cách Bãi biển Lò Vôi 13 phút đi bộ.\n\nCác phòng được trang bị điều hòa, TV màn hình phẳng có truyền hình cáp, tủ lạnh, ấm đun nước, vòi xịt/chậu rửa vệ sinh, đồ vệ sinh cá nhân miễn phí và bàn làm việc. Ngoài phòng tắm riêng, vòi sen và máy sấy tóc, các phòng tại khách sạn đều có view thành phố. Các căn có tủ quần áo.\n\nHẢI SƠN HOTEL có dịch vụ thuê xe đạp và dịch vụ thuê ô tô. Ngoài ra, leo núi và đi xe đạp là hoạt động được ưa chuộng trong khu vực."
     },
     {
       "id": "mprxdu22phxlrh6ydys",
@@ -871,5 +871,5 @@
   "memories": {
     "albums": []
   },
-  "updatedAt": "2026-05-30T05:47:24.106Z"
+  "updatedAt": "2026-05-30T05:48:27.946Z"
 }
