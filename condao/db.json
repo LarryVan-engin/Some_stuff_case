@@ -513,6 +513,17 @@
   ],
   "hotels": [
     {
+      "id": "mprwdmamjxqhd9x9ori",
+      "name": "Havana Con Dao Hotel",
+      "imgUrl": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/471370487.jpg?k=94910e7079a1753e4047e11a528034628021bf7e88fffba9d3dd0fb230b1216c&o=",
+      "stars": "3",
+      "price": "~ 700 - 1.3M VND",
+      "address": "64 Đ. Trần Phú, Côn Đảo, Hồ Chí Minh 78850, Việt Nam",
+      "mapsUrl": "https://maps.app.goo.gl/RnCYQacnH3ZbFS2y7",
+      "linkUrl": "https://www.booking.com/hotel/vn/havana.vi.html?aid=356980&label=gog235jc-10CAso9AFCGWhvbWVzdGF5LW5oYS10b2ktY29uLWRhbzFIKlgDaPQBiAEBmAEzuAEXyAEM2AED6AEB-AEBiAIBqAIBuALX1-bQBsACAdICJGY0M2IyYmY4LTE1N2MtNDYwOC04Y2FlLWRkODM2MjViNTAxNdgCAeACAQ&sid=d5b4f1e277f7843cf58b9b97677ce34d&all_sr_blocks=0_0_2_0_0&checkin=2026-06-20&checkout=2026-06-21&dest_id=-3711308&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=5&highlighted_blocks=0_0_2_0_0&hpos=5&matching_block_id=0_0_2_0_0&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&sr_pri_blocks=0_0_2_0_0__70775390&srepoch=1780117994&srpvid=85d4245076ce10b0&type=total&ucfs=1&",
+      "desc": "- Nhân viên rất thân thiện vui vẻ và nhiệt tình.\n- Phòng cách âm tốt, phòng mới và sạch sẻ, có bancony tầm nhìn view núi thiên nhiên.\n- Phòng có trang bị quạt mát điều khiển remode rất tiện dụng, là điểm cộng so với các KS khác, mình ở KS tại CĐ nhiều lần rồi nhưng ít hoặc kg thấy có trang bị.\n- Nệm êm, gối mềm dễ chịu và sạch sẻ.\n- Hệ thống nước nóng lạnh bị thợ đấu dây ngược, mở gạt hết qua bên nóng thì nước sôi nhưng cực mạnh. Mở gạt hết qua bên lạnh thì nc chảy rất yếu. Điều chỉnh chế độ ấm 35*C tắm nước rất yếu, gội đầu mất rất nhiều time mới sạch, vặn mạnh xíu thì nc nóng muốn lột da đầu. hic…đã góp ý với KS gọi thợ đến kiểm tra điều chỉnh lại hệ thống cấp nước cho KS."
+    },
+    {
       "id": "mprw8f1fckudphbas8t",
       "name": "Hoàng Anh Côn Đảo Hotel",
       "imgUrl": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/463995487.jpg?k=19b18f0f0ea4f057f6f55b2e4784bbbdec7eee81f6068121964f1407de24df92&o=",
@@ -816,5 +827,5 @@
   "memories": {
     "albums": []
   },
-  "updatedAt": "2026-05-30T05:11:37.220Z"
+  "updatedAt": "2026-05-30T05:15:39.905Z"
 }
