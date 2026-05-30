@@ -581,42 +581,6 @@
       "isDefault": true
     },
     {
-      "id": "default_hotel_4",
-      "name": "Khu nghỉ dưỡng Sài Gòn – Côn Đảo",
-      "stars": "3",
-      "price": "",
-      "address": "",
-      "desc": "Sở hữu vị thế ven biển rợp mát bóng cổ thụ. Hệ thống gồm 117 phòng chia làm hai khu: khu biệt thự kiểu Pháp cổ xưa và khu tòa nhà hiện đại.",
-      "imgUrl": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80",
-      "mapsUrl": "",
-      "linkUrl": "",
-      "isDefault": true
-    },
-    {
-      "id": "default_hotel_5",
-      "name": "Côn Sơn Blue Sea",
-      "stars": "3",
-      "price": "",
-      "address": "",
-      "desc": "Khách sạn mang phong cách trẻ trung. Điểm nhấn đắt giá nhất là hồ bơi vô cực ngắm cảnh vịnh biển lộng gió kết hợp quầy bar nằm trên sân thượng.",
-      "imgUrl": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80",
-      "mapsUrl": "",
-      "linkUrl": "",
-      "isDefault": true
-    },
-    {
-      "id": "default_hotel_6",
-      "name": "CNLĐ – Côn Đảo Resort",
-      "stars": "3",
-      "price": "",
-      "address": "",
-      "desc": "Nơi nghỉ dưỡng bình yên với bể bơi phong cách Châu Âu rộng mở, bao bọc bởi thảm cỏ xanh mướt mát lành mang lại không gian thư giãn tuyệt diệu.",
-      "imgUrl": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80",
-      "mapsUrl": "",
-      "linkUrl": "",
-      "isDefault": true
-    },
-    {
       "id": "default_hotel_8",
       "name": "Khách sạn Maya III",
       "stars": "2",
@@ -865,5 +829,5 @@
   "memories": {
     "albums": []
   },
-  "updatedAt": "2026-05-29T15:33:39.671Z"
+  "updatedAt": "2026-05-30T05:07:40.192Z"
 }
