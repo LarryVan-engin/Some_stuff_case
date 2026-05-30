@@ -513,6 +513,17 @@
   ],
   "hotels": [
     {
+      "id": "mprwyjhssuyl9uwlqw",
+      "name": "Velar Hotel Con Dao - Vung Tau",
+      "imgUrl": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/716384880.jpg?k=c4a7a8c1993259e4fa61d1aab613dee38a1fc8c9eae0d50305bbc75e0f6541bc&o=",
+      "stars": "3",
+      "price": "~ 700 - 1.7M VND",
+      "address": "Khu 5 Đường Lương Thế Trân, Côn Đảo, Hồ Chí Minh 78800, Việt Nam",
+      "mapsUrl": "https://maps.app.goo.gl/AjLhvWLnjYAYXqQ76",
+      "linkUrl": "https://www.booking.com/hotel/vn/velar.vi.html?aid=356980&label=gog235jc-10CAso9AFCGWhvbWVzdGF5LW5oYS10b2ktY29uLWRhbzFIKlgDaPQBiAEBmAEzuAEXyAEM2AED6AEB-AEBiAIBqAIBuALX1-bQBsACAdICJGY0M2IyYmY4LTE1N2MtNDYwOC04Y2FlLWRkODM2MjViNTAxNdgCAeACAQ&sid=d5b4f1e277f7843cf58b9b97677ce34d&all_sr_blocks=1061199005_432035275_2_0_0&checkin=2026-06-20&checkout=2026-06-21&dest_id=-3711308&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=6&highlighted_blocks=1061199005_432035275_2_0_0&hpos=6&matching_block_id=1061199005_432035275_2_0_0&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&sr_pri_blocks=1061199005_432035275_2_0_0__74544600&srepoch=1780118163&srpvid=85d4245076ce10b0&type=total&ucfs=1&",
+      "desc": "ọa lạc ở Côn Đảo, cách Bãi biển An Hải chỉ vài bước chân, Velar Hotel Con Dao - Vung Tau cung cấp chỗ nghỉ có khu vườn, chỗ đậu xe riêng miễn phí, sân hiên và nhà hàng. Khách sạn 3 sao này có dịch vụ tiền sảnh và bàn bán tour. Chỗ nghỉ cung cấp lễ tân 24/24, dịch vụ đưa đón sân bay, dịch vụ phòng và Wi-Fi miễn phí ở toàn bộ chỗ nghỉ.\n\nKhách sạn cung cấp cho khách các phòng có điều hòa, tủ quần áo, ấm đun nước, tủ lạnh, minibar, két an toàn, TV màn hình phẳng và phòng tắm riêng với vòi xịt/chậu rửa vệ sinh. Tại Velar Hotel Con Dao - Vung Tau, mỗi phòng đều có ga trải giường và khăn tắm."
+    },
+    {
       "id": "mprwdmamjxqhd9x9ori",
       "name": "Havana Con Dao Hotel",
       "imgUrl": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/471370487.jpg?k=94910e7079a1753e4047e11a528034628021bf7e88fffba9d3dd0fb230b1216c&o=",
@@ -827,5 +838,5 @@
   "memories": {
     "albums": []
   },
-  "updatedAt": "2026-05-30T05:15:39.905Z"
+  "updatedAt": "2026-05-30T05:31:56.051Z"
 }
