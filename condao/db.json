@@ -513,6 +513,17 @@
   ],
   "hotels": [
     {
+      "id": "mprxdu22phxlrh6ydys",
+      "name": "Con Son Island Hotel",
+      "imgUrl": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/474489676.jpg?k=fa1fec9fc55009ab27113b519119ba88a8929a5c4f6442296c7d2de91aac0071&o=",
+      "stars": "3",
+      "price": "~ 750 - 1.4M VND",
+      "address": "Tôn Đức Thắng, Côn Đảo, Hồ Chí Minh 794300, Việt Nam",
+      "mapsUrl": "https://maps.app.goo.gl/soLq85JCWiTEcxCNA",
+      "linkUrl": "https://www.booking.com/hotel/vn/conson-island.vi.html?aid=356980&label=gog235jc-10CAso9AFCGWhvbWVzdGF5LW5oYS10b2ktY29uLWRhbzFIKlgDaPQBiAEBmAEzuAEXyAEM2AED6AEB-AEBiAIBqAIBuALX1-bQBsACAdICJGY0M2IyYmY4LTE1N2MtNDYwOC04Y2FlLWRkODM2MjViNTAxNdgCAeACAQ&sid=d5b4f1e277f7843cf58b9b97677ce34d&all_sr_blocks=103735203_414060492_0_0_0&checkin=2026-06-20&checkout=2026-06-21&dest_id=-3711308&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=8&highlighted_blocks=103735203_414060492_0_0_0&hpos=8&matching_block_id=103735203_414060492_0_0_0&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&sr_pri_blocks=103735203_414060492_0_0_0__75000000&srepoch=1780119576&srpvid=85d4245076ce10b0&type=total&ucfs=1&#_",
+      "desc": "Ks đối diện với biển luôn,bạn chủ dễ thương nhiệt tình lắm,mình đến sớm bạn cũng hỗ trợ giúp mình nhận được phòng sớm để nghỉ ngơi,quá tuyệt vời!Mọi người muốn thuê xe thì ks cũng có luôn nha,thuê xe chạy loanh quanh khám phá Côn Đảo cũng thú vị lắm,mình sẽ quay lại đây trong những chuyến công tác tới ❤️"
+    },
+    {
       "id": "mprx62oq7cb22c9gh6i",
       "name": "Nereus Hotel",
       "imgUrl": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/575992335.jpg?k=8382d69b90d9ab6fc85f87009193be46c404e97b08218040dc621d84d348b0f8&o=",
@@ -849,5 +860,5 @@
   "memories": {
     "albums": []
   },
-  "updatedAt": "2026-05-30T05:37:47.514Z"
+  "updatedAt": "2026-05-30T05:43:49.578Z"
 }
