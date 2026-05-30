@@ -513,6 +513,17 @@
   ],
   "hotels": [
     {
+      "id": "mprw8f1fckudphbas8t",
+      "name": "Hoàng Anh Côn Đảo Hotel",
+      "imgUrl": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/463995487.jpg?k=19b18f0f0ea4f057f6f55b2e4784bbbdec7eee81f6068121964f1407de24df92&o=",
+      "stars": "3",
+      "price": "~ 600 - 1.3M VND",
+      "address": "Nguyễn Đức Thuận, Khu 5, Côn Đảo, Hồ Chí Minh 790000, Việt Nam",
+      "mapsUrl": "https://maps.app.goo.gl/bFdq8GGXw6vY6pPC8",
+      "linkUrl": "https://www.booking.com/hotel/vn/hoang-anh-con-dao.vi.html?aid=356980&label=gog235jc-10CAso9AFCGWhvbWVzdGF5LW5oYS10b2ktY29uLWRhbzFIKlgDaPQBiAEBmAEzuAEXyAEM2AED6AEB-AEBiAIBqAIBuALX1-bQBsACAdICJGY0M2IyYmY4LTE1N2MtNDYwOC04Y2FlLWRkODM2MjViNTAxNdgCAeACAQ&sid=d5b4f1e277f7843cf58b9b97677ce34d&all_sr_blocks=0_0_2_0_0&checkin=2026-06-20&checkout=2026-06-21&dest_id=-3711308&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=3&highlighted_blocks=0_0_2_0_0&hpos=3&matching_block_id=0_0_2_0_0&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&sr_pri_blocks=0_0_2_0_0__61593007&srepoch=1780117803&srpvid=85d4245076ce10b0&type=total&ucfs=1&",
+      "desc": "Tọa lạc ở Côn Đảo, cách Bãi biển An Hải chỉ vài bước chân, Hoàng Anh Côn Đảo Hotel cung cấp chỗ nghỉ có khu vườn, chỗ đậu xe riêng miễn phí, phòng chờ chung và sân hiên. Chỗ nghỉ này nằm gần các điểm tham quan như Bảo tàng Cách mạng, Nhà tù Phú Hải, cùng Chùa Vân Sơn. Chỗ nghỉ cung cấp lễ tân 24/24, dịch vụ đưa đón sân bay, dịch vụ phòng và Wi-Fi miễn phí.\n\nKhách sạn cung cấp cho khách các phòng có điều hòa, bàn làm việc, ấm đun nước, tủ lạnh, minibar, két an toàn, TV màn hình phẳng và phòng tắm riêng với vòi xịt/chậu rửa vệ sinh. Tại Hoàng Anh Côn Đảo Hotel, mỗi phòng đều có ga trải giường và khăn tắm.\n\nCác điểm tham quan nổi tiếng gần chỗ nghỉ bao gồm Bãi biển Lò Vôi, Bảo tàng Côn Đảo và Nhà Tù Côn Đảo. Sân bay Côn Đảo cách 15 km."
+    },
+    {
       "id": "mpr30ik43gwzzq26fkc",
       "name": "Conson Hotel",
       "imgUrl": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/606119325.jpg?k=83d94af74d7d4a04b4046625f3b6d64a6ab78011ac8e07e0e9aadb7a4c7a3790&o=",
@@ -564,30 +575,6 @@
       "address": "",
       "desc": "Được thiết kế tinh tế hài hòa giữa phong cảnh thơ mộng và vẻ đẹp thiên nhiên hoang sơ, mang lại một không gian riêng tư vô cùng thư thái và đẳng cấp.",
       "imgUrl": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80",
-      "mapsUrl": "",
-      "linkUrl": "",
-      "isDefault": true
-    },
-    {
-      "id": "default_hotel_3",
-      "name": "Marina Bay Côn Đảo Hotel",
-      "stars": "4",
-      "price": "",
-      "address": "",
-      "desc": "Tọa lạc ngay mặt biển trung tâm, khách sạn sở hữu phong cách thiết kế châu Âu hiện đại với spa cao cấp, hồ bơi lớn ngoài trời và phòng gym.",
-      "imgUrl": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
-      "mapsUrl": "",
-      "linkUrl": "",
-      "isDefault": true
-    },
-    {
-      "id": "default_hotel_8",
-      "name": "Khách sạn Maya III",
-      "stars": "2",
-      "price": "",
-      "address": "",
-      "desc": "Một nét thiết kế hiện đại đan xen tài tình hơi thở cổ điển. Sử dụng tông màu trắng trang nhã, hứa hẹn mang lại cho bạn những cảm xúc ấn tượng.",
-      "imgUrl": "https://images.unsplash.com/photo-1529290130-4ca3753253ae?w=800&q=80",
       "mapsUrl": "",
       "linkUrl": "",
       "isDefault": true
@@ -829,5 +816,5 @@
   "memories": {
     "albums": []
   },
-  "updatedAt": "2026-05-30T05:07:40.192Z"
+  "updatedAt": "2026-05-30T05:11:37.220Z"
 }
