@@ -513,6 +513,17 @@
   ],
   "hotels": [
     {
+      "id": "mpwq73j5i52r8q78ew",
+      "name": "Kim Ngân II hotel",
+      "imgUrl": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/598705510.jpg?k=ef0b1c95680c920ee90d982e5e0501ad90ec58010b453012cf3e4768908f9d80&o=",
+      "stars": "Boutique",
+      "price": "~ 650 - 700k VND",
+      "address": "30 Đường Võ Thị Sáu, khu 7, Côn Đảo, Hồ Chí Minh 78800, Việt Nam",
+      "mapsUrl": "https://maps.app.goo.gl/VUFdj4TjgrYqFzCm7",
+      "linkUrl": "https://www.booking.com/hotel/vn/khach-san-kim-ngan-2-con-dao.vi.html?aid=356980&label=gog235jc-10CAso9AFCGWhvbWVzdGF5LW5oYS10b2ktY29uLWRhbzFIKlgDaPQBiAEBmAEzuAEXyAEM2AED6AEB-AEBiAIBqAIBuALX1-bQBsACAdICJGY0M2IyYmY4LTE1N2MtNDYwOC04Y2FlLWRkODM2MjViNTAxNdgCAeACAQ&sid=d5b4f1e277f7843cf58b9b97677ce34d&all_sr_blocks=708527001_343745143_2_0_0&checkin=2026-06-20&checkout=2026-06-21&dest_id=-3711308&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=17&highlighted_blocks=708527001_343745143_2_0_0&hpos=17&matching_block_id=708527001_343745143_2_0_0&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&sr_pri_blocks=708527001_343745143_2_0_0__65000000&srepoch=1780409934&srpvid=288863338907177a&type=total&ucfs=1&",
+      "desc": "Địa điểm trung tâm, khách sạn 2 mặt tiền thoáng rộng, các phòng có ban công đều view rất đẹp. So với các khách sạn bình dân cùng phân khúc thì Kim Ngân 2 có vị trí tuyệt vời nhất"
+    },
+    {
       "id": "mpwq3bxotblkcoh0i6",
       "name": "Homestay De la Rosa - Côn Đảo",
       "imgUrl": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/258754282.jpg?k=c956f0ec036751eb238369694cf08fc49a9c266d713531c578c75d54493c9315&o=",
@@ -893,5 +904,5 @@
   "memories": {
     "albums": []
   },
-  "updatedAt": "2026-06-02T14:18:33.111Z"
+  "updatedAt": "2026-06-02T14:21:28.833Z"
 }
