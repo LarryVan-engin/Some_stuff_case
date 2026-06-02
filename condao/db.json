@@ -513,6 +513,17 @@
   ],
   "hotels": [
     {
+      "id": "mpwqnw0xskd6mhma76f",
+      "name": "Kim Ngân Hotel",
+      "imgUrl": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/598711325.jpg?k=842fe6c246193d2aa73d36bf39e03e949c65c1bf588a25ea7f3ff0740b7f411f&o=",
+      "stars": "2",
+      "price": "~ 500 - 800k VND",
+      "address": "Đường Hồ Thanh Tòng, Khu 7, Côn Đảo, Hồ Chí Minh 790000, Việt Nam",
+      "mapsUrl": "https://maps.app.goo.gl/foprW3bW7zmDYzoVA",
+      "linkUrl": "https://www.booking.com/hotel/vn/kim-ngan-con-dao123.vi.html?aid=356980&label=gog235jc-10CAso9AFCGWhvbWVzdGF5LW5oYS10b2ktY29uLWRhbzFIKlgDaPQBiAEBmAEzuAEXyAEM2AED6AEB-AEBiAIBqAIBuALX1-bQBsACAdICJGY0M2IyYmY4LTE1N2MtNDYwOC04Y2FlLWRkODM2MjViNTAxNdgCAeACAQ&sid=d5b4f1e277f7843cf58b9b97677ce34d&all_sr_blocks=610553202_239979419_0_0_0&checkin=2026-06-20&checkout=2026-06-21&dest_id=-3711308&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=24&highlighted_blocks=610553202_239979419_0_0_0&hpos=24&matching_block_id=610553202_239979419_0_0_0&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&sr_pri_blocks=610553202_239979419_0_0_0__50000000&srepoch=1780410462&srpvid=288863338907177a&type=total&ucfs=1&#_",
+      "desc": "Tọa lạc ở Côn Đảo, cách Bãi biển Lò Vôi 9 phút đi bộ và Bảo tàng Côn Đảo 600 m, Kim Ngân Hotel cung cấp chỗ nghỉ có sân hiên và chỗ đậu xe riêng miễn phícho khách lái xe. Chỗ nghỉ cách Bến Đầm Vũng Tàu khoảng 12 km, Nhà tù Phú Hải 8 phút đi bộ và Trại giam Phú An 2.5 km. Chỗ nghỉ này cung cấp dịch vụ phòng, quầy lễ tân 24 giờ và tổ chức các tour du lịch cho khách."
+    },
+    {
       "id": "mpwq73j5i52r8q78ew",
       "name": "Kim Ngân II hotel",
       "imgUrl": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/598705510.jpg?k=ef0b1c95680c920ee90d982e5e0501ad90ec58010b453012cf3e4768908f9d80&o=",
@@ -904,5 +915,5 @@
   "memories": {
     "albums": []
   },
-  "updatedAt": "2026-06-02T14:21:28.833Z"
+  "updatedAt": "2026-06-02T14:34:32.262Z"
 }
