@@ -513,6 +513,17 @@
   ],
   "hotels": [
     {
+      "id": "mpwq3bxotblkcoh0i6",
+      "name": "Homestay De la Rosa - Côn Đảo",
+      "imgUrl": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/258754282.jpg?k=c956f0ec036751eb238369694cf08fc49a9c266d713531c578c75d54493c9315&o=",
+      "stars": "3",
+      "price": "~600 - 700k VND",
+      "address": "100 Huỳnh Thúc Kháng - Vùng 3 - Côn Đảo - Bà Rịa Vũng Tàu, Côn Đảo",
+      "mapsUrl": "https://maps.app.goo.gl/iLiUPUKR5jM4WG3H7",
+      "linkUrl": "https://www.booking.com/hotel/vn/homestay-de-la-rosa-huynh-thuc-khang-con-dao.vi.html?aid=356980&label=gog235jc-10CAso9AFCGWhvbWVzdGF5LW5oYS10b2ktY29uLWRhbzFIKlgDaPQBiAEBmAEzuAEXyAEM2AED6AEB-AEBiAIBqAIBuALX1-bQBsACAdICJGY0M2IyYmY4LTE1N2MtNDYwOC04Y2FlLWRkODM2MjViNTAxNdgCAeACAQ&sid=d5b4f1e277f7843cf58b9b97677ce34d&all_sr_blocks=653182404_369664888_2_0_0&checkin=2026-06-20&checkout=2026-06-21&dest_id=-3711308&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=14&highlighted_blocks=653182404_369664888_2_0_0&hpos=14&matching_block_id=653182404_369664888_2_0_0&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&sr_pri_blocks=653182404_369664888_2_0_0__63990000&srepoch=1780409274&srpvid=288863338907177a&type=total&ucfs=1&#map_closed",
+      "desc": "Bữa sáng tự túc, có bếp chung có đầy đủ đồ dùng làm bếp như ở nhà, ai đi đông có thể đặt để nấu (mất phí tùy số lượng và thời gian sử dụng). Phòng xanh, sạch sẽ, hình mái tam giác, bên trong bằng gỗ, bên ngoài có lớp tôn chống nóng, xung quanh là vườn cây, phía sau là VQG Côn Đảo, rất mát và đẹp. Thực sự là ưng từ cái nhìn đầu tiên. Rất chill và xanh mọi người ạ. Chất lượng rất xứng với giá tiền.\nHomestay có cho thuê xe máy cả xe ga và xe số, ai đi đông có thể thuê xe điện và taxi các hãng trên đảo thì gọi theo sđt hoặc fb, xe điện 25k/km, taxi tầm 16km.\nCách trung tâm tầm 4km, gần miếu Bà Hoàng Phi Yến (An sơn tự), khoảng 600m, đi bộ chưa tới 10p là tới. Cách biển khoảng 1km. Bờ biển bên này hơi nhiều đá trơn và san hô nên mọi người đi lại nhớ mang theo dép lê, đừng đi dép xốp hoặc chân đất đều rất trơn dễ trượt ngã giống mình nha :D\nKhông có gì để chê cả, phòng ko có tủ lạnh riêng nhưng có tủ ở bếp chung, cách khu phòng nghỉ tầm chục bước chân, mọi người cần đồ lạnh có thể để ở đó. À xung quanh thì ko có quán ăn nào, chỉ có 1 nhà homestay bán kem dừa và 1 quán cơm chay, tiệm tạp hóa. Nên mn có thể thuê xe đi ra khu trung tâm, hoặc mua đồ về thuê bếp nấu."
+    },
+    {
       "id": "mprxn0evle048z6qo4",
       "name": "Garden House Côn Đảo",
       "imgUrl": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/844093419.jpg?k=db6e116d1533ae35f49ed1d254d0003f267302f7645f926333d7600d29dcbdec&o=",
@@ -882,5 +893,5 @@
   "memories": {
     "albums": []
   },
-  "updatedAt": "2026-05-30T05:50:57.716Z"
+  "updatedAt": "2026-06-02T14:18:33.111Z"
 }
