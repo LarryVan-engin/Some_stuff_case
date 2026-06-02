@@ -924,7 +924,16 @@
     }
   ],
   "memories": {
-    "albums": []
+    "albums": [
+      {
+        "id": "mpwt9gy8bg21gey12eo",
+        "name": "Vé tàu",
+        "emoji": "📸",
+        "desc": "Vé tàu đi về",
+        "cover": "https://drive.google.com/drive/u/0/folders/1LyMWE4BbknhXQ1B5ElXkPcvmzi1PCXM9",
+        "items": []
+      }
+    ]
   },
-  "updatedAt": "2026-06-02T14:42:22.398Z"
+  "updatedAt": "2026-06-02T15:47:18.383Z"
 }
