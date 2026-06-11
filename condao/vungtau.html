@@ -1807,6 +1807,13 @@ function selectFoodSuggestion(name, desc) {
     const noteInput = document.getElementById('planner-note-input');
     if (!destSelect || !timeInput || !noteInput) return;
 
+    if (!Array.from(destSelect.options).some(opt => opt.value === name)) {
+        const opt = document.createElement('option');
+        opt.value = name;
+        opt.textContent = name;
+        destSelect.appendChild(opt);
+    }
+
     destSelect.value = name;
     timeInput.value = timeInput.value || '12:00 - 13:30';
     noteInput.value = desc.substring(0, 200);
