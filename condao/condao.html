@@ -649,6 +649,8 @@
                             </div>
                         </div>
 
+                        <div id="planner-food-suggestions" class="hidden mt-4"></div>
+
                         <!-- Note Input & Add Button -->
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
                             <div class="md:col-span-9">
@@ -2361,9 +2363,14 @@ const observer = new IntersectionObserver((entries) => {
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.destination-card, .timeline-item').forEach(el => observer.observe(el));
   populatePlannerDestinations();
+  const plannerDestSelect = document.getElementById('planner-dest-select');
+  if (plannerDestSelect) {
+    plannerDestSelect.addEventListener('change', renderPlannerFoodSuggestions);
+  }
   loadPlanFromStorage();
   capturePlannerPresetViewHtml();
   renderCustomTimeline();
+  renderPlannerFoodSuggestions();
   updatePlannerPresetView();
 });
 
@@ -2507,6 +2514,82 @@ function loadPlanFromStorage() {
             console.error("Error parsing saved plan", e);
         }
     }
+}
+
+function getAllFoodItems() {
+    return [...loadData(KEYS.adminFood), ...DEFAULT_FOOD];
+}
+
+function stripHtml(html) {
+    return String(html || '').replace(/<[^>]*>/g, '').trim();
+}
+
+function escapeForInlineJs(value) {
+    return String(value || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/\n/g, ' ').replace(/\r/g, ' ');
+}
+
+function getFoodSuggestionCandidates(destName) {
+    if (!destName) return [];
+    const foods = getAllFoodItems();
+    const matchedFood = foods.find(f => f.name === destName);
+    if (matchedFood) {
+        const sameCategory = foods.filter(f => f.category === matchedFood.category && f.name !== destName);
+        return sameCategory.length ? sameCategory.slice(0, 5) : foods.filter(f => f.name !== destName).slice(0, 5);
+    }
+    const allDestinations = [...loadData(KEYS.adminDests), ...DEFAULT_DESTINATIONS];
+    const dest = allDestinations.find(d => d.name === destName);
+    const foodKeyword = /nhà hàng|quán|cafe|coffee|cơm|bún|cháo|hải sản|cua|gỏi|bánh|ẩm thực|đặc sản/i;
+    if (dest && (foodKeyword.test(destName) || (dest.category && ['restaurant','specialty','cafe','street','food'].includes(dest.category)))) {
+        return foods.slice(0, 5);
+    }
+    if (foodKeyword.test(destName)) {
+        return foods.slice(0, 5);
+    }
+    return [];
+}
+
+function renderPlannerFoodSuggestions() {
+    const destSelect = document.getElementById('planner-dest-select');
+    const container = document.getElementById('planner-food-suggestions');
+    if (!destSelect || !container) return;
+    const destName = destSelect.value;
+    const suggestions = getFoodSuggestionCandidates(destName);
+    if (!suggestions.length) {
+        container.classList.add('hidden');
+        container.innerHTML = '';
+        return;
+    }
+    container.classList.remove('hidden');
+    container.innerHTML = `
+        <div class="bg-white border border-teal-100 rounded-2xl p-4 space-y-4">
+            <div class="flex items-center justify-between gap-3">
+                <div>
+                    <h5 class="text-sm font-bold text-teal-700">Gợi ý Ẩm Thực</h5>
+                    <p class="text-xs text-gray-500">Hiển thị gợi ý món ăn/quán từ kênh Ẩm thực cho lựa chọn của bạn.</p>
+                </div>
+                <span class="text-xs text-gray-400">${suggestions.length} gợi ý</span>
+            </div>
+            <div class="grid gap-3 sm:grid-cols-2">
+                ${suggestions.map(f => {
+                    const safeName = escapeForInlineJs(f.name);
+                    const safeDesc = escapeForInlineJs(stripHtml(f.desc));
+                    return `
+                        <button type="button" onclick="selectFoodSuggestion('${safeName}','${safeDesc}')" class="text-left bg-teal-50 border border-teal-100 rounded-2xl p-3 hover:border-teal-200 hover:bg-teal-100 transition-all">
+                            <div class="font-semibold text-gray-800 mb-1">${f.name}</div>
+                            <div class="text-xs text-gray-500 leading-relaxed line-clamp-3">${stripHtml(f.desc).slice(0, 120)}</div>
+                            <div class="text-[11px] text-teal-700 mt-2">#${f.category || 'food'}</div>
+                        </button>
+                    `;
+                }).join('')}
+            </div>
+        </div>
+    `;
+}
+
+function selectFoodSuggestion(name, desc) {
+    const noteInput = document.getElementById('planner-note-input');
+    if (!noteInput) return;
+    noteInput.value = `Gợi ý ăn uống: ${name}. ${desc}`;
 }
 
 function capturePlannerPresetViewHtml() {

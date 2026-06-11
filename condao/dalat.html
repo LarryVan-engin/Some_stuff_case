@@ -347,6 +347,7 @@
 .card-with-link:hover { text-decoration: none; }
 
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" crossorigin="anonymous"></script>
 </head>
 <body class="antialiased">
 
@@ -599,6 +600,8 @@
                                 <button type="button" onclick="fillSuggestedTime('21:30 - 23:30')" class="bg-white hover:bg-teal-50 text-gray-600 hover:text-teal-700 border border-gray-200 hover:border-teal-200 text-xs font-semibold px-3 py-1.5 rounded-full transition-all shadow-sm">21:30 - 23:30 (Viếng đêm linh thiêng)</button>
                             </div>
                         </div>
+
+                        <div id="planner-food-suggestions" class="hidden mt-4"></div>
 
                         <!-- Note Input & Add Button -->
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
@@ -1649,8 +1652,15 @@ const observer = new IntersectionObserver((entries) => {
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.destination-card, .timeline-item').forEach(el => observer.observe(el));
   populatePlannerDestinations();
+  const plannerDestSelect = document.getElementById('planner-dest-select');
+  if (plannerDestSelect) {
+    plannerDestSelect.addEventListener('change', renderPlannerFoodSuggestions);
+  }
   loadPlanFromStorage();
+  capturePlannerPresetViewHtml();
   renderCustomTimeline();
+  renderPlannerFoodSuggestions();
+  updatePlannerPresetView();
 });
 
 // ============================================
@@ -1664,6 +1674,7 @@ let customPlan = {
     day3: [],
     day4: []
 };
+let plannerPresetHtmlBackup = "";
 
 // Destination metadata for beautiful visual presentation in the scheduler
 const destMeta = {
@@ -1697,6 +1708,7 @@ function switchPlannerMode(mode) {
         btnPreset.classList.add('bg-teal-600', 'text-white', 'shadow-md');
         btnCustom.classList.remove('bg-teal-600', 'text-white', 'shadow-md');
         btnCustom.classList.add('bg-gray-100', 'text-gray-500');
+        updatePlannerPresetView();
     } else {
         customView.classList.remove('hidden');
         customView.classList.add('block');
@@ -1746,6 +1758,7 @@ function fillSuggestedTime(timeStr) {
 // Save custom plan to localStorage
 function savePlanToStorage() {
     localStorage.setItem('dalat_custom_plan', JSON.stringify(customPlan));
+    updatePlannerPresetView();
 }
 
 // Load custom plan from localStorage
@@ -1776,6 +1789,153 @@ function loadPlanFromStorage() {
             console.error("Error parsing saved plan", e);
         }
     }
+}
+
+function getAllFoodItems() {
+    return [...loadData(KEYS.adminFood), ...DEFAULT_FOOD];
+}
+
+function stripHtml(html) {
+    return String(html || '').replace(/<[^>]*>/g, '').trim();
+}
+
+function escapeForInlineJs(value) {
+    return String(value || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/\n/g, ' ').replace(/\r/g, ' ');
+}
+
+function getFoodSuggestionCandidates(destName) {
+    if (!destName) return [];
+    const foods = getAllFoodItems();
+    const matchedFood = foods.find(f => f.name === destName);
+    if (matchedFood) {
+        const sameCategory = foods.filter(f => f.category === matchedFood.category && f.name !== destName);
+        return sameCategory.length ? sameCategory.slice(0, 5) : foods.filter(f => f.name !== destName).slice(0, 5);
+    }
+    const allDestinations = [...loadData(KEYS.adminDests), ...DEFAULT_DESTINATIONS];
+    const dest = allDestinations.find(d => d.name === destName);
+    const foodKeyword = /nhà hàng|quán|cafe|coffee|cơm|bún|cháo|hải sản|cua|gỏi|bánh|ẩm thực|đặc sản/i;
+    if (dest && (foodKeyword.test(destName) || (dest.category && ['restaurant','specialty','cafe','street','food'].includes(dest.category)))) {
+        return foods.slice(0, 5);
+    }
+    if (foodKeyword.test(destName)) {
+        return foods.slice(0, 5);
+    }
+    return [];
+}
+
+function renderPlannerFoodSuggestions() {
+    const destSelect = document.getElementById('planner-dest-select');
+    const container = document.getElementById('planner-food-suggestions');
+    if (!destSelect || !container) return;
+    const destName = destSelect.value;
+    const suggestions = getFoodSuggestionCandidates(destName);
+    if (!suggestions.length) {
+        container.classList.add('hidden');
+        container.innerHTML = '';
+        return;
+    }
+    container.classList.remove('hidden');
+    container.innerHTML = `
+        <div class="bg-white border border-teal-100 rounded-2xl p-4 space-y-4">
+            <div class="flex items-center justify-between gap-3">
+                <div>
+                    <h5 class="text-sm font-bold text-teal-700">Gợi ý Ẩm Thực</h5>
+                    <p class="text-xs text-gray-500">Hiển thị gợi ý món ăn/quán từ kênh Ẩm thực cho lựa chọn của bạn.</p>
+                </div>
+                <span class="text-xs text-gray-400">${suggestions.length} gợi ý</span>
+            </div>
+            <div class="grid gap-3 sm:grid-cols-2">
+                ${suggestions.map(f => {
+                    const safeName = escapeForInlineJs(f.name);
+                    const safeDesc = escapeForInlineJs(stripHtml(f.desc));
+                    return `
+                        <button type="button" onclick="selectFoodSuggestion('${safeName}','${safeDesc}')" class="text-left bg-teal-50 border border-teal-100 rounded-2xl p-3 hover:border-teal-200 hover:bg-teal-100 transition-all">
+                            <div class="font-semibold text-gray-800 mb-1">${f.name}</div>
+                            <div class="text-xs text-gray-500 leading-relaxed">${stripHtml(f.desc).slice(0, 120)}</div>
+                            <div class="text-[11px] text-teal-700 mt-2">#${f.category || 'food'}</div>
+                        </button>
+                    `;
+                }).join('')}
+            </div>
+        </div>
+    `;
+}
+
+function selectFoodSuggestion(name, desc) {
+    const noteInput = document.getElementById('planner-note-input');
+    if (!noteInput) return;
+    noteInput.value = `Gợi ý ăn uống: ${name}. ${desc}`;
+}
+
+function capturePlannerPresetViewHtml() {
+    const presetView = document.getElementById('planner-preset-view');
+    if (presetView && !plannerPresetHtmlBackup) {
+        plannerPresetHtmlBackup = presetView.innerHTML;
+    }
+}
+
+function isCustomPlanEmpty() {
+    return customPlan.day1.length === 0 && customPlan.day2.length === 0 && customPlan.day3.length === 0 && customPlan.day4.length === 0;
+}
+
+function renderCustomPlanAsPresetHtml() {
+    let html = `
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-teal-700">Lịch Trình Tùy Chỉnh Của Bạn</h2>
+            <p class="text-gray-500 mt-3 text-sm md:text-base">Lịch trình này được đồng bộ trực tiếp từ phần Tự Thiết Kế Lịch Trình.</p>
+        </div>
+        <div class="timeline-container space-y-2">
+    `;
+
+    for (let day = 1; day <= 4; day++) {
+        const items = customPlan[`day${day}`];
+        html += `
+            <div class="timeline-item">
+                <div class="timeline-icon"><i class="fa-solid fa-calendar-day"></i></div>
+                <h3 class="text-xl font-bold text-gray-800 bg-[#f5f5dc] inline-block px-4 py-1 rounded-md mb-4 shadow-sm">Ngày ${day}</h3>
+                <ul class="space-y-4 text-gray-600 text-sm md:text-base leading-relaxed">
+        `;
+
+        if (!items || items.length === 0) {
+            html += `
+                    <li class="flex items-start bg-gray-50/50 p-3 rounded-xl border border-gray-100">
+                        <div class="text-gray-500">Chưa có kế hoạch cho ngày này. Hãy thêm địa điểm và thời gian tại phần Tự Thiết Kế.</div>
+                    </li>
+            `;
+        } else {
+            items.forEach(item => {
+                html += `
+                    <li class="flex items-start bg-gray-50/50 p-3 rounded-xl border border-gray-100 hover:border-teal-200 transition-colors">
+                        <div class="bg-teal-100 text-teal-700 font-bold px-2 py-1 rounded text-xs mr-3 h-fit whitespace-nowrap">${item.time}</div>
+                        <div>
+                            <div class="font-semibold text-gray-800">${item.dest}</div>
+                            <div class="text-gray-500">${item.note}</div>
+                        </div>
+                    </li>
+                `;
+            });
+        }
+
+        html += `
+                </ul>
+            </div>
+        `;
+    }
+
+    html += `</div>`;
+    return html;
+}
+
+function updatePlannerPresetView() {
+    const presetView = document.getElementById('planner-preset-view');
+    if (!presetView) return;
+    if (isCustomPlanEmpty()) {
+        if (plannerPresetHtmlBackup) {
+            presetView.innerHTML = plannerPresetHtmlBackup;
+        }
+        return;
+    }
+    presetView.innerHTML = renderCustomPlanAsPresetHtml();
 }
 
 // Add Custom Itinerary Item
@@ -1912,32 +2072,79 @@ function loadDefaultTemplate() {
             ]
         };
         savePlanToStorage();
+        switchCustomTimelineDay(1);
+        selectPlannerDay(1);
         renderCustomTimeline();
     }
 }
 
-// Export custom plan to .txt file for mobile download
+// Export custom plan to PDF and sync it with the preset schedule view
 function exportItinerary() {
-    let output = "=== LỊCH TRÌNH DU LỊCH ĐÀ LẠT CỦA BẠN ===\n\n";
-    
+    const { jsPDF } = window.jspdf || {};
+    if (!jsPDF) {
+        alert('Không thể xuất PDF. Vui lòng thử lại sau hoặc kiểm tra kết nối Internet.');
+        return;
+    }
+
+    const doc = new jsPDF({ unit: 'pt', format: 'a4' });
+    const margin = 40;
+    let cursorY = 60;
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(20);
+    doc.text('LỊCH TRÌNH DU LỊCH ĐÀ LẠT CỦA BẠN', margin, cursorY);
+    cursorY += 30;
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(11);
+    doc.setTextColor('#4b5563');
+    doc.text('Xuất từ trang lập lịch trình tự chọn, đồng bộ với mục Lịch trình có sẵn.', margin, cursorY);
+    cursorY += 26;
+
     for (let day = 1; day <= 4; day++) {
-        output += `--- NGÀY ${day} ---\n`;
         const items = customPlan[`day${day}`];
-        if (items.length === 0) {
-            output += " (Chưa lập kế hoạch cho ngày này)\n";
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(14);
+        doc.setTextColor('#0d9488');
+        doc.text(`NGÀY ${day}`, margin, cursorY);
+        cursorY += 20;
+
+        if (!items || items.length === 0) {
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(11);
+            doc.setTextColor('#6b7280');
+            doc.text('Chưa có kế hoạch cho ngày này.', margin + 10, cursorY);
+            cursorY += 24;
         } else {
             items.forEach(item => {
-                output += `• [${item.time}] ${item.dest}\n  Hoạt động: ${item.note}\n`;
+                if (cursorY > 740) {
+                    doc.addPage();
+                    cursorY = 50;
+                }
+                doc.setFont('helvetica', 'bold');
+                doc.setFontSize(12);
+                doc.setTextColor('#111827');
+                doc.text(`${item.time} — ${item.dest}`, margin + 10, cursorY);
+                cursorY += 16;
+
+                const noteLines = doc.splitTextToSize(`Hoạt động: ${item.note}`, 520);
+                doc.setFont('helvetica', 'normal');
+                doc.setFontSize(10);
+                doc.setTextColor('#374151');
+                doc.text(noteLines, margin + 20, cursorY);
+                cursorY += noteLines.length * 14 + 12;
             });
         }
-        output += "\n";
+
+        cursorY += 6;
+        doc.setDrawColor('#d1d5db');
+        doc.setLineWidth(0.5);
+        doc.line(margin, cursorY, 555, cursorY);
+        cursorY += 18;
     }
-    
-    const blob = new Blob([output], { type: 'text/plain;charset=utf-8' });
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = 'Lich_Trinh_dalat.txt';
-    link.click();
+
+    updatePlannerPresetView();
+    doc.save('Lich_Trinh_Da_Lat_Cua_Ban.pdf');
 }
 
 // ============================================================
