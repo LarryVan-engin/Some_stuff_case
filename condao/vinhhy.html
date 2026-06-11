@@ -2042,8 +2042,10 @@ function exportItinerary() {
             clone.style.width = '800px';
             clone.style.background = '#fff';
             clone.style.padding = '10px';
-            clone.style.position = 'fixed';
-            clone.style.left = '-20000px';
+            clone.style.position = 'absolute';
+            clone.style.left = '0px';
+            clone.style.top = '0px';
+            clone.style.zIndex = '-9999';
             const animatedEls = clone.querySelectorAll('.timeline-item, .destination-card');
             animatedEls.forEach(el => {
                 el.classList.add('visible');
@@ -2052,7 +2054,7 @@ function exportItinerary() {
             });
             document.body.appendChild(clone);
             doc.html(clone, {
-                x: 40, y: 40, html2canvas: { scale: 1, useCORS: true },
+                x: 40, y: 40, width: 515, windowWidth: 800, html2canvas: { scale: 1, useCORS: true },
                 callback: function () {
                     try {
                         doc.save(filename);
