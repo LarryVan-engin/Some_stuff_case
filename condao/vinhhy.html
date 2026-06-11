@@ -2053,22 +2053,33 @@ function exportItinerary() {
                 el.style.transform = 'none';
             });
             document.body.appendChild(clone);
-            doc.html(clone, {
-                x: 40, y: 40, width: 515, windowWidth: 800, html2canvas: { scale: 1, useCORS: true },
-                callback: function () {
-                    try {
-                        doc.save(filename);
-                    } catch (saveErr) {
-                        console.error('PDF save failed:', saveErr);
-                        alert('Lỗi lưu PDF.');
-                    }
-                    setTimeout(() => { try { document.body.removeChild(clone); } catch (e) {} }, 100);
-                },
-                error: function (err) {
-                    console.error('doc.html() error:', err);
-                    document.body.removeChild(clone);
-                    exportItinerary_Fallback(doc, filename);
+            html2canvas(clone, { scale: 2, useCORS: true }).then(canvas => {
+                const imgData = canvas.toDataURL('image/jpeg', 1.0);
+                const pdfWidth = doc.internal.pageSize.getWidth();
+                const pdfHeight = doc.internal.pageSize.getHeight();
+                
+                const imgWidth = pdfWidth - 40; // 20pt margin on each side
+                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+                let heightLeft = imgHeight;
+                let position = 20;
+
+                doc.addImage(imgData, 'JPEG', 20, position, imgWidth, imgHeight);
+                heightLeft -= (pdfHeight - 40);
+
+                while (heightLeft > 0) {
+                    position = heightLeft - imgHeight + 20;
+                    doc.addPage();
+                    doc.addImage(imgData, 'JPEG', 20, position, imgWidth, imgHeight);
+                    heightLeft -= (pdfHeight - 40);
                 }
+
+                doc.save(filename);
+                setTimeout(() => { try { document.body.removeChild(clone); } catch (e) {} }, 100);
+            }).catch(err => {
+                console.error('html2canvas error:', err);
+                document.body.removeChild(clone);
+                exportItinerary_Fallback(doc, filename);
             });
             return;
         } catch (e) {
