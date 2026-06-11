@@ -1,6 +1,20 @@
 {
   "destinations": [
     {
+      "id": "mq8xqaq0nbhx5pu2vr8",
+      "name": "Cảng Bến Đầm",
+      "img1": "",
+      "img2": "",
+      "category": "beach",
+      "rating": "",
+      "mapsUrl": "",
+      "linkUrl": "",
+      "descShort": "",
+      "descLong": "",
+      "highlights": [],
+      "bestTime": ""
+    },
+    {
       "id": "mppbw0zj00bpxizaxewmd",
       "name": "Hidden Location",
       "img1": "https://raw.githubusercontent.com/LarryVan-engin/Some_stuff_case/main/condao/images/dest_Hidden_Location_1_1779971233619.png",
@@ -935,5 +949,5 @@
       }
     ]
   },
-  "updatedAt": "2026-06-02T15:47:18.383Z"
+  "updatedAt": "2026-06-11T03:25:36.038Z"
 }
