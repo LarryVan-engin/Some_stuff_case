@@ -1,20 +1,6 @@
 {
   "destinations": [
     {
-      "id": "mq8xyvwlsu2zis8u8zs",
-      "name": "Ăn",
-      "img1": "",
-      "img2": "",
-      "category": "beach",
-      "rating": "",
-      "mapsUrl": "",
-      "linkUrl": "",
-      "descShort": "",
-      "descLong": "",
-      "highlights": [],
-      "bestTime": ""
-    },
-    {
       "id": "mppbw0zj00bpxizaxewmd",
       "name": "Hidden Location",
       "img1": "https://raw.githubusercontent.com/LarryVan-engin/Some_stuff_case/main/condao/images/dest_Hidden_Location_1_1779971233619.png",
@@ -959,5 +945,5 @@
       }
     ]
   },
-  "updatedAt": "2026-06-11T15:39:57.298Z"
+  "updatedAt": "2026-06-11T15:43:06.439Z"
 }
