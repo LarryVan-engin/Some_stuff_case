@@ -1776,7 +1776,7 @@ function populatePlannerDestinations() {
     const foodOpt = document.createElement('option');
     foodOpt.value = '__FOOD__';
     foodOpt.textContent = '🍽 Ăn uống — Gợi ý Ẩm Thực';
-    destSelect.insertBefore(foodOpt, destSelect.firstChild);
+    destSelect.insertBefore(foodOpt, destSelect.firstElementChild || destSelect.firstChild);
 }
 
 function loadPlanFromStorage() {
@@ -1866,9 +1866,16 @@ function renderPlannerFoodSuggestions() {
 }
 
 function selectFoodSuggestion(name, desc) {
+    const destSelect = document.getElementById('planner-dest-select');
+    const timeInput = document.getElementById('planner-time-input');
     const noteInput = document.getElementById('planner-note-input');
-    if (!noteInput) return;
-    noteInput.value = `Gợi ý ăn uống: ${name}. ${desc}`;
+    if (!destSelect || !timeInput || !noteInput) return;
+
+    destSelect.value = name;
+    timeInput.value = timeInput.value || '12:00 - 13:30';
+    noteInput.value = desc.substring(0, 200);
+
+    setTimeout(() => addCustomItineraryItem(), 100);
 }
 
 function capturePlannerPresetViewHtml() {
