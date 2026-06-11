@@ -1844,7 +1844,7 @@ function renderCustomPlanAsPresetHtml() {
     for (let day = 1; day <= 4; day++) {
         const items = customPlan[`day${day}`];
         html += `
-            <div class="timeline-item">
+            <div class="timeline-item visible" style="opacity: 1; transform: none;">
                 <div class="timeline-icon"><i class="fa-solid fa-calendar-day"></i></div>
                 <h3 class="text-xl font-bold text-gray-800 bg-[#f5f5dc] inline-block px-4 py-1 rounded-md mb-4 shadow-sm">Ngày ${day}</h3>
                 <ul class="space-y-4 text-gray-600 text-sm md:text-base leading-relaxed">
@@ -2055,6 +2055,12 @@ function exportItinerary() {
             clone.style.padding = '10px';
             clone.style.position = 'fixed';
             clone.style.left = '-20000px';
+            const animatedEls = clone.querySelectorAll('.timeline-item, .destination-card');
+            animatedEls.forEach(el => {
+                el.classList.add('visible');
+                el.style.opacity = '1';
+                el.style.transform = 'none';
+            });
             document.body.appendChild(clone);
             doc.html(clone, {
                 x: 40, y: 40, html2canvas: { scale: 1, useCORS: true },
