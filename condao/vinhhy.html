@@ -69,72 +69,79 @@
             cursor: pointer;
         }
 
-        .destination-card:hover {
-            transform: translateY(-4px) scale(1.01);
-            box-shadow: 0 16px 36px -4px rgba(13, 148, 136, 0.15);
-            border-color: rgba(13, 148, 136, 0.4);
-        }
+        function exportItinerary() {
+            const { jsPDF } = window.jspdf || {};
+            if (!jsPDF) {
+                alert('Không thể xuất PDF. Vui lòng thử lại sau hoặc kiểm tra kết nối Internet.');
+                return;
+            }
 
-        .dest-img-container {
-            position: relative;
-            overflow: hidden;
-            border-radius: 1.25rem;
-            aspect-ratio: 16/10;
-        }
+            try { savePlanToStorage(); } catch (e) { console.warn('savePlanToStorage failed', e); }
+            try { updatePlannerPresetView(); } catch (e) { console.warn('updatePlannerPresetView failed', e); }
+            try { switchPlannerMode('preset'); } catch (e) { }
 
-        .dest-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
+            const presetView = document.getElementById('planner-preset-view');
+            const filename = 'Lich_Trinh.pdf';
+            const doc = new jsPDF({ unit: 'pt', format: 'a4' });
 
-        .destination-card:hover .dest-img {
-            transform: scale(1.06);
-        }
+            if (presetView && typeof doc.html === 'function') {
+                const clone = presetView.cloneNode(true);
+                clone.style.width = '800px';
+                clone.style.background = '#fff';
+                clone.style.padding = '10px';
+                clone.style.position = 'fixed';
+                clone.style.left = '-20000px';
+                document.body.appendChild(clone);
+                doc.html(clone, {
+                    x: 40, y: 40, html2canvas: { scale: 1, useCORS: true },
+                    callback: function () {
+                        doc.save(filename);
+                        setTimeout(() => { try { document.body.removeChild(clone); } catch (e) {} }, 100);
+                    }
+                });
+                return;
+            }
 
-        /* Chi tiết mở rộng (Accordion-like) */
-        .detail-panel {
-            max-height: 0;
-            overflow: hidden;
-            opacity: 0;
-            transition: max-height 0.7s cubic-bezier(0.16, 1, 0.3, 1), 
-                        opacity 0.5s ease, 
-                        margin-top 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-                        padding-top 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-            margin-top: 0;
-            padding-top: 0;
-        }
+            const margin = 40;
+            let cursorY = 60;
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(20);
+            doc.text('LỊCH TRÌNH', margin, cursorY);
+            cursorY += 30;
 
-        .detail-panel.expanded {
-            max-height: 800px;
-            opacity: 1;
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px dashed rgba(13, 148, 136, 0.2);
-        }
+            for (let day = 1; day <= 4; day++) {
+                const items = customPlan[`day${day}`];
+                doc.setFont('helvetica', 'bold');
+                doc.setFontSize(14);
+                doc.setTextColor('#0d9488');
+                doc.text(`NGÀY ${day}`, margin, cursorY);
+                cursorY += 20;
 
-        /* Icon mũi tên xoay */
-        .toggle-arrow {
-            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
+                if (!items || items.length === 0) {
+                    doc.setFont('helvetica', 'normal');
+                    doc.setFontSize(11);
+                    doc.setTextColor('#6b7280');
+                    doc.text('Chưa có kế hoạch cho ngày này.', margin + 10, cursorY);
+                    cursorY += 24;
+                } else {
+                    items.forEach(item => {
+                        if (cursorY > 740) { doc.addPage(); cursorY = 50; }
+                        doc.setFont('helvetica', 'bold'); doc.setFontSize(12); doc.setTextColor('#111827');
+                        doc.text(`${item.time} — ${item.dest}`, margin + 10, cursorY);
+                        cursorY += 16;
+                        const noteLines = doc.splitTextToSize(`Hoạt động: ${item.note}`, 520);
+                        doc.setFont('helvetica', 'normal'); doc.setFontSize(10); doc.setTextColor('#374151');
+                        doc.text(noteLines, margin + 20, cursorY);
+                        cursorY += noteLines.length * 14 + 12;
+                    });
+                }
 
-        /* Thẻ đang được active */
-        .active-card {
-            border-color: rgba(13, 148, 136, 0.5);
-            background: rgba(255, 255, 255, 0.95);
-        }
+                cursorY += 6;
+                doc.setDrawColor('#d1d5db'); doc.setLineWidth(0.5); doc.line(margin, cursorY, 555, cursorY);
+                cursorY += 18;
+            }
 
-        /* --- Timeline cho Tab 2 --- */
-        .timeline-container {
-            position: relative;
-            padding-left: 2rem;
-            border-left: 3px solid var(--primary-teal);
-        }
-        
-        .timeline-item {
-            position: relative;
-            margin-bottom: 2.5rem;
+            doc.save(filename);
         }
         
         .timeline-icon {
