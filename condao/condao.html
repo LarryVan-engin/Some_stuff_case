@@ -2844,25 +2844,46 @@ function exportItinerary() {
     const doc = new jsPDF({ unit: 'pt', format: 'a4' });
 
     // Prefer HTML rendering (preserves UTF-8 and styles) when available
+    let htmlRenderAttempted = false;
     if (presetView && typeof doc.html === 'function') {
-        const clone = presetView.cloneNode(true);
-        clone.style.width = '800px';
-        clone.style.background = '#fff';
-        clone.style.padding = '10px';
-        clone.style.position = 'fixed';
-        clone.style.left = '-20000px';
-        document.body.appendChild(clone);
-        doc.html(clone, {
-            x: 40, y: 40, html2canvas: { scale: 1, useCORS: true },
-            callback: function () {
-                doc.save(filename);
-                setTimeout(() => { try { document.body.removeChild(clone); } catch (e) {} }, 100);
-            }
-        });
-        return;
+        try {
+            htmlRenderAttempted = true;
+            const clone = presetView.cloneNode(true);
+            clone.style.width = '800px';
+            clone.style.background = '#fff';
+            clone.style.padding = '10px';
+            clone.style.position = 'fixed';
+            clone.style.left = '-20000px';
+            document.body.appendChild(clone);
+            doc.html(clone, {
+                x: 40, y: 40, html2canvas: { scale: 1, useCORS: true },
+                callback: function () {
+                    try {
+                        doc.save(filename);
+                    } catch (saveErr) {
+                        console.error('PDF save failed:', saveErr);
+                        alert('Lỗi lưu PDF. Kiểm tra console để biết chi tiết.');
+                    }
+                    setTimeout(() => { try { document.body.removeChild(clone); } catch (e) {} }, 100);
+                },
+                error: function (err) {
+                    console.error('doc.html() error:', err);
+                    document.body.removeChild(clone);
+                    exportItinerary_Fallback(doc, filename);
+                }
+            });
+            return;
+        } catch (e) {
+            console.error('HTML rendering failed, falling back to text:', e);
+        }
     }
+    
+    // Fallback to text-based export if HTML rendering fails or unavailable
+    exportItinerary_Fallback(doc, filename);
+}
 
-    // Fallback to text-based export if html renderer is unavailable
+function exportItinerary_Fallback(doc, filename) {
+
     const margin = 40;
     let cursorY = 60;
     doc.setFont('helvetica', 'bold');
@@ -2920,6 +2941,7 @@ function exportItinerary() {
 
     doc.save(filename);
 }
+
 
 // ============================================================
 // ===== ADMIN & MEMORIES ENGINE =====

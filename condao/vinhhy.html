@@ -2093,7 +2093,51 @@ function exportItinerary() {
         return;
     }
 
+    // Ensure current custom plan is persisted and reflected in preset view
+    try { savePlanToStorage(); } catch (e) { console.warn('savePlanToStorage failed', e); }
+    try { updatePlannerPresetView(); } catch (e) { console.warn('updatePlannerPresetView failed', e); }
+    try { switchPlannerMode('preset'); } catch (e) { }
+
+    const presetView = document.getElementById('planner-preset-view');
+    const filename = 'Lich_Trinh_Vinh_Hy_Cua_Ban.pdf';
     const doc = new jsPDF({ unit: 'pt', format: 'a4' });
+
+    if (presetView && typeof doc.html === 'function') {
+        try {
+            const clone = presetView.cloneNode(true);
+            clone.style.width = '800px';
+            clone.style.background = '#fff';
+            clone.style.padding = '10px';
+            clone.style.position = 'fixed';
+            clone.style.left = '-20000px';
+            document.body.appendChild(clone);
+            doc.html(clone, {
+                x: 40, y: 40, html2canvas: { scale: 1, useCORS: true },
+                callback: function () {
+                    try {
+                        doc.save(filename);
+                    } catch (saveErr) {
+                        console.error('PDF save failed:', saveErr);
+                        alert('Lỗi lưu PDF.');
+                    }
+                    setTimeout(() => { try { document.body.removeChild(clone); } catch (e) {} }, 100);
+                },
+                error: function (err) {
+                    console.error('doc.html() error:', err);
+                    document.body.removeChild(clone);
+                    exportItinerary_Fallback(doc, filename);
+                }
+            });
+            return;
+        } catch (e) {
+            console.error('HTML rendering failed, falling back to text:', e);
+        }
+    }
+    
+    exportItinerary_Fallback(doc, filename);
+}
+
+function exportItinerary_Fallback(doc, filename) {
     const margin = 40;
     let cursorY = 60;
 
@@ -2150,8 +2194,7 @@ function exportItinerary() {
         cursorY += 18;
     }
 
-    updatePlannerPresetView();
-    doc.save('Lich_Trinh_Vinh_Hy_Cua_Ban.pdf');
+    doc.save(filename);
 }
 
 // ============================================================
