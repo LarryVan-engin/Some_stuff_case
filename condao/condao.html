@@ -2503,6 +2503,12 @@ function populatePlannerDestinations() {
             destSelect.appendChild(opt);
         }
     });
+
+    // Add an explicit food-only option so users can get Ẩm Thực suggestions
+    const foodOpt = document.createElement('option');
+    foodOpt.value = '__FOOD__';
+    foodOpt.textContent = '🍽 Ăn uống — Gợi ý Ẩm Thực';
+    destSelect.insertBefore(foodOpt, destSelect.firstChild);
 }
 
 function loadPlanFromStorage() {
@@ -2553,7 +2559,12 @@ function renderPlannerFoodSuggestions() {
     const container = document.getElementById('planner-food-suggestions');
     if (!destSelect || !container) return;
     const destName = destSelect.value;
-    const suggestions = getFoodSuggestionCandidates(destName);
+    let suggestions = [];
+    if (destName === '__FOOD__') {
+        suggestions = getAllFoodItems().slice(0, 10);
+    } else {
+        suggestions = getFoodSuggestionCandidates(destName);
+    }
     if (!suggestions.length) {
         container.classList.add('hidden');
         container.innerHTML = '';
