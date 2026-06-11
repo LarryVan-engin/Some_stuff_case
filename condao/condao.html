@@ -59,8 +59,8 @@
         /* --- Styles mới cho Thẻ địa điểm và Chi tiết --- */
         .destination-card {
             background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
             border: 1px solid rgba(229, 231, 235, 0.8);
             border-radius: 1.5rem;
             overflow: hidden;
@@ -2630,6 +2630,7 @@ function isCustomPlanEmpty() {
 }
 
 function renderCustomPlanAsPresetHtml() {
+    console.log("Generating HTML for custom plan. customPlan data:", customPlan);
     let html = `
         <div class="text-center mb-12">
             <h2 class="text-3xl md:text-4xl font-extrabold text-teal-700">Lịch Trình Tùy Chỉnh Của Bạn</h2>
@@ -2678,6 +2679,7 @@ function renderCustomPlanAsPresetHtml() {
 }
 
 function updatePlannerPresetView() {
+    console.log("Updating Planner Preset View. isCustomPlanEmpty:", isCustomPlanEmpty());
     const presetView = document.getElementById('planner-preset-view');
     if (!presetView) return;
     if (isCustomPlanEmpty()) {
@@ -2836,6 +2838,7 @@ function loadDefaultTemplate() {
 
 // Export custom plan to PDF and sync it with the preset schedule view
 function exportItinerary() {
+    console.log("Export Itinerary clicked.");
     if (typeof html2canvas !== 'undefined') { window.html2canvas = html2canvas; }
     const { jsPDF } = window.jspdf || {};
     if (!jsPDF) {
@@ -2864,6 +2867,7 @@ function exportItinerary() {
             clone.style.position = 'fixed';
             clone.style.left = '-20000px';
             const animatedEls = clone.querySelectorAll('.timeline-item, .destination-card');
+            console.log("Number of animated elements forced to be visible in clone:", animatedEls.length);
             animatedEls.forEach(el => {
                 el.classList.add('visible');
                 el.style.opacity = '1';
