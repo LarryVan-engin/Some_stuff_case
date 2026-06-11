@@ -1,8 +1,8 @@
 {
   "destinations": [
     {
-      "id": "mq8xqaq0nbhx5pu2vr8",
-      "name": "Cảng Bến Đầm",
+      "id": "mq8xyvwlsu2zis8u8zs",
+      "name": "Ăn",
       "img1": "",
       "img2": "",
       "category": "beach",
@@ -949,5 +949,5 @@
       }
     ]
   },
-  "updatedAt": "2026-06-11T03:25:36.038Z"
+  "updatedAt": "2026-06-11T03:32:16.740Z"
 }
