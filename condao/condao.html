@@ -2856,52 +2856,69 @@ function exportItinerary() {
     const doc = new jsPDF({ unit: 'pt', format: 'a4' });
 
     // Prefer HTML rendering (preserves UTF-8 and styles) when available
-    let htmlRenderAttempted = false;
-    if (presetView && typeof doc.html === 'function') {
+    if (presetView) {
         try {
-            htmlRenderAttempted = true;
+            // Create a wrapper to simulate the parent's padding and background
+            const cloneWrapper = document.createElement('div');
+            cloneWrapper.className = "bg-white p-8 md:p-12"; 
+            cloneWrapper.style.width = '800px';
+            cloneWrapper.style.position = 'absolute';
+            cloneWrapper.style.left = '-9999px';
+            cloneWrapper.style.top = '0px';
+
             const clone = presetView.cloneNode(true);
-            clone.style.width = '800px';
-            clone.style.background = '#fff';
-            clone.style.padding = '10px';
-            clone.style.position = 'absolute';
-            clone.style.left = '0px';
-            clone.style.top = '0px';
-            clone.style.zIndex = '-9999';
-            const animatedEls = clone.querySelectorAll('.timeline-item, .destination-card');
-            console.log("Number of animated elements forced to be visible in clone:", animatedEls.length);
+            clone.style.display = 'block';
+            cloneWrapper.appendChild(clone);
+            document.body.appendChild(cloneWrapper);
+
+            const animatedEls = cloneWrapper.querySelectorAll('.timeline-item, .destination-card, .animate-fade-in-up, .animate-fade-in');
             animatedEls.forEach(el => {
                 el.classList.add('visible');
                 el.style.opacity = '1';
                 el.style.transform = 'none';
+                el.style.animation = 'none';
             });
-            document.body.appendChild(clone);
-            html2canvas(clone, { scale: 2, useCORS: true }).then(canvas => {
+
+            html2canvas(cloneWrapper, { 
+                scale: 2, 
+                useCORS: true,
+                windowWidth: 800,
+                logging: false
+            }).then(canvas => {
                 const imgData = canvas.toDataURL('image/jpeg', 1.0);
                 const pdfWidth = doc.internal.pageSize.getWidth();
                 const pdfHeight = doc.internal.pageSize.getHeight();
                 
-                const imgWidth = pdfWidth - 40; // 20pt margin on each side
+                const marginX = 20;
+                const marginY = 20;
+                const imgWidth = pdfWidth - marginX * 2;
+                const pageHeight = pdfHeight - marginY * 2;
                 const imgHeight = (canvas.height * imgWidth) / canvas.width;
 
                 let heightLeft = imgHeight;
-                let position = 20;
+                let position = marginY;
 
-                doc.addImage(imgData, 'JPEG', 20, position, imgWidth, imgHeight);
-                heightLeft -= (pdfHeight - 40);
+                doc.addImage(imgData, 'JPEG', marginX, position, imgWidth, imgHeight);
+                heightLeft -= pageHeight;
 
                 while (heightLeft > 0) {
-                    position = heightLeft - imgHeight + 20;
+                    position = position - pageHeight;
                     doc.addPage();
-                    doc.addImage(imgData, 'JPEG', 20, position, imgWidth, imgHeight);
-                    heightLeft -= (pdfHeight - 40);
+                    doc.addImage(imgData, 'JPEG', marginX, position, imgWidth, imgHeight);
+                    
+                    // Cover the margins so the image doesn't bleed into them
+                    doc.setFillColor(255, 255, 255);
+                    doc.rect(0, 0, pdfWidth, marginY, 'F');
+                    doc.rect(0, pdfHeight - marginY, pdfWidth, marginY, 'F');
+                    
+                    heightLeft -= pageHeight;
                 }
 
                 doc.save(filename);
-                setTimeout(() => { try { document.body.removeChild(clone); } catch (e) {} }, 100);
+                setTimeout(() => { try { document.body.removeChild(cloneWrapper); } catch (e) {} }, 100);
             }).catch(err => {
                 console.error('html2canvas error:', err);
-                document.body.removeChild(clone);
+                try { document.body.removeChild(cloneWrapper); } catch (e) {}
                 exportItinerary_Fallback(doc, filename);
             });
             return;
