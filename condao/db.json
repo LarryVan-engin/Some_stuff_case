@@ -1,6 +1,20 @@
 {
   "destinations": [
     {
+      "id": "mqa8uojxcpfiub7ktyn",
+      "name": "Cảng Bến Đầm",
+      "img1": "",
+      "img2": "",
+      "category": "dive",
+      "rating": "",
+      "mapsUrl": "",
+      "linkUrl": "",
+      "descShort": "",
+      "descLong": "",
+      "highlights": [],
+      "bestTime": ""
+    },
+    {
       "id": "mppbw0zj00bpxizaxewmd",
       "name": "Hidden Location",
       "img1": "https://raw.githubusercontent.com/LarryVan-engin/Some_stuff_case/main/condao/images/dest_Hidden_Location_1_1779971233619.png",
@@ -945,5 +959,5 @@
       }
     ]
   },
-  "updatedAt": "2026-06-11T15:43:06.439Z"
+  "updatedAt": "2026-06-12T01:24:42.540Z"
 }
