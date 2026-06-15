@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "start": "node server.js",
+    "benchmark:json": "wrk -t4 -c200 -d20s -s test_json.lua http://localhost:3000/api/benchmark",
+    "benchmark:msgpack": "wrk -t4 -c200 -d20s -s test_msgpack.lua http://localhost:3000/api/benchmark",
+    "benchmark:json-fast": "wrk -t4 -c200 -d20s -s test_json_fast.lua http://localhost:3000/api/benchmark-fast",
+    "benchmark:msgpack-fast": "wrk -t4 -c200 -d20s -s test_msgpack_fast.lua http://localhost:3000/api/benchmark-fast"
+  },
+  "dependencies": {
+    "msgpackr": "^2.0.4"
+  }
+}

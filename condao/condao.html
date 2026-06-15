@@ -2517,6 +2517,12 @@ function loadPlanFromStorage() {
     if (saved) {
         try {
             customPlan = JSON.parse(saved);
+            // Ensure loaded plans from past sessions are properly sorted using the new logic
+            for (let i = 1; i <= 4; i++) {
+                if (customPlan[`day${i}`]) {
+                    customPlan[`day${i}`].sort((a, b) => parseTimeToMinutes(a.time) - parseTimeToMinutes(b.time));
+                }
+            }
         } catch (e) {
             console.error("Error parsing saved plan", e);
         }
